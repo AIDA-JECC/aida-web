@@ -23,7 +23,7 @@ function EventsPage() {
         {events.map((event, index) => (
           <div className="event-card" key={index}>
             <Popup
-              trigger={<img src={event.img} className="imageButton" />}
+              trigger={<img src={event.img} className="eventimageButton" />}
               modal
               closeOnDocumentClick
               overlayStyle={{
@@ -37,7 +37,7 @@ function EventsPage() {
             >
               {(close) => (
                 <div className="popup-container">
-                  <button className="popup-close" onClick={close}>
+                  <button className="eventpopup-close" onClick={close}>
                     ✖
                   </button>
                   <img src={event.img} alt="Event Image" className="popup-image" />

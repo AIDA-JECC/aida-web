@@ -2,7 +2,7 @@ import './Header.css';
 import pic from './assets/logo.png';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
-
+import { FaRegUser } from "react-icons/fa";
 function Header() {
     const [navActive, setNavActive] = useState(false);
 
@@ -52,6 +52,9 @@ function Header() {
                     <li><Link to="/verify" className='list-item'>Verify Certificate</Link></li>
                 </div>
             </header>
+             {/* <div className='login'>
+                    <li><Link to="/login"> <FaRegUser/></Link></li>
+             </div> */}
         </div>
     );
 }

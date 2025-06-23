@@ -1,38 +1,52 @@
 .container {
     width: 100%;
-    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
+    justify-content: center;
 }
 
 .component {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1300px;
+
 }
 
-/* Tablet: 3 cards */
-@media (max-width: 1024px) {
+/* Large Desktop: 4 cards (when space allows) */
+@media (max-width: 1200px) {
+    .component {
+        grid-template-columns: repeat(4, 1fr);
+   
+        
+    }
+}
+
+/* Desktop: 3 cards */
+@media (max-width: 1199px) and (min-width: 900px) {
     .component {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Mobile: 2 cards */
-@media (max-width: 768px) {
-    .component {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* Small Mobile: 1 card (optional) */
-@media (max-width: 480px) {
+/* Tablet: 2 cards */
+@media (max-width: 899px) and (min-width: 600px) {
     .component {
         grid-template-columns: repeat(2, 1fr);
+        translate:50px 50px;
+        position: relative;
+    }
+}
+
+/* Mobile: 1 card */
+@media (max-width: 599px) {
+    .component {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+             translate:100px 50px;
+        position: relative;
     }
 }

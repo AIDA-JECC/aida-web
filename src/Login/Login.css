@@ -1,0 +1,243 @@
+/* Base Styles (Mobile First) */
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: whitesmoke;
+  font-family: 'Afacad', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.loginContainer form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  color: #333;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.loginContainer input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.loginContainer input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.password-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.loginContainer button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.loginContainer button:hover {
+  background-color: #0069d9;
+  transform: translateY(-1px);
+}
+
+.error {
+  color: #dc3545;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px;
+  background-color: rgba(220, 53, 69, 0.1);
+  border-radius: 4px;
+}
+
+.forgot-password {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.forgot-password a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+.social-btn:hover {
+  transform: translateY(-1px);
+}
+
+.google-btn {
+  color: #db4437;
+  border-color: #db4437;
+}
+
+.google-btn:hover {
+  background-color: rgba(219, 68, 55, 0.1);
+}
+
+.facebook-btn {
+  color: #4267B2;
+  border-color: #4267B2;
+}
+
+.facebook-btn:hover {
+  background-color: rgba(66, 103, 178, 0.1);
+}
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+  .loginContainer form {
+    padding: 30px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .loginContainer input {
+    padding: 14px 16px;
+    font-size: 1.05rem;
+  }
+  
+  .loginContainer button {
+    padding: 14px;
+    font-size: 1.05rem;
+  }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+  .loginContainer form {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .social-login {
+    flex-direction: row;
+  }
+  
+  .social-btn {
+    flex: 1;
+  }
+}
+
+/* Very small screens (under 375px) */
+@media (max-width: 374px) {
+  .loginContainer {
+    padding: 15px;
+  }
+  
+  .loginContainer form {
+    padding: 20px 15px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .loginContainer input {
+    padding: 10px 12px;
+  }
+  
+  .loginContainer button {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,265 @@
+.Containerfaculty{
+  height: 100vh;
+  background: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  font-family: 'Afacad';
+}
+
+.flexcontents {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.faculty-dashboard { 
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Other styles remain unchanged */
+
+.dashcontainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dashcomponent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+.cardWhite {
+  background-color: whitesmoke; /* Set card background to white */
+  border: 1px solid #ccc; /* Optional: add a border */
+  /* border-radius: 8px; Optional: rounded corners */
+  padding: 16px; /* Optional: padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  color: black;
+   width: 90%;
+}
+form {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+form p {
+  font-size: 1.5rem;
+  color: #b80028;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+.formDetails{
+  width: 100%;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+}
+input[type="email"]{
+  width: 95%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+ 
+}
+
+form input:focus {
+  outline: none;
+  border-color: #b80028;
+  box-shadow: 0 0 0 2px rgba(184, 0, 40, 0.1);
+}
+
+.upload-sectionFaculty {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.upload-labelFaculty {
+  width: 100%;
+  height: 80px;
+  border: 2px dashed #b2bec3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #636e72;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  text-align: center;
+  padding: 10px;
+}
+
+.upload-labelFaculty:hover {
+  background-color: #f1f9ff;
+  border-color: #74b9ff;
+}
+
+.uploadLogoFaculty {
+  font-size: 24px;
+  color: #0984e3;
+  margin-bottom: 6px;
+}
+form span {
+  display: block;
+  margin-top: 8px;
+  color: #636e72;
+  font-size: 14px;
+  text-align: center;
+}
+
+form button[type="submit"] {
+  background: linear-gradient(135deg, #b80028, #e30938);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+  font-family: 'Afacad';
+}
+
+form button[type="submit"]:hover {
+  background: linear-gradient(135deg, #ce0000a7, #ff0015);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.addicon {
+  height: 350px;
+  width: 90%; /* Use percentage for responsiveness */
+  max-width: 200px; /* Maintain max width */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 1.5em;
+  border-radius: 1.875rem;
+  background: whitesmoke;
+  border: 1px solid rgba(255, 0, 0, 0.589);
+  margin: 2.2rem 0rem 1.4rem 0rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  justify-content: center;
+}
+
+.add {
+  color: black;
+  font-size: 50px;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
+
+
+@media (max-width: 1024px) {
+  .dashcomponent {
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    gap: 10px;
+    padding: 0px 30px 5px 5px;
+  }
+  .cardWhite{
+    width: 80%;
+  }
+}
+
+/* Mobile: 2 cards */
+@media (max-width: 768px) {
+  .dashcomponent {
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    width: 100%;
+  }
+  .Containerfaculty h1{
+    margin-top: 50px;
+  }
+
+}
+
+
+@media (max-width: 660px) {
+  .dashcomponent {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    align-items: center;
+    
+  }
+}
+@media (max-width: 768px) {
+  form {
+    padding: 20px;
+  }
+  
+  form p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 15px;
+  }
+  
+  /* form input[type="text"] {
+    padding: 12px 14px;
+    font-size: 15px;
+    width: 100%;
+  } */
+  
+  form input[type="email"]{
+    width: 90%;
+  }
+  
+  form button[type="submit"] {
+    padding: 12px 18px;
+  }
+}

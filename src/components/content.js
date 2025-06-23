@@ -55,4 +55,4 @@ const data = [
   { id: 53, name: 'Mohamed Naizan P S', role: 'Executive Member', year: 2024, pr: 10, link: 'https://ik.imagekit.io/AIDA/AIDA%20Members/2024-2025/Executive-Mohamed%20Naizan%20P%20S.jpg' }
 ]
   
-
+export default data;

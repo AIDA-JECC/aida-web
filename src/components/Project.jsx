@@ -1,55 +1,55 @@
-import React from 'react'
-import './Project.css'
-import { Link } from 'react-router-dom'
-import Header from './Header'
-import Footer from "./Footer";
-import { AiFillGithub } from "react-icons/ai";
+import React, { useState } from 'react';
+import './Project.css';
+import Header from './Header';
+import { AiFillGithub } from 'react-icons/ai';
+import ProjectData from './projectData';
+import Footer from './Footer';
 
-function Project() {
-  //  const Project=eventData;
+function Project(props) {
+  
+  const [selectedYear,setSelectedYear] = useState(2023)
+  const uniqueYears = [...new Set(ProjectData.map(project => project.year))];
+  const filteredProjects = ProjectData.filter(project => project.year === selectedYear);
+
   return (
-
-    <>
+    <div>
       <Header />
-      {/* coming soon */}
-      <div className="coming-soon-container">
-        <h1 className="coming-soon-heading">Projects</h1>
-        <div className="coming-soon-underline"></div>
-        <p className="coming-soon-text">Coming Soon</p>
-      </div>
-
-      {/* <div className="mainCont">
-        <div className="select-container" aria-label="Year selectors">
-          <select className="year-select" aria-label="Select Year 1">
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
+       <div className="select-container" aria-label="Year selectors">
+          <select
+            className="year-select" 
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(Number(e.target.value))} 
+          >
+            {uniqueYears.map((year) => (
+              <option key={year} value={year}>{year}</option>
+            ))}
           </select>
         </div>
-        <div className="subCont">
-          <div className="img_side">
-            <img src='src/components/assets/ardnio.webp' alt="img" />
-          </div>
-          <div className="content">
-            <h1>Heading</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eligendi sed asperiores atque? Pariatur magnam maiores consequatur molestias fugit minus eius quidem natus quia! Blanditiis numquam nisi earum nesciunt cupiditate.</p>
-            <Link to='https://github.com/Sandeepkumarps/Ds-Lab'><AiFillGithub className='git' /> </Link>
-          </div>
-        </div>
+      <div className="mainCont">
+       
 
-        <div className="subCont">
-          <div className="img_side">
-            <img src='src/components/assets/ardnio.webp' alt="img" />
-          </div>
-          <div className="content">
-            <h1>Heading</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eligendi sed asperiores atque? Pariatur magnam maiores consequatur molestias fugit minus eius quidem natus quia! Blanditiis numquam nisi earum nesciunt cupiditate.</p>
-            <Link to='https://github.com/Sandeepkumarps/Ds-Lab'><AiFillGithub className='git' /> </Link>
-          </div>
-        </div>
-      </div> */}
-      <Footer />
-    </>
-  )
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project, index) => (
+            <div className= "subCont"  key={index}>
+              <div className="img_side">
+                <img src={project.img} alt={project.name} />
+              </div>
+              <div className="content">
+                <h1>{project.name}</h1>
+                <p>{project.detail}</p>
+                <a href={project.gitLink} target="_blank" rel="noopener noreferrer">
+                  <AiFillGithub className="git" />
+                </a>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No projects found for {selectedYear}.</p>
+        )}
+      </div>
+      <Footer/>
+    </div>
+  );
 }
 
-export default Project
+export default Project;

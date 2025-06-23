@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 header {
-    display: fixed;
+   
     margin-top: 30px;
     width:35%;
     /* max-width: max-content; */
@@ -151,7 +151,60 @@ header nav {
 .list-item-active{
     display: none;
 }
+
+.login {
+    position: absolute; /* Use absolute positioning */
+    top: 32px; /* Adjust the top position as needed */
+    right: 20px; /* Align to the right */
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 8px 20px;
+    height: 30px;
+    align-items: center;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.login li {
+    list-style: none;
+}
+
+.login li a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.login li a:hover {
+    color: red;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login {
+        position: absolute;
+        /* Keep it absolute for mobile as well */
+        top: 22px; /* Adjust top position for smaller screens */
+        right: 10px; /* Adjust right position for smaller screens */
+        justify-content: center;
+        gap: 15px;
+        padding: 10px 15px;
+        height: auto;
+        min-width: auto;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+    }
+    .login li a{
+        font-size: 20px;
+    }
+}
+
+/* @media screen and (max-width: 768px) { */
 /* @media screen and (max-width: 768px) {
+
     header {
         width:max-content;
         margin-top: 20px;

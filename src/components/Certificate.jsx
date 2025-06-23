@@ -48,6 +48,7 @@ function Certificate() {
           onChange={(e) => setInput(e.target.value)}
           type="text"
           placeholder="Enter Certificate Number"
+          className="inputCerti"
         />
         <button onClick={verifyCertificate}>Verify</button>
       </div>

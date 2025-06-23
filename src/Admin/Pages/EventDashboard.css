@@ -1,0 +1,312 @@
+/* Base Styles (Mobile First) */
+.ContainerEvent {
+  padding: 15px;
+  background: white;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+   font-family: 'Afacad';
+}
+
+.flexcontentsEvent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+}
+
+/* Event Form Container */
+.eventForm {
+  width: 500px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Form Headers */
+.form_headerEvent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.form-subheaderEvent {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Input & Textarea */
+.eventForm input[type="text"],
+.eventForm input[type="url"],
+.eventForm textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.eventForm input:focus,
+.eventForm textarea:focus {
+  border-color: #e30938;
+  box-shadow: 0 0 0 3px rgba(227, 9, 56, 0.15);
+  outline: none;
+}
+
+.eventForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Upload Section */
+.upload-sectionEvent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.upload-labelEvent {
+  width: 100%;
+  height: 120px;
+  border: 2px dashed #b2bec3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  color: #636e72;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.upload-labelEvent:hover {
+  background-color: #f1f9ff;
+  border-color: #74b9ff;
+}
+
+.uploadLogoEvent {
+  font-size: 24px;
+  color: #0984e3;
+  margin-bottom: 6px;
+}
+
+/* Submit Button */
+.submit-buttonEvent {
+  background: linear-gradient(135deg, #b80028, #e30938);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit-buttonEvent:hover {
+  background: linear-gradient(135deg, #ce0000a7, #ff0015);
+  transform: translateY(-1px);
+}
+
+/* Add Event Card */
+.addiconevent {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3/4;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.addiconevent:hover {
+  transform: scale(1.03);
+}
+
+.addevent {
+  font-size: 40px;
+  color: #007bff;
+}
+
+/* Events Grid */
+.dashevents-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dashevent-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: all 0.3s ease;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashevent-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dashimageButton {
+  border-radius: 8px;
+  object-fit: cover;
+  height: fit-content;
+  height: 200px;
+  
+}
+
+.dashevent-content {
+  margin-top: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  appearance: none;
+}
+.dashevent-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.dashevent-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.dashevent-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.dashevent-content p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 10px 0;
+  flex-grow: 1;
+}
+
+/* Tablet Styles (768px and up) */
+@media (max-width: 768px) {
+  .ContainerEvent {
+    padding: 25px;
+  }
+  
+  .eventForm {
+    padding: 30px;
+  }
+  
+  .form_headerEvent {
+    font-size: 1.8rem;
+  }
+  
+  .upload-sectionEvent {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .upload-labelEvent {
+    max-width: 180px;
+  }
+  
+  .dashevents-grid {
+    gap: 25px;
+    padding: 20px;
+  }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (max-width: 1024px) {
+  .ContainerEvent {
+    padding: 30px;
+  }
+  
+  .dashevents-grid {
+    max-width: 1200px;
+    margin: 30px auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .dashevent-card {
+    height: 420px;
+  }
+  
+  .dashimageButton {
+    height: 200px;
+  }
+  .eventForm{
+    width: 100%;
+  }
+}
+
+@media (max-width:786px) {
+  .ContainerEvent h1{
+    margin-top: 50px;
+  }
+  
+}
+/* Small Mobile Devices (under 375px) */
+@media (max-width: 374px) {
+  .ContainerEvent {
+    padding: 10px;
+  }
+  
+  .eventForm {
+    padding: 15px;
+  }
+  
+  .form_headerEvent {
+    font-size: 1.3rem;
+  }
+  
+  .dashevents-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .dashevent-card {
+    height: auto;
+    min-height: 350px;
+  }
+}

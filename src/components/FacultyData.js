@@ -63,4 +63,5 @@ const FacultyData = [
     
     
     ]
-    export default FacultyData;
+export default FacultyData;
+

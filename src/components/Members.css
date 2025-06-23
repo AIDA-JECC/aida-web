@@ -31,11 +31,11 @@ select {
 }
 
 
-/* Card Styles */
-.card {
+/* CardMembers Styles */
+.cardMembers {
     border-radius: 30px; /* Rounded corners */
-    border: 1px solid #fb0000; /* Card border */
-    background: #000; /* Card background */
+    border: 1px solid #fb0000; /* CardMembers border */
+    background: #000; /* CardMembers background */
     box-shadow: 0px 4px 20px 10px rgba(99, 91, 91, 0.25); /* Shadow effect */
     display: flex; /* Flexbox layout */
     flex-direction: column; /* Column layout */
@@ -43,12 +43,12 @@ select {
     width:250px; /* Full width */
     height: max-content; /* Height adjusts to content */
     padding: 20px;
-    margin-bottom: 10px; /* Padding inside the card */
+    margin-bottom: 10px; /* Padding inside the cardMembers */
     /* justify-content: center; */
 }
 
-/* Card Content */
-.card__content {
+/* CardMembers Content */
+.cardMembers__content {
     position: relative;
     padding-bottom: 30px;
     top: 20px;
@@ -58,8 +58,8 @@ select {
     justify-content: center;
 }
 
-/* Card Title */
-.card__title {
+/* CardMembers Title */
+.cardMembers__title {
     color: white; /* Text color */
     text-align: center; /* Center text */
     font-family: 'Afacad'; /* Font family */
@@ -67,8 +67,8 @@ select {
     margin: 10px 0; /* Margin for spacing */
 }
 
-/* Card Text */
-.card__text {
+/* CardMembers Text */
+.cardMembers__text {
     color: white; /* Text color */
     text-align: center; /* Center text */
     font-family: 'Afacad'; /* Font family */
@@ -77,8 +77,8 @@ select {
     padding: 0 10px; /* Horizontal padding */
 }
 
-/* Card Image */
-.card__image {
+/* CardMembers Image */
+.cardMembers__image {
     display: flex; /* Flexbox layout */
     justify-content: center; /* Center items */
     margin-top: 20px; /* Reduced margin for better spacing */
@@ -89,7 +89,7 @@ select {
 }
 
 /* Image Container */
-.card__image-container {
+.cardMembers__image-container {
     display: flex; /* Flexbox layout */
     justify-content: center; /* Center items */
     width: 100%; /* Full width */
@@ -139,22 +139,22 @@ select {
         align-items: center;
     }
 
-    .card {
+    .cardMembers {
         width: 100%;
         height: 300px;
         max-width: 280px;
         padding: 30px;
     }
 
-    .card__title {
+    .cardMembers__title {
         font-size: 18px;
     }
 
-    .card__text {
+    .cardMembers__text {
         font-size: 16px;
     }
 
-    .card__image {
+    .cardMembers__image {
         width: 150px;
         height: 150px;
     }
