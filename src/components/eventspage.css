@@ -134,8 +134,9 @@ body {
   border-radius: 25px; /* Rounded corners for the image */
   border: 2px solid red;
   object-fit: fill;
-
 }
+
+
 
 /* Content inside the popup */
 .popup-content {
@@ -263,8 +264,13 @@ body {
   }
   .popup-image {
     /* margin-bottom: 10px; */
-    width: 50%;
+    width:  300px;
+    height: 500px;
+    object-fit: fill;
     margin-top: 50%;
     position: relative;
+  }
+  .eventpopup-close {
+    right:10%;
   }
 }

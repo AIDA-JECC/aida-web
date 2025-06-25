@@ -75,6 +75,7 @@ function Faculty() {
               name={content.name}
               position={content.designation}
               link={content.link}
+              mail={content.mail}
             />
           ))}
         </div>
