@@ -1,52 +1,38 @@
 .container {
     width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+    height: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 .component {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     width: 100%;
-    max-width: 1300px;
-
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Large Desktop: 4 cards (when space allows) */
-@media (max-width: 1200px) {
-    .component {
-        grid-template-columns: repeat(4, 1fr);
-   
-        
-    }
-}
-
-/* Desktop: 3 cards */
-@media (max-width: 1199px) and (min-width: 900px) {
+/* Tablet: 3 cards */
+@media (max-width: 1024px) {
     .component {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Tablet: 2 cards */
-@media (max-width: 899px) and (min-width: 600px) {
+/* Mobile: 2 cards */
+@media (max-width: 768px) {
     .component {
-        grid-template-columns: repeat(2, 1fr);
-        translate:50px 50px;
-        position: relative;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Mobile: 1 card */
-@media (max-width: 599px) {
+/* Small Mobile: 1 card (optional) */
+@media (max-width: 480px) {
     .component {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-             translate:100px 50px;
-        position: relative;
+        grid-template-columns: repeat(2, 1fr);
     }
 }

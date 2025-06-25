@@ -14,7 +14,12 @@ function Project(props) {
   return (
     <div>
       <Header />
-       <div className="select-container" aria-label="Year selectors">
+      <div className="coming-soon-container">
+        <h1 className="coming-soon-heading">Projects</h1>
+        <div className="coming-soon-underline"></div>
+        <p className="coming-soon-text">Coming Soon</p>
+      </div>
+       {/* <div className="select-container" aria-label="Year selectors">
           <select
             className="year-select" 
             value={selectedYear}
@@ -46,7 +51,7 @@ function Project(props) {
         ) : (
           <p>No projects found for {selectedYear}.</p>
         )}
-      </div>
+      </div> */}
       <Footer/>
     </div>
   );
