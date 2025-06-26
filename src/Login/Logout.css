@@ -1,0 +1,104 @@
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+}
+
+.logout-box {
+    background-color: #ffffff;
+    border: red solid 3px;
+    padding: 40px;
+    border-radius: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.logout-box p {
+    color: #666;
+    font-size: 2em;
+    line-height: 1.5;
+    margin: 0 0 30px 0;
+}
+
+.logout-button {
+    background-color: #ffffff;
+    color: black;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm {
+    margin-right: 20px;
+    border: red solid 3px;
+}
+
+.cancel {
+    border: red solid 3px;
+}
+
+.logout-button:hover {
+    background-color: #df574a;
+}
+
+.logout-message {
+    margin-top: 20px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.logout-error {
+    margin-top: 20px;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .logout-box {
+        width: 300px;
+        border-radius: 20px;
+    }
+
+    .logout-box p {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .logout-button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .confirm {
+        width: 300px;
+        height: 60px;
+        font-size: 1.3em;
+        border: none;
+        background-color: #db4437;
+        color: white;
+    }
+
+    .cancel {
+        background-color: #ffffff;
+        color: black;
+        border: none;
+        font-size: 1em;
+    }
+
+
+    .logout-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

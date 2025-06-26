@@ -17,8 +17,11 @@ function Card(props) {
           <a href={props.link}>
             <img className='linkedin' src={link}/>
           </a>
-          <a href={props.mail}>
-            <img className='email' src={mail}/>
+          <a href={props.mailWeb}>
+            <img className='emailWeb' src={mail}/>
+          </a>
+          <a href={props.mailPhone}>
+            <img className='emailPhone' src={mail}/>
           </a>
         </div>
       </div>

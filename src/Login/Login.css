@@ -11,21 +11,39 @@
   box-sizing: border-box;
 }
 
+.load,.loading {
+    background-color: #ffffff;
+    color: black;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: red solid 3px;
+}
+
+.load:hover,.loading:hover {
+    background-color: #da5f54;
+}
+
+
 .loginContainer form {
   background: white;
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   color: #333;
+  border: red solid 3px;
 }
 
 .title {
   text-align: center;
   margin-bottom: 25px;
-  color: #2c3e50;
-  font-size: 1.8rem;
+  color: #000000;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
@@ -34,42 +52,46 @@
   margin-bottom: 8px;
   font-weight: 500;
   color: #2c3e50;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
-.loginContainer input {
+#email,#password {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 25px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
-.loginContainer input:focus {
+#email:focus,#password:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  border-color: #ff0000;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.329);
 }
 
 .password-container {
   position: relative;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 35px;
 }
 
 .eye-icon {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 10px;
   cursor: pointer;
-  color: #666;
-  font-size: 1.2rem;
+  color: #888;
 }
 
-.loginContainer button {
+
+/* .loginContainer button {
   width: 100%;
   padding: 12px;
   background-color: #007bff;
@@ -81,12 +103,12 @@
   font-weight: 500;
   transition: all 0.3s ease;
   margin-top: 10px;
-}
+} */
 
-.loginContainer button:hover {
-  background-color: #0069d9;
+/* .loginContainer button:hover {
+  background-color: #000000;
   transform: translateY(-1px);
-}
+} */
 
 .error {
   color: #dc3545;
@@ -182,7 +204,7 @@
 }
 
 /* Tablet Styles (768px and up) */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .loginContainer form {
     padding: 30px;
   }
@@ -204,7 +226,7 @@
 }
 
 /* Desktop Styles (1024px and up) */
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .loginContainer form {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
@@ -229,7 +251,7 @@
   }
   
   .title {
-    font-size: 1.5rem;
+    font-size: 2em;
     margin-bottom: 20px;
   }
   

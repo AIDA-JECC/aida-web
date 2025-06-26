@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { GrGoogle } from 'react-icons/gr';
+import { supabase } from '../supabaseClient';
+
 const LoginPage = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,58 +13,64 @@ const LoginPage = ({ setIsAuthenticated }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const session = supabase.auth.getSession().then(({ data }) => {
+      if (data?.session) {
+        setIsAuthenticated(true);
+        navigate('/dashboard');
+      }
+    });
+
+    // Listen to auth state changes (login/logout)
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        setIsAuthenticated(true);
+        localStorage.setItem('isAuthenticated', 'true');
+      } else {
+        setIsAuthenticated(false);
+        localStorage.removeItem('isAuthenticated');
+      }
+    });
+
+    return () => {
+      listener?.subscription.unsubscribe();
+    };
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    // Basic validation
-    if (!email) {
-      setError('Email is required.');
-      setIsLoading(false);
-      return;
-    }
-    if (!password) {
-      setError('Password is required.');
+    if (!email || !password) {
+      setError('Email and password are required.');
       setIsLoading(false);
       return;
     }
 
-    try {
-      // In a real app, you would make an API call here
-      // const response = await authApi.login(email, password);
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For demo purposes, we'll just check for specific credentials
-      if (email === 'admin@example.com' && password === 'admin123') {
-        setIsAuthenticated(true);
-        localStorage.setItem('isAuthenticated', 'true');
-        navigate('/dashboard');
-      } else {
-        setError('Invalid credentials. Try admin@example.com / admin123 for demo');
-      }
-    } catch (err) {
-      setError('Login failed. Please try again.');
-      console.error('Login error:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  const handleGoogleLogin = () => {
-    // Implement Google login logic here
-    alert('Google login would be implemented here');
-    // In a real app, this would also call setIsAuthenticated(true)
+    if (error) {
+      setError('Invalid credentials or user not found.');
+    } else {
+      setIsAuthenticated(true);
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/dashboard');
+    }
+
+    setIsLoading(false);
   };
 
   return (
     <div className="loginContainer">
       <form onSubmit={handleSubmit}>
-        <h2 className="title">Admin Login</h2>
+        <img src="https://ik.imagekit.io/AIDA/Assets%20for%20Web/AIDA%20LOGO%20THEMED.png?updatedAt=1697129861653"/>
+        <h2 className="title">Administration</h2>
         {error && <div className="error">{error}</div>}
-        
+
         <label htmlFor="email" className="label">
           Email
           <input
@@ -69,56 +78,31 @@ const LoginPage = ({ setIsAuthenticated }) => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@example.com"
             autoComplete="username"
           />
         </label>
-        
+
         <label htmlFor="password" className="label">
           Password
           <div className="password-container">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type='password'
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
               autoComplete="current-password"
             />
-            <span 
-              className="eye-icon" 
-              onClick={() => setShowPassword(!showPassword)}
-              role="button"
-              tabIndex={0}
-              aria-label={showPassword ? 'Hide password' : 'Show password'}
-            >
-              {showPassword ? '👁️' : '👁️‍🗨️'}
-            </span>
           </div>
         </label>
-        
-        <button 
-          type="submit" 
-          disabled={isLoading}
-          className={isLoading ? 'loading' : ''}
-        >
+
+        <center>
+        <button className={isLoading ? 'loading' : 'load'}>
           {isLoading ? 'Logging in...' : 'Log In'}
         </button>
-        
+        </center>
+
         <div className="forgot-password">
           <a href="/forgot-password">Forgot Password?</a>
-        </div>
-        
-        <div className="divider">or</div>
-        
-        <div className="google-login">
-          <button 
-            type="button" 
-            onClick={handleGoogleLogin}
-            className="google-btn"
-          >
-            <GrGoogle/> Continue with Google
-          </button>
         </div>
       </form>
     </div>

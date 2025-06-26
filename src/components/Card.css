@@ -63,11 +63,18 @@
     margin-right: 40px;
 }
 
-.email {
+.emailWeb {
     height: 50px;
     width: 50px;
     margin-top: 30px;
     margin-left: 40px;
+}
+.emailPhone {
+    display: none;
+    height: 50px;
+    width: 50px;
+    margin-top: 30px;
+    margin-left: 10px;
 }
 
 
@@ -133,10 +140,11 @@
     flex-direction: row;;
 }
 
-    .email {
-        height: 50px;
-        width: 50px;
-        margin-top: 30px;
-        margin-left: 10px;
+    .emailPhone {
+        display: flex;
+    }
+
+    .emailWeb {
+        display: none;
     }
 }
