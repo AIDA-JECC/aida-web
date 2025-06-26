@@ -20,7 +20,7 @@ function ForgotPassword() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'http://localhost:5173/update-password' // change as needed
+        redirectTo: 'https://aidajecc.in/update-password' // change as needed
       });
 
       if (error) {
