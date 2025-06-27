@@ -126,13 +126,21 @@ const FacultyDashboard = () => {
 
   const handleDelete = async () => {
     try {
+      // check if there is change in facultyList after deletion 
+      const oldFacultyList = getFacultyData().length;
+      // Proceed with deletion
       await deleteFacultyMember(editingFaculty.id);
       setShowEditPopup(false);
       fetchData();
+      // check if there is change in facultyList after deletion
+      if (facultyList.length === oldFacultyList) {
+        showPopup('Faculty not found. Please refresh the page or try logging out and back in.', 'error');
+        return;
+      }
       showPopup('Faculty deleted successfully.', 'success');
     } catch (error) {
       console.error('Error deleting faculty:', error);
-      showPopup('Error deleting faculty. Please try again.', 'error');
+      showPopup(`Error deleting faculty. Please try again.${error}`, 'error');
     }
   };
 

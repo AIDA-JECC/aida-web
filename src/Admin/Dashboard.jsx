@@ -13,6 +13,7 @@ import {
   getEventData,
   getProjectData
 } from '../ListOfFunctions';
+import { supabase } from '../supabaseClient';
 
 const Dashboard = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -20,12 +21,21 @@ const Dashboard = () => {
   const [memberData, setMemberData] = useState([]);
   const [eventData, setEventData] = useState([]);
   const [projectData, setProjectData] = useState([]);
+  const [username, setUsername] = useState('');
 
   const currentYear = new Date().getFullYear();
   const previousYear = currentYear - 1;
   const today = new Date();
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (!error && user) {
+        const name = user.user_metadata?.username || user.email;
+        setUsername(name);
+      }
+    };
+
     const loadData = async () => {
       try {
         const faculty = await getFacultyData();
@@ -42,13 +52,14 @@ const Dashboard = () => {
       }
     };
 
+    fetchUser();
     loadData();
   }, []);
 
   const lenFacultyData = facultyData.length;
   const lenExecutiveMem = memberData.length;
   const upcomingEvents = eventData.filter(e => new Date(e.date) > today).length;
-  const lenProjectData = projectData.filter(p => p.year === currentYear && p.status === 'completed').length;
+  const lenProjectData = projectData.length;
 
   const eventsByYear = {};
   eventData.forEach(event => {
@@ -96,7 +107,7 @@ const Dashboard = () => {
       <Sidebar isExpanded={isSidebarExpanded} toggleSidebar={toggleSidebar} />
       <div className="homeDashContainer">
         <div className="homeDashHeader">
-          <h1>Hi, Dev</h1>
+          <h1>Hi, {username}</h1>
         </div>
 
         <div className="summary-cards">

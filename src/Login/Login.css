@@ -55,7 +55,7 @@
   font-size: 1.1rem;
 }
 
-#email,#password {
+#email,#password,#username {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 15px;
@@ -66,7 +66,7 @@
   box-sizing: border-box;
 }
 
-#email:focus,#password:focus {
+#email:focus,#password:focus,#username:focus {
   outline: none;
   border-color: #ff0000;
   box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.329);

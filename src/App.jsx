@@ -17,6 +17,7 @@ import AchivementDashboard from './Admin/Pages/AchivementDashboard';
 import Logout from './Login/Logout';
 import ForgotPassword from './Login/ForgotPassword';
 import UpdatePassword from './Login/UpdatePassword';
+import RegisterPage from './Login/Register';
 import { supabase } from './supabaseClient';
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Route path="/project" element={<Project />} />
           <Route path="/verify" element={<Certificate />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/update-password" element={<UpdatePassword />} />
 
