@@ -80,7 +80,7 @@ function App() {
           <Route path="/projectdashboard" element={<ProtectedRoute><ProjectDashboard /></ProtectedRoute>} />
           <Route path="/eventdashboard" element={<ProtectedRoute><EventDashboard /></ProtectedRoute>} />
           <Route path="/memberdashboard" element={<ProtectedRoute><MembersDashboard /></ProtectedRoute>} />
-          <Route path="/achivmentdashboard" element={<ProtectedRoute><AchivementDashboard /></ProtectedRoute>} />
+          <Route path="/achievementdashboard" element={<ProtectedRoute><AchivementDashboard /></ProtectedRoute>} />
 
           {/* Redirect invalid paths */}
           <Route path="*" element={<Navigate to="/" />} />

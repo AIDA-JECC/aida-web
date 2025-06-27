@@ -198,6 +198,118 @@ h1 {
   margin: 20px 0; /* Add some margin for spacing */
 }
 
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+  z-index: 9999;
+}
+
+.popup.success {
+  background-color: #4caf50;
+}
+
+.popup.error {
+  background-color: #f44336;
+}
+
+.popup-form-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.popup-form {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.popup-form h3 {
+  color: #b80028;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.popup-form p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.popup-form img {
+  margin: 20px 0;
+  width: 100px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.popup-form button {
+  background: #b80028;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.popup-form button:hover {
+  background: #a00024;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .popup-form {
+    padding: 20px;
+  }
+
+  .popup-form h3 {
+    font-size: 1.5rem;
+  }
+
+  .popup-form p {
+    font-size: 0.95rem;
+  }
+
+  .popup-form button {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
 @media (max-width: 1024px) {

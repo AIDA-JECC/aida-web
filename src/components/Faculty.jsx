@@ -74,8 +74,9 @@ function Faculty() {
               img={content.pic}
               name={content.name}
               position={content.designation}
-              link={content.link}
-              mail={content.mail}
+              linkedin={content.linkedin}
+              mailPhone={content.mailPhone}
+              mailWeb={content.mailWeb}
             />
           ))}
         </div>
