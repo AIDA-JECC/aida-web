@@ -26,26 +26,47 @@ function App() {
 
   // Check persisted session on load
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        setIsAuthenticated(true);
+    const checkUserApproval = async (session) => {
+      if (!session?.user) {
+        setIsAuthenticated(false);
+        localStorage.removeItem('isAuthenticated');
+        return;
       }
-      setLoading(false);
-    };
 
-    // Setup auth state listener
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('approved')
+        .eq('id', session.user.id)
+        .single();
+
+      if (error) {
+        console.error('Error fetching profile for auth check:', error.message);
+        // Safest to sign out if profile can't be retrieved
+        await supabase.auth.signOut();
+        return; // onAuthStateChange will handle setting isAuthenticated to false
+      }
+
+      if (profile && profile.approved) {
         setIsAuthenticated(true);
         localStorage.setItem('isAuthenticated', 'true');
       } else {
+        // User has a session but is not approved. Log them out.
+        await supabase.auth.signOut();
         setIsAuthenticated(false);
         localStorage.removeItem('isAuthenticated');
       }
+    };
+
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      checkUserApproval(session);
+      setLoading(false);
     });
 
-    checkAuth();
+    // Setup auth state listener to handle all auth events
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkUserApproval(session);
+    });
 
     return () => {
       listener.subscription.unsubscribe();

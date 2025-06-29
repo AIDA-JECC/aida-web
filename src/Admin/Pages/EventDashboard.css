@@ -6,7 +6,7 @@
   min-height: 100vh;
   overflow-x: hidden;
   box-sizing: border-box;
-   font-family: 'Afacad';
+  font-family: 'Afacad';
 }
 
 .flexcontentsEvent {
@@ -17,7 +17,6 @@
   position: relative;
 }
 
-/* Event Form Container */
 .eventForm {
   width: 500px;
   background: #fff;
@@ -28,7 +27,15 @@
   margin: 0 auto;
 }
 
-/* Form Headers */
+.event-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
 .form_headerEvent {
   font-size: 1.5rem;
   font-weight: 700;
@@ -47,10 +54,7 @@
   gap: 6px;
 }
 
-/* Input & Textarea */
-.eventForm input[type="text"],
-.eventForm input[type="url"],
-.eventForm textarea {
+.formDetails textarea {
   width: 100%;
   padding: 12px 14px;
   font-size: 16px;
@@ -58,22 +62,10 @@
   border-radius: 8px;
   margin-bottom: 15px;
   box-sizing: border-box;
-  transition: all 0.3s ease;
-}
-
-.eventForm input:focus,
-.eventForm textarea:focus {
-  border-color: #e30938;
-  box-shadow: 0 0 0 3px rgba(227, 9, 56, 0.15);
-  outline: none;
-}
-
-.eventForm textarea {
   min-height: 100px;
   resize: vertical;
 }
 
-/* Upload Section */
 .upload-sectionEvent {
   display: flex;
   flex-direction: column;
@@ -105,13 +97,19 @@
   border-color: #74b9ff;
 }
 
+.upload-labelEvent.disabled {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .uploadLogoEvent {
   font-size: 24px;
   color: #0984e3;
   margin-bottom: 6px;
 }
 
-/* Submit Button */
 .submit-buttonEvent {
   background: linear-gradient(135deg, #b80028, #e30938);
   color: white;
@@ -131,7 +129,6 @@
   transform: translateY(-1px);
 }
 
-/* Add Event Card */
 .addiconevent {
   background-color: white;
   border-radius: 8px;
@@ -158,7 +155,6 @@
   color: #007bff;
 }
 
-/* Events Grid */
 .dashevents-grid {
   margin-top: 30px;
   display: grid;
@@ -189,9 +185,7 @@
 .dashimageButton {
   border-radius: 8px;
   object-fit: cover;
-  height: fit-content;
   height: 200px;
-  
 }
 
 .dashevent-content {
@@ -200,16 +194,12 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  appearance: none;
-}
-.dashevent-content::-webkit-scrollbar {
-  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.dashevent-content {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.dashevent-content::-webkit-scrollbar {
+  display: none;
 }
 
 .dashevent-content h3 {
@@ -225,86 +215,122 @@
   flex-grow: 1;
 }
 
-/* Tablet Styles (768px and up) */
+.image-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.image-url-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.image-url-input:disabled,
+.upload-labelEvent.disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.popup-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-form {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1001;
+}
+
+.popup-form button {
+  margin-top: 15px;
+}
+
 @media (max-width: 768px) {
   .ContainerEvent {
     padding: 25px;
   }
-  
   .eventForm {
     padding: 30px;
   }
-  
   .form_headerEvent {
     font-size: 1.8rem;
   }
-  
   .upload-sectionEvent {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
   .upload-labelEvent {
     max-width: 180px;
   }
-  
   .dashevents-grid {
     gap: 25px;
     padding: 20px;
   }
 }
 
-/* Desktop Styles (1024px and up) */
 @media (max-width: 1024px) {
   .ContainerEvent {
     padding: 30px;
   }
-  
   .dashevents-grid {
     max-width: 1200px;
     margin: 30px auto;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
-  
   .dashevent-card {
     height: 420px;
   }
-  
   .dashimageButton {
     height: 200px;
   }
-  .eventForm{
+  .eventForm {
     width: 100%;
   }
 }
 
-@media (max-width:786px) {
-  .ContainerEvent h1{
+@media (max-width: 786px) {
+  .ContainerEvent h1 {
     margin-top: 50px;
   }
-  
 }
-/* Small Mobile Devices (under 375px) */
+
 @media (max-width: 374px) {
   .ContainerEvent {
     padding: 10px;
   }
-  
   .eventForm {
     padding: 15px;
   }
-  
   .form_headerEvent {
     font-size: 1.3rem;
   }
-  
   .dashevents-grid {
     grid-template-columns: 1fr;
     gap: 15px;
     padding: 10px;
   }
-  
   .dashevent-card {
     height: auto;
     min-height: 350px;

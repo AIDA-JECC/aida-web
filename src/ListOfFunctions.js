@@ -1,7 +1,29 @@
 // src/components/listoffunctions.js
 import { supabase } from './supabaseClient';
 
-// Fetch functions
+// Helper function for authentication and approval check
+async function authenticateAndCheckApproval() {
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) {
+    throw new Error('User not authenticated');
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('approved')
+    .eq('id', user.id)
+    .single();
+
+  if (profileError) {
+    throw new Error('Failed to check user approval status.');
+  }
+  if (!profile || !profile.approved) {
+    throw new Error('User is not approved by an admin.');
+  }
+  return user; // Return the user object if approved
+}
+
+// --- Fetch functions (no changes needed for these as they are read-only) ---
 
 export async function getFacultyData() {
   const { data, error } = await supabase
@@ -42,11 +64,8 @@ export async function getAchievementData() {
   return data;
 }
 
-// Insert functions with auth check
-
 export async function addFacultyMember(faculty) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: insertedData, error } = await supabase.from('facultydata').insert([faculty]);
   if (error) throw error;
@@ -54,8 +73,7 @@ export async function addFacultyMember(faculty) {
 }
 
 export async function addExecutiveMember(member) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: insertedData, error } = await supabase.from('members').insert([member]);
   if (error) throw error;
@@ -63,8 +81,7 @@ export async function addExecutiveMember(member) {
 }
 
 export async function addEvent(event) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: insertedData, error } = await supabase.from('events').insert([event]);
   if (error) throw error;
@@ -72,8 +89,7 @@ export async function addEvent(event) {
 }
 
 export async function addProject(project) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: insertedData, error } = await supabase.from('projects').insert([project]);
   if (error) throw error;
@@ -81,19 +97,15 @@ export async function addProject(project) {
 }
 
 export async function addAchievement(achievement) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: insertedData, error } = await supabase.from('achievements').insert([achievement]);
   if (error) throw error;
   return insertedData;
 }
 
-// Update functions with auth check
-
 export async function updateFacultyMember(id, updates) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: updatedData, error } = await supabase.from('facultydata').update(updates).eq('id', id);
   if (error) throw error;
@@ -101,8 +113,7 @@ export async function updateFacultyMember(id, updates) {
 }
 
 export async function updateExecutiveMember(id, updates) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: updatedData, error } = await supabase.from('members').update(updates).eq('id', id);
   if (error) throw error;
@@ -110,8 +121,7 @@ export async function updateExecutiveMember(id, updates) {
 }
 
 export async function updateEvent(id, updates) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: updatedData, error } = await supabase.from('events').update(updates).eq('id', id);
   if (error) throw error;
@@ -119,8 +129,7 @@ export async function updateEvent(id, updates) {
 }
 
 export async function updateProject(id, updates) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: updatedData, error } = await supabase.from('projects').update(updates).eq('id', id);
   if (error) throw error;
@@ -128,19 +137,15 @@ export async function updateProject(id, updates) {
 }
 
 export async function updateAchievement(id, updates) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: updatedData, error } = await supabase.from('achievements').update(updates).eq('id', id);
   if (error) throw error;
   return updatedData;
 }
 
-// Delete functions with auth check
-
 export async function deleteFacultyMember(id) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: deletedData, error } = await supabase.from('facultydata').delete().eq('id', id);
   if (error) throw error;
@@ -148,8 +153,7 @@ export async function deleteFacultyMember(id) {
 }
 
 export async function deleteExecutiveMember(id) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: deletedData, error } = await supabase.from('members').delete().eq('id', id);
   if (error) throw error;
@@ -157,8 +161,7 @@ export async function deleteExecutiveMember(id) {
 }
 
 export async function deleteEvent(id) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: deletedData, error } = await supabase.from('events').delete().eq('id', id);
   if (error) throw error;
@@ -166,8 +169,7 @@ export async function deleteEvent(id) {
 }
 
 export async function deleteProject(id) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: deletedData, error } = await supabase.from('projects').delete().eq('id', id);
   if (error) throw error;
@@ -175,10 +177,11 @@ export async function deleteProject(id) {
 }
 
 export async function deleteAchievement(id) {
-  const { data, error: authError } = await supabase.auth.getUser();
-  if (authError || !data || !data.user) throw new Error('User not authenticated');
+  await authenticateAndCheckApproval(); // Call the helper function
 
   const { data: deletedData, error } = await supabase.from('achievements').delete().eq('id', id);
   if (error) throw error;
   return deletedData;
 }
+
+

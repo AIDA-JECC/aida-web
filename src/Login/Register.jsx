@@ -34,7 +34,10 @@ const RegisterPage = () => {
     if (signUpError) {
       setError(signUpError.message);
     } else {
-      navigate('/login');
+      // Redirect to a pending approval page or show a success message
+      // For now, we'll navigate to login but with a state message.
+      // You could create a dedicated /pending-approval route.
+      navigate('/login', { state: { message: 'Registration successful! Please check your email to verify your account. An admin will approve your account shortly.' } });
     }
 
     setIsLoading(false);

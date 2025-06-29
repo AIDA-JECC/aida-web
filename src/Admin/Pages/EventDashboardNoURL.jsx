@@ -8,7 +8,6 @@ import { supabase } from '../../supabaseClient';
 const EventDashboard = () => {
   const [eventDetails, setEventDetails] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imageUrlInput, setImageUrlInput] = useState('');
   const [eventList, setEventList] = useState([]);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
@@ -43,8 +42,7 @@ const EventDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let imageUrl = imageUrlInput;
-
+      let imageUrl = '';
       if (selectedFile) {
         const fileExt = selectedFile.name.split('.').pop();
         const fileName = `${Date.now()}.${fileExt}`;
@@ -66,7 +64,6 @@ const EventDashboard = () => {
       await addEvent(eventObject);
       setEventDetails('');
       setSelectedFile(null);
-      setImageUrlInput('');
       fetchData();
       showPopup('Event added successfully.', 'success');
     } catch (error) {
@@ -126,14 +123,6 @@ const EventDashboard = () => {
                   required
                 />
               </div>
-
-              <input
-                type="url"
-                placeholder="Enter Image URL"
-                value={imageUrlInput}
-                onChange={(e) => setImageUrlInput(e.target.value)}
-              />
-
               <div className="upload-sectionEvent">
                 <label htmlFor="file-upload" className="upload-labelEvent">
                   {selectedFile ? selectedFile.name : (
@@ -151,7 +140,6 @@ const EventDashboard = () => {
                   style={{ display: 'none' }}
                 />
               </div>
-
               <button type="submit">Add Event</button>
             </form>
           </div>

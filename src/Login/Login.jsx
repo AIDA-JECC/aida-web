@@ -48,17 +48,39 @@ const LoginPage = ({ setIsAuthenticated }) => {
       return;
     }
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
+    if (signInError) {
       setError('Invalid credentials or user not found.');
+      setIsLoading(false);
+      return;
+    }
+
+    // After successful sign-in, check for approval status
+    if (data.user) {
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('approved')
+        .eq('id', data.user.id)
+        .single();
+
+      if (profileError || !profile) {
+        setError('Could not retrieve user profile. Please contact support.');
+        await supabase.auth.signOut(); // Log the user out
+      } else if (!profile.approved) {
+        setError('Your account is pending admin approval.');
+        await supabase.auth.signOut(); // Log the user out
+      } else {
+        // User is approved, proceed to dashboard
+        setIsAuthenticated(true);
+        localStorage.setItem('isAuthenticated', 'true');
+        navigate('/dashboard');
+      }
     } else {
-      setIsAuthenticated(true);
-      localStorage.setItem('isAuthenticated', 'true');
-      navigate('/dashboard');
+      setError('An unexpected error occurred. Please try again.');
     }
 
     setIsLoading(false);
