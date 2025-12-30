@@ -8,15 +8,31 @@ function Certificate() {
   const [input, setInput] = useState(""); // Stores user input
   const [data, setData] = useState([]); // Stores fetched data
   const [certificate, setCertificate] = useState(null); // Stores matched certificate
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
   // Fetch data from the API
   useEffect(() => {
+    setLoading(true);
+    setError(null);
     fetch(
       "https://opensheet.elk.sh/1dN6rtexDUyVAU6Z5aJJP8K9cJrO_t8Nx_dkrY1D4hvQ/Consolidated%20Sheet"
     )
-      .then((response) => response.json()) // Convert response to JSON
-      .then((jsonData) => setData(jsonData)) // Store data in state
-      .catch((error) => console.error("Error fetching data:", error));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch certificate data');
+        }
+        return response.json();
+      })
+      .then((jsonData) => {
+        setData(jsonData);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError(error.message);
+        setLoading(false);
+      });
   }, []);
 
   // Function to verify Certificate ID
@@ -48,9 +64,19 @@ function Certificate() {
           onChange={(e) => setInput(e.target.value)}
           type="text"
           placeholder="Enter Certificate Number"
+          disabled={loading}
+          aria-label="Certificate ID input"
         />
-        <button onClick={verifyCertificate}>Verify</button>
+        <button onClick={verifyCertificate} disabled={loading}>
+          {loading ? 'Loading...' : 'Verify'}
+        </button>
       </div>
+
+      {error && (
+        <div className="result">
+          <h3 className="notfound">Error: {error}</h3>
+        </div>
+      )}
 
       {certificate && (
         <div className="result">
@@ -78,11 +104,9 @@ function Certificate() {
                 )
               }
               {
-                (certificate.Position === "") ? (
-                  <></>
-                ) : (
+                (certificate.Date && certificate.Date !== "") ? (
                   <p><strong>Date :</strong> {certificate.Date}</p>
-                )
+                ) : null
               }
             </div>
           )}

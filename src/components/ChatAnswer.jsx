@@ -1,12 +1,11 @@
 import './ChatAnswer.css'
 import svg from "./assets/react.png"
-import pic from "./assets/chatButtons.png"
 
 function ChatAnswer(props) {
     return (
         <>
         <div className='chatWindowA'>
-            <img className='botIcon' src={svg} alt='chat icon' />
+            <img className='botIcon' src={svg} alt='AIDA chatbot icon' loading="lazy" />
             <div className='chatBoxA'>
                 <p>{props.content}</p>
             </div>

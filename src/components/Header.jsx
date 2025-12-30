@@ -1,7 +1,7 @@
 import './Header.css';
 import pic from './assets/logo.png';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
     const [navActive, setNavActive] = useState(false);
@@ -31,22 +31,24 @@ function Header() {
         <div className='HeadComp'>
             <header>
                 <nav className="nav-container">
-                    <Link to="/"><img src={pic} alt="Docplanner Group" className='image' /></Link>
+                    <Link to="/" aria-label="AIDA Home"><img src={pic} alt="AIDA Logo" className='image' /></Link>
                     <ul className={'navlist'}>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/events">Events</Link></li>
-                        <label
+                        <button
                         className='hamburger'
-                        onClick={() => setNavActive(!navActive)}>
-                        <svg style={{paddingLeft:'10px'}} xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 256 256">
+                        onClick={() => setNavActive(!navActive)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={navActive}>
+                        <svg style={{paddingLeft:'10px'}} xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff" viewBox="0 0 256 256" aria-hidden="true">
                             <path d="M80,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H88A8,8,0,0,1,80,64Zm136,56H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM44,52A12,12,0,1,0,56,64,12,12,0,0,0,44,52Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,116Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,180Z"></path>
                         </svg>
-                    </label>
+                    </button>
                     </ul>
                 </nav>
                 <div className={`${navActive ? 'nav-active' : 'nav-inactive'}`}>
-                    <li><Link to="/faculty" className='list-item'>Faculty</Link></li>
-                    <li><Link to="/verify" className='list-item'>Verify Certificate</Link></li>
+                    <li key="faculty"><Link to="/faculty" className='list-item'>Faculty</Link></li>
+                    <li key="verify"><Link to="/verify" className='list-item'>Verify Certificate</Link></li>
                 </div>
             </header>
         </div>

@@ -201,3 +201,8 @@ body {
   height: 100%;
   border-radius: 35px;
 }
+
+.events-page.blurred {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+}

@@ -9,24 +9,24 @@ const events = eventData;
 
 function EventsPage() {
 
-  const handleOpen = () => {
-    document.getElementById('events-page').style.filter = 'blur(8px)';
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const handleOpen = () => {
+    setIsPopupOpen(true);
   };
 
   const handleClose = () => {
-    document.getElementById('events-page').style.filter = 'blur(0px)';
-
+    setIsPopupOpen(false);
   };
   return (
-    <div className="events-page" id='events-page'>
+    <div className={`events-page ${isPopupOpen ? 'blurred' : ''}`} id='events-page'>
       <Header />
       <div className="events-grid">
-        {events.map((event) => (
-          <div className="event-card" >
+        {events.map((event, index) => (
+          <div className="event-card" key={index}>
             <Popup
               trigger={
-                <img src={event.img} className="imageButton"></img>
+                <img src={event.img} className="imageButton" alt={`Event: ${event.content.substring(0, 50)}...`} loading="lazy" />
               }
               modal
               closeOnDocumentClick

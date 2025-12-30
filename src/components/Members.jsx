@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import dataset from './content';
 import './Members.css';
 
@@ -13,15 +13,21 @@ import 'swiper/css/effect-coverflow';
 import { EffectCoverflow} from 'swiper/modules';
 
 const Filter = () => {
-  const [year, setYear] = useState(2023);
-  const [filteredData, setFilteredData] = useState(dataset);
+  const [year, setYear] = useState(2024);
+  const [filteredData, setFilteredData] = useState(() => {
+    // Initialize with 2024 data
+    return dataset.filter(item => item.year.toString() === '2024');
+  });
+  
   useEffect(() => {
     handleFilter('2024');
-}, [dataset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-
-  // Extract unique years for the dropdown
-  const uniqueYears = [...new Set(dataset.map(item => item.year))].sort((a, b) => a - b);
+  // Extract unique years for the dropdown - memoized for performance
+  const uniqueYears = useMemo(() => {
+    return [...new Set(dataset.map(item => item.year))].sort((a, b) => b - a); // Sort descending (newest first)
+  }, []);
 
   const handleFilter = (selectedYear) => {
     setYear(selectedYear);
@@ -40,7 +46,7 @@ const Filter = () => {
         ))}
       </select>
     <Swiper
-            initialSlide={(filteredData.length/6-1)}
+            initialSlide={Math.max(0, Math.floor(filteredData.length / 2) - 1)}
               effect={'coverflow'}
               grabCursor={true}
               centeredSlides={true}
@@ -63,10 +69,10 @@ const Filter = () => {
               className="mySwiperM"
             >
               {filteredData.map((item, index) => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id || index}>
                   <div className="card">
                     <div className="card__image-container">
-                      <img src={item.link} alt="event" className="card__image" />
+                      <img src={item.link} alt={`${item.name} - ${item.role}`} className="card__image" loading="lazy" />
                     </div>
                     <div className="card__content">
                       <h1 className="card__title">{item.name}</h1>

@@ -1,5 +1,5 @@
 import "./Recent.css";
-import React, { useRef, useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -11,8 +11,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import pic from './assets/event.png';
-import { TypeAnimation } from "react-type-animation";
-import { data } from "react-router-dom";
 
 const content = [
   {
@@ -60,10 +58,10 @@ function Recent() {
           </div>
         </SwiperSlide> */}
 
-        {content.map((item) => (
-          <SwiperSlide>
+        {content.map((item, index) => (
+          <SwiperSlide key={index}>
             <div className="slideR">
-            <img className="eventImg" src={item.img} alt="pic"></img>
+            <img className="eventImg" src={item.img} alt="Recent event" loading="lazy" />
             <div className="eventContent">
               <Para  indexImg={1} fontsize="22px" content={item.content}/>
             </div>

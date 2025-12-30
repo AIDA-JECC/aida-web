@@ -2,7 +2,7 @@
 import React from 'react';
 import Card from './Card';
 import './Faculty.css';
-import contents from './content'; 
+import dataset from './content'; 
 import Header from './Header';
 import Footer from './Footer';
 
@@ -12,12 +12,12 @@ function Faculty() {
     <Header />
     <div className='container'>
       <div className="component">
-        {contents.map(content => (
+        {dataset.map(content => (
           <Card
-          key={content.Id}
+          key={content.id}
           img={content.link} 
-          name={content.Name}
-          position={content.Position}
+          name={content.name}
+          position={content.role}
           />
         ))}
       </div>

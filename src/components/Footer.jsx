@@ -14,14 +14,14 @@ export const Footer = () => {
           <Link to="/"><img src={pic} alt="AIDA logo" className="footer-logo" /></Link>
         </div>
         <div className="footer-right">
-          <a href="https://www.linkedin.com/company/aida-association" className="footer-link">
-            <img src={link} className='link' alt="" />
+          <a href="https://www.linkedin.com/company/aida-association" className="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Visit AIDA on LinkedIn">
+            <img src={link} className='link' alt="LinkedIn" />
           </a>
-          <a href="https://www.instagram.com/aida_community" className="footer-link">
-            <img className="insta" src={insta} alt="" />
+          <a href="https://www.instagram.com/aida_community" className="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Visit AIDA on Instagram">
+            <img className="insta" src={insta} alt="Instagram" />
           </a>
-          <a href="mailto:info@aida.com" className="footer-link">
-            <img className="mail" src={mail} alt="" />
+          <a href="mailto:info@aida.com" className="footer-link" aria-label="Send email to AIDA">
+            <img className="mail" src={mail} alt="Email" />
           </a>
         </div>
         </div>
