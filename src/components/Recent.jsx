@@ -91,6 +91,7 @@ function Recent() {
             </div>
           </SwiperSlide>
         ))}
+
       </Swiper>
     </>
   );

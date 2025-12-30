@@ -7,7 +7,7 @@ function ChatAnswer(props) {
     return (
         <>
         <div className='chatWindowA'>
-            <img className='botIcon' src={svg} alt='chat icon' />
+            <img className='botIcon' src={svg} alt='AIDA chatbot icon' loading="lazy" />
             <div className='chatBoxA'>
                 <TypeAnimation
                 className='chatBoxAp' 

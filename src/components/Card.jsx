@@ -8,7 +8,7 @@ function Card(props) {
   return (
     <div className="cards">
       <div className="profilePic">
-        <img src={props.img} alt="Profile" />
+        <img src={props.img} alt={`${props.name || 'Profile'} - ${props.position || ''}`} loading="lazy" />
       </div>
       <div className='Text'>
         <h4>{props.name}</h4> {/* Use 'name' instead of 'Name' to match props */}

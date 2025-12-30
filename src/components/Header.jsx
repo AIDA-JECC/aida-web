@@ -3,6 +3,7 @@ import pic from './assets/logo.png';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
+
 function Header() {
     const [navActive, setNavActive] = useState(false);
 
