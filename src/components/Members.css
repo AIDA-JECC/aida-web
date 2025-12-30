@@ -1,123 +1,204 @@
-/* Main Swiper Container */
-.mainDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-select{
-    margin-bottom: 50px;
-    border: 1px solid black;
-    border-radius: 15px;
-    height: 40px;
-    width: 150px;
-    text-align: center;
-    font-size: 1.2rem;
+/* Main Container */
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* Filter Container */
+.filter-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
 
-.mySwiperM {
-    border: 30px solid #000; /* Outer border */
-    border-radius: 40px; /* Rounded corners */
-    background: transparent; /* Background color */
-    width: 60%; /* Adjusted width for better responsiveness */
-    max-width: 1200px; /* Maximum width to prevent it from being too wide */
-    height: fit-content; /* Height adjusts to content */
-    padding: 2% 0 40px; /* Padding at the top and bottom */
-    margin: 0 auto; /* Center the swiper */
-    display: flex; /* Flexbox layout */
+/* Select Wrapper */
+.select-wrapper {
+  position: relative;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.year-select {
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  appearance: none;
+  background-color: white;
+  z-index: 1;
+  position: relative;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Swiper Container */
+.members-swiper {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 0 40px;
+  margin: 0 auto;
 }
 
 /* Card Styles */
-.card {
-    border-radius: 30px; /* Rounded corners */
-    border: 1px solid #fb0000; /* Card border */
-    background: #000; /* Card background */
-    box-shadow: 0px 4px 20px 10px rgba(99, 91, 91, 0.25); /* Shadow effect */
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Column layout */
-    align-items: center; /* Center items */
-    width:250px; /* Full width */
-    height: fit-content; /* Height adjusts to content */
+.cardMembers {
+  border-radius: 40px;
+  border: 2px solid #fb0000;
+  background: #000;
+  box-shadow: 0px 4px 20px 10px rgba(99, 91, 91, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: auto;
+  padding: 20px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.cardMembers:hover {
+  transform: translateY(-5px);
+}
+
+.cardMembers__image-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.cardMembers__image {
+  margin-top: 20px;
+  width: 200px;
+  height: 230px;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.cardMembers__content {
+  padding: 1% 0 3%;
+  text-align: center;
+}
+
+.cardMembers__title {
+  color: white;
+  font-family: 'Afacad', sans-serif;
+  font-size: 1.8rem;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.cardMembers__text {
+  color: white;
+  font-family: 'Afacad', sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Loading and No Members Messages */
+.loading-message,
+.no-members {
+  color: white;
+  font-family: 'Afacad', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .members-swiper {
+    padding: 20px 0;
+  }
+  
+  .cardMembers {
+    width: 220px;
+  }
+  
+  .cardMembers__image {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainDiv {
+    min-height: auto;
+    padding: 40px 20px;
+  }
+  
+  .cardMembers {
+    width: 200px;
+    padding: 15px;
+  }
+  
+  .cardMembers__title {
+    font-size: 1.3rem;
+  }
+  
+  .cardMembers__text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .select-wrapper {
+    width: 180px;
+  }
+  
+  .year-select {
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .cardMembers {
+    width: 100%;
+    max-width: 280px;
     padding: 20px;
-    margin-bottom: 10px; /* Padding inside the card */
-    /* justify-content: center; */
+  }
+  
+  .cardMembers__image-container {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Card Content */
-.card__content {
-    position: relative;
-    padding-bottom: 30px;
-    top: 20px;
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Column layout */
-    align-items: center; /* Center items */
-    justify-content: center;
-}
-
-/* Card Title */
-.card__title {
-    color: white; /* Text color */
-    text-align: center; /* Center text */
-    font-family: 'Afacad'; /* Font family */
-    font-size: 32px; /* Adjusted font size for better readability */
-    margin: 10px 0; /* Margin for spacing */
-}
-
-/* Card Text */
-.card__text {
-    color: white; /* Text color */
-    text-align: center; /* Center text */
-    font-family: 'Afacad'; /* Font family */
-    font-size: 24px; /* Adjusted font size for better readability */
-    margin: 0; /* No margin */
-    padding: 0 10px; /* Horizontal padding */
-}
-
-/* Card Image */
-.card__image {
-    display: flex; /* Flexbox layout */
-    justify-content: center; /* Center items */
-    margin-top: 20px; /* Reduced margin for better spacing */
-    width: 200px; /* Adjusted image width */
-    height: 200px; /* Adjusted image height */
-    border-radius: 25px; /* Rounded corners */
-    object-fit: cover; /* Ensure the image covers the area */
-}
-
-/* Image Container */
-.card__image-container {
-    display: flex; /* Flexbox layout */
-    justify-content: center; /* Center items */
-    width: 100%; /* Full width */
-    height: auto; /* Height adjusts to content */
-}
-
-/* Members Section */
-.members {
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Column layout */
-    justify-content: center; /* Center items */
-    align-items: center; /* Center items */
-    margin-top: 50px; /* Margin at the top */
-}
-
-/* Button Styles */
-.btn {
-    background: #000; /* Button background */
-    color: white; /* Text color */
-    border: 1px solid rgba(255, 0, 0, 0.767); /* Button border */
-    border-radius: 20px; /* Rounded corners */
-    /* padding: 10px 20px; Padding */
-    font-family: 'Afacad'; /* Font family */
-    font-size: 18px; /* Adjusted font size for better readability */
-    margin-top: 20px; /* Margin at the top */
-    transition: background 0.3s; /* Smooth transition for hover effect */
-}
-
-/* Button Hover Effect */
-.btn:hover {
-    background: rgb(174, 0, 0); /* Background color on hover */
+  .cardMembers__image {
+    margin-top: 1px;
+    width: 120px;
+    height: 150px;
+    border-radius: 25px;
+    object-fit: cover;
+  }
+  
+  .cardMembers__title {
+    font-size: 1.2rem;
+  }
+  
+  .cardMembers__text {
+    font-size: 0.9rem;
+  }
 }

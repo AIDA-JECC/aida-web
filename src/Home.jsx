@@ -7,8 +7,6 @@ import Recent from "./components/Recent";
 import ChatQuestion from "./components/ChatQuestion";
 import ChatAnswer from "./components/ChatAnswer";
 import Members from "./components/Members";
-
-
 function Home() {
     return (
       <div className="App">
@@ -40,7 +38,7 @@ function Home() {
         content="The Department of Artificial Intelligence & Data Science at Jyothi Engineering College was established in 2020 and is affiliated with KTU , marking it as one of the first colleges to introduce this course.
 Our accomplished faculty, seasoned experts in both AI , ensure a well-rounded education,engaging in groundbreaking research projects led by faculty members excelling in both AI , showcasing our commitment to innovation and offering diverse exploration, from classic algorithms to the latest advancements in artificial intelligence."
         />
-        <Para fontsize="30px" content="The core team serves as the backbone of our organization, guiding its growth, shaping its vision, and ensuring the successful implementation of its initiatives.meet our core team"/>
+        <Para className='coreContent' content="The core team serves as the backbone of our organization, guiding its growth, shaping its vision, and ensuring the successful implementation of its initiatives.meet our core team"/>
         <Members />
         <Footer />
       </div>

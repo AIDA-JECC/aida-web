@@ -27,7 +27,7 @@ function Para(props) {
     }
     else if (props.indexImg === 10) {
         return (
-            <div className='tester1'>
+            <div className='tester10'>
                 <TypeAnimation
                 className='TypeAnimation10' 
                 cursor={false}

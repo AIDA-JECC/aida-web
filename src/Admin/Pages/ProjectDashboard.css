@@ -1,0 +1,312 @@
+.containerProject{
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    font-family: 'Afacad'; 
+}
+.projectDashboard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+form {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.form-subheader {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap:4px;
+}
+
+input[type="text"],
+input[type="link"] {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.upload-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.upload-label {
+  width: 150px;
+  height: 110px;
+  border: 2px dashed #b2bec3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #636e72;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.upload-label:hover {
+  background-color: #f1f9ff;
+  border-color: #74b9ff;
+}
+
+.uploadLogo {
+  font-size: 24px;
+  color: #0984e3;
+}
+
+.gitLink {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  text-align: center;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #b80028, #e30938);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #ce0000a7, #ff0015);
+}
+
+
+.contentProjectDash {
+  color: black;
+  padding: 15px;
+  width: 100vw;
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contentProjectDash h1 {
+  font-size: 1.8rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.contentProjectDash p {
+  font-size: 1.2rem;
+  text-align: start;
+  margin-bottom: 1rem;
+}
+
+.contentProjectDash a {
+  text-decoration: none;
+  font-weight: 600;
+  max-width: fit-content;
+  color: #b80028;
+  transition: color 0.2s ease;
+}
+
+.contentProjectDash a:hover {
+  color: #e30938;
+}
+.mainContPro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  padding: 30px;
+  font-family: 'Afacad';
+}
+
+
+.subContPro {
+  display: flex;
+  flex-direction: row;
+  width:100vw; /* Two cards with gap */
+  max-width:550px;
+  min-width: 400px;
+  border: none;
+  border-radius: 15px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 10px rgba(126, 0, 0, 0.3);
+  background-color: whitesmoke;
+}
+
+.subContPro:hover {
+  transform: translateY(-5px);
+  box-shadow: 1px 1px 15px rgba(255, 0, 0, 0.5);
+}
+
+
+.img_sidePro {
+  width: 100%;
+  padding-right: px;
+  display: flex;
+  align-items: center;
+}
+
+.img_sidePro img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  max-width: 200px;
+}
+
+.selectPro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.yearSelectPro {
+  background-color: whitesmoke;
+  color: black;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(181, 0, 0, 0.2);
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.yearSelectPro:focus {
+  outline: none;
+  border-color: #b80028;
+  box-shadow: 0 0 0 2px rgba(184, 0, 40, 0.2);
+}
+
+
+@media (max-width: 1080px) {
+  .mainContPro {
+    width: 90vw;
+    margin: 0;
+    /* padding: 10px 30px 10px 50px; */
+  }
+
+  .subContPro {
+    width: 80%; /* Single card on mobile */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img_sidePro {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 15px;
+    justify-content: center;
+    display: flex;
+  }
+
+  .selectPro {
+    width: 100%;
+  }
+
+  .contentProjectDash h1 {
+    font-size: 1.5rem;
+  }
+
+  .contentProjectDash p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContPro {
+    width: 90vw;
+    /* padding: 10px 30px 10px 50px; */
+    height: auto;
+  }
+
+  .subContPro {
+    width: 60%; /* Single card on mobile */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img_sidePro {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 15px;
+    justify-content: center;
+    display: flex;
+  }
+
+  .selectPro {
+    width: 100%;
+  }
+
+  .contentProjectDash h1 {
+    font-size: 1.5rem;
+  }
+
+  .contentProjectDash p {
+    font-size: 1rem;
+  }
+
+}
+@media (max-width:789px) {
+  .containerProject h1{
+    margin-top: 50px;
+  }
+  
+}

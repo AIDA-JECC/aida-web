@@ -28,3 +28,31 @@
     color: #ecece6;
     font-family: "Afacad";
 }
+
+
+@media (max-width: 768px) {
+    
+    .chatBoxQ {
+        width: 70%;
+        margin-right: 0;
+        
+    }
+    .chatBoxA {
+        width: 80%;
+        margin-left: 0;
+    }
+    .botIcon, .chatButtons {
+        margin-left: 5%;
+    }
+    .chatBoxQ p{
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatBoxQ {
+        width: 90%;
+        font-size: 18px;
+    }
+
+}

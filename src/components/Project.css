@@ -1,0 +1,400 @@
+
+.mainCont {
+  margin-top: 65px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  font-family: 'Afacad', sans-serif;
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Project Cards ===== */
+.subCont {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  height: 500px; /* Fixed height for all cards */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.subCont:hover {
+  transform: translateY(-5px);
+  border: 1px solid rgba(227, 14, 14, 0.8);
+  box-shadow: 0 8px 20px rgba(227, 14, 14, 0.3);
+}
+
+/* ===== Image Section ===== */
+.img_side {
+  width: 100%;
+  height: 200px; /* Fixed image height */
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.img_side img {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===== Content Section ===== */
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+  overflow: auto; /* Allow content to scroll if needed */
+}
+
+.content h1 {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ===== Git Icon ===== */
+.git {
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  margin-top: auto; /* Push to bottom */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.git:hover {
+  filter: drop-shadow(0 0 8px #9e0000);
+  transform: scale(1.2);
+}
+
+/* ===== Year Selector ===== */
+.select-container {
+  position: relative;
+  top: 50px;
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.year-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 38px 8px 12px;
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  width: 140px;
+}
+
+.year-select:hover,
+.year-select:focus {
+  border-color: #e30e0e;
+  box-shadow: 0 0 8px rgba(205, 11, 11, 0.6);
+  outline: none;
+}
+
+/* ===== Responsive Breakpoints ===== */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .mainCont {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 25px;
+  }
+  
+  .subCont {
+    max-width: none;
+    margin: 0;
+    height: 500px; /* Maintain same height */
+  }
+  
+  .content {
+    text-align: left;
+  }
+  
+  .git {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .mainCont {
+    gap: 40px;
+    padding: 30px;
+  }
+  
+  .subCont {
+    flex-direction: row;
+    padding: 25px;
+    height: 280px; /* Shorter side-by-side layout */
+  }
+  
+  .img_side {
+    width: 45%;
+    height: 100%;
+    margin-bottom: 0;
+    padding-right: 20px;
+  }
+  
+  .img_side img {
+    max-height: 100%;
+  }
+  
+  .content {
+    width: 55%;
+    padding-left: 20px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and below) */
+@media (max-width: 576px) {
+  .mainCont {
+    padding: 15px;
+    gap: 20px;
+  }
+  
+  .subCont {
+    height: 450px; /* Slightly shorter for mobile */
+    padding: 15px;
+  }
+  
+  .img_side {
+    height: 180px;
+  }
+}
+
+.mainCont {
+  margin-top: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100vw;
+  height: auto;
+  gap: 30px;
+  flex-wrap: wrap; /* allow wrapping on narrow screens */
+  font-family: 'Afacad'; 
+}
+
+.subCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 600px; /* Fixed width for larger screens */
+  /* height: 300px; */
+  border: 1px solid white; 
+  border-radius: 15px;
+  padding: 15px; 
+  transition: transform 0.3s ease; 
+  height: max-content;
+  box-shadow: 1px 1px 10px white;
+}
+
+.subCont:hover {
+  transform: translateY(-2px);
+  border: 1px solid red; 
+   box-shadow: 1px 1px 10px red;
+}
+
+img {
+  width: 100%; /* Adjusted to take half of the subCont */
+  border-radius: 10px;
+  object-fit: cover; 
+  flex-shrink: 0;
+}
+
+.content {
+  padding: 15px;
+  width: 100%; /* Adjusted to take half of the subCont */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content h1 {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.content p {
+  font-size: 1.2rem;
+}
+
+.content a {
+  
+  text-decoration: none;
+  font-weight: 600;
+  max-width: fit-content;
+}
+
+.git {
+  color: white;
+  font-size: 25px;
+  transition:0.5
+  s linear;
+}
+
+.git:hover {
+  filter: drop-shadow(-4px -1px 10px #9e0000);
+  transform: scale(1.2);
+}
+.select-container {
+  position: absolute;
+  top:80px;
+  left: 120px;
+  display: flex;
+  gap: 5px;
+  z-index: 9999;
+}
+.year-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+  padding: 8px 38px 8px 12px; /* space for arrow on right */
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color:black;
+  color:white;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23007bff" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  width: 100px;
+}
+.year-select:hover, .year-select:focus {
+  border-color: #e30e0e;
+  box-shadow: 0 0 8px rgba(205, 11, 11, 0.6);
+  outline: none;
+
+}
+
+
+/* Responsive: stack selects vertically on small screens */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mainCont{
+        width: 100%;
+         
+    }
+  .subCont {
+    width: 90%; /* Make subCont take more width on smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+    flex-direction: column; /* Stack image and content vertically */
+  }
+
+  img {
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .content {
+    width: 100%; /* Full width on smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .content h1 {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+
+  .content p {
+    font-size: 0.9rem; /* Adjust paragraph size */
+  }
+
+  .git {
+    font-size: 20px; /* Adjust git icon size */
+  }
+  .select-container {
+    flex-direction: column;
+    top: 80px;
+    left: 10px;
+    gap: 8px;
+  }
+ .year-select {
+      width: 100%; /* Full width on small screens */
+      max-width: 140px; /* Optional: limit max width */
+  }
+}
+
+.coming-soon-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  min-height: 60vh;
+  background-color: transparent;
+}
+
+.coming-soon-heading {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* need to give red underline */
+  text-decoration: underline;
+  text-decoration-color: red;
+  /* text-decoration-thickness: 2px; */
+  font-size: 88px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.coming-soon-text {
+  font-size: 34px;
+  color: #ffffff;
+}

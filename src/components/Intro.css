@@ -1,4 +1,4 @@
-.ImageHolder {
+/* .ImageHolder {
   justify-content: center;
   display: flex;
   margin-top: 20px;
@@ -31,4 +31,82 @@
     line-height: 1.5;
     text-align: justify;
     margin-top: 20px;
+} */
+
+.ImageHolder {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.ImageHolder img {
+  width: 50%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.IntroText {
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.IntroText img {
+  margin-top: 10px;
+  margin-right: 30px;
+  width: 100px;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.IntroText p {
+  text-indent: 40px;
+  width: 55%;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: 20px;
+}
+.introContent{
+  font-size: 24px;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .ImageHolder img {
+    width: 80%;
+    display: flex; /* Increase image size on smaller screens */
+  }
+
+  .IntroText {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+  }
+
+  .IntroText img {
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+
+  .IntroText p {
+    width: 90%; /* Full width on smaller screens */
+    text-indent: 0; /* Remove text indent */
+    font-size: 18px; /* Slightly smaller font size */
+  }
+  .introContent{
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .IntroText p {
+    font-size: 16px; /* Further reduce font size */
+  }
+
+  .ImageHolder img {
+    width: 100%; /* Full width on very small screens */
+  }
+  .introContent{
+    font-size: 20px;
+  }
 }

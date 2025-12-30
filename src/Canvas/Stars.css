@@ -1,0 +1,9 @@
+
+.star_alignment{
+    position: fixed;
+    width: 100vw;
+    height:100vh;
+    inset:10;
+    z-index:-1;
+    background-color: black;
+}

@@ -8,6 +8,7 @@
     margin-left: 1%;
     /* padding-left: 10px;
     padding-right: 10px; */
+    
 }
 
 .chatWindowA {
@@ -19,7 +20,7 @@
     margin-bottom: 30px;
 }
 
-.chatBoxA p {
+.chatBoxAp {
     text-align: justify;
     margin: 0;
     padding: 20px;
@@ -41,4 +42,45 @@
     align-self: flex-start;
     margin-left: 14%;
     margin-bottom: 40px;
+}
+
+
+
+@media (max-width: 768px) {
+   
+    .chatWindowQ, .chatWindowA {
+        justify-content: center;
+       
+    }
+    .chatBoxQ {
+        width: 70%;
+        margin-right: 0;
+    }
+    .chatBoxA {
+        width: 80%;
+        margin-left: 0;
+    }
+    .botIcon, .chatButtons {
+        margin-left: 5%;
+    }
+    .chatBoxAp{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatBoxA{
+        padding: 5px;
+    }
+    .chatBoxQ, .chatBoxA {
+        width: 90%;
+        font-size:12px;
+      
+    }
+    .botIcon, .chatButtons {
+        margin-left: 2%;
+    }
+    .chatBoxAp{
+        font-size: 18px;
+    }
 }

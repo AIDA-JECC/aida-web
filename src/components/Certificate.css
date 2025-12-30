@@ -1,61 +1,65 @@
-.certificate{
+/* Base Styles */
+.certificate {
     width: 100%;
     height: 100%;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
+    background-color: transparent;
 }
 
 .mainText {
     align-self: center;
     font-family: 'Afacad';
+    font-size:25px;
 }
 
-.img_mainText{
+.img_mainText {
     display: flex;
-    align-items: start;
-    justify-content:center;
+    align-items: flex-start;
+    justify-content: center;
     color: white;
     width: 100%;
 }
-.img_mainText img{
-    width:20%;
+
+.img_mainText img {
+    width: 20%;
     vertical-align: middle;
 }
-.img_mainText h2{
+
+.img_mainText h2 {
     color: white;
     vertical-align: middle;
 }
-.input_field{
-   display: flex;
-   flex-direction: column;
-   gap: 50px;
-   justify-content: center;
-   align-items: center;
-   top:15%;
-   margin-bottom: 20px;
-   
+
+.input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 15%; */
+    margin-bottom: 150px;
 }
 
-.input_field input{
-    width:35rem;
+.input_field .inputCerti {
+    width: 40%;
     height: 3.2rem;
     border: 1px solid black;
     border-radius: 1.2rem;
     text-indent: 10px;
     font-size: 1rem;
-    background-color:#3b3b3b;
+    background-color: #3b3b3b;
     color: white;
 }
-.input_field input::placeholder{
+
+.input_field .inputCerti::placeholder {
     font-size: 1rem;
-    
 }
-.input_field button{
+
+.input_field button {
     width: 100px;
     height: 3rem;
-    justify-content: center;
     display: flex;
+    margin-top: 10px;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
     font-size: 1.2rem;
@@ -71,7 +75,6 @@
     box-shadow: 0px 2px 5px 5px rgba(255, 0, 0, 0.497);
 }
 
-
 .result {
     display: flex;
     justify-content: center;
@@ -80,7 +83,7 @@
     margin-bottom: 50px;
 }
 
-.certificateCard{
+.certificateCard {
     border: 1px solid red;
     border-radius: 20px;
     width: 50%;
@@ -91,13 +94,13 @@
 .certificateCard h3 {
     margin-top: 22px;
     text-align: center;
-    font-size: 32px;
+    font-size: 2rem;
     font-family: 'Afacad';
 }
 
 .certificateCard p {
     padding-left: 30px;
-    font-size: 22px;
+    font-size: 1.375rem;
     font-family: 'Afacad';
 }
 
@@ -107,6 +110,74 @@
 
 .notfound {
     color: red;
-    font-size: 42px;
+    font-size: 2.625rem;
     font-family: 'Afacad';
+}
+
+
+@media (max-width: 768px) {
+    .certificateCard {
+        width: 90%;
+    }
+    .input_field input {
+        width: 60%;
+    }
+    .input_field button {
+        width: 80px;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    .img_mainText img {
+        width: 30%;
+    }
+    .certificateCard h3 {
+        font-size: 1.5rem;
+    }
+    .certificateCard p {
+        font-size: 1.125rem;
+    }
+    .notfound {
+        font-size: 2rem;
+    }
+    .mainText {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .input_field .inputCerti{
+        width: 75%;
+    }
+
+    .input_field {
+        gap: 30px;
+        margin-top: 10%;    
+        
+    }
+    .input_field input {
+        width: 80%;
+        height: 2.5rem;
+        font-size: 0.875rem;
+    }
+    .input_field button {
+        width: 70px;
+        height: 2.2rem;
+        font-size: 0.875rem;
+    }
+    .img_mainText img {
+        width: 40%;
+    }
+    .certificateCard h3 {
+        font-size: 1.25rem;
+    }
+    .certificateCard p {
+        font-size: 1rem;
+    }
+    .notfound {
+        font-size: 1.75rem;
+    }
+    .mainText {
+        font-size: 16px;
+    }
 }

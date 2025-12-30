@@ -64,6 +64,7 @@ function Certificate() {
           onChange={(e) => setInput(e.target.value)}
           type="text"
           placeholder="Enter Certificate Number"
+          className="inputCerti"
           disabled={loading}
           aria-label="Certificate ID input"
         />
