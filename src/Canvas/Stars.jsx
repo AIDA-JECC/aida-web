@@ -1,12 +1,34 @@
 import React,{useState,useRef,Suspense} from 'react'
 import { Canvas,useFrame } from '@react-three/fiber'
 import { Points,PointMaterial,Preload } from '@react-three/drei'
-import * as random from 'maath/random/dist/maath-random.esm'
+
 import './Stars.css'
 
 const Stars = (props) => {
   const ref=useRef();
-  const sphere =random.inSphere(new Float32Array(5000),{radius:1.2})
+  // Generate points and validate them to ensure no NaN values
+  // Manual random point generation to ensure validity
+  const generateSpherePoints = (count, radius) => {
+    const points = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = 2 * Math.PI * u;
+      const phi = Math.acos(2 * v - 1);
+      const r = Math.cbrt(Math.random()) * radius;
+      
+      const x = r * Math.sin(phi) * Math.cos(theta);
+      const y = r * Math.sin(phi) * Math.sin(theta);
+      const z = r * Math.cos(phi);
+      
+      points[i * 3] = x;
+      points[i * 3 + 1] = y;
+      points[i * 3 + 2] = z;
+    }
+    return points;
+  };
+
+  const [sphere] = useState(() => generateSpherePoints(5000, 1.2));
 
   useFrame((state,delta)=>{
     ref.current.rotation.x -=delta/20;
