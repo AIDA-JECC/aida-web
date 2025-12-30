@@ -6,7 +6,15 @@ import './Stars.css'
 
 const Stars = (props) => {
   const ref=useRef();
-  const sphere =random.inSphere(new Float32Array(5000),{radius:1.2})
+  // Generate points and validate them to ensure no NaN values
+  const sphere =  random.inSphere(new Float32Array(5000), { radius: 1.2 });
+  
+  // Validate sphere data
+  for (let i = 0; i < sphere.length; i++) {
+    if (isNaN(sphere[i])) {
+      sphere[i] = 0; // Replace NaN with 0 or handle appropriately
+    }
+  }
 
   useFrame((state,delta)=>{
     ref.current.rotation.x -=delta/20;

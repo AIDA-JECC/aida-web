@@ -1,3 +1,4 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 import React, { useState, useEffect } from "react";
 import arrowdown from './assets/arrowdown.png';
