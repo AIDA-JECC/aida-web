@@ -12,6 +12,7 @@ import FaqSection from './components/FaqSection';
 import LightTransitionSection from './components/LightTransitionSection';
 import Footer from './components/Footer';
 import GlobalDotField from './components/GlobalDotField';
+import IntroVideo from './components/IntroVideo';
 
 export default function App() {
   const scrollTo = (id) => {
@@ -21,6 +22,9 @@ export default function App() {
 
   return (
     <div className="app-main-wrapper bg-[#080808] relative">
+      {/* Interactive Video Intro (PC View Only) */}
+      <IntroVideo />
+
       {/* Website-Wide Interactive Particle Dot Background */}
       <GlobalDotField />
 
