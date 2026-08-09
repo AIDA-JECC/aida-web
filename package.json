@@ -1,0 +1,41 @@
+{
+  "name": "aida",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "faculty:images": "node scripts/build-faculty-images.mjs",
+    "core-team:images": "node scripts/build-core-team-images.mjs",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.46.0",
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.0.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.28.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "oxlint": "^1.75.0",
+    "sharp": "0.34.2",
+    "tailwindcss": "^4.3.3",
+    "vite": "^6.4.3"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.2.3"
+  },
+  "allowScripts": {
+    "sharp@0.34.2": true
+  }
+}

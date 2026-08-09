@@ -1,0 +1,168 @@
+/**
+ * Faculty image pipeline.
+ *
+ * Reads the departmental roster (INDEX.txt) and the raw headshots from
+ * SOURCE_DIR, matches each roster entry to its photo by normalised name, and
+ * writes 4:5 WebP portraits at two widths into public/faculty/ plus a
+ * generated src/data/facultyData.js.
+ *
+ * The source photographs are camera originals — several are 8-10 MB each, around
+ * 22 MB in total, for images that render at roughly 130 px. Serving them as-is
+ * would dominate page weight, so they are cropped square and re-encoded.
+ *
+ * Run: npm run faculty:images
+ */
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { basename, extname, join, resolve } from 'node:path';
+import process from 'node:process';
+import sharp from 'sharp';
+
+const SOURCE_DIR = process.env.FACULTY_SRC ?? 'C:/Users/noble/Downloads/Faculties';
+const OUT_DIR = resolve('public/faculty');
+const DATA_OUT = resolve('src/data/facultyData.js');
+const WIDTHS = [320, 640];
+const QUALITY = 78;
+
+/** Collapse a display name to a comparable key so "Sajitha A S" matches "Sajitha A. S.". */
+const nameKey = (value) =>
+  value
+    .toLowerCase()
+    .replace(/\b(dr|mr|ms|mrs|prof)\b/g, '')
+    .replace(/[^a-z0-9]/g, '');
+
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .replace(/\b(dr|mr|ms|mrs|prof)\.?\s*/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+/** "Dr. Anoop V. - Professor, DEAN" -> name + designation */
+function parseRosterLine(line) {
+  const [rawName, ...rest] = line.split(' - ');
+  return { name: rawName.trim(), designation: rest.join(' - ').trim() };
+}
+
+/** Rank so the carousel runs in seniority order rather than file order. */
+function classify(designation) {
+  const d = designation.toLowerCase();
+  if (d.includes('hod')) return { group: 'Head of Department', rank: 0 };
+  if (d.includes('dean')) return { group: 'Professor', rank: 1 };
+  if (d.includes('associate professor')) return { group: 'Associate Professor', rank: 3 };
+  if (d.includes('assistant professor')) return { group: 'Assistant Professor', rank: 4 };
+  if (d.includes('professor')) return { group: 'Professor', rank: 2 };
+  if (d.includes('instructor')) return { group: 'Trade Instructor', rank: 5 };
+  return { group: 'Faculty', rank: 6 };
+}
+
+/** Normalise the inconsistent designation strings in the roster file. */
+function tidyDesignation(designation) {
+  const d = designation.trim();
+  if (/^hod$/i.test(d)) return 'Head of the Department';
+  return d
+    .replace(/Trade Instructor\s*Gr(ade)?\.?\s*(II|2)/i, 'Trade Instructor Gr. II')
+    .replace(/\(HG\)/i, '(HG)')
+    .replace(/,\s*DEAN/i, ' & Dean')
+    .trim();
+}
+
+function initials(name) {
+  const parts = name
+    .replace(/^(Dr|Mr|Ms|Mrs|Prof)\.\s*/, '')
+    .split(/\s+/)
+    .filter((part) => /[a-z]/i.test(part));
+  if (parts.length === 0) return '?';
+  const first = parts[0][0];
+  const last = parts[parts.length - 1][0];
+  return (parts.length === 1 ? first : first + last).toUpperCase();
+}
+
+async function main() {
+  if (!existsSync(SOURCE_DIR)) {
+    console.error(`Source directory not found: ${SOURCE_DIR}\nSet FACULTY_SRC to override.`);
+    process.exit(1);
+  }
+
+  const roster = readFileSync(join(SOURCE_DIR, 'INDEX.txt'), 'utf8')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map(parseRosterLine);
+
+  const photos = readdirSync(SOURCE_DIR)
+    .filter((file) => /\.(jpe?g|png|webp)$/i.test(file))
+    .map((file) => ({ file, key: nameKey(basename(file, extname(file))) }));
+
+  mkdirSync(OUT_DIR, { recursive: true });
+
+  const records = [];
+  let bytesIn = 0;
+  let bytesOut = 0;
+
+  for (const entry of roster) {
+    const slug = slugify(entry.name);
+    const match = photos.find((photo) => photo.key === nameKey(entry.name));
+    const { group, rank } = classify(entry.designation);
+
+    const record = {
+      slug,
+      name: entry.name,
+      designation: tidyDesignation(entry.designation),
+      group,
+      rank,
+      initials: initials(entry.name),
+      img: null,
+    };
+
+    if (match) {
+      const input = join(SOURCE_DIR, match.file);
+      bytesIn += statSync(input).size;
+
+      for (const width of WIDTHS) {
+        const buffer = await sharp(input)
+          .rotate() // honour EXIF orientation before cropping
+          .resize(width, Math.round(width * 1.25), {
+            fit: 'cover',
+            position: sharp.strategy.attention, // biases the crop toward the face
+          })
+          .webp({ quality: QUALITY, effort: 5 })
+          .toBuffer();
+
+        writeFileSync(join(OUT_DIR, `${slug}-${width}.webp`), buffer);
+        bytesOut += buffer.length;
+      }
+
+      record.img = `/faculty/${slug}`;
+      console.log(`  ok   ${entry.name}`);
+    } else {
+      console.warn(`  MISS ${entry.name} — no photo, will render initials`);
+    }
+
+    records.push(record);
+  }
+
+  records.sort((a, b) => a.rank - b.rank || a.name.localeCompare(b.name));
+
+  const file = `// AUTO-GENERATED by scripts/build-faculty-images.mjs — do not edit by hand.
+// Source of truth: the departmental faculty roster and headshots.
+// Regenerate with: npm run faculty:images
+
+export const facultyData = ${JSON.stringify(records, null, 2)};
+
+export const facultyCount = ${records.length};
+
+/** Widths emitted for each portrait, for use in srcset. */
+export const facultyImageWidths = ${JSON.stringify(WIDTHS)};
+`;
+
+  writeFileSync(DATA_OUT, file);
+
+  const mb = (n) => `${(n / 1024 / 1024).toFixed(2)} MB`;
+  console.log(`\n${records.length} roster entries, ${records.filter((r) => r.img).length} with photos`);
+  console.log(`${mb(bytesIn)} -> ${mb(bytesOut)} (${((1 - bytesOut / bytesIn) * 100).toFixed(1)}% smaller)`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
