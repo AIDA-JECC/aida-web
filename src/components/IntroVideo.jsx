@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, Loader2 } from 'lucide-react';
+import { Download, Loader2, X } from 'lucide-react';
 import introImg from '../assets/into img.png';
 import introVideoUrl from '../assets/AIDA intro.mp4';
 
@@ -184,7 +184,21 @@ export default function IntroVideo() {
         )}
       </div>
 
-      {/* Pure Video Experience: NO text overlays, NO buttons, NO writing over the video or preview */}
+      {/* Top-Right Skip/Close Icon Button (Visible ONLY before video starts playing) */}
+      {status !== 'playing' && status !== 'completed' && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (xhrRef.current) xhrRef.current.abort();
+            setStatus('completed');
+          }}
+          aria-label="Close intro video"
+          className="fixed top-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center bg-neutral-950/80 border border-red-900/50 hover:border-red-500 text-white hover:text-red-500 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer group"
+        >
+          <X size={20} className="transition-transform duration-300 group-hover:rotate-90" />
+        </button>
+      )}
 
       {/* Bottom-Right Preload Button (Visible ONLY in initial & downloading states) */}
       {(status === 'initial' || status === 'downloading') && (
@@ -246,3 +260,4 @@ export default function IntroVideo() {
     </div>
   );
 }
+

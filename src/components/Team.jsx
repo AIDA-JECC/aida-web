@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { facultyCount, facultyData } from '../data/facultyData';
 import { CoverflowCarousel } from './ui/coverflow-carousel';
+import SafeImage from './ui/SafeImage';
 
 const FILTERS = [
   { id: 'all', label: 'All Faculty', match: () => true },
@@ -91,24 +92,18 @@ export default function Team() {
 
             {/* Image Frame */}
             <div className="relative aspect-[3/3.7] bg-neutral-900 overflow-hidden shrink-0 grow">
-              {member.img ? (
-                <img
-                  src={`${member.img}-320.webp`}
-                  srcSet={`${member.img}-320.webp 320w, ${member.img}-640.webp 640w`}
-                  sizes="300px"
-                  alt={`${displayName}, ${member.designation}`}
-                  loading={index < 3 ? 'eager' : 'lazy'}
-                  draggable="false"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 relative z-10"
-                />
-              ) : (
-                <div className={`w-full h-full grid place-items-center ${style.avatarBg} relative z-10`}>
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="font-serif text-3xl font-extrabold tracking-wider text-red-500">{member.initials}</span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">Faculty</span>
-                  </div>
-                </div>
-              )}
+              <SafeImage
+                src={`${member.img}-320.webp`}
+                srcSet={`${member.img}-320.webp 320w, ${member.img}-640.webp 640w`}
+                sizes="300px"
+                alt={`${displayName}, ${member.designation}`}
+                title={displayName}
+                category={style.tag || 'FACULTY'}
+                initials={member.initials}
+                loading={index < 3 ? 'eager' : 'lazy'}
+                draggable="false"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 relative z-10"
+              />
 
               {/* Badge Overlay */}
               <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase border backdrop-blur-md bg-neutral-950/90 border-red-600/30 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">

@@ -2,6 +2,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
+import SafeImage from "./SafeImage";
 
 export const AnimatedTestimonials = ({
   testimonials,
@@ -70,9 +71,11 @@ export const AnimatedTestimonials = ({
                   }}
                   className="absolute inset-0 origin-bottom"
                 >
-                  <img
+                  <SafeImage
                     src={testimonial.src}
                     alt={testimonial.name}
+                    title={testimonial.name}
+                    category={testimonial.designation || 'ACHIEVEMENT'}
                     draggable={false}
                     className="h-full w-full rounded-3xl object-cover object-center border border-neutral-800 shadow-2xl"
                   />

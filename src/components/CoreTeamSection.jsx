@@ -3,6 +3,8 @@ import { Camera, UserRound } from 'lucide-react';
 import { coreTeamData } from '../data/coreTeamData';
 import { CoverflowCarousel } from './ui/coverflow-carousel';
 
+import SafeImage from './ui/SafeImage';
+
 const RESERVED_POSITIONS = 8;
 
 export default function CoreTeamSection() {
@@ -18,11 +20,13 @@ export default function CoreTeamSection() {
       customContent: ({ isSelected }) => (
         <div className="relative w-full h-full bg-neutral-950 border border-red-600/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col justify-between">
           <div className="relative w-full h-full overflow-hidden bg-neutral-900">
-            <img
+            <SafeImage
               src={`${member.photo}-400.webp`}
               srcSet={`${member.photo}-400.webp 400w, ${member.photo}-800.webp 800w`}
               sizes="300px"
               alt={member.name}
+              title={member.name}
+              category="EXECUTIVE BOARD"
               draggable={false}
               className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />

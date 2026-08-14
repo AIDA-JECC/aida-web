@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../data/siteData';
-import { Home, Info, Calendar, Trophy, Users, Sparkles, ShieldCheck, Mail } from 'lucide-react';
-import { NavBar as TubelightNavBar } from './ui/tubelight-navbar';
-import MobileCurvedHeader from './ui/curved-menu';
-
-const tubelightNavItems = [
-  { name: 'Home', url: '#home', id: 'home', icon: Home },
-  { name: 'About', url: '#about', id: 'about', icon: Info },
-  { name: 'Events', url: '#events', id: 'events', icon: Calendar },
-  { name: 'Achievements', url: '#achievements', id: 'achievements', icon: Trophy },
-  { name: 'Faculty', url: '#team', id: 'team', icon: Users },
-  { name: 'Core Team', url: '#core-team', id: 'core-team', icon: Sparkles },
-  { name: 'Verify', url: '#verify', id: 'verify', icon: ShieldCheck },
-  { name: 'Contact', url: '#contact', id: 'contact', icon: Mail },
-];
+import SterlingGateKineticNavigation from './ui/sterling-gate-kinetic-navigation';
 
 export default function Navbar({ onVerifyClick }) {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -72,8 +60,14 @@ export default function Navbar({ onVerifyClick }) {
 
   return (
     <>
-      {/* Brand Capsule (Top Left) */}
-      <div className="fixed top-5 left-4 sm:left-8 z-50 pointer-events-auto">
+      {/* Brand Capsule (Top Left): Vanishes when menu is open, appears when menu is closed */}
+      <div
+        className={`fixed top-5 left-4 sm:left-8 z-50 transition-all duration-300 ${
+          isMenuOpen
+            ? 'opacity-0 pointer-events-none -translate-x-4'
+            : 'opacity-100 pointer-events-auto translate-x-0'
+        }`}
+      >
         <a
           href="#home"
           onClick={(e) => {
@@ -93,15 +87,16 @@ export default function Navbar({ onVerifyClick }) {
         </a>
       </div>
 
-      {/* Desktop Tubelight Floating Navbar */}
-      <TubelightNavBar
-        items={tubelightNavItems}
+      {/* Universal Sterling Gate Kinetic Navigation (PC & Mobile View) */}
+      <SterlingGateKineticNavigation
         activeSection={activeSection}
         onSelect={(id) => scrollTo(id)}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
-
-      {/* Mobile Off-White SVG Curved Drawer Navbar */}
-      <MobileCurvedHeader onSelect={(id) => scrollTo(id)} />
     </>
   );
 }
+
+
+
