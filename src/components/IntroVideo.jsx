@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, Loader2, X } from 'lucide-react';
+import { Download, Loader2, X, Volume2, VolumeX } from 'lucide-react';
 import introImg from '../assets/into img.png';
-import introVideoUrl from '../assets/AIDA intro.mp4';
+import introVideo1Url from '../assets/AIDA intro.mp4';
+import introVideo2Url from '../assets/AIDA intro 2.mp4';
 
-const TOTAL_KNOWN_BYTES = 2672652; // ~2.67 MB
+const VIDEO_1_BYTES = 2672652; // ~2.67 MB
+const VIDEO_2_BYTES = 8423929; // ~8.42 MB
 
 export default function IntroVideo() {
   const [isDesktop, setIsDesktop] = useState(false);
   // status: 'initial' | 'downloading' | 'downloaded' | 'playing' | 'completed'
   const [status, setStatus] = useState('initial');
+  const [selectedVideo, setSelectedVideo] = useState(1); // 1 or 2
+  const [activeDownloading, setActiveDownloading] = useState(null); // 1 or 2
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [loadedBytes, setLoadedBytes] = useState(0);
-  const [totalBytes, setTotalBytes] = useState(TOTAL_KNOWN_BYTES);
+  const [totalBytes, setTotalBytes] = useState(VIDEO_1_BYTES);
   const [videoBlobUrl, setVideoBlobUrl] = useState(null);
   const [fadeOpacity, setFadeOpacity] = useState(1);
 
@@ -61,33 +65,54 @@ export default function IntroVideo() {
   // Reliable play trigger once video element is rendered in DOM
   useEffect(() => {
     if (status === 'playing' && videoRef.current) {
-      if (videoBlobUrl) {
-        videoRef.current.src = videoBlobUrl;
+      const targetUrl = videoBlobUrl || (selectedVideo === 2 ? introVideo2Url : introVideo1Url);
+      videoRef.current.src = targetUrl;
+      
+      // Video 2 has sound audio track -> play sound automatically (muted = false)
+      if (selectedVideo === 2) {
+        videoRef.current.muted = false;
+      } else {
+        videoRef.current.muted = false; // allow audio if present
       }
+
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch((err) => console.log('Video play error:', err));
+      videoRef.current.play().catch((err) => {
+        console.log('Video play error:', err);
+        // Fallback for strict browser autoplay policies
+        if (videoRef.current && selectedVideo === 2) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => {});
+        }
+      });
     }
-  }, [status, videoBlobUrl]);
+  }, [status, videoBlobUrl, selectedVideo]);
 
   // If mobile or completed, do not render anything
   if (!isDesktop || status === 'completed') {
     return null;
   }
 
-  const handleStartDownload = (e) => {
+  const handleStartDownload = (e, videoChoice) => {
     e.stopPropagation();
     if (status !== 'initial') return;
 
+    setSelectedVideo(videoChoice);
+    setActiveDownloading(videoChoice);
     setStatus('downloading');
     setDownloadProgress(0);
 
+    const targetUrl = videoChoice === 2 ? introVideo2Url : introVideo1Url;
+    const knownBytes = videoChoice === 2 ? VIDEO_2_BYTES : VIDEO_1_BYTES;
+
+    setTotalBytes(knownBytes);
+
     const xhr = new XMLHttpRequest();
     xhrRef.current = xhr;
-    xhr.open('GET', introVideoUrl, true);
+    xhr.open('GET', targetUrl, true);
     xhr.responseType = 'blob';
 
     xhr.onprogress = (event) => {
-      let total = event.total && event.total > 0 ? event.total : TOTAL_KNOWN_BYTES;
+      let total = event.total && event.total > 0 ? event.total : knownBytes;
       let loaded = event.loaded;
       let percent = Math.min(100, Math.round((loaded / total) * 100));
 
@@ -103,22 +128,22 @@ export default function IntroVideo() {
         setVideoBlobUrl(blobUrl);
         setDownloadProgress(100);
 
-        // Preload complete in memory; transition to downloaded (no file saving to disk)
         setTimeout(() => {
           setStatus('downloaded');
+          // Automatically play after download completes
+          setStatus('playing');
         }, 300);
       } else {
-        setVideoBlobUrl(introVideoUrl);
+        setVideoBlobUrl(targetUrl);
         setDownloadProgress(100);
-        setStatus('downloaded');
+        setStatus('playing');
       }
     };
 
     xhr.onerror = () => {
-      // Fallback on network error
-      setVideoBlobUrl(introVideoUrl);
+      setVideoBlobUrl(targetUrl);
       setDownloadProgress(100);
-      setStatus('downloaded');
+      setStatus('playing');
     };
 
     xhr.send();
@@ -139,7 +164,6 @@ export default function IntroVideo() {
     if (duration > 0 && !isNaN(duration)) {
       const timeLeft = duration - currentTime;
       if (timeLeft <= 1.0) {
-        // Linear fade from 1.0 down to 0.0 during the last 1 second
         const opacity = Math.max(0, timeLeft / 1.0);
         setFadeOpacity(opacity);
       } else {
@@ -163,7 +187,7 @@ export default function IntroVideo() {
         status === 'completed' ? 'pointer-events-none' : ''
       }`}
     >
-      {/* Background Content: Initial Image vs Video */}
+      {/* Background Content: Initial Preview Image vs Active Playing Video */}
       <div className="absolute inset-0 w-full h-full">
         {status !== 'playing' ? (
           <img
@@ -174,7 +198,7 @@ export default function IntroVideo() {
         ) : (
           <video
             ref={videoRef}
-            src={videoBlobUrl || introVideoUrl}
+            src={videoBlobUrl || (selectedVideo === 2 ? introVideo2Url : introVideo1Url)}
             preload="auto"
             playsInline
             onTimeUpdate={handleTimeUpdate}
@@ -200,21 +224,22 @@ export default function IntroVideo() {
         </button>
       )}
 
-      {/* Bottom-Right Preload Button (Visible ONLY in initial & downloading states) */}
+      {/* Bottom-Right 2 Stacked Download Buttons (One below the other) */}
       {(status === 'initial' || status === 'downloading') && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
+          {/* Button 1: Intro Video 1 (Standard / No Audio) */}
           <button
             type="button"
-            onClick={handleStartDownload}
+            onClick={(e) => handleStartDownload(e, 1)}
             disabled={status === 'downloading'}
-            className={`group relative overflow-hidden flex items-center gap-3 px-5 py-3.5 rounded-2xl border transition-all duration-300 cursor-pointer select-none backdrop-blur-xl ${
-              status === 'downloading'
+            className={`group relative overflow-hidden flex items-center gap-3 px-5 py-3 rounded-2xl border transition-all duration-300 cursor-pointer select-none backdrop-blur-xl w-72 sm:w-80 ${
+              activeDownloading === 1
                 ? 'bg-neutral-950/90 border-red-500/70 shadow-[0_0_30px_rgba(229,9,20,0.4)]'
                 : 'bg-neutral-950/85 hover:bg-neutral-900 border-neutral-700/80 hover:border-red-500/80 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(229,9,20,0.15)] hover:shadow-[0_10px_40px_rgba(229,9,20,0.35)]'
-            }`}
+            } ${status === 'downloading' && activeDownloading !== 1 ? 'opacity-40 pointer-events-none' : ''}`}
           >
             {/* Background Fill Progress Bar */}
-            {status === 'downloading' && (
+            {activeDownloading === 1 && (
               <div
                 className="absolute inset-0 bg-red-600/30 transition-all duration-200 ease-out"
                 style={{ width: `${downloadProgress}%` }}
@@ -223,22 +248,23 @@ export default function IntroVideo() {
 
             {/* Left Icon Area */}
             <div className="relative z-10 w-9 h-9 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-              {status === 'downloading' ? (
+              {activeDownloading === 1 ? (
                 <Loader2 size={18} className="text-red-500 animate-spin" />
               ) : (
-                <Download size={18} className="text-red-500 group-hover:translate-y-0.5 transition-transform" />
+                <VolumeX size={18} className="text-red-500 group-hover:translate-y-0.5 transition-transform" />
               )}
             </div>
 
             {/* Text & Detailed Progress Info */}
-            <div className="relative z-10 text-left">
-              <div className="flex items-center gap-2">
+            <div className="relative z-10 text-left flex-1">
+              <div className="flex items-center justify-between">
                 <span className="text-xs font-mono font-bold tracking-wider text-white uppercase">
-                  {status === 'downloading' ? `DOWNLOADING ${downloadProgress}%` : 'DOWNLOAD INTRO'}
+                  {activeDownloading === 1 ? `DOWNLOADING ${downloadProgress}%` : 'DOWNLOAD INTRO 1'}
                 </span>
+                <span className="text-[10px] font-mono text-neutral-400 uppercase">NO SOUND</span>
               </div>
-              <div className="text-[11px] font-mono text-neutral-400 mt-0.5 flex items-center gap-1.5">
-                {status === 'downloading' ? (
+              <div className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                {activeDownloading === 1 ? (
                   <span>
                     {formatMB(loadedBytes)} / {formatMB(totalBytes)} MB
                   </span>
@@ -247,17 +273,57 @@ export default function IntroVideo() {
                 )}
               </div>
             </div>
+          </button>
 
-            {/* Minute Progress Percentage Badge */}
-            {status === 'downloading' && (
-              <div className="relative z-10 ml-2 px-2 py-0.5 rounded bg-red-600 text-white font-mono text-[10px] font-bold tracking-tighter">
-                {downloadProgress}%
-              </div>
+          {/* Button 2: Intro Video 2 (With Sound Audio Track) */}
+          <button
+            type="button"
+            onClick={(e) => handleStartDownload(e, 2)}
+            disabled={status === 'downloading'}
+            className={`group relative overflow-hidden flex items-center gap-3 px-5 py-3 rounded-2xl border transition-all duration-300 cursor-pointer select-none backdrop-blur-xl w-72 sm:w-80 ${
+              activeDownloading === 2
+                ? 'bg-neutral-950/90 border-red-500/70 shadow-[0_0_30px_rgba(229,9,20,0.4)]'
+                : 'bg-neutral-950/85 hover:bg-neutral-900 border-neutral-700/80 hover:border-red-500/80 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(229,9,20,0.15)] hover:shadow-[0_10px_40px_rgba(229,9,20,0.35)]'
+            } ${status === 'downloading' && activeDownloading !== 2 ? 'opacity-40 pointer-events-none' : ''}`}
+          >
+            {/* Background Fill Progress Bar */}
+            {activeDownloading === 2 && (
+              <div
+                className="absolute inset-0 bg-red-600/30 transition-all duration-200 ease-out"
+                style={{ width: `${downloadProgress}%` }}
+              />
             )}
+
+            {/* Left Icon Area */}
+            <div className="relative z-10 w-9 h-9 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              {activeDownloading === 2 ? (
+                <Loader2 size={18} className="text-red-500 animate-spin" />
+              ) : (
+                <Volume2 size={18} className="text-red-500 group-hover:translate-y-0.5 transition-transform" />
+              )}
+            </div>
+
+            {/* Text & Detailed Progress Info */}
+            <div className="relative z-10 text-left flex-1">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold tracking-wider text-white uppercase">
+                  {activeDownloading === 2 ? `DOWNLOADING ${downloadProgress}%` : 'DOWNLOAD INTRO 2'}
+                </span>
+                <span className="text-[10px] font-mono text-red-400 font-bold uppercase">★ WITH SOUND</span>
+              </div>
+              <div className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                {activeDownloading === 2 ? (
+                  <span>
+                    {formatMB(loadedBytes)} / {formatMB(totalBytes)} MB
+                  </span>
+                ) : (
+                  <span>AIDA intro 2.mp4 (8.42 MB)</span>
+                )}
+              </div>
+            </div>
           </button>
         </div>
       )}
     </div>
   );
 }
-

@@ -1,5 +1,5 @@
-import React, { useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, ChevronDown, Check } from 'lucide-react';
 import { eventsData } from '../data/siteData';
 import EventModal from './EventModal';
 import EventArtwork from './EventArtwork';
@@ -15,6 +15,62 @@ function eventSortValue(event) {
   if (event.eventDate) return Date.parse(`${event.eventDate}T00:00:00Z`);
   if (Number.isFinite(Number(event.year))) return Date.UTC(Number(event.year), 0, 1);
   return 0;
+}
+
+// Custom Dark Theme-Matched Animated Dropdown for Event Year Filter
+function EventYearDropdown({ years, selectedYear, onSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={dropdownRef} className="relative inline-block text-left shrink-0">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Filter events by year"
+        className="flex items-center justify-between gap-2.5 bg-neutral-950/90 backdrop-blur-md border border-neutral-800 hover:border-red-600 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer outline-none transition-all shadow-lg hover:shadow-[0_0_20px_rgba(229,9,20,0.3)] active:scale-98"
+      >
+        <span>Year: {selectedYear}</span>
+        <ChevronDown size={14} className={`text-neutral-400 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 text-red-500' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 top-full mt-2 w-48 sm:w-52 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-40 space-y-1 animate-fadeIn ring-1 ring-white/10">
+          {years.map((year) => {
+            const isSelected = selectedYear === year;
+            return (
+              <button
+                key={year}
+                type="button"
+                onClick={() => {
+                  onSelect(year);
+                  setIsOpen(false);
+                }}
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-mono text-xs font-bold text-left transition-all cursor-pointer ${
+                  isSelected
+                    ? 'bg-red-600 text-white shadow-md'
+                    : 'text-neutral-300 hover:bg-neutral-900 hover:text-red-400'
+                }`}
+              >
+                <span>{year === 'All' ? 'All Years' : year}</span>
+                {isSelected && <Check size={14} className="shrink-0" aria-hidden="true" />}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function EventsSection() {
@@ -68,35 +124,25 @@ export default function EventsSection() {
 
   return (
     <section id="events" ref={sectionTopRef} className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-        <div>
-          <span className="font-mono text-xs tracking-widest text-red-500 uppercase mb-3 block">
-            • OFFICIAL EVENTS, NEWEST FIRST
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-white">
-            Events Showcase &amp; Hackathons
-          </h2>
-          <p className="text-neutral-500 mt-3 text-sm font-mono">
-            Showing {visibleEvents.length} of {filteredEvents.length} events
-          </p>
-        </div>
+      {/* Centered Uniform Section Header */}
+      <div className="text-center flex flex-col items-center justify-center max-w-3xl mx-auto mb-10 space-y-3">
+        <span className="font-mono text-xs tracking-widest text-red-500 uppercase block">
+          • OFFICIAL EVENTS, NEWEST FIRST
+        </span>
+        <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white text-center tracking-tight leading-tight">
+          Events Showcase &amp; Hackathons
+        </h2>
+        <p className="text-neutral-400 text-xs sm:text-sm font-mono">
+          Showing {visibleEvents.length} of {filteredEvents.length} events
+        </p>
 
-        <div role="group" aria-label="Filter events by year" className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 pb-2 max-w-full whitespace-nowrap touch-pan-x">
-          {years.map((year) => (
-            <button
-              key={year}
-              type="button"
-              aria-pressed={selectedYear === year}
-              onClick={() => selectYear(year)}
-              className={`px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider border border-neutral-800 shrink-0 transition-all cursor-pointer ${
-                selectedYear === year
-                  ? 'bg-red-600 border-red-600 text-white'
-                  : 'text-neutral-400 hover:text-white hover:border-neutral-700 bg-neutral-950'
-              }`}
-            >
-              {year}
-            </button>
-          ))}
+        {/* Custom Dark Theme Animated Year Dropdown */}
+        <div className="pt-2">
+          <EventYearDropdown
+            years={years}
+            selectedYear={selectedYear}
+            onSelect={selectYear}
+          />
         </div>
       </div>
 

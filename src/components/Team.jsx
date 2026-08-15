@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { facultyCount, facultyData } from '../data/facultyData';
 import { CoverflowCarousel } from './ui/coverflow-carousel';
 import SafeImage from './ui/SafeImage';
+import { ChevronDown, Check } from 'lucide-react';
 
 const FILTERS = [
   { id: 'all', label: 'All Faculty', match: () => true },
@@ -59,6 +60,64 @@ const GROUP_STYLES = {
     avatarBg: 'bg-neutral-900 text-neutral-300 border border-neutral-800',
   },
 };
+
+// Custom Dark Theme-Matched Animated Dropdown for Faculty Filters
+function FacultyCustomDropdown({ filters, activeId, onSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const activeLabel = filters.find((f) => f.id === activeId)?.label || filters[0].label;
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={dropdownRef} className="relative inline-block text-left shrink-0">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Filter faculty by designation"
+        className="flex items-center justify-between gap-2.5 bg-neutral-950/90 backdrop-blur-md border border-neutral-800 hover:border-red-600 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer outline-none transition-all shadow-lg hover:shadow-[0_0_20px_rgba(229,9,20,0.3)] active:scale-98"
+      >
+        <span>{activeLabel}</span>
+        <ChevronDown size={14} className={`text-neutral-400 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 text-red-500' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-full mt-2 w-56 sm:w-60 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-40 space-y-1 animate-fadeIn ring-1 ring-white/10">
+          {filters.map((filter) => {
+            const isSelected = activeId === filter.id;
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                onClick={() => {
+                  onSelect(filter.id);
+                  setIsOpen(false);
+                }}
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-mono text-xs font-bold text-left transition-all cursor-pointer ${
+                  isSelected
+                    ? 'bg-red-600 text-white shadow-md'
+                    : 'text-neutral-300 hover:bg-neutral-900 hover:text-red-400'
+                }`}
+              >
+                <span>{filter.label}</span>
+                {isSelected && <Check size={14} className="shrink-0" aria-hidden="true" />}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Team() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -145,37 +204,27 @@ export default function Team() {
       className="py-14 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 overflow-hidden"
     >
       <div>
-        {/* Header */}
-        <div className="text-center mb-8">
-          <span className="font-mono text-xs tracking-widest text-red-500 uppercase mb-2 block">
+        {/* Centered Section Header */}
+        <div className="text-center flex flex-col items-center justify-center max-w-3xl mx-auto mb-6 space-y-3">
+          <span className="font-mono text-xs tracking-widest text-red-500 uppercase block">
             • DEPARTMENT FACULTY
           </span>
-          <h2 id="faculty-heading" className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+          <h2 id="faculty-heading" className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white text-center tracking-tight leading-tight">
             Meet Our <span className="text-red-600 italic">Faculty</span>
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto mt-3 text-xs sm:text-sm leading-relaxed">
+          <p className="text-neutral-400 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-center font-sans">
             The {facultyCount} faculty members guiding teaching, research, and student innovation in
             Artificial Intelligence &amp; Data Science at Jyothi Engineering College.
           </p>
         </div>
 
-        {/* Designation Filters */}
-        <div role="group" aria-label="Filter faculty by designation" className="flex flex-nowrap overflow-x-auto no-scrollbar justify-start sm:justify-center gap-2 mb-8 pb-2 w-full whitespace-nowrap max-w-full touch-pan-x">
-          {FILTERS.map((filter) => (
-            <button
-              key={filter.id}
-              type="button"
-              aria-pressed={activeFilter === filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-3.5 py-1.5 rounded-full font-bold text-[11px] uppercase tracking-wider border shrink-0 transition-all duration-300 cursor-pointer ${
-                activeFilter === filter.id
-                  ? 'bg-red-600 border-red-600 text-white shadow-md'
-                  : 'text-neutral-400 hover:text-white hover:border-neutral-700 bg-neutral-950 border-neutral-800'
-              }`}
-            >
-              {filter.label}
-            </button>
-          ))}
+        {/* Right-Aligned Designation Dropdown */}
+        <div className="flex justify-end mb-8">
+          <FacultyCustomDropdown
+            filters={FILTERS}
+            activeId={activeFilter}
+            onSelect={setActiveFilter}
+          />
         </div>
 
         {/* Coverflow Carousel for Faculty */}

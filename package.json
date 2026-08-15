@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "build:projects": "node scripts/build-projects-data.mjs",
+    "dev": "node scripts/build-projects-data.mjs && vite",
+    "build": "node scripts/build-projects-data.mjs && vite build",
     "faculty:images": "node scripts/build-faculty-images.mjs",
     "core-team:images": "node scripts/build-core-team-images.mjs",
     "lint": "oxlint",
@@ -20,7 +21,8 @@
     "lucide-react": "^1.28.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

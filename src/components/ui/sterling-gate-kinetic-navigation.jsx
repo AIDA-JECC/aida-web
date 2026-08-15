@@ -19,10 +19,11 @@ const navItemsData = [
   { heading: 'About AIDA', href: '#about', id: 'about', shape: '2' },
   { heading: 'Events & Workshops', href: '#events', id: 'events', shape: '3' },
   { heading: 'Achievements', href: '#achievements', id: 'achievements', shape: '4' },
-  { heading: 'Meet Our Faculty', href: '#team', id: 'team', shape: '5' },
-  { heading: 'Meet Core Team', href: '#core-team', id: 'core-team', shape: '6' },
-  { heading: 'Verify Certificate', href: '#verify', id: 'verify', shape: '7' },
-  { heading: 'Contact Us', href: '#contact', id: 'contact', shape: '8' },
+  { heading: 'Academic Projects', href: '#projects', id: 'projects', shape: '5' },
+  { heading: 'Meet Our Faculty', href: '#team', id: 'team', shape: '6' },
+  { heading: 'Meet Core Team', href: '#core-team', id: 'core-team', shape: '7' },
+  { heading: 'Verify Certificate', href: '#verify', id: 'verify', shape: '8' },
+  { heading: 'Contact Us', href: '#contact', id: 'contact', shape: '9' },
 ];
 
 const SECTION_NAMES = {
@@ -30,6 +31,7 @@ const SECTION_NAMES = {
   about: 'ABOUT',
   events: 'EVENTS',
   achievements: 'ACHIEVEMENTS',
+  projects: 'PROJECTS',
   team: 'FACULTY',
   'core-team': 'CORE TEAM',
   verify: 'VERIFY',
@@ -53,6 +55,10 @@ export function SterlingGateKineticNavigation({
   const [scrollDirection, setScrollDirection] = useState(1);
   const prevScrollY = useRef(0);
 
+  // Active hover shape for PC view
+  const [hoveredShape, setHoveredShape] = useState(null);
+
+  // 1. Scroll direction tracker
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -68,7 +74,7 @@ export function SterlingGateKineticNavigation({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Initial Setup: GSAP Master Reversible Timeline & Hover Effects
+  // 2. Initialize GSAP Master Timeline ONCE on mount
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -78,142 +84,118 @@ export function SterlingGateKineticNavigation({
         gsap.defaults({ ease: "main", duration: 0.7 });
       }
     } catch (e) {
-      console.warn("CustomEase failed to load, falling back to default.", e);
       gsap.defaults({ ease: "power2.out", duration: 0.7 });
     }
 
     const ctx = gsap.context(() => {
       const navWrap = containerRef.current.querySelector(".nav-overlay-wrapper");
-      const menu = containerRef.current.querySelector(".menu-content");
       const overlay = containerRef.current.querySelector(".overlay");
       const bgPanels = containerRef.current.querySelectorAll(".backdrop-layer");
       const menuLinkTexts = containerRef.current.querySelectorAll(".nav-link-text");
       const menuLinkNums = containerRef.current.querySelectorAll(".nav-link-num");
-      const menuButton = containerRef.current.querySelector(".nav-close-btn");
-      const menuButtonIcon = menuButton?.querySelector(".menu-button-icon");
 
-      // 1. Create fully reversible GSAP Master Timeline
+      // Master Timeline for opening entrance animation
       const masterTl = gsap.timeline({ paused: true });
 
       masterTl
-        .set(navWrap, { display: "block" })
+        .set(navWrap, { display: "block", opacity: 1 })
         .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 0)
-        .fromTo(menuButtonIcon, { rotate: 0 }, { rotate: 315, duration: 0.45, ease: "power2.out" }, 0)
-        .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.1, duration: 0.55, ease: "main" }, 0)
+        .fromTo(bgPanels, { xPercent: 101 }, { xPercent: 0, stagger: 0.08, duration: 0.5, ease: "main" }, 0)
         .fromTo(
           menuLinkTexts,
           { yPercent: 140, rotate: 6, opacity: 0 },
-          { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.04, duration: 0.5, ease: "power3.out" },
-          0.18
+          { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.04, duration: 0.45, ease: "power3.out" },
+          0.15
         )
         .fromTo(
           menuLinkNums,
           { opacity: 0, x: -12 },
           { opacity: 1, x: 0, stagger: 0.03, duration: 0.3, ease: "power2.out" },
-          0.42
+          0.38
         );
 
       tlRef.current = masterTl;
-
-      // 2. Ambient background shapes interaction (PC Hover vs Mobile Active Section)
-      const menuItems = containerRef.current.querySelectorAll(".menu-list-item[data-shape]");
-      const shapesContainer = containerRef.current.querySelector(".ambient-background-shapes");
-
-      const activateShape = (shapeIndex) => {
-        if (!shapesContainer) return;
-        const targetShape = shapesContainer.querySelector(`.bg-shape-${shapeIndex}`);
-        shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
-
-        if (targetShape) {
-          targetShape.classList.add("active");
-          const shapeEls = targetShape.querySelectorAll(".shape-element");
-          gsap.fromTo(
-            shapeEls,
-            { scale: 0.5, opacity: 0, rotation: -22, y: 15 },
-            { scale: 1, opacity: 1, rotation: -12, y: 0, duration: 0.6, stagger: 0.06, ease: "back.out(1.7)", overwrite: "auto" }
-          );
-        }
-      };
-
-      menuItems.forEach((item) => {
-        const shapeIndex = item.getAttribute("data-shape");
-
-        const onEnter = () => {
-          // PC View Hover Effect
-          if (window.innerWidth >= 768) {
-            activateShape(shapeIndex);
-          }
-        };
-
-        const onLeave = () => {
-          // Restore active section shape on mouse leave (PC)
-          if (window.innerWidth >= 768) {
-            const activeItem = navItemsData.find((i) => i.id === activeSection) || navItemsData[0];
-            activateShape(activeItem.shape);
-          }
-        };
-
-        item.addEventListener("mouseenter", onEnter);
-        item.addEventListener("mouseleave", onLeave);
-
-        item._cleanup = () => {
-          item.removeEventListener("mouseenter", onEnter);
-          item.removeEventListener("mouseleave", onLeave);
-        };
-      });
     }, containerRef);
 
     return () => {
       ctx.revert();
-      if (containerRef.current) {
-        const items = containerRef.current.querySelectorAll(".menu-list-item[data-shape]");
-        items.forEach((item) => item._cleanup && item._cleanup());
-      }
     };
-  }, [activeSection]);
+  }, []);
 
-  // Activate active section's shape on mobile or when drawer opens
+  // 3. Handle Opening and Fast 0.5s Fade-Out Closing
   useEffect(() => {
-    if (!containerRef.current || !isActive) return;
+    if (!containerRef.current) return;
+    const navWrap = containerRef.current.querySelector(".nav-overlay-wrapper");
+    const menuButtonIcon = containerRef.current.querySelector(".menu-button-icon");
+
+    if (isActive) {
+      // Lock page scroll on mobile and desktop
+      document.body.style.overflow = "hidden";
+      if (navWrap) {
+        navWrap.setAttribute("data-nav", "open");
+        gsap.killTweensOf(navWrap);
+        gsap.set(navWrap, { opacity: 1, display: "block" });
+      }
+      if (menuButtonIcon) {
+        gsap.to(menuButtonIcon, { rotate: 315, duration: 0.4, ease: "power2.out" });
+      }
+      if (tlRef.current) {
+        tlRef.current.restart();
+      }
+    } else {
+      // Restore page scroll
+      document.body.style.overflow = "auto";
+
+      if (navWrap && navWrap.getAttribute("data-nav") === "open") {
+        if (menuButtonIcon) {
+          gsap.to(menuButtonIcon, { rotate: 0, duration: 0.4, ease: "power2.out" });
+        }
+        gsap.killTweensOf(navWrap);
+        gsap.to(navWrap, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          onComplete: () => {
+            navWrap.setAttribute("data-nav", "closed");
+            gsap.set(navWrap, { display: "none", opacity: 1 });
+            if (tlRef.current) {
+              tlRef.current.pause(0);
+            }
+          },
+        });
+      }
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isActive]);
+
+  // 4. Update Active Shape display (Hover PC or Active Mobile/Default)
+  useEffect(() => {
+    if (!containerRef.current) return;
     const shapesContainer = containerRef.current.querySelector(".ambient-background-shapes");
     if (!shapesContainer) return;
 
-    const activeItem = navItemsData.find((item) => item.id === activeSection) || navItemsData[0];
-    const targetShape = shapesContainer.querySelector(`.bg-shape-${activeItem.shape}`);
+    const currentItem = navItemsData.find((item) => item.id === activeSection) || navItemsData[0];
+    const targetShapeIndex = (window.innerWidth >= 768 && hoveredShape) ? hoveredShape : currentItem.shape;
 
-    shapesContainer.querySelectorAll(".bg-shape").forEach((s) => s.classList.remove("active"));
-    if (targetShape) {
-      targetShape.classList.add("active");
-      const shapeEls = targetShape.querySelectorAll(".shape-element");
-      gsap.fromTo(
-        shapeEls,
-        { scale: 0.5, opacity: 0, rotation: -10 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 0.55, stagger: 0.06, ease: "back.out(1.5)" }
-      );
-    }
-  }, [activeSection, isActive]);
+    shapesContainer.querySelectorAll(".bg-shape").forEach((s) => {
+      if (s.classList.contains(`bg-shape-${targetShapeIndex}`)) {
+        s.classList.add("active");
+        const shapeEls = s.querySelectorAll(".shape-element");
+        gsap.fromTo(
+          shapeEls,
+          { scale: 0.6, opacity: 0, rotation: -20 },
+          { scale: 1, opacity: 1, rotation: -12, duration: 0.5, ease: "back.out(1.5)", overwrite: "auto" }
+        );
+      } else {
+        s.classList.remove("active");
+      }
+    });
+  }, [activeSection, hoveredShape, isActive]);
 
-  // Reversible Animation Playback Control
-  useEffect(() => {
-    if (!tlRef.current || !containerRef.current) return;
-    const navWrap = containerRef.current.querySelector(".nav-overlay-wrapper");
-
-    if (isActive) {
-      if (navWrap) navWrap.setAttribute("data-nav", "open");
-      tlRef.current.eventCallback("onReverseComplete", null);
-      tlRef.current.timeScale(1).play();
-    } else {
-      tlRef.current.eventCallback("onReverseComplete", () => {
-        if (navWrap) {
-          navWrap.setAttribute("data-nav", "closed");
-          gsap.set(navWrap, { display: "none" });
-        }
-      });
-      tlRef.current.timeScale(1.2).reverse();
-    }
-  }, [isActive]);
-
-  // keydown Escape handling
+  // 5. Keyboard Escape key handling
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape" && isActive) {
@@ -233,6 +215,10 @@ export function SterlingGateKineticNavigation({
     e.preventDefault();
     closeMenu();
     if (onSelect) onSelect(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -243,11 +229,11 @@ export function SterlingGateKineticNavigation({
           type="button"
           onClick={toggleMenu}
           aria-label="Toggle Navigation Menu"
-          className="nav-close-btn flex items-center bg-neutral-900/80 backdrop-blur-md px-3 py-2 rounded-full border border-neutral-700/50 hover:bg-neutral-800 transition-colors"
+          className="nav-close-btn flex items-center bg-neutral-900/90 backdrop-blur-md px-3.5 py-2 rounded-full border border-neutral-700/50 hover:bg-neutral-800 transition-colors shadow-lg cursor-pointer active:scale-95"
         >
           {/* Directional Vertical Reel Transition for Section Name */}
           {!isActive && (
-            <div className="relative overflow-hidden h-4 flex items-center justify-end min-w-[4.5rem] mr-1.5 select-none">
+            <div className="relative overflow-hidden h-4 flex items-center justify-end min-w-[4.5rem] mr-1.5 select-none pointer-events-none">
               <AnimatePresence mode="popLayout" custom={scrollDirection}>
                 <motion.span
                   key={activeSection}
@@ -303,7 +289,7 @@ export function SterlingGateKineticNavigation({
 
       {/* Fullscreen Sterling Gate Kinetic Overlay & Menu */}
       <section className="fullscreen-menu-container">
-        <div data-nav="closed" className="nav-overlay-wrapper">
+        <div data-nav="closed" className="nav-overlay-wrapper hidden">
           <div className="overlay" onClick={closeMenu}></div>
           <nav className="menu-content">
             <div className="menu-bg">
@@ -345,32 +331,40 @@ export function SterlingGateKineticNavigation({
                   </span>
                 </div>
 
-                {/* Shape 5: Meet Our Faculty */}
+                {/* Shape 5: Academic Projects */}
                 <div className="bg-shape bg-shape-5 flex items-center justify-center pointer-events-none">
+                  <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
+                  <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
+                    PROJECTS
+                  </span>
+                </div>
+
+                {/* Shape 6: Meet Our Faculty */}
+                <div className="bg-shape bg-shape-6 flex items-center justify-center pointer-events-none">
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/10 blur-3xl" />
                   <span className="shape-element absolute font-sans font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     FACULTY
                   </span>
                 </div>
 
-                {/* Shape 6: Meet Core Team */}
-                <div className="bg-shape bg-shape-6 flex items-center justify-center pointer-events-none">
+                {/* Shape 7: Meet Core Team */}
+                <div className="bg-shape bg-shape-7 flex items-center justify-center pointer-events-none">
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/10 blur-3xl" />
                   <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     LEADERS
                   </span>
                 </div>
 
-                {/* Shape 7: Verify Certificate */}
-                <div className="bg-shape bg-shape-7 flex items-center justify-center pointer-events-none">
+                {/* Shape 8: Verify Certificate */}
+                <div className="bg-shape bg-shape-8 flex items-center justify-center pointer-events-none">
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/10 blur-3xl" />
                   <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     VERIFY
                   </span>
                 </div>
 
-                {/* Shape 8: Contact Us */}
-                <div className="bg-shape bg-shape-8 flex items-center justify-center pointer-events-none">
+                {/* Shape 9: Contact Us */}
+                <div className="bg-shape bg-shape-9 flex items-center justify-center pointer-events-none">
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
                   <span className="shape-element absolute font-sans font-extrabold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     CONNECT
@@ -401,7 +395,13 @@ export function SterlingGateKineticNavigation({
                     const isActiveSection = activeSection === item.id;
 
                     return (
-                      <li key={item.id} className="menu-list-item" data-shape={item.shape}>
+                      <li
+                        key={item.id}
+                        className="menu-list-item"
+                        data-shape={item.shape}
+                        onMouseEnter={() => setHoveredShape(item.shape)}
+                        onMouseLeave={() => setHoveredShape(null)}
+                      >
                         <a
                           href={item.href}
                           onClick={(e) => handleLinkClick(e, item.id)}

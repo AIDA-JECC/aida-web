@@ -6,6 +6,7 @@ import TiltedCards from './components/TiltedCards';
 import YodhaSection from './components/YodhaSection';
 import EventsSection from './components/EventsSection';
 import AchievementsSection from './components/AchievementsSection';
+import AcademicProjectsSection from './components/projects/AcademicProjectsSection';
 import Team from './components/Team';
 import CoreTeamSection from './components/CoreTeamSection';
 import FaqSection from './components/FaqSection';
@@ -55,6 +56,11 @@ export default function App() {
         {/* 4. Achievements */}
         <div id="achievements" className="bg-[#080808] border-t border-neutral-800/60">
           <AchievementsSection />
+        </div>
+
+        {/* 4.5. Academic Projects Showcase */}
+        <div id="projects" className="bg-neutral-950 border-t border-neutral-800/60">
+          <AcademicProjectsSection />
         </div>
 
         {/* 5. Faculty & Core Team */}
