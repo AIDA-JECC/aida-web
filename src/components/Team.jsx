@@ -61,7 +61,7 @@ const GROUP_STYLES = {
   },
 };
 
-// Custom Dark Theme-Matched Animated Dropdown for Faculty Filters
+// Custom Dark Theme-Matched Animated Dropdown for Faculty Filters (High z-index z-[45] below navbar z-50)
 function FacultyCustomDropdown({ filters, activeId, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -79,7 +79,7 @@ function FacultyCustomDropdown({ filters, activeId, onSelect }) {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative inline-block text-left shrink-0">
+    <div ref={dropdownRef} className="relative inline-block text-left shrink-0 z-30">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -91,7 +91,7 @@ function FacultyCustomDropdown({ filters, activeId, onSelect }) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-56 sm:w-60 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-40 space-y-1 animate-fadeIn ring-1 ring-white/10">
+        <div className="absolute right-0 top-full mt-2 w-56 sm:w-60 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-[45] space-y-1 animate-fadeIn ring-1 ring-white/10">
           {filters.map((filter) => {
             const isSelected = activeId === filter.id;
             return (
@@ -218,8 +218,8 @@ export default function Team() {
           </p>
         </div>
 
-        {/* Right-Aligned Designation Dropdown */}
-        <div className="flex justify-end mb-8">
+        {/* Right-Aligned Designation Dropdown (z-30) */}
+        <div className="flex justify-end mb-8 relative z-30">
           <FacultyCustomDropdown
             filters={FILTERS}
             activeId={activeFilter}

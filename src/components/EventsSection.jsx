@@ -17,7 +17,7 @@ function eventSortValue(event) {
   return 0;
 }
 
-// Custom Dark Theme-Matched Animated Dropdown for Event Year Filter
+// Custom Dark Theme-Matched Animated Dropdown for Event Year Filter (High z-index z-[45] below navbar z-50)
 function EventYearDropdown({ years, selectedYear, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -33,7 +33,7 @@ function EventYearDropdown({ years, selectedYear, onSelect }) {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative inline-block text-left shrink-0">
+    <div ref={dropdownRef} className="relative inline-block text-left shrink-0 z-30">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -45,7 +45,7 @@ function EventYearDropdown({ years, selectedYear, onSelect }) {
       </button>
 
       {isOpen && (
-        <div className="absolute left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 top-full mt-2 w-48 sm:w-52 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-40 space-y-1 animate-fadeIn ring-1 ring-white/10">
+        <div className="absolute left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 top-full mt-2 w-48 sm:w-52 bg-neutral-950/95 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl p-1.5 z-[45] space-y-1 animate-fadeIn ring-1 ring-white/10">
           {years.map((year) => {
             const isSelected = selectedYear === year;
             return (
@@ -136,8 +136,8 @@ export default function EventsSection() {
           Showing {visibleEvents.length} of {filteredEvents.length} events
         </p>
 
-        {/* Custom Dark Theme Animated Year Dropdown */}
-        <div className="pt-2">
+        {/* Custom Dark Theme Animated Year Dropdown (z-30) */}
+        <div className="pt-2 relative z-30">
           <EventYearDropdown
             years={years}
             selectedYear={selectedYear}

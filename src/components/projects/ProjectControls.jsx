@@ -15,7 +15,7 @@ const TYPE_OPTIONS = [
   'Main Project',
 ];
 
-// Custom Theme-Matched Animated Dropdown (White Theme)
+// Custom Theme-Matched Animated Dropdown (High z-index z-[45] below navbar z-50)
 function CustomDropdown({ options, value, onChange, label }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -31,7 +31,7 @@ function CustomDropdown({ options, value, onChange, label }) {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="relative z-30">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -43,7 +43,7 @@ function CustomDropdown({ options, value, onChange, label }) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-48 sm:w-56 bg-white/95 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-2xl p-1.5 z-40 space-y-1 animate-fadeIn ring-1 ring-black/5">
+        <div className="absolute right-0 top-full mt-2 w-48 sm:w-56 bg-white/95 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-2xl p-1.5 z-[45] space-y-1 animate-fadeIn ring-1 ring-black/5">
           {options.map((option) => {
             const isSelected = value === option;
             return (
@@ -87,7 +87,7 @@ export default function ProjectControls({
 
   return (
     <div className="w-full space-y-3">
-      {/* Search & Filter Toolbar Container (White Theme) */}
+      {/* Search & Filter Toolbar Container */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 bg-white/90 border border-neutral-200/90 p-3 sm:p-4 rounded-2xl backdrop-blur-md shadow-md">
         {/* Search Input */}
         <div className="relative w-full md:flex-1">
@@ -118,7 +118,7 @@ export default function ProjectControls({
           </div>
         </div>
 
-        {/* Desktop Custom Dropdowns (≥ 768px - White Theme) */}
+        {/* Desktop Custom Dropdowns (≥ 768px - z-[45]) */}
         <div className="hidden md:flex items-center gap-3 shrink-0">
           {/* Custom Batch Filter Dropdown */}
           <CustomDropdown
@@ -172,9 +172,9 @@ export default function ProjectControls({
         </div>
       </div>
 
-      {/* Mobile Expandable Custom Dropdown Panel (White Theme) */}
+      {/* Mobile Expandable Custom Dropdown Panel (z-[45]) */}
       {mobileFilterOpen && (
-        <div className="flex flex-col md:hidden gap-3.5 bg-white border border-neutral-200 p-4 rounded-2xl shadow-xl animate-fadeIn">
+        <div className="relative z-[45] flex flex-col md:hidden gap-3.5 bg-white border border-neutral-200 p-4 rounded-2xl shadow-xl animate-fadeIn">
           <div className="space-y-1.5">
             <label className="text-[11px] font-mono font-bold text-neutral-500 uppercase tracking-wider block">
               Batch Year
