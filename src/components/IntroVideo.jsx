@@ -155,7 +155,7 @@ export default function IntroVideo() {
     }
   };
 
-  // Monitor time update to gradually fade out during the last 1 second of video
+  // Monitor time update to gradually fade out volume & opacity during the last 1.5 seconds of video
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
     const duration = videoRef.current.duration;
@@ -163,11 +163,19 @@ export default function IntroVideo() {
 
     if (duration > 0 && !isNaN(duration)) {
       const timeLeft = duration - currentTime;
-      if (timeLeft <= 1.0) {
-        const opacity = Math.max(0, timeLeft / 1.0);
-        setFadeOpacity(opacity);
+      if (timeLeft <= 1.5) {
+        const ratio = Math.max(0, timeLeft / 1.5);
+        setFadeOpacity(ratio);
+        try {
+          videoRef.current.volume = Math.max(0, Math.min(1, ratio));
+        } catch (e) {
+          // Ignore volume setting errors
+        }
       } else {
         setFadeOpacity(1);
+        try {
+          videoRef.current.volume = 1;
+        } catch (e) {}
       }
     }
   };
