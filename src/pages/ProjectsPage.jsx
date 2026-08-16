@@ -43,7 +43,15 @@ export default function ProjectsPage({ onNavigate }) {
   };
 
   const handleBack = () => {
-    window.location.hash = '#projects';
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      if (onNavigate) {
+        onNavigate('home');
+      } else {
+        window.location.hash = '#projects';
+      }
+    }
   };
 
   return (

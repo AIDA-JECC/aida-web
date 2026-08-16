@@ -141,7 +141,15 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
   };
 
   const handleBack = () => {
-    window.location.hash = '#team';
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      if (onNavigate) {
+        onNavigate('home');
+      } else {
+        window.location.hash = '#team';
+      }
+    }
   };
 
   if (!faculty) return null;
