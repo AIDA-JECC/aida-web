@@ -185,44 +185,28 @@ export default function TiltedCards() {
 
         {/* Responsive Grid & Mobile Smooth Carousel Container with Equal Spacing */}
         <div className="w-full">
-          {/* Mobile Horizontal Snap View (< 768px) with Real-Time Active Step Tracking */}
+          {/* Mobile Horizontal Snap View (< 768px) Controlled by Buttons 1, 2, 3, 4 */}
           <div
             ref={mobileScrollRef}
             onScroll={handleMobileScroll}
-            className="md:hidden flex overflow-x-auto snap-x snap-mandatory space-x-5 py-4 px-4 scrollbar-none w-full"
+            className="md:hidden flex overflow-x-auto snap-x snap-mandatory space-x-5 py-4 px-4 scrollbar-none w-full scroll-smooth"
           >
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
               const BtnIcon = pillar.btnIcon;
               const isActive = idx + 1 === activeStep;
-              const dropDelay = idx * 0.12;
 
               return (
-                <motion.div
+                <div
                   key={pillar.id}
                   ref={(el) => (cardRefs.current[idx] = el)}
-                  initial={{ y: -110, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-20px" }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 180,
-                    damping: 17,
-                    delay: dropDelay,
-                  }}
-                  onClick={() => setActiveStep(idx + 1)}
+                  onClick={() => handleStepClick(idx + 1)}
                   className={`relative overflow-hidden snap-center shrink-0 w-[88vw] max-w-[330px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer transition-all duration-300 ${
-                    isActive ? 'ring-2 ring-red-600/80 shadow-lg' : 'opacity-90'
+                    isActive ? 'ring-2 ring-red-600/80 shadow-lg scale-[1.01]' : 'opacity-90'
                   } ${pillar.bgStyle}`}
                 >
-                  {/* Top Header Row: Tag & Icon Badge (Enters after card drop completes) */}
-                  <motion.div
-                    initial={{ y: -15, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, ease: 'easeOut', delay: dropDelay + 0.25 }}
-                    className="relative z-10"
-                  >
+                  {/* Top Header Row: Tag & Icon Badge */}
+                  <div className="relative z-10">
                     <div className="flex items-center justify-between gap-2 mb-5">
                       <span className={`font-mono text-[11px] font-bold tracking-widest uppercase ${pillar.accentColor}`}>
                         {pillar.tag}
@@ -232,26 +216,14 @@ export default function TiltedCards() {
                       </div>
                     </div>
 
-                    {/* Giant Number (Pops into view after header) */}
-                    <motion.div
-                      initial={{ scale: 0.85, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.35, ease: 'easeOut', delay: dropDelay + 0.35 }}
-                      className={`font-mono text-6xl font-extrabold leading-none tracking-tight ${pillar.numColor}`}
-                    >
+                    {/* Giant Number */}
+                    <div className={`font-mono text-6xl font-extrabold leading-none tracking-tight ${pillar.numColor}`}>
                       {pillar.num}
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
 
-                  {/* Bottom Content: Title, Underline Bar, Description & Action Button (Slides up after giant number) */}
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, ease: 'easeOut', delay: dropDelay + 0.45 }}
-                    className="relative z-10 space-y-3.5 mt-5"
-                  >
+                  {/* Bottom Content: Title, Underline Bar, Description & Action Button */}
+                  <div className="relative z-10 space-y-3.5 mt-5">
                     <h3 className="font-sans font-extrabold text-xl tracking-tight leading-snug">
                       {pillar.title}
                     </h3>
@@ -272,7 +244,7 @@ export default function TiltedCards() {
                         <BtnIcon size={14} aria-hidden="true" />
                       </button>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {pillar.hasRedWave && (
                     <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-red-600/35 via-red-900/10 to-transparent pointer-events-none z-0" />
@@ -285,7 +257,7 @@ export default function TiltedCards() {
                     </pattern>
                     <rect width="100" height="100" fill={`url(#dots-mobile-${pillar.num})`} />
                   </svg>
-                </motion.div>
+                </div>
               );
             })}
           </div>
