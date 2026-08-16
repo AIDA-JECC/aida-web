@@ -10,7 +10,12 @@ const VIDEO_2_BYTES = 8423929; // ~8.42 MB
 export default function IntroVideo() {
   const [isDesktop, setIsDesktop] = useState(false);
   // status: 'initial' | 'downloading' | 'downloaded' | 'playing' | 'completed'
-  const [status, setStatus] = useState('initial');
+  const [status, setStatus] = useState(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('aida_intro_seen') === 'true') {
+      return 'completed';
+    }
+    return 'initial';
+  });
   const [selectedVideo, setSelectedVideo] = useState(1); // 1 or 2
   const [activeDownloading, setActiveDownloading] = useState(null); // 1 or 2
   const [downloadProgress, setDownloadProgress] = useState(0);
@@ -21,6 +26,14 @@ export default function IntroVideo() {
 
   const videoRef = useRef(null);
   const xhrRef = useRef(null);
+
+  // Store in sessionStorage and notify app when intro completes
+  useEffect(() => {
+    if (status === 'completed' && typeof window !== 'undefined') {
+      sessionStorage.setItem('aida_intro_seen', 'true');
+      window.dispatchEvent(new CustomEvent('intro-video-finished'));
+    }
+  }, [status]);
 
   // Check if PC view (min-width: 768px)
   useEffect(() => {
@@ -33,20 +46,23 @@ export default function IntroVideo() {
     return () => window.removeEventListener('resize', checkIsDesktop);
   }, []);
 
-  // Strict scroll locking: ONLY enabled once status reaches 'completed' (Hero section)
+  // Strict scroll locking and intro-active class: ONLY enabled once status reaches 'completed'
   useEffect(() => {
     if (isDesktop && status !== 'completed') {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+      document.body.classList.add('intro-active');
       window.scrollTo(0, 0);
     } else {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
+      document.body.classList.remove('intro-active');
     }
 
     return () => {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
+      document.body.classList.remove('intro-active');
     };
   }, [isDesktop, status]);
 

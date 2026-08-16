@@ -63,7 +63,7 @@ export default function Navbar({ onVerifyClick }) {
     <>
       {/* Brand Capsule (Top Left): Vanishes when menu is open, appears when menu is closed */}
       <div
-        className={`fixed top-5 left-4 sm:left-8 z-50 transition-all duration-300 ${
+        className={`fixed top-5 left-4 sm:left-8 z-[9999] transition-all duration-300 ${
           isMenuOpen
             ? 'opacity-0 pointer-events-none -translate-x-4'
             : 'opacity-100 pointer-events-auto translate-x-0'

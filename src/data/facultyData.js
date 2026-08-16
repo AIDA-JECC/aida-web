@@ -162,15 +162,6 @@ export const facultyData = [
     "img": "/faculty/nikhitha-n"
   },
   {
-    "slug": "anagha-regy",
-    "name": "Ms. Anagha Regy",
-    "designation": "Trade Instructor Gr. II",
-    "group": "Trade Instructor",
-    "rank": 5,
-    "initials": "AR",
-    "img": "/faculty/anagha-regy"
-  },
-  {
     "slug": "linet-thomas",
     "name": "Ms. Linet Thomas",
     "designation": "Trade Instructor Gr. II",
@@ -187,17 +178,9 @@ export const facultyData = [
     "rank": 5,
     "initials": "RG",
     "img": "/faculty/reshma-k-g"
-  },
-  {
-    "slug": "stiny-k-t",
-    "name": "Ms. Stiny K T",
-    "designation": "Trade Instructor Gr. II",
-    "group": "Trade Instructor",
-    "rank": 5,
-    "initials": "ST",
-    "img": null
   }
 ];
 
-export const facultyCount = 22;
+export const facultyCount = 20;
 export const facultyImageWidths = [320, 640];
+

@@ -152,11 +152,39 @@ export default function HeroDotField({
       mouse.vy = 0;
     };
 
+    let waveStartTime = performance.now();
+    const waveDuration = 3000; // 3 seconds wavy animation
+
+    const startWavyAnimation = () => {
+      waveStartTime = performance.now();
+    };
+
+    const handleImpactBounce = () => {
+      startWavyAnimation();
+      const centerX = width / 2;
+      const centerY = height * 0.4;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const dx = p.baseX - centerX;
+        const dy = p.baseY - centerY;
+        const dist = Math.hypot(dx, dy) || 1;
+        if (dist < 480) {
+          const force = ((480 - dist) / 480) * 16;
+          const angle = Math.atan2(dy, dx);
+          p.vx += Math.cos(angle) * force;
+          p.vy += Math.sin(angle) * force;
+          p.colorFactor = 1;
+        }
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     window.addEventListener('touchstart', handleTouchMove, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('hero-impact-bounce', handleImpactBounce);
+    window.addEventListener('intro-video-finished', startWavyAnimation);
 
     // Color definitions
     const baseR = color === 'light' ? 255 : 35;
@@ -169,21 +197,11 @@ export default function HeroDotField({
     const targetB = 72;
     const targetAlpha = 0.95;
 
-    // Initial opening wave animation parameters
-    const waveStartTime = performance.now();
-    const waveDuration = 1400; // 1.4s sweep
-
     const render = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
 
       const now = performance.now();
-      const waveElapsed = now - waveStartTime;
-      const isWaveActive = waveElapsed < waveDuration;
-      const waveProgress = isWaveActive ? waveElapsed / waveDuration : 1;
-      const maxDiag = Math.hypot(width, height);
-      const currentWaveRadius = waveProgress * maxDiag * 1.1;
-
       const isHovered = mouse.isHovered && mouse.x !== -9999;
 
       for (let i = 0; i < particles.length; i++) {
@@ -192,21 +210,25 @@ export default function HeroDotField({
         let targetRadius = IDLE_RADIUS;
         let targetColorFactor = 0;
 
-        // Opening wave impulse on page load
-        if (isWaveActive) {
-          const waveCenterX = width / 2;
-          const waveCenterY = height * 0.35;
-          const distToCenter = Math.hypot(p.baseX - waveCenterX, p.baseY - waveCenterY);
-          const diff = Math.abs(distToCenter - currentWaveRadius);
-          const ringWidth = 85;
+        // 3-second wavy animation that slowly eases out
+        if (waveStartTime !== null) {
+          const waveElapsed = now - waveStartTime;
+          if (waveElapsed < waveDuration) {
+            const waveProgress = waveElapsed / waveDuration;
+            const waveFadeOut = Math.sin((1 - waveProgress) * Math.PI * 0.5); // Smooth ease out fade over 3s
+            const waveCenterX = width / 2;
+            const waveCenterY = height * 0.35;
+            const distToCenter = Math.hypot(p.baseX - waveCenterX, p.baseY - waveCenterY);
 
-          if (diff < ringWidth) {
-            const waveForce = (1 - diff / ringWidth) * (1 - waveProgress * 0.5) * 2.2;
+            const wavePhase = (distToCenter * 0.025) - (waveElapsed * 0.007);
+            const waveSine = Math.sin(wavePhase);
+            const waveForce = waveSine * waveFadeOut * 2.2;
+
             const angle = Math.atan2(p.baseY - waveCenterY, p.baseX - waveCenterX);
-            p.vx += Math.cos(angle) * waveForce;
-            p.vy += Math.sin(angle) * waveForce;
-            targetRadius = IDLE_RADIUS + waveForce * 0.7;
-            targetColorFactor = Math.min(1, waveForce * 0.5);
+            p.vx += Math.cos(angle) * waveForce * 0.5;
+            p.vy += Math.sin(angle) * waveForce * 0.5;
+            targetRadius = IDLE_RADIUS + Math.abs(waveSine) * waveFadeOut * 1.6;
+            targetColorFactor = Math.min(1, Math.abs(waveSine) * waveFadeOut * 0.7);
           }
         }
 
@@ -269,6 +291,7 @@ export default function HeroDotField({
       window.removeEventListener('touchstart', handleTouchMove);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('hero-impact-bounce', handleImpactBounce);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [color]);

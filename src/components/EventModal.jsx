@@ -6,6 +6,7 @@ export default function EventModal({ event, onClose }) {
   useEffect(() => {
     if (event) {
       document.body.classList.add('scroll-locked');
+      document.body.classList.add('modal-open');
     }
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -13,6 +14,7 @@ export default function EventModal({ event, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.classList.remove('scroll-locked');
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [event, onClose]);
@@ -20,7 +22,7 @@ export default function EventModal({ event, onClose }) {
   if (!event) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[10000] flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
       <div
         className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-neutral-950 border border-red-900/60 rounded-3xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}

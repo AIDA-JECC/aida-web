@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Mail, ExternalLink } from "lucide-react";
+import LinkedinIcon from "./LinkedinIcon";
 import { cn } from "../../lib/utils";
 
 const useIsoLayoutEffect =
@@ -41,6 +42,7 @@ export function CoverflowCarousel({
   showCaption = true,
   showPagination = true,
   showNavigation = true,
+  pauseAutoPlay = false,
   label = "Cover carousel",
   className,
   cardClassName,
@@ -261,9 +263,9 @@ export function CoverflowCarousel({
     return () => observer.disconnect();
   }, [paint]);
 
-  // Auto-play: starts ONLY when section is in view; pauses 1.5s on any user action
+  // Auto-play: starts ONLY when section is in view and NOT paused or modal open
   React.useEffect(() => {
-    if (!isInView || isPaused || count <= 1) return undefined;
+    if (!isInView || isPaused || pauseAutoPlay || count <= 1) return undefined;
     const timer = setInterval(() => {
       if (!dragRef.current && rafRef.current === null) {
         const currentTarget = Math.round(targetRef.current);
@@ -272,7 +274,7 @@ export function CoverflowCarousel({
       }
     }, 3200);
     return () => clearInterval(timer);
-  }, [count, isInView, isPaused, loop, settle]);
+  }, [count, isInView, isPaused, pauseAutoPlay, loop, settle]);
 
   React.useEffect(
     () => () => {
@@ -369,7 +371,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Previous slide"
               onClick={() => nudge(-1)}
-              className="absolute left-2 sm:left-6 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-neutral-950/85 border border-neutral-800 p-2.5 text-white backdrop-blur transition hover:bg-red-600 hover:border-red-600 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+              className="absolute left-2 sm:left-6 top-1/2 z-20 -translate-y-1/2 rounded-full bg-neutral-950/85 border border-neutral-800 p-2.5 text-white backdrop-blur transition hover:bg-red-600 hover:border-red-600 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -377,7 +379,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Next slide"
               onClick={() => nudge(1)}
-              className="absolute right-2 sm:right-6 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-neutral-950/85 border border-neutral-800 p-2.5 text-white backdrop-blur transition hover:bg-red-600 hover:border-red-600 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+              className="absolute right-2 sm:right-6 top-1/2 z-20 -translate-y-1/2 rounded-full bg-neutral-950/85 border border-neutral-800 p-2.5 text-white backdrop-blur transition hover:bg-red-600 hover:border-red-600 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
             >
               <ChevronRight className="size-5" />
             </button>
@@ -390,14 +392,53 @@ export function CoverflowCarousel({
           key={selected}
           className="mt-6 flex flex-col items-center px-6 duration-300 animate-in fade-in text-center"
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-md">
-            {active.title || active.name}
-          </h3>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-md">
+              {active.title || active.name}
+            </h3>
+            {active.onSelectProfile && (
+              <button
+                type="button"
+                onClick={active.onSelectProfile}
+                className="p-1.5 rounded-full text-red-500 hover:text-red-400 hover:scale-110 transition-all cursor-pointer inline-flex items-center justify-center shrink-0"
+                title="View Faculty Profile & Supervised Projects"
+                aria-label={`View profile of ${active.title || active.name}`}
+              >
+                <ExternalLink className="size-5 sm:size-6" />
+              </button>
+            )}
+          </div>
+
           {(active.subtitle || active.designation) && (
             <p className="mt-2 text-sm sm:text-base font-mono font-bold text-red-500 uppercase tracking-widest min-h-[1.5em]">
               <CoverflowTypingText text={active.subtitle || active.designation} />
             </p>
           )}
+
+          {/* Social Icons for LinkedIn & Email */}
+          {active.showSocials !== false && (
+            <div className="flex items-center gap-2.5 mt-3">
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-red-500 hover:border-red-600 transition-all shadow-sm cursor-pointer"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon size={16} />
+              </a>
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-red-500 hover:border-red-600 transition-all shadow-sm cursor-pointer"
+                title="Email Address"
+                aria-label="Email Address"
+              >
+                <Mail className="size-4" />
+              </a>
+            </div>
+          )}
+
           {active.meta && active.meta.length > 0 && (
             <dl className="mt-3.5 w-full max-w-[260px] text-xs sm:text-sm">
               {active.meta.map((row) => (

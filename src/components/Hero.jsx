@@ -3,6 +3,7 @@ import { eventsData } from '../data/siteData';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import EventArtwork from './EventArtwork';
 import HeroDotField from './HeroDotField';
+import { motion } from 'framer-motion';
 
 const showcaseEvents = eventsData.slice(0, 3);
 const ROTATION_INTERVAL = 2500; // 2.5 seconds auto-rotation
@@ -32,6 +33,34 @@ export default function Hero({ onExploreEventsClick }) {
   const [touchOffset, setTouchOffset] = useState({ x: 0, y: 0 });
   const [isSwiping, setIsSwiping] = useState(false);
   const pointerStartPos = useRef({ x: 0, y: 0 });
+
+  // Wait for intro video completion before starting kinetic entrance animations
+  const [startEntrance, setStartEntrance] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const isMobile = window.innerWidth < 768;
+      const seen = sessionStorage.getItem('aida_intro_seen') === 'true';
+      return isMobile || seen;
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    const handleIntroFinish = () => {
+      setStartEntrance(true);
+    };
+
+    window.addEventListener('intro-video-finished', handleIntroFinish);
+    return () => window.removeEventListener('intro-video-finished', handleIntroFinish);
+  }, []);
+
+  // Trigger dot field impact bounce shockwave at collision moment (~600ms after entrance starts)
+  useEffect(() => {
+    if (!startEntrance) return;
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('hero-impact-bounce'));
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [startEntrance]);
 
   useEffect(() => {
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -98,10 +127,12 @@ export default function Hero({ onExploreEventsClick }) {
   }, []);
 
   useEffect(() => {
+    if (!startEntrance) return;
+
     const isMobile = window.innerWidth < 768;
 
     if (!isMobile) {
-      // PC: start typing immediately
+      // PC: start typing immediately after intro completes
       startTyping();
       return;
     }
@@ -122,7 +153,7 @@ export default function Hero({ onExploreEventsClick }) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [startTyping]);
+  }, [startEntrance, startTyping]);
 
   const activeEvent = showcaseEvents[activeEventIndex];
 
@@ -148,10 +179,16 @@ export default function Hero({ onExploreEventsClick }) {
       <div className="w-full flex flex-col items-center justify-center my-auto mt-[10vh]">
         {/* Editorial title with the event collection as its interactive centrepiece. */}
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-8 lg:gap-6 text-center lg:text-left mb-12">
-          <h1 className="font-serif text-[4.2rem] xs:text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl leading-[0.88] tracking-tight font-extrabold sm:font-bold text-neutral-950">
+          {/* Bouncy Left Heading Animation: Artificial Intelligence */}
+          <motion.h1
+            initial={{ x: -350, opacity: 0 }}
+            animate={startEntrance ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 220, damping: 14, mass: 1.1, delay: 0.1 }}
+            className="font-serif text-[4.2rem] xs:text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl leading-[0.88] tracking-tight font-extrabold sm:font-bold text-neutral-950"
+          >
             Artificial<br />
             <span className="text-neutral-800 font-extrabold sm:font-bold">Intelligence</span>
-          </h1>
+          </motion.h1>
 
           <div className="relative mx-auto my-4 lg:my-0">
             <button
@@ -159,7 +196,6 @@ export default function Hero({ onExploreEventsClick }) {
               aria-label={`Explore the event showcase. Currently showing ${activeEvent.name}`}
               className={`relative w-[min(88vw,330px)] sm:w-[340px] md:w-[380px] h-[220px] sm:h-[260px] cursor-pointer group select-none text-left touch-none ${prefersReducedMotion || isSwiping ? '' : 'animate-float-slow'}`}
               onClick={(e) => {
-                // Trigger click only if user didn't drag
                 if (Math.hypot(touchOffset.x, touchOffset.y) < 10) {
                   onExploreEventsClick();
                 }
@@ -183,9 +219,21 @@ export default function Hero({ onExploreEventsClick }) {
 
                 const isCurrentlyDraggingTopCard = isFront && isSwiping && (touchOffset.x !== 0 || touchOffset.y !== 0);
 
+                // Sequential spring drop delay: Card 0 @ 0.4s, Card 1 @ 0.75s, Card 2 @ 1.1s (1.5s total)
+                const dropDelay = 0.4 + (2 - position) * 0.35;
+
                 return (
-                  <span
+                  <motion.span
                     key={event.id}
+                    initial={{ y: -450, opacity: 0 }}
+                    animate={startEntrance ? { y: 0, opacity: 1 } : { y: -450, opacity: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 170,
+                      damping: 13,
+                      mass: 1,
+                      delay: dropDelay,
+                    }}
                     aria-hidden={!isFront}
                     style={
                       isCurrentlyDraggingTopCard
@@ -215,7 +263,7 @@ export default function Hero({ onExploreEventsClick }) {
                         )}
                       </span>
                     </span>
-                  </span>
+                  </motion.span>
                 );
               })}
             </button>
@@ -224,10 +272,16 @@ export default function Hero({ onExploreEventsClick }) {
             </span>
           </div>
 
-          <h1 className="font-serif text-[4.2rem] xs:text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl leading-[0.88] tracking-tight font-extrabold sm:font-bold text-neutral-950 lg:text-right">
+          {/* Bouncy Right Heading Animation: & Data Science */}
+          <motion.h1
+            initial={{ x: 350, opacity: 0 }}
+            animate={startEntrance ? { x: 0, opacity: 1 } : { x: 350, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 220, damping: 14, mass: 1.1, delay: 0.1 }}
+            className="font-serif text-[4.2rem] xs:text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl leading-[0.88] tracking-tight font-extrabold sm:font-bold text-neutral-950 lg:text-right"
+          >
             &amp; Data<br />
             <span className="text-red-600 italic font-serif font-extrabold sm:font-bold">Science</span>
-          </h1>
+          </motion.h1>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between w-full pt-8 border-t border-neutral-300 gap-6 text-center md:text-left">

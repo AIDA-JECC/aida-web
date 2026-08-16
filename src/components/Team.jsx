@@ -2,7 +2,9 @@ import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { facultyCount, facultyData } from '../data/facultyData';
 import { CoverflowCarousel } from './ui/coverflow-carousel';
 import SafeImage from './ui/SafeImage';
-import { ChevronDown, Check } from 'lucide-react';
+import FacultyProjectsModal from './projects/FacultyProjectsModal';
+import { ChevronDown, Check, Mail, ExternalLink } from 'lucide-react';
+import LinkedinIcon from './ui/LinkedinIcon';
 
 const FILTERS = [
   { id: 'all', label: 'All Faculty', match: () => true },
@@ -119,8 +121,19 @@ function FacultyCustomDropdown({ filters, activeId, onSelect }) {
   );
 }
 
-export default function Team() {
+export default function Team({ onNavigate }) {
   const [activeFilter, setActiveFilter] = useState('all');
+
+  const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  const handleFacultyClick = (member) => {
+    const targetSlug = member.slug || normalizeName(member.name);
+    if (onNavigate) {
+      onNavigate('faculty', targetSlug);
+    } else {
+      window.location.hash = `#/faculty/${targetSlug}`;
+    }
+  };
 
   const filteredFaculty = useMemo(() => {
     const filter = FILTERS.find((item) => item.id === activeFilter) ?? FILTERS[0];
@@ -138,12 +151,16 @@ export default function Team() {
         alt: displayName,
         title: displayName,
         subtitle: member.designation,
+        onSelectProfile: () => handleFacultyClick(member),
         meta: [
           { label: 'Role', value: style.tag || 'FACULTY' },
           { label: 'Department', value: 'AI & DS' },
         ],
         customContent: ({ isSelected }) => (
-          <div className={`group relative w-full h-full bg-neutral-950/90 backdrop-blur-md rounded-2xl overflow-hidden border ${style.border} ${style.hoverBorder} transition-all duration-300 flex flex-col justify-between shadow-2xl`}>
+          <div
+            onClick={() => handleFacultyClick(member)}
+            className={`group relative w-full h-full bg-neutral-950/90 backdrop-blur-md rounded-2xl overflow-hidden border ${style.border} ${style.hoverBorder} transition-all duration-300 flex flex-col justify-between shadow-2xl cursor-pointer`}
+          >
             {/* Top Accent Bar */}
             <div className="h-1 w-full bg-neutral-950 relative overflow-hidden">
               <div className={`h-full bg-gradient-to-r ${style.accentGradient} w-full`} />
@@ -179,12 +196,22 @@ export default function Team() {
 
               <div className={`absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent z-10 transition-opacity duration-300 ${isSelected ? 'opacity-20' : 'opacity-85'}`} />
 
-              {/* Content overlay inside side cards positioned safely above bottom edge */}
+              {/* Content overlay inside side cards */}
               {!isSelected && (
                 <div className="absolute bottom-2.5 inset-x-2.5 p-2 sm:p-2.5 flex flex-col justify-center bg-neutral-950/95 backdrop-blur-md border border-white/10 rounded-xl z-20 shadow-lg transition-all duration-300">
-                  <h3 className="font-sans font-extrabold text-xs text-white truncate leading-tight">
-                    {displayName}
-                  </h3>
+                  <div className="flex items-center justify-between gap-1">
+                    <h3 className="font-sans font-extrabold text-xs text-white truncate leading-tight">
+                      {displayName}
+                    </h3>
+                    <span
+                      onClick={(e) => { e.stopPropagation(); handleFacultyClick(member); }}
+                      className="p-0.5 text-red-500 hover:text-red-400 transition-colors shrink-0 cursor-pointer"
+                      title="View Faculty Profile & Supervised Projects"
+                      aria-label={`View ${displayName} Profile`}
+                    >
+                      <ExternalLink size={13} />
+                    </span>
+                  </div>
                   <p className="font-mono text-[9px] font-bold text-red-400 uppercase tracking-wider mt-0.5 truncate">
                     {member.designation}
                   </p>
@@ -195,7 +222,7 @@ export default function Team() {
         ),
       };
     });
-  }, [filteredFaculty]);
+  }, [filteredFaculty, onNavigate]);
 
   return (
     <section
@@ -247,3 +274,4 @@ export default function Team() {
     </section>
   );
 }
+

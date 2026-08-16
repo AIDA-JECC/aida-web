@@ -20,8 +20,16 @@ export default function ProjectCard({ project, onSelectProject, onSelectFaculty 
 
   const handleGuideClick = (e) => {
     e.stopPropagation();
-    if (matchedFaculty && onSelectFaculty) {
-      onSelectFaculty(matchedFaculty);
+    if (onSelectFaculty) {
+      const facultyToPass = matchedFaculty || {
+        slug: guideName.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+        name: guideName,
+        designation: 'Faculty Supervisor',
+        group: 'Faculty Member',
+        initials: guideName.replace(/^(Dr|Prof|Mr|Mrs|Ms|Er)\.?\s*/i, '').slice(0, 2).toUpperCase(),
+        img: null,
+      };
+      onSelectFaculty(facultyToPass);
     }
   };
 
@@ -102,17 +110,13 @@ export default function ProjectCard({ project, onSelectProject, onSelectFaculty 
             <span className="font-mono text-[11px] text-neutral-600 flex items-center gap-1.5">
               <UserCheck size={12} className="text-neutral-500 shrink-0" aria-hidden="true" />
               <span>Guide:</span>
-              {matchedFaculty ? (
-                <button
-                  type="button"
-                  onClick={handleGuideClick}
-                  className="font-bold text-red-600 hover:underline transition-colors cursor-pointer"
-                >
-                  {guideName}
-                </button>
-              ) : (
-                <span className="font-medium text-neutral-800">{guideName}</span>
-              )}
+              <button
+                type="button"
+                onClick={handleGuideClick}
+                className="font-bold text-red-600 hover:underline transition-colors cursor-pointer"
+              >
+                {guideName}
+              </button>
             </span>
           )}
         </div>

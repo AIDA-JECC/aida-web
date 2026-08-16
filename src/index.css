@@ -39,6 +39,14 @@
   body.scroll-locked {
     overflow: hidden !important;
   }
+
+  body.modal-open .fixed.top-5,
+  body.intro-active .fixed.top-5 {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
 }
 
 @keyframes fadeIn {
@@ -104,7 +112,7 @@ button, a, .glass-card, .tilted-card {
 .fullscreen-menu-container {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: 9990;
   pointer-events: none;
 }
 
@@ -112,7 +120,7 @@ button, a, .glass-card, .tilted-card {
   position: fixed;
   inset: 0;
   display: none;
-  z-index: 40;
+  z-index: 9990;
 }
 
 .nav-overlay-wrapper[data-nav="open"] {
@@ -125,7 +133,7 @@ button, a, .glass-card, .tilted-card {
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  z-index: 10;
+  z-index: 9991;
   opacity: 0;
 }
 
@@ -136,7 +144,7 @@ button, a, .glass-card, .tilted-card {
   bottom: 0;
   width: 90vw;
   max-width: 520px;
-  z-index: 20;
+  z-index: 9992;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

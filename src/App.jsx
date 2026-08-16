@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
@@ -15,12 +15,110 @@ import Footer from './components/Footer';
 import GlobalDotField from './components/GlobalDotField';
 import IntroVideo from './components/IntroVideo';
 
+// Dedicated Full Pages
+import ProjectsPage from './pages/ProjectsPage';
+import FacultyProfilePage from './pages/FacultyProfilePage';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
+
+function getRouteFromHash() {
+  const hash = window.location.hash || '';
+  if (hash.startsWith('#/projects')) {
+    return { type: 'projects' };
+  }
+  if (hash.startsWith('#/faculty/')) {
+    const slug = hash.replace('#/faculty/', '');
+    return { type: 'faculty', slug: decodeURIComponent(slug) };
+  }
+  if (hash.startsWith('#/project/')) {
+    const id = hash.replace('#/project/', '');
+    return { type: 'project', id: decodeURIComponent(id) };
+  }
+  return { type: 'home' };
+}
+
 export default function App() {
+  const [route, setRoute] = useState(() => getRouteFromHash());
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(getRouteFromHash());
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
+    };
+  }, []);
+
+  // Scroll to section when returning to home view
+  useEffect(() => {
+    if (route.type === 'home') {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#') && !hash.startsWith('#/')) {
+        const id = hash.replace('#', '');
+        const elem = document.getElementById(id);
+        if (elem) {
+          setTimeout(() => {
+            elem.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    }
+  }, [route]);
+
+  const handleNavigate = (pageType, param) => {
+    if (pageType === 'projects') {
+      window.location.hash = '#/projects';
+    } else if (pageType === 'faculty') {
+      window.location.hash = `#/faculty/${param}`;
+    } else if (pageType === 'project') {
+      window.location.hash = `#/project/${param}`;
+    } else {
+      window.location.hash = '#projects';
+    }
+  };
+
   const scrollTo = (id) => {
+    if (route.type !== 'home') {
+      window.location.hash = `#${id}`;
+      return;
+    }
     const element = document.getElementById(id);
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Render dedicated full pages if hash matches dedicated route (No Footer on dedicated pages)
+  if (route.type === 'projects') {
+    return (
+      <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+        <GlobalDotField />
+        <ProjectsPage onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  if (route.type === 'faculty') {
+    return (
+      <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+        <GlobalDotField />
+        <FacultyProfilePage slugOrName={route.slug} onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  if (route.type === 'project') {
+    return (
+      <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+        <GlobalDotField />
+        <ProjectDetailsPage projectId={route.id} onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  // Default: Main Single-Page Website
   return (
     <div className="app-main-wrapper bg-[#080808] relative">
       {/* Interactive Video Intro (PC View Only) */}
@@ -58,14 +156,14 @@ export default function App() {
           <AchievementsSection />
         </div>
 
-        {/* 4.5. Academic Projects Showcase */}
+        {/* 4.5. Academic Projects Showcase (Top 4 Priority Projects + VIEW ALL) */}
         <div id="projects" className="bg-neutral-950 border-t border-neutral-800/60">
-          <AcademicProjectsSection />
+          <AcademicProjectsSection onNavigate={handleNavigate} />
         </div>
 
         {/* 5. Faculty & Core Team */}
         <div id="team" className="bg-neutral-950 border-t border-neutral-800/60">
-          <Team />
+          <Team onNavigate={handleNavigate} />
         </div>
 
         <div id="core-team" className="border-t border-neutral-900/80 bg-[#0a0a0a]">

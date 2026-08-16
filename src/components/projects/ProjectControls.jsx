@@ -15,7 +15,7 @@ const TYPE_OPTIONS = [
   'Main Project',
 ];
 
-// Custom Theme-Matched Animated Dropdown (High z-index z-[45] below navbar z-50)
+// Custom Theme-Matched Animated Dropdown (z-40)
 function CustomDropdown({ options, value, onChange, label }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -31,7 +31,7 @@ function CustomDropdown({ options, value, onChange, label }) {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative z-30">
+    <div ref={dropdownRef} className="relative z-40">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -43,7 +43,7 @@ function CustomDropdown({ options, value, onChange, label }) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-48 sm:w-56 bg-white/95 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-2xl p-1.5 z-[45] space-y-1 animate-fadeIn ring-1 ring-black/5">
+        <div className="absolute right-0 top-full mt-2 w-48 sm:w-56 bg-white/95 backdrop-blur-xl border border-neutral-200 rounded-2xl shadow-2xl p-1.5 z-[60] space-y-1 animate-fadeIn ring-1 ring-black/5">
           {options.map((option) => {
             const isSelected = value === option;
             return (
@@ -72,23 +72,47 @@ function CustomDropdown({ options, value, onChange, label }) {
 }
 
 export default function ProjectControls({
-  searchQuery,
+  searchQuery = '',
   setSearchQuery,
-  selectedBatch,
+  onSearchChange,
+  selectedBatch = 'All Batches',
   setSelectedBatch,
-  selectedType,
+  onBatchChange,
+  selectedType = 'All Project Types',
   setSelectedType,
+  onTypeChange,
   onReset,
-  totalCount,
-  filteredCount,
-  isFiltered,
+  onResetFilters,
+  totalCount = 0,
+  filteredCount = 0,
+  isFiltered = false,
 }) {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  const handleSearchChange = (val) => {
+    if (setSearchQuery) setSearchQuery(val);
+    if (onSearchChange) onSearchChange(val);
+  };
+
+  const handleBatchChange = (val) => {
+    if (setSelectedBatch) setSelectedBatch(val);
+    if (onBatchChange) onBatchChange(val);
+  };
+
+  const handleTypeChange = (val) => {
+    if (setSelectedType) setSelectedType(val);
+    if (onTypeChange) onTypeChange(val);
+  };
+
+  const handleReset = () => {
+    if (onReset) onReset();
+    if (onResetFilters) onResetFilters();
+  };
+
   return (
-    <div className="w-full space-y-3">
+    <div className="w-full space-y-3 relative z-40">
       {/* Search & Filter Toolbar Container */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-3 bg-white/90 border border-neutral-200/90 p-3 sm:p-4 rounded-2xl backdrop-blur-md shadow-md">
+      <div className="relative z-40 flex flex-col md:flex-row items-center justify-between gap-3 bg-white/90 border border-neutral-200/90 p-3 sm:p-4 rounded-2xl backdrop-blur-md shadow-md">
         {/* Search Input */}
         <div className="relative w-full md:flex-1">
           <div className="relative flex items-center">
@@ -100,57 +124,53 @@ export default function ProjectControls({
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search projects, students, tech..."
-              className="w-full h-11 pl-10 pr-9 bg-neutral-100/80 border border-neutral-300 focus:border-red-600 focus:bg-white rounded-xl text-neutral-900 text-xs sm:text-sm placeholder-neutral-500 outline-none transition-all focus:ring-2 focus:ring-red-600/20 font-sans"
-              aria-label="Search academic projects"
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search projects by title, tech stack, guide, or student name..."
+              className="w-full bg-neutral-100 border border-neutral-300 focus:border-red-600 focus:bg-white text-neutral-900 placeholder-neutral-500 font-sans text-sm rounded-xl pl-10 pr-10 py-2.5 outline-none transition-all"
             />
             {searchQuery && (
               <button
                 type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 p-1 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-200 transition-all cursor-pointer"
-                aria-label="Clear search"
+                onClick={() => handleSearchChange('')}
+                className="absolute right-3 text-neutral-400 hover:text-neutral-700 p-1 cursor-pointer"
+                aria-label="Clear search query"
               >
-                <X size={14} aria-hidden="true" />
+                <X size={15} />
               </button>
             )}
           </div>
         </div>
 
-        {/* Desktop Custom Dropdowns (≥ 768px - z-[45]) */}
-        <div className="hidden md:flex items-center gap-3 shrink-0">
-          {/* Custom Batch Filter Dropdown */}
+        {/* Desktop Filter Dropdowns */}
+        <div className="hidden md:flex items-center gap-2.5 shrink-0">
           <CustomDropdown
-            label="Batch Year"
             options={BATCH_OPTIONS}
             value={selectedBatch}
-            onChange={setSelectedBatch}
+            onChange={handleBatchChange}
+            label="Batch"
           />
 
-          {/* Custom Project Type Filter Dropdown */}
           <CustomDropdown
-            label="Project Type"
             options={TYPE_OPTIONS}
             value={selectedType}
-            onChange={setSelectedType}
+            onChange={handleTypeChange}
+            label="Project Type"
           />
 
-          {/* Reset Action */}
           {isFiltered && (
             <button
               type="button"
-              onClick={onReset}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-red-200 bg-red-50 text-red-600 hover:bg-red-600 hover:text-white font-mono text-xs font-bold uppercase transition-all cursor-pointer shrink-0 shadow-sm active:scale-95"
-              aria-label="Reset filters"
+              onClick={handleReset}
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-red-100 border border-red-300 text-red-700 hover:bg-red-600 hover:text-white font-mono text-xs font-bold transition-all shadow-sm cursor-pointer"
+              title="Reset search and filters"
             >
-              <RotateCcw size={13} aria-hidden="true" />
+              <RotateCcw size={14} aria-hidden="true" />
               <span>Reset</span>
             </button>
           )}
         </div>
 
-        {/* Mobile Filter Toggle Button (< 768px) */}
+        {/* Mobile Filter Toggle Button */}
         <div className="flex md:hidden items-center justify-between w-full pt-1">
           <button
             type="button"
@@ -165,14 +185,15 @@ export default function ProjectControls({
             <ChevronDown size={14} className={`transition-transform duration-200 ${mobileFilterOpen ? 'rotate-180 text-red-600' : ''}`} />
           </button>
 
-          {/* Mobile Counter */}
-          <div className="text-[11px] font-mono font-bold text-neutral-600">
-            <span className="text-neutral-950 font-extrabold">{filteredCount}</span> / {totalCount} Projects
-          </div>
+          {totalCount > 0 && (
+            <div className="text-[11px] font-mono font-bold text-neutral-600">
+              <span className="text-neutral-950 font-extrabold">{filteredCount}</span> / {totalCount} Projects
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Mobile Expandable Custom Dropdown Panel (z-[45]) */}
+      {/* Mobile Expandable Panel */}
       {mobileFilterOpen && (
         <div className="relative z-[45] flex flex-col md:hidden gap-3.5 bg-white border border-neutral-200 p-4 rounded-2xl shadow-xl animate-fadeIn">
           <div className="space-y-1.5">
@@ -184,7 +205,7 @@ export default function ProjectControls({
                 <button
                   key={opt}
                   type="button"
-                  onClick={() => setSelectedBatch(opt)}
+                  onClick={() => handleBatchChange(opt)}
                   className={`px-3 py-2 rounded-xl font-mono text-xs font-bold text-center transition-all ${
                     selectedBatch === opt
                       ? 'bg-red-600 text-white shadow-sm'
@@ -206,7 +227,7 @@ export default function ProjectControls({
                 <button
                   key={opt}
                   type="button"
-                  onClick={() => setSelectedType(opt)}
+                  onClick={() => handleTypeChange(opt)}
                   className={`px-3 py-2 rounded-xl font-mono text-xs font-bold text-center transition-all ${
                     selectedType === opt
                       ? 'bg-red-600 text-white shadow-sm'
@@ -222,7 +243,7 @@ export default function ProjectControls({
           {isFiltered && (
             <button
               type="button"
-              onClick={onReset}
+              onClick={handleReset}
               className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl border border-red-200 bg-red-50 text-red-600 font-mono text-xs font-bold uppercase transition-all cursor-pointer mt-1"
             >
               <RotateCcw size={13} aria-hidden="true" />

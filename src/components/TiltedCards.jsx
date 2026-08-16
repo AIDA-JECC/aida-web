@@ -1,244 +1,304 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Trophy, Rocket, Scale, Layers, ArrowRight } from 'lucide-react';
+import { Briefcase, Trophy, Rocket, Users, ArrowRight, ArrowUpRight, Layers } from 'lucide-react';
 
 const pillars = [
   {
+    id: 1,
     num: "01",
-    tag: "HANDS-ON LABS",
-    title: "Hands-on AI Research",
-    desc: "Jump right into deep learning, computer vision, and GPU-accelerated PyTorch labs.",
-    icon: Cpu,
-    bgStyle: "bg-gradient-to-br from-red-600 via-red-700 to-red-950 text-white border border-red-500/50 shadow-2xl",
-    stackedRotate: -5,
-    stackedX: -14,
-    stackedY: -16,
-    stackedScale: 0.93,
-    zIndex: 10,
-    accentColor: "text-red-300"
+    tag: "SERVICES PROVIDED",
+    title: "Services We Provide",
+    desc: "Cutting-edge AI research, hands-on training, and innovative solutions tailored to empower the next generation.",
+    icon: Briefcase,
+    accentColor: "text-red-500",
+    numColor: "text-red-500",
+    badgeBg: "bg-red-950/80 border border-red-600/60 text-red-400",
+    lineBg: "bg-red-600",
+    bgStyle: "bg-gradient-to-b from-[#320606] via-[#1f0303] to-[#0e0101] border border-red-600/70 text-white",
+    dotColor: "#ef4444",
+    btnText: "What We Do",
+    btnIcon: ArrowRight,
+    btnStyle: "bg-red-600 hover:bg-red-700 text-white shadow-sm",
+    targetSection: "about",
   },
   {
+    id: 2,
     num: "02",
     tag: "NATIONAL HACKATHONS",
     title: "Competitive Hackathons",
     desc: "Begin with NEOPHYTE, then build further through TINK-HER-HACK team challenges and mentorship.",
     icon: Trophy,
-    bgStyle: "bg-white/8 backdrop-blur-xl border border-white/10 text-white shadow-2xl ring-1 ring-inset ring-white/5",
-    stackedRotate: 4,
-    stackedX: 10,
-    stackedY: -6,
-    stackedScale: 0.95,
-    zIndex: 20,
-    accentColor: "text-red-400"
+    accentColor: "text-neutral-400",
+    numColor: "text-white",
+    badgeBg: "bg-neutral-900/90 border border-neutral-700 text-neutral-200",
+    lineBg: "bg-white",
+    bgStyle: "bg-gradient-to-b from-[#18181b] via-[#111113] to-[#09090b] border border-neutral-800 text-white",
+    dotColor: "#e5e5e5",
+    btnText: "Join the Challenge",
+    btnIcon: ArrowRight,
+    btnStyle: "bg-white hover:bg-neutral-100 text-neutral-950 shadow-sm",
+    targetSection: "events",
   },
   {
+    id: 3,
     num: "03",
     tag: "SKILL BOOTCAMPS",
     title: "Industry Skill Bootcamps",
     desc: "Explore Web3, blockchain, AI and the metaverse, and cybersecurity through documented hands-on sessions.",
     icon: Rocket,
-    bgStyle: "bg-white/5 backdrop-blur-xl border border-white/10 text-white shadow-2xl ring-1 ring-inset ring-white/5",
-    stackedRotate: -3,
-    stackedX: -8,
-    stackedY: 4,
-    stackedScale: 0.98,
-    zIndex: 30,
-    accentColor: "text-neutral-300"
+    accentColor: "text-red-500",
+    numColor: "text-red-500",
+    badgeBg: "bg-red-950/60 border border-red-600/60 text-red-500",
+    lineBg: "bg-red-600",
+    bgStyle: "bg-gradient-to-b from-[#18181b] via-[#111113] to-[#09090b] border border-neutral-800 text-white relative overflow-hidden",
+    dotColor: "#ef4444",
+    hasRedWave: true,
+    btnText: "Level Up",
+    btnIcon: ArrowUpRight,
+    btnStyle: "bg-[#ef4444] hover:bg-red-600 text-white shadow-sm",
+    targetSection: "events",
   },
   {
+    id: 4,
     num: "04",
-    tag: "ETHICAL LEADERSHIP",
-    title: "Ethical Governance",
-    desc: "Focusing on responsible AI development, bias mitigation, data privacy, and KTU credits.",
-    icon: Scale,
-    bgStyle: "bg-[#f5f5f0] text-neutral-950 border border-white/80 shadow-2xl",
-    stackedRotate: 5,
-    stackedX: 12,
-    stackedY: 16,
-    stackedScale: 1.0,
-    zIndex: 40,
-    accentColor: "text-red-600"
+    tag: "PLACEMENTS & INTERNSHIPS",
+    title: "Placements & Internships",
+    desc: "Connecting talent with top opportunities through strong industry partnerships and career support.",
+    icon: Users,
+    accentColor: "text-neutral-700",
+    numColor: "text-neutral-950",
+    badgeBg: "bg-white border border-neutral-300 text-neutral-900 shadow-sm",
+    lineBg: "bg-red-600",
+    bgStyle: "bg-[#f8f8f6] text-neutral-900 border border-neutral-300",
+    dotColor: "#ef4444",
+    btnText: "Start Your Journey",
+    btnIcon: ArrowRight,
+    btnStyle: "bg-[#18181b] hover:bg-black text-white shadow-sm",
+    targetSection: "verify",
   }
 ];
 
-function PillarCard({ pillar, index, stackedIndex, isScattered }) {
-  const Icon = pillar.icon;
-  const isStacked = index + 1 <= stackedIndex;
-
-  return (
-    <motion.div
-      initial={false}
-      animate={{
-        y: isScattered ? 0 : isStacked ? pillar.stackedY : '80vh',
-        opacity: isStacked || isScattered ? 1 : 0,
-        rotate: isScattered ? 0 : isStacked ? pillar.stackedRotate : 0,
-        x: isScattered ? 0 : isStacked ? pillar.stackedX : 0,
-        scale: isScattered ? 1 : isStacked ? pillar.stackedScale : 0.85,
-        zIndex: isScattered ? 10 : pillar.zIndex,
-      }}
-      transition={{
-        duration: 0.65,
-        ease: [0.33, 1, 0.68, 1],
-        delay: isScattered
-          ? index * 0.12
-          : isStacked
-          ? index * 0.48 // Staggered entrance over 2.5s total
-          : (3 - index) * 0.48, // Staggered down/exit over 2.5s total
-      }}
-      style={{
-        willChange: 'transform, opacity',
-        transformStyle: 'preserve-3d',
-      }}
-      className={`
-        ${isScattered ? 'relative w-full h-full min-h-[310px]' : 'absolute inset-0 w-full h-full'}
-        rounded-3xl p-6 sm:p-7 flex flex-col justify-between select-none
-        transition-shadow duration-300 group
-        hover:z-50 hover:shadow-2xl hover:-translate-y-2
-        ${pillar.bgStyle}
-      `}
-    >
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-mono text-[11px] font-bold tracking-widest uppercase opacity-90">
-            {pillar.tag}
-          </span>
-          <div className="p-2 rounded-xl bg-black/10 backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-            <Icon className={`w-5 h-5 ${pillar.accentColor}`} />
-          </div>
-        </div>
-        <div className="font-mono text-5xl sm:text-6xl font-extrabold leading-none my-3 tracking-tight drop-shadow-sm">
-          {pillar.num}
-        </div>
-      </div>
-
-      <div>
-        <h3 className="font-sans font-extrabold text-xl mb-2 tracking-tight group-hover:text-red-500 transition-colors duration-300">
-          {pillar.title}
-        </h3>
-        <p className="text-xs sm:text-sm leading-relaxed opacity-85 font-normal">
-          {pillar.desc}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function TiltedCards() {
-  const [stackedIndex, setStackedIndex] = useState(1);
-  const [isScattered, setIsScattered] = useState(false);
-  const sectionRef = useRef(null);
-  const hasAnimatedRef = useRef(false);
+  const [activeStep, setActiveStep] = useState(1);
+  const cardRefs = useRef([]);
 
-  // Automatic entrance animation: cards stack one by one over 2.5s when section enters view
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return undefined;
+  const handleStepClick = (step) => {
+    setActiveStep(step);
+    const targetCard = cardRefs.current[step - 1];
+    if (targetCard) {
+      targetCard.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimatedRef.current) {
-          hasAnimatedRef.current = true;
-          // Sequence from step 1 to step 4 over 2.5 seconds
-          const t1 = setTimeout(() => setStackedIndex(2), 625);
-          const t2 = setTimeout(() => setStackedIndex(3), 1250);
-          const t3 = setTimeout(() => setStackedIndex(4), 1875);
-          return () => {
-            clearTimeout(t1);
-            clearTimeout(t2);
-            clearTimeout(t3);
-          };
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  const handleActionClick = (e, targetSection) => {
+    e.stopPropagation();
+    const elem = document.getElementById(targetSection);
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
-      ref={sectionRef}
+      id="pillars"
       className="relative bg-neutral-950 py-16 sm:py-24 flex flex-col justify-center items-center overflow-hidden select-none"
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-        {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-mono text-xs tracking-widest uppercase mb-3">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center space-y-8">
+        {/* Header Section */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-mono text-xs tracking-widest uppercase mb-1">
             <Layers size={14} className="text-red-500 animate-pulse" />
             <span>• OUR CORE PILLARS</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-center text-white tracking-tight">
-            Pioneering Data &amp; Intelligence
+          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-center text-white tracking-tight leading-tight">
+            Pioneering Data &amp; <span className="text-red-600 italic">Intelligence</span>
           </h2>
+          <p className="text-neutral-400 text-xs sm:text-sm md:text-base font-sans max-w-2xl mx-auto">
+            Four foundational pillars driving innovation, research, hackathons, industry bootcamps, and career success.
+          </p>
         </div>
 
-        {/* Control Toolbar */}
-        <div className="flex items-center gap-2 mb-8 bg-neutral-900/90 border border-neutral-800/80 p-2 rounded-full shadow-xl backdrop-blur-md">
-          {/* Step Buttons 1, 2, 3, 4 */}
-          <div className="flex items-center gap-1.5 px-1">
+        {/* Top Rounded Pill Navigation Bar (Matching exact Crimson Red active button from screenshot) */}
+        <div className="flex items-center gap-3 bg-[#111113]/95 border border-neutral-800 px-3.5 py-2 rounded-full shadow-2xl backdrop-blur-xl z-30">
+          <div className="flex items-center gap-2 px-1">
             {[1, 2, 3, 4].map((step) => (
               <button
                 key={step}
                 type="button"
-                onClick={() => {
-                  setStackedIndex(step);
-                  setIsScattered(false);
-                }}
+                onClick={() => handleStepClick(step)}
                 className={`w-9 h-9 rounded-full font-mono text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                  !isScattered && step <= stackedIndex
-                    ? 'bg-red-600 text-white shadow-lg scale-105 ring-2 ring-red-500/40'
-                    : 'bg-neutral-800/80 text-neutral-400 hover:bg-neutral-800 hover:text-white'
+                  step === activeStep
+                    ? 'bg-red-600 text-white shadow-[0_0_18px_rgba(220,38,38,0.7)] scale-105 font-extrabold ring-2 ring-red-500/40'
+                    : 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-800 hover:text-white'
                 }`}
-                aria-label={`Show stack level ${step}`}
+                aria-label={`Select pillar card ${step}`}
               >
                 {step}
               </button>
             ))}
           </div>
-
-          {/* Scatter Button with -> Icon */}
-          {!isScattered && (
-            <div className="hidden lg:flex items-center pl-1 border-l border-neutral-800">
-              <button
-                type="button"
-                onClick={() => setIsScattered(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-800 hover:bg-red-600 text-white font-mono text-xs font-bold transition-all duration-300 shadow-md cursor-pointer group"
-                title="Scatter all cards horizontally"
-              >
-                <span>SCATTER ALL</span>
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300 text-red-400 group-hover:text-white" />
-              </button>
-            </div>
-          )}
         </div>
 
-        {/* Cards Stage Container */}
-        <div
-          className={`transition-all duration-500 ease-out ${
-            isScattered
-              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl mx-auto'
-              : 'relative max-w-sm sm:max-w-md w-full h-[360px] sm:h-[380px] mx-auto'
-          }`}
-        >
-          {pillars.map((pillar, idx) => (
-            <PillarCard
-              key={pillar.num}
-              pillar={pillar}
-              index={idx}
-              stackedIndex={stackedIndex}
-              isScattered={isScattered}
-            />
-          ))}
+        {/* Responsive Grid & Mobile Smooth Carousel Container with Equal Spacing */}
+        <div className="w-full">
+          {/* Mobile Horizontal Snap View (< 768px) with Equal Spacing */}
+          <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory space-x-5 py-4 px-4 scrollbar-none w-full">
+            {pillars.map((pillar, idx) => {
+              const Icon = pillar.icon;
+              const BtnIcon = pillar.btnIcon;
+              const isActive = idx + 1 === activeStep;
+
+              return (
+                <div
+                  key={pillar.id}
+                  ref={(el) => (cardRefs.current[idx] = el)}
+                  onClick={() => setActiveStep(idx + 1)}
+                  className={`relative overflow-hidden snap-center shrink-0 w-[88vw] max-w-[330px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer transition-all duration-300 ${
+                    isActive ? 'ring-2 ring-red-600/80 shadow-lg' : 'opacity-90'
+                  } ${pillar.bgStyle}`}
+                >
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between gap-2 mb-5">
+                      <span className={`font-mono text-[11px] font-bold tracking-widest uppercase ${pillar.accentColor}`}>
+                        {pillar.tag}
+                      </span>
+                      <div className={`p-2.5 rounded-2xl ${pillar.badgeBg} backdrop-blur-md shrink-0`}>
+                        <Icon className="w-5 h-5" aria-hidden="true" />
+                      </div>
+                    </div>
+
+                    <div className={`font-mono text-6xl font-extrabold leading-none tracking-tight ${pillar.numColor}`}>
+                      {pillar.num}
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 space-y-3.5 mt-5">
+                    <h3 className="font-sans font-extrabold text-xl tracking-tight leading-snug">
+                      {pillar.title}
+                    </h3>
+
+                    <div className={`w-10 h-1 rounded-full ${pillar.lineBg}`} />
+
+                    <p className="text-xs leading-relaxed opacity-85 font-sans font-normal">
+                      {pillar.desc}
+                    </p>
+
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={(e) => handleActionClick(e, pillar.targetSection)}
+                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 cursor-pointer active:scale-95 ${pillar.btnStyle}`}
+                      >
+                        <span>{pillar.btnText}</span>
+                        <BtnIcon size={14} aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {pillar.hasRedWave && (
+                    <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-red-600/35 via-red-900/10 to-transparent pointer-events-none z-0" />
+                  )}
+
+                  {/* Dot Matrix Decorative SVG Pattern (Strictly trapped inside rounded card border via overflow-hidden) */}
+                  <svg className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none opacity-25 z-0" viewBox="0 0 100 100" fill="none">
+                    <pattern id={`dots-mobile-${pillar.num}`} x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+                      <circle cx="3.5" cy="3.5" r="1.6" fill={pillar.dotColor} />
+                    </pattern>
+                    <rect width="100" height="100" fill={`url(#dots-mobile-${pillar.num})`} />
+                  </svg>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop Standard 4-Column Grid (≥ 768px) with Equal Spacing */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 w-full max-w-7xl mx-auto items-stretch">
+            {pillars.map((pillar, idx) => {
+              const Icon = pillar.icon;
+              const BtnIcon = pillar.btnIcon;
+              const isActive = idx + 1 === activeStep;
+
+              return (
+                <motion.div
+                  key={pillar.id}
+                  ref={(el) => (cardRefs.current[idx] = el)}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  onClick={() => setActiveStep(idx + 1)}
+                  className={`
+                    relative overflow-hidden w-full h-full min-h-[420px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer
+                    transition-all duration-300 group hover:-translate-y-1.5
+                    ${isActive ? 'ring-2 ring-red-600/70 shadow-lg' : ''}
+                    ${pillar.bgStyle}
+                  `}
+                >
+                  {/* Top Header Row: Tag & Icon Badge */}
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between gap-2 mb-6">
+                      <span className={`font-mono text-[11px] font-bold tracking-widest uppercase ${pillar.accentColor}`}>
+                        {pillar.tag}
+                      </span>
+                      <div className={`p-2.5 rounded-2xl ${pillar.badgeBg} backdrop-blur-md group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                        <Icon className="w-5 h-5" aria-hidden="true" />
+                      </div>
+                    </div>
+
+                    {/* Giant Number */}
+                    <div className={`font-mono text-6xl sm:text-7xl font-extrabold leading-none tracking-tight ${pillar.numColor}`}>
+                      {pillar.num}
+                    </div>
+                  </div>
+
+                  {/* Bottom Content: Title, Underline Bar, Description & Action Button */}
+                  <div className="relative z-10 space-y-4 mt-4">
+                    <h3 className="font-sans font-extrabold text-xl sm:text-2xl tracking-tight leading-snug">
+                      {pillar.title}
+                    </h3>
+
+                    {/* Accent Underline Bar */}
+                    <div className={`w-10 h-1 rounded-full ${pillar.lineBg}`} />
+
+                    <p className="text-xs sm:text-sm leading-relaxed opacity-85 font-sans font-normal">
+                      {pillar.desc}
+                    </p>
+
+                    {/* Action Button */}
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={(e) => handleActionClick(e, pillar.targetSection)}
+                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 cursor-pointer active:scale-95 ${pillar.btnStyle}`}
+                      >
+                        <span>{pillar.btnText}</span>
+                        <BtnIcon size={14} aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Subdued Red Wave Graphic Overlay for Card 03 */}
+                  {pillar.hasRedWave && (
+                    <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-red-600/35 via-red-900/10 to-transparent pointer-events-none z-0" />
+                  )}
+
+                  {/* Bottom-Right Subdued Dot Matrix Decorative SVG Pattern */}
+                  <svg className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none opacity-25 z-0" viewBox="0 0 100 100" fill="none">
+                    <pattern id={`dots-standard-${pillar.num}`} x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+                      <circle cx="3.5" cy="3.5" r="1.6" fill={pillar.dotColor} />
+                    </pattern>
+                    <rect width="100" height="100" fill={`url(#dots-standard-${pillar.num})`} />
+                  </svg>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-
-
-
-
-
-

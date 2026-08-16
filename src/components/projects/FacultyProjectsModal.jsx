@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import SafeImage from '../ui/SafeImage';
-import { getProjectsByFaculty, matchesProjectSearch } from '../../utils/projectHelpers';
+import { getProjectsByFaculty, matchesProjectSearch, sortProjectsByPriority } from '../../utils/projectHelpers';
 import { academicProjectsData } from '../../data/academicProjectsData';
 import ProjectControls from './ProjectControls';
 import ProjectCard from './ProjectCard';
 import ProjectEmptyState from './ProjectEmptyState';
-import { X, FolderGit2 } from 'lucide-react';
+import { X, FolderGit2, Mail } from 'lucide-react';
+import LinkedinIcon from '../ui/LinkedinIcon';
 
 // Typewriter Heading Component for Faculty Name
 function TypewriterFacultyName({ name }) {
@@ -46,10 +47,11 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
   const [selectedBatch, setSelectedBatch] = useState('All Batches');
   const [selectedType, setSelectedType] = useState('All Project Types');
 
-  // Lock body scroll while modal is active
+  // Lock body scroll and add modal-open class while modal is active
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -58,6 +60,7 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
 
     return () => {
       document.body.style.overflow = originalStyle || 'auto';
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
@@ -69,7 +72,7 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
 
   // Filter guided projects dynamically
   const filteredGuidedProjects = useMemo(() => {
-    return allGuidedProjects.filter((project) => {
+    const list = allGuidedProjects.filter((project) => {
       if (searchQuery && !matchesProjectSearch(project, searchQuery)) {
         return false;
       }
@@ -81,6 +84,7 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
       }
       return true;
     });
+    return sortProjectsByPriority(list);
   }, [allGuidedProjects, searchQuery, selectedBatch, selectedType]);
 
   const isFiltered =
@@ -100,7 +104,7 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
       aria-modal="true"
       role="dialog"
@@ -152,6 +156,28 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
               <p className="text-neutral-500 font-sans text-xs pt-1">
                 Department of Artificial Intelligence & Data Science (AIDA)
               </p>
+
+              {/* Social & Contact Icons */}
+              <div className="flex items-center justify-center sm:justify-start gap-2.5 pt-2.5">
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="p-2 rounded-xl bg-neutral-100 border border-neutral-300 text-neutral-700 hover:text-red-600 hover:border-red-500 hover:bg-red-50 transition-all shadow-sm cursor-pointer"
+                  title="LinkedIn Profile"
+                  aria-label={`${faculty.name} LinkedIn Profile`}
+                >
+                  <LinkedinIcon size={16} aria-hidden="true" />
+                </a>
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="p-2 rounded-xl bg-neutral-100 border border-neutral-300 text-neutral-700 hover:text-red-600 hover:border-red-500 hover:bg-red-50 transition-all shadow-sm cursor-pointer"
+                  title="Email Address"
+                  aria-label={`${faculty.name} Email`}
+                >
+                  <Mail size={16} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
 

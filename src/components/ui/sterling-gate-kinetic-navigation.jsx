@@ -195,6 +195,26 @@ export function SterlingGateKineticNavigation({
     });
   }, [activeSection, hoveredShape, isActive]);
 
+  // Continuous scroll-based interactive rotation for the plus icon (Clockwise down, Anti-clockwise up)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isActive) return;
+      const currentScrollY = window.scrollY;
+      const menuButtonIcon = containerRef.current?.querySelector(".menu-button-icon");
+      if (menuButtonIcon) {
+        const rotationAngle = currentScrollY * 0.45;
+        gsap.set(menuButtonIcon, { rotate: rotationAngle, transformOrigin: "center center" });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isActive]);
+
   // 5. Keyboard Escape key handling
   useEffect(() => {
     const handleEsc = (e) => {
@@ -224,7 +244,7 @@ export function SterlingGateKineticNavigation({
   return (
     <div ref={containerRef} className="block">
       {/* Fixed Header Bar with Floating Trigger Button */}
-      <div className="fixed right-4 sm:right-8 top-5 z-50 pointer-events-auto">
+      <div className="fixed right-4 sm:right-8 top-5 z-[9999] pointer-events-auto">
         <button
           type="button"
           onClick={toggleMenu}

@@ -7,8 +7,8 @@ import { facultyData } from '../data/facultyData';
 export function normalizeName(name) {
   if (!name || typeof name !== 'string') return '';
   return name
-    .replace(/^(Dr|Prof|Mr|Mrs|Ms|Er)\.?\s+/i, '')
-    .replace(/[^a-zA-Z0-9\s]/g, '')
+    .replace(/^(Dr|Prof|Mr|Mrs|Ms|Er)\.?\s*/gi, '')
+    .replace(/[^a-zA-Z0-9]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
@@ -21,27 +21,57 @@ export function findFacultyByGuideName(guideName) {
   if (!guideName) return null;
   const target = normalizeName(guideName);
   if (!target) return null;
+  const targetTokens = target.split(' ').filter(Boolean);
 
   return (
     facultyData.find((f) => {
       const fName = normalizeName(f.name);
-      return fName === target || fName.includes(target) || target.includes(fName);
+      if (fName === target || fName.includes(target) || target.includes(fName)) return true;
+      const fTokens = fName.split(' ').filter(Boolean);
+      return fTokens.some((t) => t.length > 3 && targetTokens.includes(t));
     }) || null
   );
 }
 
+const PROJECT_TYPE_PRIORITY = {
+  'Main Project': 1,
+  'Mini Project': 2,
+  'Micro Project': 3,
+};
+
 /**
- * Filters projects guided by a specific faculty member.
+ * Sorts projects array so that Main Projects always take top priority,
+ * followed by Mini Projects, Micro Projects, and others.
+ */
+export function sortProjectsByPriority(projects = []) {
+  if (!Array.isArray(projects)) return [];
+  return [...projects].sort((a, b) => {
+    const priorityA = PROJECT_TYPE_PRIORITY[a.projectType] ?? 99;
+    const priorityB = PROJECT_TYPE_PRIORITY[b.projectType] ?? 99;
+    return priorityA - priorityB;
+  });
+}
+
+/**
+ * Filters projects guided by a specific faculty member and sorts them by priority.
  */
 export function getProjectsByFaculty(facultyName, allProjects = []) {
   if (!facultyName) return [];
   const targetNorm = normalizeName(facultyName);
+  if (!targetNorm) return [];
+  const targetTokens = targetNorm.split(' ').filter(Boolean);
 
-  return allProjects.filter((project) => {
+  const matched = allProjects.filter((project) => {
     if (!project.guideName) return false;
     const guideNorm = normalizeName(project.guideName);
-    return guideNorm === targetNorm || guideNorm.includes(targetNorm) || targetNorm.includes(guideNorm);
+    if (guideNorm === targetNorm || guideNorm.includes(targetNorm) || targetNorm.includes(guideNorm)) {
+      return true;
+    }
+    const guideTokens = guideNorm.split(' ').filter(Boolean);
+    return guideTokens.some((gt) => gt.length > 3 && targetTokens.includes(gt));
   });
+
+  return sortProjectsByPriority(matched);
 }
 
 /**

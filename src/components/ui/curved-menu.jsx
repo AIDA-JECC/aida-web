@@ -199,7 +199,7 @@ const CurvedNavbar = ({ setIsActive, navItems, footer, onSelect, activeSection }
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-[100dvh] w-[90vw] sm:w-[420px] md:w-[480px] lg:w-[520px] fixed right-0 top-0 z-40 bg-[#f5f5f0] shadow-[0_0_60px_rgba(0,0,0,0.3)] text-neutral-950 border-l border-neutral-300/80 overflow-hidden flex flex-col justify-between"
+      className="h-[100dvh] w-[90vw] sm:w-[420px] md:w-[480px] lg:w-[520px] fixed right-0 top-0 z-[9992] bg-[#f5f5f0] shadow-[0_0_60px_rgba(0,0,0,0.3)] text-neutral-950 border-l border-neutral-300/80 overflow-hidden flex flex-col justify-between"
     >
       <div className="h-full pt-12 sm:pt-14 flex flex-col justify-between overflow-y-auto">
         <div className="flex flex-col gap-2 px-6 sm:px-10 md:px-12">
@@ -282,7 +282,7 @@ export default function CurvedHeader({
           type="button"
           onClick={() => setIsActive(!isActive)}
           aria-label="Toggle Navigation Menu"
-          className="fixed right-4 sm:right-8 top-5 z-50 h-11 px-4 sm:px-5 rounded-full flex items-center gap-3 cursor-pointer bg-neutral-950/90 border border-red-900/50 shadow-2xl backdrop-blur-xl text-white hover:border-red-600 hover:shadow-[0_0_25px_rgba(229,9,20,0.5)] hover:scale-[1.05] active:scale-95 transition-all duration-300"
+          className="fixed right-4 sm:right-8 top-5 z-[9999] h-11 px-4 sm:px-5 rounded-full flex items-center gap-3 cursor-pointer bg-neutral-950/90 border border-red-900/50 shadow-2xl backdrop-blur-xl text-white hover:border-red-600 hover:shadow-[0_0_25px_rgba(229,9,20,0.5)] hover:scale-[1.05] active:scale-95 transition-all duration-300"
         >
           {/* Static Current Section Name + Small Space + Icon when CLOSED; Icon only when OPEN */}
           {!isActive && (
@@ -319,7 +319,7 @@ export default function CurvedHeader({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsActive(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 pointer-events-auto cursor-pointer"
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs z-[9990] pointer-events-auto cursor-pointer"
             />
             <CurvedNavbar
               setIsActive={setIsActive}

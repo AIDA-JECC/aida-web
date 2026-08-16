@@ -66,6 +66,7 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -80,6 +81,7 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
 
     return () => {
       document.body.style.overflow = originalStyle || 'auto';
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose, showImageLightbox]);
@@ -89,8 +91,16 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
 
   const handleGuideClick = () => {
     onClose();
-    if (matchedFaculty && onSelectFaculty) {
-      onSelectFaculty(matchedFaculty);
+    if (onSelectFaculty) {
+      const facultyToPass = matchedFaculty || {
+        slug: guideName.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+        name: guideName,
+        designation: 'Faculty Supervisor',
+        group: 'Faculty Member',
+        initials: guideName.replace(/^(Dr|Prof|Mr|Mrs|Ms|Er)\.?\s*/i, '').slice(0, 2).toUpperCase(),
+        img: null,
+      };
+      onSelectFaculty(facultyToPass);
     }
   };
 
@@ -100,7 +110,7 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
   return (
     <>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+        className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
         onClick={onClose}
         aria-modal="true"
         role="dialog"
@@ -138,14 +148,15 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
                   initials={title.substring(0, 2).toUpperCase()}
                   className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-3 left-3 bg-black/85 backdrop-blur-md text-red-400 font-mono text-xs font-semibold px-3 py-1 rounded-full border border-neutral-800 flex items-center gap-1.5 z-10 shadow-md">
-                  <ImageIcon size={13} aria-hidden="true" />
-                  <span>Working Demo Image</span>
-                </div>
-
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-mono text-xs font-bold uppercase tracking-wider backdrop-blur-[2px] z-20">
-                  <ZoomIn size={20} className="text-red-500" />
-                  <span>Click Preview</span>
+                
+                {/* Standalone Red Preview Icon on Top Left of Demo Image */}
+                <div
+                  onClick={(e) => { e.stopPropagation(); setShowImageLightbox(true); }}
+                  className="absolute top-3 left-3 z-30 p-2 rounded-xl bg-neutral-950/85 backdrop-blur-md border border-red-600/40 text-red-600 hover:text-red-500 hover:scale-110 hover:border-red-500 transition-all shadow-lg cursor-pointer"
+                  title="Preview Full Image"
+                  aria-label="Preview full demo image"
+                >
+                  <ZoomIn size={18} className="text-red-600" aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -221,39 +232,36 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
                           />
                         </div>
                       ) : (
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-neutral-100 flex items-center justify-center font-serif text-sm sm:text-base font-bold text-red-600 border border-neutral-300 shrink-0">
-                          {matchedFaculty?.initials || 'FC'}
+                        <div
+                          onClick={handleGuideClick}
+                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-neutral-100 flex items-center justify-center font-serif text-sm sm:text-base font-bold text-red-600 border border-neutral-300 shrink-0 cursor-pointer hover:border-red-600"
+                        >
+                          {matchedFaculty?.initials || guideName.slice(0, 2).toUpperCase()}
                         </div>
                       )}
 
                       <div>
                         <span className="text-[11px] text-neutral-500 block font-mono">Faculty Supervisor</span>
-                        {matchedFaculty ? (
-                          <button
-                            type="button"
-                            onClick={handleGuideClick}
-                            className="font-serif font-bold text-base sm:text-lg text-neutral-900 hover:text-red-600 underline underline-offset-4 transition-colors cursor-pointer text-left"
-                          >
-                            {guideName}
-                          </button>
-                        ) : (
-                          <span className="font-serif font-bold text-base sm:text-lg text-neutral-900">{guideName}</span>
-                        )}
+                        <button
+                          type="button"
+                          onClick={handleGuideClick}
+                          className="font-serif font-bold text-base sm:text-lg text-neutral-900 hover:text-red-600 underline underline-offset-4 transition-colors cursor-pointer text-left"
+                        >
+                          {guideName}
+                        </button>
                         {matchedFaculty?.designation && matchedFaculty.designation !== matchedFaculty.group && (
                           <span className="text-xs text-neutral-600 block font-mono">{matchedFaculty.designation}</span>
                         )}
                       </div>
                     </div>
 
-                    {matchedFaculty && (
-                      <button
-                        type="button"
-                        onClick={handleGuideClick}
-                        className="px-3.5 py-1.5 rounded-xl bg-red-600 border border-red-700 text-white hover:bg-red-700 font-mono text-xs font-bold transition-all cursor-pointer shadow-md shrink-0"
-                      >
-                        Profile →
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={handleGuideClick}
+                      className="px-3.5 py-1.5 rounded-xl bg-red-600 border border-red-700 text-white hover:bg-red-700 font-mono text-xs font-bold transition-all cursor-pointer shadow-md shrink-0"
+                    >
+                      Profile →
+                    </button>
                   </div>
                 </div>
               )}
@@ -314,7 +322,7 @@ export default function ProjectDetailsModal({ project, onClose, onSelectFaculty 
       {/* Fullscreen Working Demo Image Lightbox */}
       {showImageLightbox && (
         <div
-          className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fadeIn"
+          className="fixed inset-0 z-[20000] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fadeIn"
           onClick={() => setShowImageLightbox(false)}
         >
           <button
