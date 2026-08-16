@@ -81,11 +81,51 @@ const pillars = [
 export default function TiltedCards() {
   const [activeStep, setActiveStep] = useState(1);
   const cardRefs = useRef([]);
+  const mobileScrollRef = useRef(null);
+
+  // Sync active step button when user swipes horizontally on mobile
+  const handleMobileScroll = () => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.clientWidth;
+    const scrollWidth = container.scrollWidth;
+    
+    // Find closest card to viewport center
+    let closestIndex = 1;
+    let minDistance = Infinity;
+    const viewportCenter = scrollLeft + containerWidth / 2;
+
+    cardRefs.current.slice(0, 4).forEach((card, idx) => {
+      if (card) {
+        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+        const distance = Math.abs(viewportCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = idx + 1;
+        }
+      }
+    });
+
+    setActiveStep(closestIndex);
+  };
 
   const handleStepClick = (step) => {
     setActiveStep(step);
     const targetCard = cardRefs.current[step - 1];
-    if (targetCard) {
+    const container = mobileScrollRef.current;
+    
+    if (targetCard && container && window.innerWidth < 768) {
+      const containerWidth = container.clientWidth;
+      const cardLeft = targetCard.offsetLeft;
+      const cardWidth = targetCard.clientWidth;
+      const scrollToLeft = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+
+      container.scrollTo({
+        left: scrollToLeft,
+        behavior: 'smooth',
+      });
+    } else if (targetCard) {
       targetCard.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
@@ -145,8 +185,12 @@ export default function TiltedCards() {
 
         {/* Responsive Grid & Mobile Smooth Carousel Container with Equal Spacing */}
         <div className="w-full">
-          {/* Mobile Horizontal Snap View (< 768px) with Card Drop + Sequential Text Entrance */}
-          <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory space-x-5 py-4 px-4 scrollbar-none w-full">
+          {/* Mobile Horizontal Snap View (< 768px) with Real-Time Active Step Tracking */}
+          <div
+            ref={mobileScrollRef}
+            onScroll={handleMobileScroll}
+            className="md:hidden flex overflow-x-auto snap-x snap-mandatory space-x-5 py-4 px-4 scrollbar-none w-full"
+          >
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
               const BtnIcon = pillar.btnIcon;
