@@ -5,6 +5,32 @@ import SterlingGateKineticNavigation from './ui/sterling-gate-kinetic-navigation
 export default function Navbar({ onVerifyClick }) {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const checkModalOpen = () => {
+      setIsModalOpen(document.body.classList.contains('modal-open'));
+    };
+
+    checkModalOpen();
+
+    const handleModalChange = (e) => {
+      if (e.detail && typeof e.detail.isOpen === 'boolean') {
+        setIsModalOpen(e.detail.isOpen);
+      } else {
+        checkModalOpen();
+      }
+    };
+
+    const observer = new MutationObserver(checkModalOpen);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('modal-state-change', handleModalChange);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('modal-state-change', handleModalChange);
+    };
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -58,6 +84,8 @@ export default function Navbar({ onVerifyClick }) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (isModalOpen) return null;
 
   return (
     <>

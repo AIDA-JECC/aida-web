@@ -1,5 +1,6 @@
 import XLSX from 'xlsx';
 import fs from 'fs';
+import path from 'path';
 
 // Helper to normalize batch string
 function normalizeBatch(batchRaw) {
@@ -55,24 +56,54 @@ function parseGoogleDriveUrl(url) {
   return null;
 }
 
-// Helper to resolve cover image path from local /cover page folder or Drive link
-function resolveCoverImage(row) {
-  const localFileName = row['Coverpage Img Names'] || row['Cover Page Img Name'] || row['Coverpage Img Name'];
-  if (localFileName && typeof localFileName === 'string' && localFileName.trim()) {
-    const clean = localFileName.trim();
-    return `/cover page/${encodeURI(clean)}`;
+// Read local folders
+const coverFiles = fs.existsSync('./public/cover page') ? fs.readdirSync('./public/cover page') : [];
+const demoFiles = fs.existsSync('./public/working demo') ? fs.readdirSync('./public/working demo') : [];
+
+function findLocalImage(rawImgName, leaderName, regNumber, files, folderName) {
+  // 1. Direct filename check if rawImgName supplied
+  if (rawImgName && typeof rawImgName === 'string') {
+    const clean = rawImgName.trim().toLowerCase();
+    const match = files.find(f => f.toLowerCase() === clean || f.toLowerCase().replace(/\.[^/.]+$/, '') === clean.replace(/\.[^/.]+$/, ''));
+    if (match) return `/${folderName}/${encodeURIComponent(match)}`;
   }
-  return parseGoogleDriveUrl(row['AI generated project image reflecting your title.(for cover page of your project)'] || row['Cover Image']);
+
+  // 2. Student Name or Register Number match
+  const leaderLower = leaderName ? leaderName.toLowerCase().trim() : '';
+  const regLower = regNumber ? regNumber.toLowerCase().trim().replace(/jec/i, '') : '';
+
+  if (leaderLower || regLower) {
+    const match = files.find(f => {
+      const fl = f.toLowerCase();
+      const matchLeader = leaderLower && leaderLower.length > 3 && fl.includes(leaderLower);
+      const matchReg = regLower && regLower.length > 3 && fl.includes(regLower);
+      return matchLeader || matchReg;
+    });
+
+    if (match) return `/${folderName}/${encodeURIComponent(match)}`;
+  }
+
+  return null;
 }
 
-// Helper to resolve demo image path from local /working demo folder or Drive link
-function resolveDemoImage(row) {
+function resolveCoverImage(row, leaderName, regNumber) {
+  const localFileName = row['Coverpage Img Names'] || row['Cover Page Img Name'] || row['Coverpage Img Name'];
+  const driveUrl = row['AI generated project image reflecting your title.(for cover page of your project)'] || row['Cover Image'];
+  
+  const localMatch = findLocalImage(localFileName, leaderName, regNumber, coverFiles, 'cover page');
+  if (localMatch) return localMatch;
+
+  return parseGoogleDriveUrl(driveUrl);
+}
+
+function resolveDemoImage(row, leaderName, regNumber) {
   const localFileName = row['Demo Img Names'] || row['Demo Img Name'] || row['Demo Img'];
-  if (localFileName && typeof localFileName === 'string' && localFileName.trim()) {
-    const clean = localFileName.trim();
-    return `/working demo/${encodeURI(clean)}`;
-  }
-  return parseGoogleDriveUrl(row['Project Working Demo Image '] || row['Project Working Demo Image'] || row['Demo Image']);
+  const driveUrl = row['Project Working Demo Image '] || row['Project Working Demo Image'] || row['Demo Image'];
+
+  const localMatch = findLocalImage(localFileName, leaderName, regNumber, demoFiles, 'working demo');
+  if (localMatch) return localMatch;
+
+  return parseGoogleDriveUrl(driveUrl);
 }
 
 // Read Excel file
@@ -83,25 +114,23 @@ const rawRows = XLSX.utils.sheet_to_json(sheet);
 console.log(`Processing ${rawRows.length} projects from Excel...`);
 
 const normalizedProjects = rawRows.map((row, index) => {
-  const title = (row['Project Title:'] || row['Project Title'] || 'Untitled Project').trim();
-  const abstract = (row['Project Abstract / Brief Description (up to 500 words):'] || row['Project Abstract'] || '').trim();
+  const title = String(row['Project Title:'] || row['Project Title'] || 'Untitled Project').trim();
+  const abstract = String(row['Project Abstract / Brief Description (up to 500 words):'] || row['Project Abstract'] || '').trim();
   const batch = normalizeBatch(row['Batch year'] || row['Batch']);
   const projectType = normalizeProjectType(row['Project Type:'] || row['Project Type']);
   const techStack = parseTechStack(row['Project Area/ Tech stack (Min 4)'] || row['Tech Stack']);
 
-  const coverImage = resolveCoverImage(row);
-  const demoImage = resolveDemoImage(row);
-
-  const guideName = (row['Project Guide Name:'] || row['Project Guide Name'] || '').trim();
-
-  // Parse Team Members
-  const members = [];
+  const guideName = String(row['Project Guide Name:'] || row['Project Guide Name'] || '').trim();
 
   // Member 1 (Leader)
-  const leaderName = (row['Member 1  (Team Leader Name) :'] || row['Member 1 (Team Leader Name)'] || row['Member 1'] || '').trim();
-  const leaderReg = (row['Register Number'] || row['Register Number 1'] || '').trim();
-  const githubOrEmail = (row['Team Leader Github Username/ Email '] || row['Team Leader Github Username'] || '').trim();
+  const leaderName = String(row['Member 1  (Team Leader Name) :'] || row['Member 1 (Team Leader Name)'] || row['Member 1'] || '').trim();
+  const leaderReg = String(row['Register Number'] || row['Register Number 1'] || '').trim();
+  const githubOrEmail = String(row['Team Leader Github Username/ Email '] || row['Team Leader Github Username'] || '').trim();
 
+  const coverImage = resolveCoverImage(row, leaderName, leaderReg);
+  const demoImage = resolveDemoImage(row, leaderName, leaderReg);
+
+  const members = [];
   if (leaderName) {
     members.push({
       name: leaderName,
@@ -112,8 +141,8 @@ const normalizedProjects = rawRows.map((row, index) => {
 
   // Members 2 through 6
   for (let i = 2; i <= 6; i++) {
-    const mName = (row[`Member ${i}`] || '').trim();
-    const mReg = (row[`Register Number ${i}`] || row[`Register Number${i}`] || '').trim();
+    const mName = String(row[`Member ${i}`] || '').trim();
+    const mReg = String(row[`Register Number ${i}`] || row[`Register Number${i}`] || '').trim();
     if (mName) {
       members.push({
         name: mName,
@@ -149,7 +178,7 @@ const normalizedProjects = rawRows.map((row, index) => {
     members,
     githubUsername,
     githubUrl,
-    contactEmail: row['Email Address'] || null,
+    contactEmail: String(row['Email Address'] || '').trim() || null,
   };
 });
 

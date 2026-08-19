@@ -19,11 +19,19 @@ import IntroVideo from './components/IntroVideo';
 import ProjectsPage from './pages/ProjectsPage';
 import FacultyProfilePage from './pages/FacultyProfilePage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
+import AchievementsPage from './pages/AchievementsPage';
+import EventsPage from './pages/EventsPage';
 
 function getRouteFromHash() {
   const hash = window.location.hash || '';
   if (hash.startsWith('#/projects')) {
     return { type: 'projects' };
+  }
+  if (hash.startsWith('#/events')) {
+    return { type: 'events' };
+  }
+  if (hash.startsWith('#/achievements')) {
+    return { type: 'achievements' };
   }
   if (hash.startsWith('#/faculty/')) {
     const slug = hash.replace('#/faculty/', '');
@@ -72,6 +80,10 @@ export default function App() {
   const handleNavigate = (pageType, param) => {
     if (pageType === 'projects') {
       window.location.hash = '#/projects';
+    } else if (pageType === 'events') {
+      window.location.hash = '#/events';
+    } else if (pageType === 'achievements') {
+      window.location.hash = '#/achievements';
     } else if (pageType === 'faculty') {
       window.location.hash = `#/faculty/${param}`;
     } else if (pageType === 'project') {
@@ -96,6 +108,24 @@ export default function App() {
       <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
         <GlobalDotField />
         <ProjectsPage onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  if (route.type === 'events') {
+    return (
+      <div className="app-main-wrapper bg-[#0e0708] relative min-h-screen">
+        <GlobalDotField />
+        <EventsPage onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  if (route.type === 'achievements') {
+    return (
+      <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+        <GlobalDotField />
+        <AchievementsPage onNavigate={handleNavigate} />
       </div>
     );
   }
@@ -147,13 +177,13 @@ export default function App() {
         <div id="events" className="bg-[#0a0a0a]">
           <YodhaSection />
           <div className="border-t border-neutral-900/80">
-            <EventsSection />
+            <EventsSection onNavigate={handleNavigate} />
           </div>
         </div>
 
         {/* 4. Achievements */}
         <div id="achievements" className="bg-[#080808] border-t border-neutral-800/60">
-          <AchievementsSection />
+          <AchievementsSection onNavigate={handleNavigate} />
         </div>
 
         {/* 4.5. Academic Projects Showcase (Top 4 Priority Projects + VIEW ALL) */}
