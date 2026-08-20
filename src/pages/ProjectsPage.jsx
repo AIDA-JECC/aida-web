@@ -3,6 +3,7 @@ import { academicProjectsData } from '../data/academicProjectsData';
 import ProjectControls from '../components/projects/ProjectControls';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectEmptyState from '../components/projects/ProjectEmptyState';
+import PaginationBar from '../components/ui/PaginationBar';
 import { matchesProjectSearch, sortProjectsByPriority } from '../utils/projectHelpers';
 import { ArrowLeft, Sparkles, FolderGit2 } from 'lucide-react';
 
@@ -10,6 +11,8 @@ export default function ProjectsPage({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBatch, setSelectedBatch] = useState('All Batches');
   const [selectedType, setSelectedType] = useState('All Project Types');
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 12; // 4 rows of 3-column grid
 
   // Scroll to top on page mount
   useEffect(() => {
@@ -32,6 +35,23 @@ export default function ProjectsPage({ onNavigate }) {
     });
     return sortProjectsByPriority(list);
   }, [searchQuery, selectedBatch, selectedType]);
+
+  // Reset page to 1 whenever search or filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedBatch, selectedType]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE) || 1;
+  const paginatedProjects = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProjects, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 250, behavior: 'smooth' });
+  };
 
   const isFiltered =
     searchQuery.trim() !== '' || selectedBatch !== 'All Batches' || selectedType !== 'All Project Types';
@@ -71,7 +91,7 @@ export default function ProjectsPage({ onNavigate }) {
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
               <FolderGit2 size={14} />
-              <span>{academicProjectsData.length} TOTAL PROJECTS</span>
+              <span>ACADEMIC PROJECTS</span>
             </span>
           </div>
         </div>
@@ -85,7 +105,7 @@ export default function ProjectsPage({ onNavigate }) {
             Academic <span className="text-red-600 italic">Projects</span>
           </h1>
           <p className="text-neutral-400 text-sm sm:text-base font-sans leading-relaxed">
-            Explore all {academicProjectsData.length} student innovations, AI models, full-stack systems, and research projects guided by the AIDA faculty at Jyothi Engineering College.
+            Explore student innovations, AI models, full-stack systems, and research projects guided by the AIDA faculty at Jyothi Engineering College.
           </p>
         </div>
       </div>
@@ -101,24 +121,31 @@ export default function ProjectsPage({ onNavigate }) {
           onTypeChange={setSelectedType}
           onResetFilters={handleResetFilters}
           isFiltered={isFiltered}
-          totalCount={academicProjectsData.length}
-          filteredCount={filteredProjects.length}
         />
       </div>
 
       {/* Project Grid */}
       <div className="max-w-7xl mx-auto">
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelectProject={(p) => onNavigate('project', p.id)}
-                onSelectFaculty={(f) => onNavigate('faculty', f.slug || f.name)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {paginatedProjects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onSelectProject={(p) => onNavigate('project', p.id)}
+                  onSelectFaculty={(f) => onNavigate('faculty', f.slug || f.name)}
+                />
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            <PaginationBar
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </>
         ) : (
           <ProjectEmptyState
             searchQuery={searchQuery}

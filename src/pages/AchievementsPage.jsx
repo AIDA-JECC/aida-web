@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { achievementsData } from '../data/achievementsData';
 import AchievementCard from '../components/achievements/AchievementCard';
 import AchievementModal from '../components/achievements/AchievementModal';
+import PaginationBar from '../components/ui/PaginationBar';
 import { ArrowLeft, Search, Sparkles, Code2, GraduationCap, Trophy, X, Layers } from 'lucide-react';
 
 const CATEGORY_TABS = [
@@ -15,6 +16,8 @@ export default function AchievementsPage({ onNavigate }) {
   const [activeTab, setActiveTab] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAchievement, setSelectedAchievement] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 16; // 4 rows of 4-column grid
 
   // Scroll to top on mount
   useEffect(() => {
@@ -29,7 +32,7 @@ export default function AchievementsPage({ onNavigate }) {
         return false;
       }
 
-      // Search Query Filter (Title, Student Name, Register Number, Description, Level, Year)
+      // Search Query Filter
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
         const matchTitle = item.title?.toLowerCase().includes(query);
@@ -47,6 +50,23 @@ export default function AchievementsPage({ onNavigate }) {
       return true;
     });
   }, [activeTab, searchQuery]);
+
+  // Reset page to 1 whenever active tab or search changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab, searchQuery]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredAchievements.length / ITEMS_PER_PAGE) || 1;
+  const paginatedAchievements = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredAchievements.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredAchievements, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 250, behavior: 'smooth' });
+  };
 
   const handleBack = () => {
     if (window.history.length > 1) {
@@ -137,15 +157,24 @@ export default function AchievementsPage({ onNavigate }) {
       {/* Grid of Achievement Cards */}
       <div className="max-w-7xl mx-auto">
         {filteredAchievements.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredAchievements.map((achievement) => (
-              <AchievementCard
-                key={achievement.id}
-                achievement={achievement}
-                onViewDetails={(item) => setSelectedAchievement(item)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {paginatedAchievements.map((achievement) => (
+                <AchievementCard
+                  key={achievement.id}
+                  achievement={achievement}
+                  onViewDetails={(item) => setSelectedAchievement(item)}
+                />
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            <PaginationBar
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </>
         ) : (
           /* Empty Search / Filter State */
           <div className="text-center py-20 px-4 bg-[#0e0e16]/60 border border-neutral-800/80 rounded-3xl max-w-xl mx-auto space-y-4">

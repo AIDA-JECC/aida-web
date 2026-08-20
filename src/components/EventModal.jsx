@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { X, Calendar, MapPin, Tag, ExternalLink } from 'lucide-react';
-import EventArtwork from './EventArtwork';
+import React, { useEffect, useState } from 'react';
+import { X, Calendar, MapPin, Tag, ExternalLink, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import SafeImage from './ui/SafeImage';
 
 export default function EventModal({ event, onClose }) {
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
   useEffect(() => {
     if (event) {
       document.body.classList.add('scroll-locked');
@@ -21,28 +23,87 @@ export default function EventModal({ event, onClose }) {
 
   if (!event) return null;
 
+  // Determine gallery images from eventImages (eventImage folder) or fallback to coverPage / img
+  const galleryImages =
+    event.eventImages && event.eventImages.length > 0
+      ? event.eventImages
+      : event.gallery && event.gallery.length > 0
+      ? event.gallery
+      : [event.coverPage || event.img];
+
+  const currentImage = galleryImages[activeImgIndex] || event.coverPage || event.img;
+  const hasMultipleImages = galleryImages.length > 1;
+
+  const nextImage = () => {
+    setActiveImgIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setActiveImgIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[10000] flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[10000] flex items-center justify-center p-3 sm:p-4 md:p-6 animate-fade-in" onClick={onClose}>
       <div
-        className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-neutral-950 border border-red-900/60 rounded-3xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-neutral-950 border border-red-900/60 rounded-3xl shadow-2xl overflow-hidden custom-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/75 border border-neutral-800 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all cursor-pointer"
+          className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/80 border border-neutral-800 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all cursor-pointer shadow-lg"
           aria-label="Close Modal"
         >
           <X size={20} />
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Modal Image */}
-          <EventArtwork event={event} className="min-h-[360px] md:min-h-[620px]">
-            <span className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full font-mono text-xs font-bold uppercase bg-red-600 text-white shadow-lg">
-              {event.status || 'Completed'}
-            </span>
-          </EventArtwork>
+          {/* Modal Image Container */}
+          <div className="relative min-h-[320px] sm:min-h-[420px] md:min-h-[580px] bg-neutral-950 flex items-center justify-center p-2 sm:p-4 overflow-hidden border-b md:border-b-0 md:border-r border-neutral-850">
+            <SafeImage
+              src={currentImage}
+              alt={`${event.name} photo`}
+              title={event.name}
+              category={event.category || 'EVENT'}
+              className="w-full h-full max-h-[550px] object-contain rounded-2xl"
+            />
+
+            {/* Gallery Navigation Controls if multiple images exist */}
+            {hasMultipleImages && (
+              <>
+                <button
+                  type="button"
+                  onClick={prevImage}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/80 border border-neutral-800 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all cursor-pointer shadow-lg"
+                  aria-label="Previous event photo"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextImage}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/80 border border-neutral-800 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-all cursor-pointer shadow-lg"
+                  aria-label="Next event photo"
+                >
+                  <ChevronRight size={20} />
+                </button>
+
+                {/* Thumbnail dots / counter indicator */}
+                <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-800 text-xs font-mono font-bold text-white shadow-lg">
+                  <Camera size={13} className="text-red-500" />
+                  <span>
+                    Photo {activeImgIndex + 1} of {galleryImages.length}
+                  </span>
+                </div>
+              </>
+            )}
+
+            {!hasMultipleImages && (
+              <span className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full font-mono text-xs font-bold uppercase bg-red-600 text-white shadow-lg">
+                {event.status || 'Completed'}
+              </span>
+            )}
+          </div>
 
           {/* Modal Content Info */}
           <div className="p-6 sm:p-8 flex flex-col justify-between gap-6">

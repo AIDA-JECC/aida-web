@@ -44,6 +44,7 @@ export default function Navbar({ onVerifyClick }) {
             'events',
             'achievements',
             'projects',
+            'placements',
             'team',
             'core-team',
             'verify',

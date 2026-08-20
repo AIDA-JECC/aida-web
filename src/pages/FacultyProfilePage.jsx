@@ -5,6 +5,7 @@ import SafeImage from '../components/ui/SafeImage';
 import ProjectControls from '../components/projects/ProjectControls';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectEmptyState from '../components/projects/ProjectEmptyState';
+import PaginationBar from '../components/ui/PaginationBar';
 import LinkedinIcon from '../components/ui/LinkedinIcon';
 import { getProjectsByFaculty, matchesProjectSearch, sortProjectsByPriority, findFacultyByGuideName, normalizeName } from '../utils/projectHelpers';
 import { ArrowLeft, Mail, FolderGit2, Sparkles, UserCheck } from 'lucide-react';
@@ -75,6 +76,8 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBatch, setSelectedBatch] = useState('All Batches');
   const [selectedType, setSelectedType] = useState('All Project Types');
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 12; // 4 rows of 3-column grid
 
   // Scroll to top on page mount
   useEffect(() => {
@@ -130,6 +133,22 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
     });
     return sortProjectsByPriority(list);
   }, [allGuidedProjects, searchQuery, selectedBatch, selectedType]);
+
+  // Reset page to 1 whenever search or filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedBatch, selectedType]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredGuidedProjects.length / ITEMS_PER_PAGE) || 1;
+  const paginatedGuidedProjects = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredGuidedProjects.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredGuidedProjects, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   const isFiltered =
     searchQuery.trim() !== '' || selectedBatch !== 'All Batches' || selectedType !== 'All Project Types';
@@ -199,7 +218,7 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
                 </span>
                 <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <FolderGit2 size={13} className="text-red-500" />
-                  <span>{allGuidedProjects.length} Supervised Projects</span>
+                  <span>Supervised Academic Projects</span>
                 </span>
               </div>
 
@@ -238,7 +257,7 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-4">
           <h2 className="font-serif font-bold text-2xl sm:text-3xl text-white flex items-center gap-2">
             <UserCheck className="text-red-600" />
-            <span>Supervised <span className="text-red-600 italic">Academic Projects</span> ({allGuidedProjects.length})</span>
+            <span>Supervised <span className="text-red-600 italic">Academic Projects</span></span>
           </h2>
         </div>
 
@@ -252,22 +271,29 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
             onTypeChange={setSelectedType}
             onResetFilters={handleResetFilters}
             isFiltered={isFiltered}
-            totalCount={allGuidedProjects.length}
-            filteredCount={filteredGuidedProjects.length}
           />
         )}
 
         {filteredGuidedProjects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredGuidedProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelectProject={(p) => onNavigate('project', p.id)}
-                onSelectFaculty={(f) => onNavigate('faculty', f.slug || f.name)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {paginatedGuidedProjects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onSelectProject={(p) => onNavigate('project', p.id)}
+                  onSelectFaculty={(f) => onNavigate('faculty', f.slug || f.name)}
+                />
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            <PaginationBar
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </>
         ) : (
           <ProjectEmptyState
             searchQuery={searchQuery}

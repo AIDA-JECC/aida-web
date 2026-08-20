@@ -28,28 +28,32 @@ export default function SafeImage({
   const [hasError, setHasError] = useState(false);
 
   const displayInitials = initials || getInitials(title || alt);
-  const displayCategory = category || 'FACULTY';
+  const displayCategory = category !== undefined ? category : 'FACULTY';
 
   // Render universal fallback card matching user specifications when image is missing or fails to load
   if (!src || hasError) {
     return (
       <div
-        className={`w-full h-full min-h-[160px] bg-[#121212] border border-red-900/40 rounded-xl relative overflow-hidden flex flex-col items-center justify-center select-none p-4 ${fallbackClassName || ''}`}
+        className={`w-full h-full min-h-[120px] bg-[#121212] border border-red-900/40 rounded-xl relative overflow-hidden flex flex-col items-center justify-center select-none p-3 ${fallbackClassName || ''}`}
       >
-        {/* Top-Left Pill Badge */}
-        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-neutral-950/90 border border-red-900/40 text-neutral-400 z-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-          <span>{displayCategory}</span>
-        </div>
+        {/* Top-Left Pill Badge (only if category provided) */}
+        {displayCategory ? (
+          <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-wider uppercase bg-neutral-950/90 border border-red-900/40 text-neutral-400 z-10">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+            <span>{displayCategory}</span>
+          </div>
+        ) : null}
 
-        {/* Center Large Red Initials & Subtitle */}
+        {/* Center Large Red Initials */}
         <div className="flex flex-col items-center justify-center text-center gap-1 my-auto z-10">
-          <span className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wider text-red-500 uppercase drop-shadow-[0_0_12px_rgba(229,9,20,0.5)]">
+          <span className="font-serif text-3xl sm:text-4xl font-extrabold tracking-wider text-red-500 uppercase">
             {displayInitials}
           </span>
-          <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-neutral-400 mt-1">
-            {displayCategory}
-          </span>
+          {displayCategory ? (
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 mt-1">
+              {displayCategory}
+            </span>
+          ) : null}
         </div>
       </div>
     );

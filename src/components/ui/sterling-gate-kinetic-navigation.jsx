@@ -20,6 +20,7 @@ const navItemsData = [
   { heading: 'Events & Workshops', href: '#events', id: 'events', shape: '3' },
   { heading: 'Achievements', href: '#achievements', id: 'achievements', shape: '4' },
   { heading: 'Academic Projects', href: '#projects', id: 'projects', shape: '5' },
+  { heading: 'Placements & Internships', href: '#placements', id: 'placements', shape: '10' },
   { heading: 'Meet Our Faculty', href: '#team', id: 'team', shape: '6' },
   { heading: 'Meet Core Team', href: '#core-team', id: 'core-team', shape: '7' },
   { heading: 'Verify Certificate', href: '#verify', id: 'verify', shape: '8' },
@@ -32,6 +33,7 @@ const SECTION_NAMES = {
   events: 'EVENTS',
   achievements: 'ACHIEVEMENTS',
   projects: 'PROJECTS',
+  placements: 'PLACEMENTS',
   team: 'FACULTY',
   'core-team': 'CORE TEAM',
   verify: 'VERIFY',
@@ -388,6 +390,14 @@ export function SterlingGateKineticNavigation({
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
                   <span className="shape-element absolute font-sans font-extrabold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     CONNECT
+                  </span>
+                </div>
+
+                {/* Shape 10: Placements */}
+                <div className="bg-shape bg-shape-10 flex items-center justify-center pointer-events-none">
+                  <div className="shape-element w-80 h-80 rounded-full bg-emerald-600/15 blur-3xl" />
+                  <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
+                    CAREERS
                   </span>
                 </div>
               </div>

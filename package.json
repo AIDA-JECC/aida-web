@@ -6,8 +6,10 @@
   "scripts": {
     "build:projects": "node scripts/build-projects-data.mjs",
     "build:achievements": "node scripts/build-achievements-data.mjs",
-    "dev": "node scripts/build-projects-data.mjs && node scripts/build-achievements-data.mjs && vite",
-    "build": "node scripts/build-projects-data.mjs && node scripts/build-achievements-data.mjs && vite build",
+    "build:placements": "node scripts/build-placements-data.mjs",
+    "build:events": "node scripts/build-events-data.mjs",
+    "dev": "node scripts/build-projects-data.mjs && node scripts/build-achievements-data.mjs && node scripts/build-placements-data.mjs && node scripts/build-events-data.mjs && vite",
+    "build": "node scripts/build-projects-data.mjs && node scripts/build-achievements-data.mjs && node scripts/build-placements-data.mjs && node scripts/build-events-data.mjs && vite build",
     "faculty:images": "node scripts/build-faculty-images.mjs",
     "core-team:images": "node scripts/build-core-team-images.mjs",
     "lint": "oxlint",

@@ -72,14 +72,16 @@ export default function Footer() {
           {/* Column 2: Quick Navigation */}
           <div>
             <h4 className="font-mono text-xs font-bold tracking-widest uppercase mb-4 text-red-500">• QUICK NAVIGATION</h4>
-            <ul className="space-y-2 font-mono text-xs">
-              <li><button type="button" onClick={() => scrollTo('home')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">HOME</button></li>
-              <li><button type="button" onClick={() => scrollTo('about')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">ABOUT AIDA</button></li>
-              <li><button type="button" onClick={() => scrollTo('events')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">EVENTS &amp; WORKSHOPS</button></li>
-              <li><button type="button" onClick={() => scrollTo('achievements')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">ACHIEVEMENTS</button></li>
-              <li><button type="button" onClick={() => scrollTo('team')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">FACULTY</button></li>
-              <li><button type="button" onClick={() => scrollTo('core-team')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">CORE TEAM</button></li>
-              <li><button type="button" onClick={() => scrollTo('verify')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0">VERIFY CERTIFICATE</button></li>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 font-mono text-xs">
+              <li><button type="button" onClick={() => scrollTo('home')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">HOME</button></li>
+              <li><button type="button" onClick={() => scrollTo('about')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">ABOUT AIDA</button></li>
+              <li><button type="button" onClick={() => scrollTo('events')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">EVENTS</button></li>
+              <li><button type="button" onClick={() => scrollTo('achievements')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">ACHIEVEMENTS</button></li>
+              <li><button type="button" onClick={() => scrollTo('projects')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">PROJECTS</button></li>
+              <li><button type="button" onClick={() => scrollTo('placements')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">PLACEMENTS &amp; INTERNSHIPS</button></li>
+              <li><button type="button" onClick={() => scrollTo('team')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">FACULTY</button></li>
+              <li><button type="button" onClick={() => scrollTo('core-team')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">CORE TEAM</button></li>
+              <li><button type="button" onClick={() => scrollTo('verify')} className="text-neutral-400 hover:text-white transition-colors duration-300 cursor-pointer bg-transparent border-0 p-0 text-left">VERIFICATION</button></li>
             </ul>
           </div>
 

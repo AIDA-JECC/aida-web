@@ -13,8 +13,9 @@ if (!existsSync(treasurerPng)) {
 }
 
 const records = [
-  ['Angisha B , Chairperson.jpg', 'angisha-b', 'Angisha B.', 'Chairperson', null, 0],
-  ['Parvathy Krishna M, Vice Chairperson.jpg', 'parvathy-krishna-m', 'Parvathy Krishna M.', 'Vice Chairperson', null, 1],
+  ['Jithin K C.jpg', 'jithin-k-c', 'Mr. Jithin K C', 'Coordinator', null, 0],
+  ['Angisha B , Chairperson.jpg', 'angisha-b', 'Angisha B.', 'Chairperson', null, 1],
+  ['Parvathy Krishna M, Vice Chairperson.jpg', 'parvathy-krishna-m', 'Parvathy Krishna M.', 'Vice Chairperson', null, 2],
   ['Adhithyan-VV_Secratary.jpg', 'adhithyan-vv', 'Adhithyan V. V.', 'Secretary', null, 2],
   ['Jesna C J - S5 - Joint secretary.jpg', 'jesna-c-j', 'Jesna C. J.', 'Joint Secretary', 'S5', 3],
   ['Mohamed uv , Treasurer-converted.png', 'mohamed-u-v', 'Mohamed U. V.', 'Treasurer', null, 4],

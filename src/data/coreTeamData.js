@@ -1,10 +1,18 @@
 export const coreTeamData = [
   {
+    "id": "jithin-k-c",
+    "name": "Mr. Jithin K C",
+    "designation": "Coordinator",
+    "semester": null,
+    "rank": 0,
+    "photo": "/core-team/jithin-k-c"
+  },
+  {
     "id": "angisha-b",
     "name": "Angisha B",
     "designation": "Chairperson",
     "semester": null,
-    "rank": 0,
+    "rank": 1,
     "photo": "/core-team/angisha-b"
   },
   {
@@ -12,7 +20,7 @@ export const coreTeamData = [
     "name": "Parvathy Krishna M",
     "designation": "Vice Chairperson",
     "semester": null,
-    "rank": 1,
+    "rank": 2,
     "photo": "/core-team/parvathy-krishna-m"
   },
   {

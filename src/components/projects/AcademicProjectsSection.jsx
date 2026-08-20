@@ -62,7 +62,7 @@ export default function AcademicProjectsSection({ onNavigate }) {
           className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-sm font-bold uppercase tracking-wider transition-all shadow-xl hover:shadow-[0_0_30px_rgba(229,9,20,0.5)] hover:scale-105 active:scale-95 cursor-pointer"
         >
           <FolderGit2 size={18} />
-          <span>VIEW ALL PROJECTS ({academicProjectsData.length})</span>
+          <span>VIEW ALL ACADEMIC PROJECTS</span>
           <ArrowRight size={18} />
         </button>
       </div>

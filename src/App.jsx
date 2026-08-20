@@ -7,6 +7,7 @@ import YodhaSection from './components/YodhaSection';
 import EventsSection from './components/EventsSection';
 import AchievementsSection from './components/AchievementsSection';
 import AcademicProjectsSection from './components/projects/AcademicProjectsSection';
+import PlacementsSection from './components/PlacementsSection';
 import Team from './components/Team';
 import CoreTeamSection from './components/CoreTeamSection';
 import FaqSection from './components/FaqSection';
@@ -21,14 +22,24 @@ import FacultyProfilePage from './pages/FacultyProfilePage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import AchievementsPage from './pages/AchievementsPage';
 import EventsPage from './pages/EventsPage';
+import PlacementsPage from './pages/PlacementsPage';
 
 function getRouteFromHash() {
   const hash = window.location.hash || '';
   if (hash.startsWith('#/projects')) {
     return { type: 'projects' };
   }
+  if (hash.startsWith('#/placements')) {
+    return { type: 'placements' };
+  }
   if (hash.startsWith('#/events')) {
-    return { type: 'events' };
+    if (hash.includes('filter=bootcamps')) {
+      return { type: 'events', filter: 'bootcamps' };
+    }
+    if (hash.includes('filter=hackathons')) {
+      return { type: 'events', filter: 'hackathons' };
+    }
+    return { type: 'events', filter: 'ALL' };
   }
   if (hash.startsWith('#/achievements')) {
     return { type: 'achievements' };
@@ -80,8 +91,14 @@ export default function App() {
   const handleNavigate = (pageType, param) => {
     if (pageType === 'projects') {
       window.location.hash = '#/projects';
+    } else if (pageType === 'placements') {
+      window.location.hash = '#/placements';
     } else if (pageType === 'events') {
-      window.location.hash = '#/events';
+      if (param === 'bootcamps' || param === 'hackathons') {
+        window.location.hash = `#/events?filter=${param}`;
+      } else {
+        window.location.hash = '#/events';
+      }
     } else if (pageType === 'achievements') {
       window.location.hash = '#/achievements';
     } else if (pageType === 'faculty') {
@@ -112,11 +129,20 @@ export default function App() {
     );
   }
 
+  if (route.type === 'placements') {
+    return (
+      <div className="app-main-wrapper bg-[#08080c] relative min-h-screen">
+        <GlobalDotField />
+        <PlacementsPage onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
   if (route.type === 'events') {
     return (
       <div className="app-main-wrapper bg-[#0e0708] relative min-h-screen">
         <GlobalDotField />
-        <EventsPage onNavigate={handleNavigate} />
+        <EventsPage onNavigate={handleNavigate} filterParam={route.filter} />
       </div>
     );
   }
@@ -169,7 +195,7 @@ export default function App() {
         <div id="about" className="relative -mt-[5vh] md:-mt-[8vh] z-10 bg-neutral-950 border-t border-neutral-800/60 rounded-t-[2.5rem] sm:rounded-t-[4rem] rounded-b-[2.5rem] sm:rounded-b-[4rem] shadow-[0_-24px_70px_rgba(0,0,0,0.16)] overflow-clip">
           <AboutSection />
           <div className="border-t border-neutral-900/80">
-            <TiltedCards />
+            <TiltedCards onNavigate={handleNavigate} />
           </div>
         </div>
 
@@ -189,6 +215,11 @@ export default function App() {
         {/* 4.5. Academic Projects Showcase (Top 4 Priority Projects + VIEW ALL) */}
         <div id="projects" className="bg-neutral-950 border-t border-neutral-800/60">
           <AcademicProjectsSection onNavigate={handleNavigate} />
+        </div>
+
+        {/* 4.8. Placements Showcase */}
+        <div id="placements" className="bg-[#080808] border-t border-neutral-800/60">
+          <PlacementsSection />
         </div>
 
         {/* 5. Faculty & Core Team */}

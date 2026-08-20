@@ -50,17 +50,17 @@ export default function FaqSection() {
               <button
                 type="button"
                 onClick={() => setOpenFaq(isOpen ? null : idx)}
-                className={`w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-base sm:text-lg transition-all duration-300 cursor-pointer touch-manipulation active:bg-red-950/50 active:scale-[0.99] ${
+                className={`w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-base sm:text-lg transition-all duration-300 cursor-pointer touch-manipulation group active:bg-red-950/40 active:scale-[0.99] ${
                   isOpen
-                    ? 'text-red-500 font-extrabold'
-                    : 'text-white hover:text-red-400'
+                    ? 'text-red-600 font-extrabold'
+                    : 'text-white hover:text-red-600'
                 }`}
               >
-                <span className="pr-4">{faq.question}</span>
+                <span className="pr-4 transition-colors duration-300">{faq.question}</span>
                 {isOpen ? (
-                  <Minus size={20} className="text-red-500 shrink-0 transform rotate-180 transition-transform duration-300" />
+                  <Minus size={20} className="text-red-600 shrink-0 transform rotate-180 transition-transform duration-300" />
                 ) : (
-                  <Plus size={20} className="text-neutral-400 group-hover:text-red-500 shrink-0 transition-transform duration-300" />
+                  <Plus size={20} className="text-neutral-400 group-hover:text-red-600 shrink-0 transition-colors duration-300" />
                 )}
               </button>
               {isOpen && (

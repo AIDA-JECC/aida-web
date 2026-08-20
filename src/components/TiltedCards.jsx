@@ -19,7 +19,7 @@ const pillars = [
     btnText: "What We Do",
     btnIcon: ArrowRight,
     btnStyle: "bg-red-600 hover:bg-red-700 text-white shadow-sm",
-    targetSection: "about",
+    actionType: "about",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const pillars = [
     btnText: "Join the Challenge",
     btnIcon: ArrowRight,
     btnStyle: "bg-white hover:bg-neutral-100 text-neutral-950 shadow-sm",
-    targetSection: "events",
+    actionType: "hackathons",
   },
   {
     id: 3,
@@ -56,7 +56,7 @@ const pillars = [
     btnText: "Level Up",
     btnIcon: ArrowUpRight,
     btnStyle: "bg-[#ef4444] hover:bg-red-600 text-white shadow-sm",
-    targetSection: "events",
+    actionType: "bootcamps",
   },
   {
     id: 4,
@@ -74,11 +74,11 @@ const pillars = [
     btnText: "Start Your Journey",
     btnIcon: ArrowRight,
     btnStyle: "bg-[#18181b] hover:bg-black text-white shadow-sm",
-    targetSection: "verify",
+    actionType: "placements",
   }
 ];
 
-export default function TiltedCards() {
+export default function TiltedCards({ onNavigate }) {
   const [activeStep, setActiveStep] = useState(1);
   const cardRefs = useRef([]);
   const mobileScrollRef = useRef(null);
@@ -89,7 +89,6 @@ export default function TiltedCards() {
     if (!container) return;
     const scrollLeft = container.scrollLeft;
     const containerWidth = container.clientWidth;
-    const scrollWidth = container.scrollWidth;
     
     // Find closest card to viewport center
     let closestIndex = 1;
@@ -115,30 +114,33 @@ export default function TiltedCards() {
     const targetCard = cardRefs.current[step - 1];
     const container = mobileScrollRef.current;
     
-    if (targetCard && container && window.innerWidth < 768) {
+    if (targetCard && container) {
       const containerWidth = container.clientWidth;
       const cardLeft = targetCard.offsetLeft;
       const cardWidth = targetCard.clientWidth;
-      const scrollToLeft = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+      const scrollToLeft = cardLeft - (containerWidth - cardWidth) / 2;
 
       container.scrollTo({
         left: scrollToLeft,
         behavior: 'smooth',
       });
-    } else if (targetCard) {
-      targetCard.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
     }
   };
 
-  const handleActionClick = (e, targetSection) => {
+  const handleActionClick = (e, pillar) => {
     e.stopPropagation();
-    const elem = document.getElementById(targetSection);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
+    if (pillar.actionType === 'placements') {
+      if (onNavigate) onNavigate('placements');
+      else window.location.hash = '#/placements';
+    } else if (pillar.actionType === 'bootcamps') {
+      if (onNavigate) onNavigate('events', 'bootcamps');
+      else window.location.hash = '#/events?filter=bootcamps';
+    } else if (pillar.actionType === 'hackathons') {
+      if (onNavigate) onNavigate('events', 'hackathons');
+      else window.location.hash = '#/events?filter=hackathons';
+    } else {
+      const elem = document.getElementById('about');
+      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -162,8 +164,8 @@ export default function TiltedCards() {
           </p>
         </div>
 
-        {/* Top Rounded Pill Navigation Bar (Matching exact Crimson Red active button from screenshot) */}
-        <div className="flex items-center gap-3 bg-[#111113]/95 border border-neutral-800 px-3.5 py-2 rounded-full shadow-2xl backdrop-blur-xl z-30">
+        {/* Top Rounded Pill Navigation Bar (Visible on Mobile only - md:hidden) */}
+        <div className="md:hidden flex items-center gap-3 bg-[#111113]/95 border border-neutral-800 px-3.5 py-2 rounded-full shadow-2xl backdrop-blur-xl z-30">
           <div className="flex items-center gap-2 px-1">
             {[1, 2, 3, 4].map((step) => (
               <button
@@ -237,7 +239,7 @@ export default function TiltedCards() {
                     <div className="pt-2">
                       <button
                         type="button"
-                        onClick={(e) => handleActionClick(e, pillar.targetSection)}
+                        onClick={(e) => handleActionClick(e, pillar)}
                         className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 cursor-pointer active:scale-95 ${pillar.btnStyle}`}
                       >
                         <span>{pillar.btnText}</span>
@@ -319,7 +321,7 @@ export default function TiltedCards() {
                     <div className="pt-2">
                       <button
                         type="button"
-                        onClick={(e) => handleActionClick(e, pillar.targetSection)}
+                        onClick={(e) => handleActionClick(e, pillar)}
                         className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold transition-all duration-300 cursor-pointer active:scale-95 ${pillar.btnStyle}`}
                       >
                         <span>{pillar.btnText}</span>

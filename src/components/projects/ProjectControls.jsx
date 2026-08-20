@@ -185,11 +185,6 @@ export default function ProjectControls({
             <ChevronDown size={14} className={`transition-transform duration-200 ${mobileFilterOpen ? 'rotate-180 text-red-600' : ''}`} />
           </button>
 
-          {totalCount > 0 && (
-            <div className="text-[11px] font-mono font-bold text-neutral-600">
-              <span className="text-neutral-950 font-extrabold">{filteredCount}</span> / {totalCount} Projects
-            </div>
-          )}
         </div>
       </div>
 
