@@ -76,15 +76,9 @@ const normalizedPlacements = rawRows.map((row, index) => {
     sourceUrl: String(row['Source URL'] || '').trim() || null,
     companyWebsite: companyWebsite || null,
     cleanDomain: cleanDomain || 'website.com',
+    logoUrl: logoUrl || null,
+    studentImage,
   };
-});
-
-// Sort placements by latest year and slNo descending (newest first)
-normalizedPlacements.sort((a, b) => {
-  const yearA = parseInt(a.year, 10) || 0;
-  const yearB = parseInt(b.year, 10) || 0;
-  if (yearB !== yearA) return yearB - yearA;
-  return (b.slNo || 0) - (a.slNo || 0);
 });
 
 const code = `// Auto-generated from placements.xlsx

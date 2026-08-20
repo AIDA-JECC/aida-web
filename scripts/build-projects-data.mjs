@@ -178,17 +178,8 @@ const normalizedProjects = rawRows.map((row, index) => {
     members,
     githubUsername,
     githubUrl,
+    contactEmail: String(row['Email Address'] || '').trim() || null,
   };
-});
-
-// Sort projects by latest batch year and ID descending (newest first)
-normalizedProjects.sort((a, b) => {
-  const batchYearA = parseInt((a.batch || '').match(/\d{4}/)?.[0] || '0', 10);
-  const batchYearB = parseInt((b.batch || '').match(/\d{4}/)?.[0] || '0', 10);
-  if (batchYearB !== batchYearA) return batchYearB - batchYearA;
-  const idA = parseInt((a.id || '').replace(/\D/g, '') || '0', 10);
-  const idB = parseInt((b.id || '').replace(/\D/g, '') || '0', 10);
-  return idB - idA;
 });
 
 const code = `// Auto-generated from Academic Projects.xlsx

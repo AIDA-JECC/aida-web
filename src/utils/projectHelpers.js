@@ -46,20 +46,9 @@ const PROJECT_TYPE_PRIORITY = {
 export function sortProjectsByPriority(projects = []) {
   if (!Array.isArray(projects)) return [];
   return [...projects].sort((a, b) => {
-    // 1. Latest Batch Year descending
-    const batchYearA = parseInt((a.batch || '').match(/\d{4}/)?.[0] || '0', 10);
-    const batchYearB = parseInt((b.batch || '').match(/\d{4}/)?.[0] || '0', 10);
-    if (batchYearB !== batchYearA) return batchYearB - batchYearA;
-
-    // 2. Project Type Priority (Main -> Mini -> Micro)
     const priorityA = PROJECT_TYPE_PRIORITY[a.projectType] ?? 99;
     const priorityB = PROJECT_TYPE_PRIORITY[b.projectType] ?? 99;
-    if (priorityA !== priorityB) return priorityA - priorityB;
-
-    // 3. Project ID / Index descending
-    const idA = parseInt((a.id || '').replace(/\D/g, '') || '0', 10);
-    const idB = parseInt((b.id || '').replace(/\D/g, '') || '0', 10);
-    return idB - idA;
+    return priorityA - priorityB;
   });
 }
 

@@ -154,12 +154,11 @@ const normalizedEvents = rawRows.map((row, i) => {
   };
 });
 
-// Sort events by date and index newest first
+// Sort events by date newest first
 normalizedEvents.sort((a, b) => {
   const dateA = Date.parse(a.eventDate) || (typeof a.year === 'number' ? Date.UTC(a.year, 0, 1) : 0);
   const dateB = Date.parse(b.eventDate) || (typeof b.year === 'number' ? Date.UTC(b.year, 0, 1) : 0);
-  if (dateB !== dateA) return dateB - dateA;
-  return (b.index || 0) - (a.index || 0);
+  return dateB - dateA;
 });
 
 const code = `/**

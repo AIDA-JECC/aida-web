@@ -117,17 +117,9 @@ const normalizedAchievements = rawRows.map((row, index) => {
     description,
     level,
     year,
+    tag,
+    image,
   };
-});
-
-// Sort achievements by latest year and ID descending (newest first)
-normalizedAchievements.sort((a, b) => {
-  const yearA = parseInt(a.year, 10) || 0;
-  const yearB = parseInt(b.year, 10) || 0;
-  if (yearB !== yearA) return yearB - yearA;
-  const idNumA = parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
-  const idNumB = parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
-  return idNumB - idNumA;
 });
 
 const code = `// Auto-generated from achievements_webp.xlsx

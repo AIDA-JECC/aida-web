@@ -32,7 +32,7 @@ export default function PlacementsPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* Full Placements & Internships Section Component */}
+      {/* Dedicated Placements & Internships View (Lists all placement records completely) */}
       <PlacementsSection showAll={true} />
     </div>
   );

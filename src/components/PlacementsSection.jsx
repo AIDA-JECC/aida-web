@@ -691,7 +691,22 @@ export default function PlacementsSection({ showAll = false }) {
         {/* Table Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t border-neutral-800/90 bg-[#0c0c0e]/90 text-xs font-mono text-neutral-400">
           <div>
-            Listing <span className="text-red-500 font-bold">{displayItems.length}</span> placement records
+            {showAll ? (
+              <>Listing all <span className="text-red-500 font-bold">{displayItems.length}</span> placement records</>
+            ) : (
+              <>
+                Showing{' '}
+                <span className="text-red-500 font-semibold">
+                  {filteredPlacements.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0}
+                </span>{' '}
+                to{' '}
+                <span className="text-red-500 font-semibold">
+                  {Math.min(currentPage * itemsPerPage, filteredPlacements.length)}
+                </span>{' '}
+                of{' '}
+                <span className="text-red-500 font-semibold">{filteredPlacements.length}</span> records
+              </>
+            )}
           </div>
 
           {!showAll && totalPages > 1 && (
