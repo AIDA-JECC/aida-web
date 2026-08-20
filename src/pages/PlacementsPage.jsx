@@ -33,7 +33,7 @@ export default function PlacementsPage({ onNavigate }) {
       </div>
 
       {/* Full Placements & Internships Section Component */}
-      <PlacementsSection />
+      <PlacementsSection showAll={true} />
     </div>
   );
 }

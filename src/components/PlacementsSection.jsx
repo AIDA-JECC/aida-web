@@ -357,7 +357,7 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
   );
 }
 
-export default function PlacementsSection({ showAll = true }) {
+export default function PlacementsSection({ showAll = false }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState('ALL');
   const [selectedCompany, setSelectedCompany] = useState('ALL');
