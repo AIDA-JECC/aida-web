@@ -193,294 +193,39 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-37-yodha-hackathon",
-    "index": 37,
-    "name": "Yodha hackathon",
-    "category": "Hackathon",
-    "eventType": "hackathon",
+    "id": "event-49-bootcamp-on-data-analytics",
+    "index": 49,
+    "name": "Bootcamp on Data Analytics",
+    "category": "Bootcamp",
+    "eventType": "bootcamp",
     "academicYear": "2025-2026",
     "year": 2026,
-    "dateLabel": "9-10 jan 2026 • 24 hours",
-    "rawDate": "9-10 jan 2026",
-    "time": "24 hours",
+    "dateLabel": "15–19 June 2026 • 9:00 AM – 4:00 PM",
+    "rawDate": "15–19 June 2026",
+    "time": "9:00 AM – 4:00 PM",
     "eventDate": "2026-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/37.yodha.webp",
-    "coverPage": "/events/coverpage/37.yodha.webp",
+    "img": "/events/coverpage/49.Bootcamp%20on%20Data%20Analytics.webp",
+    "coverPage": "/events/coverpage/49.Bootcamp%20on%20Data%20Analytics.webp",
     "eventImages": [
-      "/events/eventImage/37.yodha%20(2).webp",
-      "/events/eventImage/37.yodha.webp"
+      "/events/eventImage/49.Bootcamp%20on%20data%20analysis.webp",
+      "/events/eventImage/49.Bootcamp%20on%20Data%20Analytics.webp"
     ],
     "gallery": [
-      "/events/eventImage/37.yodha%20(2).webp",
-      "/events/eventImage/37.yodha.webp"
+      "/events/eventImage/49.Bootcamp%20on%20data%20analysis.webp",
+      "/events/eventImage/49.Bootcamp%20on%20Data%20Analytics.webp"
     ],
-    "detail": "A 24-hour national-level hackathon challenging participants to develop impactful AI solutions for real-world healthcare and environmental safety problems.",
+    "detail": "A five-day industry-oriented boot camp providing students with practical training in data analytics through technical sessions, hands-on activities, assignments, teamwork, and project development.",
     "tags": [
-      "Artificial Intelligence",
-      "Healthcare",
-      "Environmental Safety & Problem Solving."
-    ],
-    "location": "auditorium, Jyothi Engineering College",
-    "venue": "auditorium",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-38-ar-treasure-hunt",
-    "index": 38,
-    "name": "AR – Treasure Hunt",
-    "category": "Tharang Fest",
-    "eventType": "tharang fest",
-    "academicYear": "2025-2026",
-    "year": 2026,
-    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
-    "rawDate": "14-15 jan 2026",
-    "time": "10 am to 4 pm",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/38.AR%20treasure%20hunt.webp",
-    "coverPage": "/events/coverpage/38.AR%20treasure%20hunt.webp",
-    "eventImages": [
-      "/events/eventImage/38.AR%20treasure%20hunt.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/38.AR%20treasure%20hunt.webp"
-    ],
-    "detail": "A five-level technical treasure hunt combining AR, logical challenges, teamwork, and problem-solving through an engaging pirate-themed adventure.",
-    "tags": [
-      "Augmented Reality",
-      "Logical Thinking",
-      "Problem Solving",
-      "Technical Skills & Teamwork."
-    ],
-    "location": "ME classroom, Jyothi Engineering College",
-    "venue": "ME classroom",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-39-among-us",
-    "index": 39,
-    "name": "Among Us",
-    "category": "Tharang Fest",
-    "eventType": "tharang fest",
-    "academicYear": "2026-26",
-    "year": 2026,
-    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
-    "rawDate": "14-15 jan 2026",
-    "time": "10 am to 4 pm",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/39.Among%20us.webp",
-    "coverPage": "/events/coverpage/39.Among%20us.webp",
-    "eventImages": [
-      "/events/eventImage/39.Among%20us.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/39.Among%20us.webp"
-    ],
-    "detail": "A team-based mystery game focused on identifying the impostor through observation, discussion, logical reasoning, and teamwork.",
-    "tags": [
-      "Teamwork",
-      "Logical Thinking",
-      "Communication & Problem Solving."
-    ],
-    "location": "EAB 106, Jyothi Engineering College",
-    "venue": "EAB 106",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-40-blind-killad",
-    "index": 40,
-    "name": "Blind Killad",
-    "category": "Tharang Fest",
-    "eventType": "tharang fest",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
-    "rawDate": "14-15 jan 2026",
-    "time": "10 am to 4 pm",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/40.Blind%20killadi.webp",
-    "coverPage": "/events/coverpage/40.Blind%20killadi.webp",
-    "eventImages": [
-      "/events/eventImage/40.Blind%20killadi.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/40.Blind%20killadi.webp"
-    ],
-    "detail": "A challenge-based activity testing participants’ instincts, confidence, teamwork, and problem-solving through sensory-based challenges.",
-    "tags": [
-      "Teamwork",
-      "Instinct",
-      "Problem Solving & Challenge-Based Learning."
-    ],
-    "location": "EAB 104, Jyothi Engineering College",
-    "venue": "EAB 104",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-41-bomb-squad",
-    "index": 41,
-    "name": "Bomb Squad",
-    "category": "Tharang Fest",
-    "eventType": "tharang fest",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
-    "rawDate": "14-15 jan 2026",
-    "time": "10 am to 4 pm",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/41.Bomb%20squad.webp",
-    "coverPage": "/events/coverpage/41.Bomb%20squad.webp",
-    "eventImages": [
-      "/events/eventImage/41.Bomb%20squad.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/41.Bomb%20squad.webp"
-    ],
-    "detail": "A high-pressure escape-room-style challenge involving clues, codes, and problem solving. Participants work as a team under pressure to complete the challenge within the given time.",
-    "tags": [
-      "Teamwork",
-      "problem solving",
-      "logical thinking"
-    ],
-    "location": "EAB 105, Jyothi Engineering College",
-    "venue": "EAB 105",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-42-vr-arena-3v3-battle-royal-arena",
-    "index": 42,
-    "name": "VR-Arena – 3v3 Battle Royal Arena",
-    "category": "Tharang Fest",
-    "eventType": "tharang fest",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
-    "rawDate": "14-15 jan 2026",
-    "time": "10 am to 4 pm",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/42.VR%20arena.webp",
-    "coverPage": "/events/coverpage/42.VR%20arena.webp",
-    "eventImages": [
-      "/events/eventImage/42.VR%20arena.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/42.VR%20arena.webp"
-    ],
-    "detail": "A 3v3 VR battle arena focused on teamwork, reflexes, and competitive gameplay",
-    "tags": [
-      "Virtual Reality",
-      "Teamwork",
-      "Gaming & Competition."
-    ],
-    "location": "EAB 310, Jyothi Engineering College",
-    "venue": "EAB 310",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-44-workshop-on-tableau",
-    "index": 44,
-    "name": "WORKSHOP ON: TABLEAU",
-    "category": "Workshop",
-    "eventType": "workshop",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "10–11 February 2026 • : 9:00 AM – 4:00 PM",
-    "rawDate": "10–11 February 2026",
-    "time": ": 9:00 AM – 4:00 PM",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/44.Workshop%20on%20tableau.webp",
-    "coverPage": "/events/coverpage/44.Workshop%20on%20tableau.webp",
-    "eventImages": [
-      "/events/eventImage/44.WORKSHOP%20ON%20TABLEAU.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/44.WORKSHOP%20ON%20TABLEAU.webp"
-    ],
-    "detail": "A two-day technical training workshop providing hands-on experience in Tableau for data visualization, business intelligence, dashboard creation, data preparation, and predictive forecasting.",
-    "tags": [
-      "Tableau",
+      "Data Analytics",
       "Data Visualization",
-      "Business Intelligence",
-      "Data Analytics",
-      "Predictive Forecasting"
+      "Analytical Skills",
+      "Problem Solving",
+      "Project Development"
     ],
-    "location": "Project lab, Jyothi Engineering College",
-    "venue": "Project lab",
+    "location": "computer centre, Jyothi Engineering College",
+    "venue": "computer centre",
     "mode": "On-Campus"
-  },
-  {
-    "id": "event-46-6-day-fdp-ai-in-healthcare-data-analytics-ethics-and-real-world-applications",
-    "index": 46,
-    "name": "6 Day FDP - AI IN HEALTHCARE : DATA, ANALYTICS, ETHICS AND REAL WORLD APPLICATIONS",
-    "category": "FDP",
-    "eventType": "FDP",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "20–25 April 2026 • 1:00 PM – 4:00 PM",
-    "rawDate": "20–25 April 2026",
-    "time": "1:00 PM – 4:00 PM",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp",
-    "coverPage": "/events/coverpage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp",
-    "eventImages": [
-      "/events/eventImage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp"
-    ],
-    "detail": "A six-day international FDP exploring AI applications in healthcare, including data analytics, ethical considerations, predictive analytics, medical imaging, healthcare robotics, and AI-driven healthcare solutions.",
-    "tags": [
-      "AI in Healthcare",
-      "Data Analytics",
-      "Medical Imaging",
-      "Healthcare Robotics",
-      "AI Ethics",
-      "Predictive Analytics"
-    ],
-    "location": "Online, Jyothi Engineering College",
-    "venue": "Online",
-    "mode": "Online"
-  },
-  {
-    "id": "event-47-5-day-fdp-on-ai-ml-based-healthcare-research-tools-trends-challenges-in-intelligent-medical-systems-in-association-with-nit-manipur",
-    "index": 47,
-    "name": "5 Day FDP on AI & ML Based Healthcare Research\n Tools, Trends & Challenges in Intelligent Medical Systems \n in association with NIT Manipur",
-    "category": "FDP",
-    "eventType": "FDP",
-    "academicYear": "2025-26",
-    "year": 2026,
-    "dateLabel": "21-26 may 2026 • 1:00 PM – 4:00 PM",
-    "rawDate": "21-26 may 2026",
-    "time": "1:00 PM – 4:00 PM",
-    "eventDate": "2026-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/47.5%20day%20fdp.webp",
-    "coverPage": "/events/coverpage/47.5%20day%20fdp.webp",
-    "eventImages": [
-      "/events/eventImage/47.5%20day%20fdp.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/47.5%20day%20fdp.webp"
-    ],
-    "detail": "A five-day hybrid Faculty Development Programme covering AI/ML applications in healthcare, including medical imaging, robotic healthcare, wearable technologies, remote patient monitoring, and intelligent medical systems.",
-    "tags": [
-      "Artificial Intelligence & Machine Learning",
-      "Healthcare",
-      "Medical Imaging",
-      "Healthcare Robotics",
-      "Wearable Technology",
-      "Remote Patient Monitoring"
-    ],
-    "location": "online, Jyothi Engineering College",
-    "venue": "online",
-    "mode": "Online"
   },
   {
     "id": "event-48-5-day-placement-trainning-competative-coding-by-manifold",
@@ -517,38 +262,293 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-49-bootcamp-on-data-analytics",
-    "index": 49,
-    "name": "Bootcamp on Data Analytics",
-    "category": "Bootcamp",
-    "eventType": "bootcamp",
-    "academicYear": "2025-2026",
+    "id": "event-47-5-day-fdp-on-ai-ml-based-healthcare-research-tools-trends-challenges-in-intelligent-medical-systems-in-association-with-nit-manipur",
+    "index": 47,
+    "name": "5 Day FDP on AI & ML Based Healthcare Research\n Tools, Trends & Challenges in Intelligent Medical Systems \n in association with NIT Manipur",
+    "category": "FDP",
+    "eventType": "FDP",
+    "academicYear": "2025-26",
     "year": 2026,
-    "dateLabel": "15–19 June 2026 • 9:00 AM – 4:00 PM",
-    "rawDate": "15–19 June 2026",
-    "time": "9:00 AM – 4:00 PM",
+    "dateLabel": "21-26 may 2026 • 1:00 PM – 4:00 PM",
+    "rawDate": "21-26 may 2026",
+    "time": "1:00 PM – 4:00 PM",
     "eventDate": "2026-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/49.Bootcamp%20on%20Data%20Analytics.webp",
-    "coverPage": "/events/coverpage/49.Bootcamp%20on%20Data%20Analytics.webp",
+    "img": "/events/coverpage/47.5%20day%20fdp.webp",
+    "coverPage": "/events/coverpage/47.5%20day%20fdp.webp",
     "eventImages": [
-      "/events/eventImage/49.Bootcamp%20on%20data%20analysis.webp",
-      "/events/eventImage/49.Bootcamp%20on%20Data%20Analytics.webp"
+      "/events/eventImage/47.5%20day%20fdp.webp"
     ],
     "gallery": [
-      "/events/eventImage/49.Bootcamp%20on%20data%20analysis.webp",
-      "/events/eventImage/49.Bootcamp%20on%20Data%20Analytics.webp"
+      "/events/eventImage/47.5%20day%20fdp.webp"
     ],
-    "detail": "A five-day industry-oriented boot camp providing students with practical training in data analytics through technical sessions, hands-on activities, assignments, teamwork, and project development.",
+    "detail": "A five-day hybrid Faculty Development Programme covering AI/ML applications in healthcare, including medical imaging, robotic healthcare, wearable technologies, remote patient monitoring, and intelligent medical systems.",
     "tags": [
-      "Data Analytics",
-      "Data Visualization",
-      "Analytical Skills",
-      "Problem Solving",
-      "Project Development"
+      "Artificial Intelligence & Machine Learning",
+      "Healthcare",
+      "Medical Imaging",
+      "Healthcare Robotics",
+      "Wearable Technology",
+      "Remote Patient Monitoring"
     ],
-    "location": "computer centre, Jyothi Engineering College",
-    "venue": "computer centre",
+    "location": "online, Jyothi Engineering College",
+    "venue": "online",
+    "mode": "Online"
+  },
+  {
+    "id": "event-46-6-day-fdp-ai-in-healthcare-data-analytics-ethics-and-real-world-applications",
+    "index": 46,
+    "name": "6 Day FDP - AI IN HEALTHCARE : DATA, ANALYTICS, ETHICS AND REAL WORLD APPLICATIONS",
+    "category": "FDP",
+    "eventType": "FDP",
+    "academicYear": "2025-26",
+    "year": 2026,
+    "dateLabel": "20–25 April 2026 • 1:00 PM – 4:00 PM",
+    "rawDate": "20–25 April 2026",
+    "time": "1:00 PM – 4:00 PM",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp",
+    "coverPage": "/events/coverpage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp",
+    "eventImages": [
+      "/events/eventImage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/46.6%20Day%20FDP%20-%20AI%20IN%20HEALTHCARE%20%20DATA%2C%20ANALYTICS%2C%20ETHICS%20AND%20REAL%20WORLD%20APPLICATIONS.webp"
+    ],
+    "detail": "A six-day international FDP exploring AI applications in healthcare, including data analytics, ethical considerations, predictive analytics, medical imaging, healthcare robotics, and AI-driven healthcare solutions.",
+    "tags": [
+      "AI in Healthcare",
+      "Data Analytics",
+      "Medical Imaging",
+      "Healthcare Robotics",
+      "AI Ethics",
+      "Predictive Analytics"
+    ],
+    "location": "Online, Jyothi Engineering College",
+    "venue": "Online",
+    "mode": "Online"
+  },
+  {
+    "id": "event-44-workshop-on-tableau",
+    "index": 44,
+    "name": "WORKSHOP ON: TABLEAU",
+    "category": "Workshop",
+    "eventType": "workshop",
+    "academicYear": "2025-26",
+    "year": 2026,
+    "dateLabel": "10–11 February 2026 • : 9:00 AM – 4:00 PM",
+    "rawDate": "10–11 February 2026",
+    "time": ": 9:00 AM – 4:00 PM",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/44.Workshop%20on%20tableau.webp",
+    "coverPage": "/events/coverpage/44.Workshop%20on%20tableau.webp",
+    "eventImages": [
+      "/events/eventImage/44.WORKSHOP%20ON%20TABLEAU.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/44.WORKSHOP%20ON%20TABLEAU.webp"
+    ],
+    "detail": "A two-day technical training workshop providing hands-on experience in Tableau for data visualization, business intelligence, dashboard creation, data preparation, and predictive forecasting.",
+    "tags": [
+      "Tableau",
+      "Data Visualization",
+      "Business Intelligence",
+      "Data Analytics",
+      "Predictive Forecasting"
+    ],
+    "location": "Project lab, Jyothi Engineering College",
+    "venue": "Project lab",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-42-vr-arena-3v3-battle-royal-arena",
+    "index": 42,
+    "name": "VR-Arena – 3v3 Battle Royal Arena",
+    "category": "Tharang Fest",
+    "eventType": "tharang fest",
+    "academicYear": "2025-26",
+    "year": 2026,
+    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
+    "rawDate": "14-15 jan 2026",
+    "time": "10 am to 4 pm",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/42.VR%20arena.webp",
+    "coverPage": "/events/coverpage/42.VR%20arena.webp",
+    "eventImages": [
+      "/events/eventImage/42.VR%20arena.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/42.VR%20arena.webp"
+    ],
+    "detail": "A 3v3 VR battle arena focused on teamwork, reflexes, and competitive gameplay",
+    "tags": [
+      "Virtual Reality",
+      "Teamwork",
+      "Gaming & Competition."
+    ],
+    "location": "EAB 310, Jyothi Engineering College",
+    "venue": "EAB 310",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-41-bomb-squad",
+    "index": 41,
+    "name": "Bomb Squad",
+    "category": "Tharang Fest",
+    "eventType": "tharang fest",
+    "academicYear": "2025-26",
+    "year": 2026,
+    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
+    "rawDate": "14-15 jan 2026",
+    "time": "10 am to 4 pm",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/41.Bomb%20squad.webp",
+    "coverPage": "/events/coverpage/41.Bomb%20squad.webp",
+    "eventImages": [
+      "/events/eventImage/41.Bomb%20squad.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/41.Bomb%20squad.webp"
+    ],
+    "detail": "A high-pressure escape-room-style challenge involving clues, codes, and problem solving. Participants work as a team under pressure to complete the challenge within the given time.",
+    "tags": [
+      "Teamwork",
+      "problem solving",
+      "logical thinking"
+    ],
+    "location": "EAB 105, Jyothi Engineering College",
+    "venue": "EAB 105",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-40-blind-killad",
+    "index": 40,
+    "name": "Blind Killad",
+    "category": "Tharang Fest",
+    "eventType": "tharang fest",
+    "academicYear": "2025-26",
+    "year": 2026,
+    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
+    "rawDate": "14-15 jan 2026",
+    "time": "10 am to 4 pm",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/40.Blind%20killadi.webp",
+    "coverPage": "/events/coverpage/40.Blind%20killadi.webp",
+    "eventImages": [
+      "/events/eventImage/40.Blind%20killadi.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/40.Blind%20killadi.webp"
+    ],
+    "detail": "A challenge-based activity testing participants’ instincts, confidence, teamwork, and problem-solving through sensory-based challenges.",
+    "tags": [
+      "Teamwork",
+      "Instinct",
+      "Problem Solving & Challenge-Based Learning."
+    ],
+    "location": "EAB 104, Jyothi Engineering College",
+    "venue": "EAB 104",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-39-among-us",
+    "index": 39,
+    "name": "Among Us",
+    "category": "Tharang Fest",
+    "eventType": "tharang fest",
+    "academicYear": "2026-26",
+    "year": 2026,
+    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
+    "rawDate": "14-15 jan 2026",
+    "time": "10 am to 4 pm",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/39.Among%20us.webp",
+    "coverPage": "/events/coverpage/39.Among%20us.webp",
+    "eventImages": [
+      "/events/eventImage/39.Among%20us.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/39.Among%20us.webp"
+    ],
+    "detail": "A team-based mystery game focused on identifying the impostor through observation, discussion, logical reasoning, and teamwork.",
+    "tags": [
+      "Teamwork",
+      "Logical Thinking",
+      "Communication & Problem Solving."
+    ],
+    "location": "EAB 106, Jyothi Engineering College",
+    "venue": "EAB 106",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-38-ar-treasure-hunt",
+    "index": 38,
+    "name": "AR – Treasure Hunt",
+    "category": "Tharang Fest",
+    "eventType": "tharang fest",
+    "academicYear": "2025-2026",
+    "year": 2026,
+    "dateLabel": "14-15 jan 2026 • 10 am to 4 pm",
+    "rawDate": "14-15 jan 2026",
+    "time": "10 am to 4 pm",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/38.AR%20treasure%20hunt.webp",
+    "coverPage": "/events/coverpage/38.AR%20treasure%20hunt.webp",
+    "eventImages": [
+      "/events/eventImage/38.AR%20treasure%20hunt.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/38.AR%20treasure%20hunt.webp"
+    ],
+    "detail": "A five-level technical treasure hunt combining AR, logical challenges, teamwork, and problem-solving through an engaging pirate-themed adventure.",
+    "tags": [
+      "Augmented Reality",
+      "Logical Thinking",
+      "Problem Solving",
+      "Technical Skills & Teamwork."
+    ],
+    "location": "ME classroom, Jyothi Engineering College",
+    "venue": "ME classroom",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-37-yodha-hackathon",
+    "index": 37,
+    "name": "Yodha hackathon",
+    "category": "Hackathon",
+    "eventType": "hackathon",
+    "academicYear": "2025-2026",
+    "year": 2026,
+    "dateLabel": "9-10 jan 2026 • 24 hours",
+    "rawDate": "9-10 jan 2026",
+    "time": "24 hours",
+    "eventDate": "2026-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/37.yodha.webp",
+    "coverPage": "/events/coverpage/37.yodha.webp",
+    "eventImages": [
+      "/events/eventImage/37.yodha%20(2).webp",
+      "/events/eventImage/37.yodha.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/37.yodha%20(2).webp",
+      "/events/eventImage/37.yodha.webp"
+    ],
+    "detail": "A 24-hour national-level hackathon challenging participants to develop impactful AI solutions for real-world healthcare and environmental safety problems.",
+    "tags": [
+      "Artificial Intelligence",
+      "Healthcare",
+      "Environmental Safety & Problem Solving."
+    ],
+    "location": "auditorium, Jyothi Engineering College",
+    "venue": "auditorium",
     "mode": "On-Campus"
   },
   {
@@ -895,136 +895,39 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-19-placement-trainning-program",
-    "index": 19,
-    "name": "Placement trainning program",
-    "category": "Placement Training",
-    "eventType": "placement training",
-    "academicYear": "2024-25",
-    "year": 2025,
-    "dateLabel": "20-25-01-2025 • 9 am to 4 pm",
-    "rawDate": "20-25-01-2025",
-    "time": "9 am to 4 pm",
-    "eventDate": "2025-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/19.placement%20training%20prgrm.webp",
-    "coverPage": "/events/coverpage/19.placement%20training%20prgrm.webp",
-    "eventImages": [
-      "/events/eventImage/19.placement%20training%20prgrm.webp",
-      "/events/eventImage/19.placement%20training.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/19.placement%20training%20prgrm.webp",
-      "/events/eventImage/19.placement%20training.webp"
-    ],
-    "detail": "A five-day placement training program covering aptitude, reasoning, communication, resume building, group discussions, and interview preparation.",
-    "tags": [
-      "Aptitude",
-      "Communication",
-      "Soft Skills",
-      "Resume Building & Interview Skills."
-    ],
-    "location": "WAB 403, Jyothi Engineering College",
-    "venue": "WAB 403",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-20-2-day-workshop-on-visualizaion-using-tableau",
-    "index": 20,
-    "name": "2 Day workshop on Visualizaion using Tableau",
+    "id": "event-27-2-day-workshop-on-robotics",
+    "index": 27,
+    "name": "2 Day workshop on Robotics",
     "category": "Workshop",
     "eventType": "workshop",
-    "academicYear": "2024-2025",
+    "academicYear": "2025-2026",
     "year": 2025,
-    "dateLabel": "12–13 February 2025 • 10 am to 4pm",
-    "rawDate": "12–13 February 2025",
-    "time": "10 am to 4pm",
-    "eventDate": "2025-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp",
-    "coverPage": "/events/coverpage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp",
-    "eventImages": [
-      "/events/eventImage/20.2%20Day%20workshop%20on%20Visualizaion%20using%20Tableau.webp",
-      "/events/eventImage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/20.2%20Day%20workshop%20on%20Visualizaion%20using%20Tableau.webp",
-      "/events/eventImage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp"
-    ],
-    "detail": "A two-day practical workshop focused on data visualization and analytics using Tableau, providing participants with hands-on experience in creating and interpreting data visualizations.",
-    "tags": [
-      "Data Analytics",
-      "Data Visualization",
-      "Tableau",
-      "Business Intelligence"
-    ],
-    "location": "Computer Centre, Jyothi Engineering College",
-    "venue": "Computer Centre",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-21-5-day-sttp-on-nlp",
-    "index": 21,
-    "name": "5 day STTP on NLP",
-    "category": "Sttp",
-    "eventType": "STTP",
-    "academicYear": "2024-2025",
-    "year": 2025,
-    "dateLabel": "9 may -13 may 2025 • 9 am to 4 pm",
-    "rawDate": "9 may -13 may 2025",
-    "time": "9 am to 4 pm",
-    "eventDate": "2025-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/21.5%20day%20sttp%20on%20nlp.webp",
-    "coverPage": "/events/coverpage/21.5%20day%20sttp%20on%20nlp.webp",
-    "eventImages": [
-      "/events/eventImage/21.5%20day%20sttp%20on%20nlp.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/21.5%20day%20sttp%20on%20nlp.webp"
-    ],
-    "detail": "A five-day technical programme providing practical exposure to NLP concepts and modern techniques using Python, including text processing, sentiment analysis, text classification, language modelling, deep learning, and transformer-based models.",
-    "tags": [
-      "Data Analytics",
-      "Data Visualization",
-      "Analytical Skills",
-      "Problem Solving",
-      "Project Development"
-    ],
-    "location": "Data analytics lab",
-    "venue": "Data analytics lab",
-    "mode": "On-Campus"
-  },
-  {
-    "id": "event-22-boot-camp-webdevelopment-and-data-analytics",
-    "index": 22,
-    "name": "Boot Camp - Webdevelopment and Data Analytics",
-    "category": "Bootcamp",
-    "eventType": "boot camp",
-    "academicYear": "2024-2025",
-    "year": 2025,
-    "dateLabel": ": 23–27 June 2025 • 10 am to 4 pm",
-    "rawDate": ": 23–27 June 2025",
+    "dateLabel": "10–11 September 2025 • 10 am to 4 pm",
+    "rawDate": "10–11 September 2025",
     "time": "10 am to 4 pm",
     "eventDate": "2025-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp",
-    "coverPage": "/events/coverpage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp",
+    "img": "/events/coverpage/27.2%20day%20workshop%20on%20robotics.webp",
+    "coverPage": "/events/coverpage/27.2%20day%20workshop%20on%20robotics.webp",
     "eventImages": [
-      "/events/eventImage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp"
+      "/events/eventImage/27.2%20day%20workshop%20on%20robotics%20.webp",
+      "/events/eventImage/27.2%20day%20workshop%20on%20robotics.webp"
     ],
     "gallery": [
-      "/events/eventImage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp"
+      "/events/eventImage/27.2%20day%20workshop%20on%20robotics%20.webp",
+      "/events/eventImage/27.2%20day%20workshop%20on%20robotics.webp"
     ],
-    "detail": "A 5-day training program for second-year students, providing hands-on exposure to modern web technologies and data analytics through expert guidance and practical sessions.",
+    "detail": "A two-day technical session for S5 AD students covering robotics, electronics, 3D modelling, simulation, sensors, and hands-on Arduino-based hardware projects.",
     "tags": [
-      "Web Development",
-      "Data Analytics",
-      "Modern Web Technologies",
-      "Industry Skills"
+      "Robotics",
+      "Electronics",
+      "Arduino",
+      "Sensors",
+      "3D Modelling",
+      "Hardware Integration"
     ],
-    "location": "Data Science Lab & Data Analytics Lab",
-    "venue": "Data Science Lab & Data Analytics Lab",
+    "location": "WAB 405, Jyothi Engineering College",
+    "venue": "WAB 405",
     "mode": "On-Campus"
   },
   {
@@ -1062,39 +965,136 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-27-2-day-workshop-on-robotics",
-    "index": 27,
-    "name": "2 Day workshop on Robotics",
-    "category": "Workshop",
-    "eventType": "workshop",
-    "academicYear": "2025-2026",
+    "id": "event-22-boot-camp-webdevelopment-and-data-analytics",
+    "index": 22,
+    "name": "Boot Camp - Webdevelopment and Data Analytics",
+    "category": "Bootcamp",
+    "eventType": "boot camp",
+    "academicYear": "2024-2025",
     "year": 2025,
-    "dateLabel": "10–11 September 2025 • 10 am to 4 pm",
-    "rawDate": "10–11 September 2025",
+    "dateLabel": ": 23–27 June 2025 • 10 am to 4 pm",
+    "rawDate": ": 23–27 June 2025",
     "time": "10 am to 4 pm",
     "eventDate": "2025-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/27.2%20day%20workshop%20on%20robotics.webp",
-    "coverPage": "/events/coverpage/27.2%20day%20workshop%20on%20robotics.webp",
+    "img": "/events/coverpage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp",
+    "coverPage": "/events/coverpage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp",
     "eventImages": [
-      "/events/eventImage/27.2%20day%20workshop%20on%20robotics%20.webp",
-      "/events/eventImage/27.2%20day%20workshop%20on%20robotics.webp"
+      "/events/eventImage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp"
     ],
     "gallery": [
-      "/events/eventImage/27.2%20day%20workshop%20on%20robotics%20.webp",
-      "/events/eventImage/27.2%20day%20workshop%20on%20robotics.webp"
+      "/events/eventImage/22.Boot%20camp%20web%20devolepment%20and%20data%20analytics.webp"
     ],
-    "detail": "A two-day technical session for S5 AD students covering robotics, electronics, 3D modelling, simulation, sensors, and hands-on Arduino-based hardware projects.",
+    "detail": "A 5-day training program for second-year students, providing hands-on exposure to modern web technologies and data analytics through expert guidance and practical sessions.",
     "tags": [
-      "Robotics",
-      "Electronics",
-      "Arduino",
-      "Sensors",
-      "3D Modelling",
-      "Hardware Integration"
+      "Web Development",
+      "Data Analytics",
+      "Modern Web Technologies",
+      "Industry Skills"
     ],
-    "location": "WAB 405, Jyothi Engineering College",
-    "venue": "WAB 405",
+    "location": "Data Science Lab & Data Analytics Lab",
+    "venue": "Data Science Lab & Data Analytics Lab",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-21-5-day-sttp-on-nlp",
+    "index": 21,
+    "name": "5 day STTP on NLP",
+    "category": "Sttp",
+    "eventType": "STTP",
+    "academicYear": "2024-2025",
+    "year": 2025,
+    "dateLabel": "9 may -13 may 2025 • 9 am to 4 pm",
+    "rawDate": "9 may -13 may 2025",
+    "time": "9 am to 4 pm",
+    "eventDate": "2025-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/21.5%20day%20sttp%20on%20nlp.webp",
+    "coverPage": "/events/coverpage/21.5%20day%20sttp%20on%20nlp.webp",
+    "eventImages": [
+      "/events/eventImage/21.5%20day%20sttp%20on%20nlp.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/21.5%20day%20sttp%20on%20nlp.webp"
+    ],
+    "detail": "A five-day technical programme providing practical exposure to NLP concepts and modern techniques using Python, including text processing, sentiment analysis, text classification, language modelling, deep learning, and transformer-based models.",
+    "tags": [
+      "Data Analytics",
+      "Data Visualization",
+      "Analytical Skills",
+      "Problem Solving",
+      "Project Development"
+    ],
+    "location": "Data analytics lab",
+    "venue": "Data analytics lab",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-20-2-day-workshop-on-visualizaion-using-tableau",
+    "index": 20,
+    "name": "2 Day workshop on Visualizaion using Tableau",
+    "category": "Workshop",
+    "eventType": "workshop",
+    "academicYear": "2024-2025",
+    "year": 2025,
+    "dateLabel": "12–13 February 2025 • 10 am to 4pm",
+    "rawDate": "12–13 February 2025",
+    "time": "10 am to 4pm",
+    "eventDate": "2025-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp",
+    "coverPage": "/events/coverpage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp",
+    "eventImages": [
+      "/events/eventImage/20.2%20Day%20workshop%20on%20Visualizaion%20using%20Tableau.webp",
+      "/events/eventImage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/20.2%20Day%20workshop%20on%20Visualizaion%20using%20Tableau.webp",
+      "/events/eventImage/20.2%20day%20workshop%20on%20visualization%20using%20tableau.webp"
+    ],
+    "detail": "A two-day practical workshop focused on data visualization and analytics using Tableau, providing participants with hands-on experience in creating and interpreting data visualizations.",
+    "tags": [
+      "Data Analytics",
+      "Data Visualization",
+      "Tableau",
+      "Business Intelligence"
+    ],
+    "location": "Computer Centre, Jyothi Engineering College",
+    "venue": "Computer Centre",
+    "mode": "On-Campus"
+  },
+  {
+    "id": "event-19-placement-trainning-program",
+    "index": 19,
+    "name": "Placement trainning program",
+    "category": "Placement Training",
+    "eventType": "placement training",
+    "academicYear": "2024-25",
+    "year": 2025,
+    "dateLabel": "20-25-01-2025 • 9 am to 4 pm",
+    "rawDate": "20-25-01-2025",
+    "time": "9 am to 4 pm",
+    "eventDate": "2025-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/19.placement%20training%20prgrm.webp",
+    "coverPage": "/events/coverpage/19.placement%20training%20prgrm.webp",
+    "eventImages": [
+      "/events/eventImage/19.placement%20training%20prgrm.webp",
+      "/events/eventImage/19.placement%20training.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/19.placement%20training%20prgrm.webp",
+      "/events/eventImage/19.placement%20training.webp"
+    ],
+    "detail": "A five-day placement training program covering aptitude, reasoning, communication, resume building, group discussions, and interview preparation.",
+    "tags": [
+      "Aptitude",
+      "Communication",
+      "Soft Skills",
+      "Resume Building & Interview Skills."
+    ],
+    "location": "WAB 403, Jyothi Engineering College",
+    "venue": "WAB 403",
     "mode": "On-Campus"
   },
   {
@@ -1308,73 +1308,104 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-7-soft-skill-trainning-program",
-    "index": 7,
-    "name": "Soft Skill Trainning Program",
-    "category": "Training Program",
-    "eventType": "Training program",
+    "id": "event-13-the-national-workshop-on-flutter-app-development",
+    "index": 13,
+    "name": "The National Workshop on Flutter App Development",
+    "category": "Workshop",
+    "eventType": "workshop",
     "academicYear": "2023-2024",
     "year": 2024,
-    "dateLabel": "feb 5-6 2024 • 9:00 AM",
-    "rawDate": "feb 5-6 2024",
-    "time": "9:00 AM",
+    "dateLabel": "24–28 June 2024 • 9 am to 4 pm",
+    "rawDate": "24–28 June 2024",
+    "time": "9 am to 4 pm",
     "eventDate": "2024-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/7.Soft%20Skill%20Trainning%20Program.webp",
-    "coverPage": "/events/coverpage/7.Soft%20Skill%20Trainning%20Program.webp",
+    "img": "/events/coverpage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp",
+    "coverPage": "/events/coverpage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp",
     "eventImages": [
-      "/events/eventImage/7.soft%20skill%20development.webp",
-      "/events/eventImage/7.Soft%20Skill%20Trainning%20Program.webp"
+      "/events/eventImage/13.National%20workshop%20on%20flutter.webp",
+      "/events/eventImage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp"
     ],
     "gallery": [
-      "/events/eventImage/7.soft%20skill%20development.webp",
-      "/events/eventImage/7.Soft%20Skill%20Trainning%20Program.webp"
+      "/events/eventImage/13.National%20workshop%20on%20flutter.webp",
+      "/events/eventImage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp"
     ],
-    "detail": "A two-day skill development program focused on communication, leadership, teamwork, time management, goal setting, and resume building through interactive activities",
+    "detail": "A 5-day national workshop providing practical training in Flutter mobile app development, covering Dart, widgets, UI design, state management, navigation, REST APIs, and JSON.",
     "tags": [
-      "Soft Skills",
-      "Leadership",
-      "Communication",
-      "Teamwork",
-      "Time Management & Resume Development."
+      "Flutter",
+      "Mobile App Development",
+      "Dart",
+      "UI/UX",
+      "REST APIs",
+      "State Management"
     ],
-    "location": "ECE seminar hall",
-    "venue": "ECE seminar hall",
+    "location": "Data science lab",
+    "venue": "Data science lab",
     "mode": "On-Campus"
   },
   {
-    "id": "event-9-think-her-hack-2-0-24-hours",
-    "index": 9,
-    "name": "Think-Her-Hack 2.0\n 24 Hours",
+    "id": "event-12-bridge-course-basic-programming-in-python",
+    "index": 12,
+    "name": "Bridge Course Basic Programming in Python",
+    "category": "Bridge Course",
+    "eventType": "Bridge course",
+    "academicYear": "2023-2024",
+    "year": 2024,
+    "dateLabel": "19 June – 3 July 2024 • 30 hours",
+    "rawDate": "19 June – 3 July 2024",
+    "time": "30 hours",
+    "eventDate": "2024-01-01",
+    "status": "Completed",
+    "img": "/events/coverpage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp",
+    "coverPage": "/events/coverpage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp",
+    "eventImages": [
+      "/events/eventImage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp"
+    ],
+    "gallery": [
+      "/events/eventImage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp"
+    ],
+    "detail": "An introductory Python bridge course for first-year students, covering programming basics through hands-on learning and coding practice.",
+    "tags": [
+      "Python Programming",
+      "Coding",
+      "Problem-Solving",
+      "Programming Fundamentals"
+    ],
+    "location": "online, Jyothi Engineering College",
+    "venue": "online",
+    "mode": "Online"
+  },
+  {
+    "id": "event-11-neophyte-24-hours-hackathon",
+    "index": 11,
+    "name": "Neophyte - 24 Hours Hackathon",
     "category": "Hackathon",
     "eventType": "Hackathon",
     "academicYear": "2023-2024",
     "year": 2024,
-    "dateLabel": "2–3 March 2024 • 3:00 PM (2 Mar) – 2:00 PM (3 Mar)",
-    "rawDate": "2–3 March 2024",
-    "time": "3:00 PM (2 Mar) – 2:00 PM (3 Mar)",
+    "dateLabel": "6–7 April 2024 • 1:00 PM (6 Apr) – 1:00 PM (7 Apr)",
+    "rawDate": "6–7 April 2024",
+    "time": "1:00 PM (6 Apr) – 1:00 PM (7 Apr)",
     "eventDate": "2024-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
-    "coverPage": "/events/coverpage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
+    "img": "/events/coverpage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp",
+    "coverPage": "/events/coverpage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp",
     "eventImages": [
-      "/events/eventImage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
-      "/events/eventImage/9.Think-her-hack%202.0.webp"
+      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon%20(1).webp",
+      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp"
     ],
     "gallery": [
-      "/events/eventImage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
-      "/events/eventImage/9.Think-her-hack%202.0.webp"
+      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon%20(1).webp",
+      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp"
     ],
-    "detail": "A women-exclusive hackathon focused on promoting participation in technology and providing hands-on experience through collaborative problem-solving and coding.",
+    "detail": "A beginner-friendly hackathon introducing first- and second-year students to coding, problem-solving, brainstorming",
     "tags": [
-      "Hackathon",
       "Coding",
-      "Technology",
-      "Innovation",
-      "Women in Tech"
+      "Hackathon",
+      "Problem-Solving"
     ],
-    "location": "College Auditorium",
-    "venue": "College Auditorium",
+    "location": "EAB 415, Jyothi Engineering College",
+    "venue": "EAB 415",
     "mode": "On-Campus"
   },
   {
@@ -1413,104 +1444,73 @@ export const officialEventsData = [
     "mode": "On-Campus"
   },
   {
-    "id": "event-11-neophyte-24-hours-hackathon",
-    "index": 11,
-    "name": "Neophyte - 24 Hours Hackathon",
+    "id": "event-9-think-her-hack-2-0-24-hours",
+    "index": 9,
+    "name": "Think-Her-Hack 2.0\n 24 Hours",
     "category": "Hackathon",
     "eventType": "Hackathon",
     "academicYear": "2023-2024",
     "year": 2024,
-    "dateLabel": "6–7 April 2024 • 1:00 PM (6 Apr) – 1:00 PM (7 Apr)",
-    "rawDate": "6–7 April 2024",
-    "time": "1:00 PM (6 Apr) – 1:00 PM (7 Apr)",
+    "dateLabel": "2–3 March 2024 • 3:00 PM (2 Mar) – 2:00 PM (3 Mar)",
+    "rawDate": "2–3 March 2024",
+    "time": "3:00 PM (2 Mar) – 2:00 PM (3 Mar)",
     "eventDate": "2024-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp",
-    "coverPage": "/events/coverpage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp",
+    "img": "/events/coverpage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
+    "coverPage": "/events/coverpage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
     "eventImages": [
-      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon%20(1).webp",
-      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp"
+      "/events/eventImage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
+      "/events/eventImage/9.Think-her-hack%202.0.webp"
     ],
     "gallery": [
-      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon%20(1).webp",
-      "/events/eventImage/11.Neophyte%20-%2024%20Hours%20Hackathon.webp"
+      "/events/eventImage/9.Think-Her-Hack%202.0%20%2024%20Hours_.webp",
+      "/events/eventImage/9.Think-her-hack%202.0.webp"
     ],
-    "detail": "A beginner-friendly hackathon introducing first- and second-year students to coding, problem-solving, brainstorming",
+    "detail": "A women-exclusive hackathon focused on promoting participation in technology and providing hands-on experience through collaborative problem-solving and coding.",
     "tags": [
-      "Coding",
       "Hackathon",
-      "Problem-Solving"
+      "Coding",
+      "Technology",
+      "Innovation",
+      "Women in Tech"
     ],
-    "location": "EAB 415, Jyothi Engineering College",
-    "venue": "EAB 415",
+    "location": "College Auditorium",
+    "venue": "College Auditorium",
     "mode": "On-Campus"
   },
   {
-    "id": "event-12-bridge-course-basic-programming-in-python",
-    "index": 12,
-    "name": "Bridge Course Basic Programming in Python",
-    "category": "Bridge Course",
-    "eventType": "Bridge course",
+    "id": "event-7-soft-skill-trainning-program",
+    "index": 7,
+    "name": "Soft Skill Trainning Program",
+    "category": "Training Program",
+    "eventType": "Training program",
     "academicYear": "2023-2024",
     "year": 2024,
-    "dateLabel": "19 June – 3 July 2024 • 30 hours",
-    "rawDate": "19 June – 3 July 2024",
-    "time": "30 hours",
+    "dateLabel": "feb 5-6 2024 • 9:00 AM",
+    "rawDate": "feb 5-6 2024",
+    "time": "9:00 AM",
     "eventDate": "2024-01-01",
     "status": "Completed",
-    "img": "/events/coverpage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp",
-    "coverPage": "/events/coverpage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp",
+    "img": "/events/coverpage/7.Soft%20Skill%20Trainning%20Program.webp",
+    "coverPage": "/events/coverpage/7.Soft%20Skill%20Trainning%20Program.webp",
     "eventImages": [
-      "/events/eventImage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp"
+      "/events/eventImage/7.soft%20skill%20development.webp",
+      "/events/eventImage/7.Soft%20Skill%20Trainning%20Program.webp"
     ],
     "gallery": [
-      "/events/eventImage/12.Bridge%20Course%20Basic%20Programming%20in%20Python.webp"
+      "/events/eventImage/7.soft%20skill%20development.webp",
+      "/events/eventImage/7.Soft%20Skill%20Trainning%20Program.webp"
     ],
-    "detail": "An introductory Python bridge course for first-year students, covering programming basics through hands-on learning and coding practice.",
+    "detail": "A two-day skill development program focused on communication, leadership, teamwork, time management, goal setting, and resume building through interactive activities",
     "tags": [
-      "Python Programming",
-      "Coding",
-      "Problem-Solving",
-      "Programming Fundamentals"
+      "Soft Skills",
+      "Leadership",
+      "Communication",
+      "Teamwork",
+      "Time Management & Resume Development."
     ],
-    "location": "online, Jyothi Engineering College",
-    "venue": "online",
-    "mode": "Online"
-  },
-  {
-    "id": "event-13-the-national-workshop-on-flutter-app-development",
-    "index": 13,
-    "name": "The National Workshop on Flutter App Development",
-    "category": "Workshop",
-    "eventType": "workshop",
-    "academicYear": "2023-2024",
-    "year": 2024,
-    "dateLabel": "24–28 June 2024 • 9 am to 4 pm",
-    "rawDate": "24–28 June 2024",
-    "time": "9 am to 4 pm",
-    "eventDate": "2024-01-01",
-    "status": "Completed",
-    "img": "/events/coverpage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp",
-    "coverPage": "/events/coverpage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp",
-    "eventImages": [
-      "/events/eventImage/13.National%20workshop%20on%20flutter.webp",
-      "/events/eventImage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp"
-    ],
-    "gallery": [
-      "/events/eventImage/13.National%20workshop%20on%20flutter.webp",
-      "/events/eventImage/13.The%20National%20Workshop%20on%20Flutter%20App%20Development.webp"
-    ],
-    "detail": "A 5-day national workshop providing practical training in Flutter mobile app development, covering Dart, widgets, UI design, state management, navigation, REST APIs, and JSON.",
-    "tags": [
-      "Flutter",
-      "Mobile App Development",
-      "Dart",
-      "UI/UX",
-      "REST APIs",
-      "State Management"
-    ],
-    "location": "Data science lab",
-    "venue": "Data science lab",
+    "location": "ECE seminar hall",
+    "venue": "ECE seminar hall",
     "mode": "On-Campus"
   },
   {
