@@ -357,7 +357,7 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
   );
 }
 
-export default function PlacementsSection() {
+export default function PlacementsSection({ showAll = true }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState('ALL');
   const [selectedCompany, setSelectedCompany] = useState('ALL');
@@ -446,12 +446,13 @@ export default function PlacementsSection() {
     });
   }, [searchQuery, selectedYear, selectedCompany]);
 
-  // Pagination calculation
+  // Record set calculation (list all records directly if showAll is true)
   const totalPages = Math.ceil(filteredPlacements.length / itemsPerPage) || 1;
-  const paginatedItems = useMemo(() => {
+  const displayItems = useMemo(() => {
+    if (showAll) return filteredPlacements;
     const start = (currentPage - 1) * itemsPerPage;
     return filteredPlacements.slice(start, start + itemsPerPage);
-  }, [filteredPlacements, currentPage, itemsPerPage]);
+  }, [filteredPlacements, currentPage, itemsPerPage, showAll]);
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
@@ -583,8 +584,8 @@ export default function PlacementsSection() {
 
             {/* Table Body */}
             <tbody className="divide-y divide-neutral-800/50 text-sm font-sans">
-              {paginatedItems.length > 0 ? (
-                paginatedItems.map((item) => (
+              {displayItems.length > 0 ? (
+                displayItems.map((item) => (
                   <tr
                     key={item.id}
                     onMouseEnter={(e) => {
@@ -610,12 +611,16 @@ export default function PlacementsSection() {
                       </div>
                     </td>
 
-                    {/* Company Column */}
+                    {/* Company Name Column */}
                     <td className="py-3.5 px-4 sm:px-6">
-                      <div className="flex items-center gap-3">
-                        <CompanyLogo
-                          companyName={item.companyName}
-                          logoUrl={item.logoUrl}
+                      <div className="flex items-center gap-2.5">
+                        <img
+                          src={item.logoUrl}
+                          alt={item.companyName}
+                          className="w-5 h-5 object-contain rounded-full bg-white/10 p-0.5 shrink-0"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
                         />
                         <span className="font-medium text-neutral-100 text-sm">
                           {item.companyName}
@@ -683,27 +688,13 @@ export default function PlacementsSection() {
           </table>
         </div>
 
-        {/* Table Footer / Pagination */}
+        {/* Table Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t border-neutral-800/90 bg-[#0c0c0e]/90 text-xs font-mono text-neutral-400">
           <div>
-            Showing{' '}
-            <span className="text-red-500 font-semibold">
-              {filteredPlacements.length > 0
-                ? (currentPage - 1) * itemsPerPage + 1
-                : 0}
-            </span>{' '}
-            to{' '}
-            <span className="text-red-500 font-semibold">
-              {Math.min(currentPage * itemsPerPage, filteredPlacements.length)}
-            </span>{' '}
-            of{' '}
-            <span className="text-red-500 font-semibold">
-              {filteredPlacements.length}
-            </span>{' '}
-            records
+            Listing <span className="text-red-500 font-bold">{displayItems.length}</span> placement records
           </div>
 
-          {totalPages > 1 && (
+          {!showAll && totalPages > 1 && (
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
