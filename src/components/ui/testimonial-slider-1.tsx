@@ -88,7 +88,7 @@ const TypewriterText = ({
 /**
  * Core Team & Faculty Testimonial Slider component with transparent background,
  * red highlighted names, live typing effect, LinkedIn & Email links, optional action profile button,
- * 5-second automatic carousel (working on mobile too), and flexible layout order.
+ * infinite 5-second automatic carousel triggered once section is reached, and flexible layout order.
  */
 export const TestimonialSlider = ({
   reviews,
@@ -101,10 +101,11 @@ export const TestimonialSlider = ({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isPaused, setIsPaused] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [hasBeenReached, setHasBeenReached] = useState(false);
 
-  // IntersectionObserver with low threshold (0.01) so mobile & desktop start autoplay as soon as section is reached
+  // IntersectionObserver detects when section is reached for the FIRST time
   useEffect(() => {
+    if (hasBeenReached) return;
     const node = containerRef.current;
     if (!node) return;
 
@@ -112,10 +113,7 @@ export const TestimonialSlider = ({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsInView(true);
-          } else {
-            setIsInView(false);
-            setCurrentIndex(initialIndex);
+            setHasBeenReached(true);
           }
         });
       },
@@ -124,7 +122,7 @@ export const TestimonialSlider = ({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [initialIndex]);
+  }, [hasBeenReached]);
 
   if (!reviews || reviews.length === 0) {
     return null;
@@ -147,16 +145,16 @@ export const TestimonialSlider = ({
     setCurrentIndex(index);
   };
 
-  // Autoplay carousel timer: runs automatically on mobile & desktop when section is in viewport
+  // Autoplay carousel timer: starts once section has been reached once, then continues endlessly on all devices (wrapping from last card to 1st card)
   useEffect(() => {
-    if (!isInView || isPaused || reviews.length <= 1) return;
+    if (!hasBeenReached || isPaused || reviews.length <= 1) return;
 
     const timer = setInterval(() => {
       handleNext();
     }, autoplayInterval);
 
     return () => clearInterval(timer);
-  }, [isInView, isPaused, reviews.length, autoplayInterval, handleNext]);
+  }, [hasBeenReached, isPaused, reviews.length, autoplayInterval, handleNext]);
 
   // Get the next 5 reviews for thumbnails in order, wrapping around the reviews array
   const thumbnailCount = Math.min(5, reviews.length);
