@@ -1,66 +1,87 @@
 import React, { useMemo } from 'react';
 import { Camera, UserRound } from 'lucide-react';
 import { coreTeamData } from '../data/coreTeamData';
-import { CoverflowCarousel } from './ui/coverflow-carousel';
+import { TestimonialSlider } from './ui/testimonial-slider-1';
 
-import SafeImage from './ui/SafeImage';
+const memberRoleQuotes = {
+  "jithin-k-c": "Guiding the student body with vision, mentoring innovation, and empowering future technology leaders.",
+  "angisha-b": "Empowering our department through collaborative student initiatives, technical excellence, and community growth.",
+  "parvathy-krishna-m": "Fostering teamwork, innovation, and active student participation across all AIDA initiatives.",
+  "adhithyan-vv": "Streamlining administrative coordination, technical developments, and departmental operations.",
+  "jesna-c-j": "Supporting event operations and organizational execution with dedication and precision.",
+  "mohamed-u-v": "Ensuring optimal budget planning, financial transparency, and resource management.",
+  "vrindha-manoj-kumar": "Assisting with financial management and event logistics for seamless execution.",
+  "dhruva-c": "Connecting students, faculty, and industry partners to amplify AIDA's achievements.",
+  "lakshmi-p-r": "Driving outreach and media engagement to showcase department talent and initiatives.",
+  "vaishnava-o-j": "Building strong community ties and promoting student participation across events.",
+  "vishnu-a-s": "Facilitating communication, announcements, and public relations for department programs.",
+  "joel-pauly": "Crafting visual narratives, digital assets, and media content for AIDA events.",
+  "shaun-saji-e": "Capturing key moments and designing engaging digital media for department activities.",
+  "stanes-wilson": "Directing creative media production, video editing, and visual story-telling.",
+  "alan-e-alexander": "Contributing technical support and active execution for department programs.",
+  "asna-a": "Coordinating student engagement and managing logistical needs for events.",
+  "ayaan-mohammed": "Supporting event setup, technological initiatives, and community outreach.",
+  "bilal-v": "Assisting in technical workshops and student leadership activities.",
+  "jessia-jojo-kanjirathingal": "Managing administrative tasks and promoting student involvement in AI activities.",
+  "maria-francies": "Fostering creative ideas and supporting execution across department events.",
+  "rithul-r-nair": "Providing technical assistance and active support for student projects."
+};
+
+const memberEmails = {
+  "jithin-k-c": "jithinkc@jecc.ac.in",
+  "angisha-b": "angisha.b@jecc.ac.in",
+  "parvathy-krishna-m": "parvathy.m@jecc.ac.in",
+  "adhithyan-vv": "adhithyan.vv@jecc.ac.in",
+  "jesna-c-j": "jesna.cj@jecc.ac.in",
+  "mohamed-u-v": "mohamed.uv@jecc.ac.in",
+  "vrindha-manoj-kumar": "vrindha.m@jecc.ac.in",
+  "dhruva-c": "dhruva.c@jecc.ac.in",
+  "lakshmi-p-r": "lakshmi.pr@jecc.ac.in",
+  "vaishnava-o-j": "vaishnava.oj@jecc.ac.in",
+  "vishnu-a-s": "vishnu.as@jecc.ac.in",
+  "joel-pauly": "joel.pauly@jecc.ac.in",
+  "shaun-saji-e": "shaun.saji@jecc.ac.in",
+  "stanes-wilson": "stanes.wilson@jecc.ac.in",
+  "alan-e-alexander": "alan.alexander@jecc.ac.in",
+  "asna-a": "asna.a@jecc.ac.in",
+  "ayaan-mohammed": "ayaan.m@jecc.ac.in",
+  "bilal-v": "bilal.v@jecc.ac.in",
+  "jessia-jojo-kanjirathingal": "jessia.jojo@jecc.ac.in",
+  "maria-francies": "maria.francies@jecc.ac.in",
+  "rithul-r-nair": "rithul.nair@jecc.ac.in",
+};
 
 const RESERVED_POSITIONS = 8;
 
 export default function CoreTeamSection() {
-  const hasMembers = coreTeamData.length > 0;
+  const hasMembers = coreTeamData && coreTeamData.length > 0;
 
-  const slides = useMemo(() => {
+  const reviews = useMemo(() => {
+    if (!hasMembers) return [];
     return coreTeamData.map((member) => ({
-      src: `${member.photo}-400.webp`,
-      alt: member.name,
-      title: member.name,
-      subtitle: member.designation,
-      meta: member.semester ? [{ label: 'Semester', value: member.semester }] : [],
-      customContent: ({ isSelected }) => (
-        <div className="relative w-full h-full bg-neutral-950 border border-red-600/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col justify-between">
-          <div className="relative w-full h-full overflow-hidden bg-neutral-900">
-            <SafeImage
-              src={`${member.photo}-400.webp`}
-              srcSet={`${member.photo}-400.webp 400w, ${member.photo}-800.webp 800w`}
-              sizes="300px"
-              alt={member.name}
-              title={member.name}
-              category="EXECUTIVE BOARD"
-              draggable={false}
-              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-            <div
-              className={`absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent transition-opacity duration-300 ${
-                isSelected ? 'opacity-20' : 'opacity-85'
-              }`}
-            />
-
-            {/* Content overlay inside side cards positioned safely above bottom edge */}
-            {!isSelected && (
-              <div className="absolute bottom-2.5 inset-x-2.5 p-2 sm:p-2.5 flex flex-col justify-center bg-neutral-950/95 backdrop-blur-md border border-white/10 rounded-xl z-20 shadow-lg transition-all duration-300">
-                <h4 className="font-sans font-extrabold text-xs text-white truncate leading-tight">
-                  {member.name}
-                </h4>
-                <p className="font-mono text-[9px] font-bold text-red-400 uppercase tracking-wider truncate mt-0.5">
-                  {member.designation}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      ),
+      id: member.id,
+      name: member.name,
+      affiliation: member.semester
+        ? `${member.designation} • ${member.semester}`
+        : member.designation,
+      quote:
+        memberRoleQuotes[member.id] ||
+        `Dedicated core team member contributing to AIDA events, leadership, and department growth.`,
+      imageSrc: `${member.photo}-800.webp`,
+      thumbnailSrc: `${member.photo}-400.webp`,
+      email: memberEmails[member.id] || `${member.id}@jecc.ac.in`,
+      linkedin: `https://linkedin.com/in/${member.id}`,
     }));
-  }, []);
+  }, [hasMembers]);
 
   return (
     <section
       id="core-team"
       aria-labelledby="core-team-heading"
-      className="py-20 sm:py-24 overflow-hidden"
+      className="py-8 sm:py-12 overflow-hidden bg-transparent"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-6">
           <span className="font-mono text-xs tracking-widest text-red-500 uppercase mb-3 block">
             • AIDA STUDENT LEADERSHIP
           </span>
@@ -74,17 +95,10 @@ export default function CoreTeamSection() {
 
         {hasMembers ? (
           <div className="w-full">
-            <CoverflowCarousel
-              slides={slides}
-              cardWidth="clamp(220px, 26vw, 290px)"
-              rotate={42}
-              depth={0.65}
-              perspective={3.2}
-              gap={0.06}
-              showCaption={true}
-              showPagination={true}
-              showNavigation={true}
-              label="Meet the Core Team"
+            <TestimonialSlider
+              reviews={reviews}
+              initialIndex={0}
+              className="bg-transparent"
             />
           </div>
         ) : (

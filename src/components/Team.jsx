@@ -1,10 +1,7 @@
 import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { facultyCount, facultyData } from '../data/facultyData';
-import { CoverflowCarousel } from './ui/coverflow-carousel';
-import SafeImage from './ui/SafeImage';
-import FacultyProjectsModal from './projects/FacultyProjectsModal';
-import { ChevronDown, Check, Mail, ExternalLink } from 'lucide-react';
-import LinkedinIcon from './ui/LinkedinIcon';
+import { TestimonialSlider } from './ui/testimonial-slider-1';
+import { ChevronDown, Check } from 'lucide-react';
 
 const FILTERS = [
   { id: 'all', label: 'All Faculty', match: () => true },
@@ -15,55 +12,7 @@ const FILTERS = [
   { id: 'instructor', label: 'Trade Instructors', match: (member) => member.group === 'Trade Instructor' },
 ];
 
-const GROUP_STYLES = {
-  'Head of Department': {
-    border: 'border-red-600/50',
-    hoverBorder: 'hover:border-red-500',
-    badgeText: 'text-red-400',
-    dot: 'bg-red-500 animate-pulse',
-    tag: 'HOD',
-    accentGradient: 'from-red-600 via-red-500 to-red-700',
-    avatarBg: 'bg-red-950/40 text-red-400 border border-red-600/30',
-  },
-  'Professor': {
-    border: 'border-red-600/30',
-    hoverBorder: 'hover:border-red-500/70',
-    badgeText: 'text-red-400',
-    dot: 'bg-red-500',
-    tag: 'PROFESSOR',
-    accentGradient: 'from-red-600/80 via-red-500/50 to-neutral-800',
-    avatarBg: 'bg-neutral-900 text-neutral-300 border border-neutral-800',
-  },
-  'Associate Professor': {
-    border: 'border-red-600/30',
-    hoverBorder: 'hover:border-red-500/70',
-    badgeText: 'text-red-400',
-    dot: 'bg-red-500',
-    tag: 'ASSOC. PROF',
-    accentGradient: 'from-red-600/80 via-red-500/50 to-neutral-800',
-    avatarBg: 'bg-neutral-900 text-neutral-300 border border-neutral-800',
-  },
-  'Assistant Professor': {
-    border: 'border-neutral-800',
-    hoverBorder: 'hover:border-red-500/60',
-    badgeText: 'text-neutral-300',
-    dot: 'bg-red-500',
-    tag: 'AST. PROF',
-    accentGradient: 'from-red-600/60 to-neutral-800',
-    avatarBg: 'bg-neutral-900 text-neutral-300 border border-neutral-800',
-  },
-  'Trade Instructor': {
-    border: 'border-neutral-800',
-    hoverBorder: 'hover:border-red-500/60',
-    badgeText: 'text-neutral-300',
-    dot: 'bg-red-500',
-    tag: 'INSTRUCTOR',
-    accentGradient: 'from-red-600/60 to-neutral-800',
-    avatarBg: 'bg-neutral-900 text-neutral-300 border border-neutral-800',
-  },
-};
-
-// Custom Dark Theme-Matched Animated Dropdown for Faculty Filters (High z-index z-[45] below navbar z-50)
+// Custom Dark Theme-Matched Animated Dropdown for Faculty Filters
 function FacultyCustomDropdown({ filters, activeId, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -140,86 +89,21 @@ export default function Team({ onNavigate }) {
     return facultyData.filter(filter.match);
   }, [activeFilter]);
 
-  const slides = useMemo(() => {
-    return filteredFaculty.map((member, index) => {
+  const facultyReviews = useMemo(() => {
+    return filteredFaculty.map((member) => {
       const displayName = member.name ? member.name.replace(/\.+$/, '') : '';
-      const style = GROUP_STYLES[member.group] || GROUP_STYLES['Assistant Professor'];
-      const isHOD = member.group === 'Head of Department';
+      const cleanSlug = member.slug || normalizeName(displayName);
 
       return {
-        src: member.img ? `${member.img}-320.webp` : '',
-        alt: displayName,
-        title: displayName,
-        subtitle: member.designation,
-        onSelectProfile: () => handleFacultyClick(member),
-        meta: [
-          { label: 'Role', value: style.tag || 'FACULTY' },
-          { label: 'Department', value: 'AI & DS' },
-        ],
-        customContent: ({ isSelected }) => (
-          <div
-            onClick={() => handleFacultyClick(member)}
-            className={`group relative w-full h-full bg-neutral-950/90 backdrop-blur-md rounded-2xl overflow-hidden border ${style.border} ${style.hoverBorder} transition-all duration-300 flex flex-col justify-between shadow-2xl cursor-pointer`}
-          >
-            {/* Top Accent Bar */}
-            <div className="h-1 w-full bg-neutral-950 relative overflow-hidden">
-              <div className={`h-full bg-gradient-to-r ${style.accentGradient} w-full`} />
-            </div>
-
-            {/* Image Frame */}
-            <div className="relative aspect-[3/3.7] bg-neutral-900 overflow-hidden shrink-0 grow">
-              <SafeImage
-                src={`${member.img}-320.webp`}
-                srcSet={`${member.img}-320.webp 320w, ${member.img}-640.webp 640w`}
-                sizes="300px"
-                alt={`${displayName}, ${member.designation}`}
-                title={displayName}
-                category={style.tag || 'FACULTY'}
-                initials={member.initials}
-                loading={index < 3 ? 'eager' : 'lazy'}
-                draggable="false"
-                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 relative z-10"
-              />
-
-              {/* Badge Overlay */}
-              <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase border backdrop-blur-md bg-neutral-950/90 border-red-600/30 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span className={`w-1.5 h-1.5 rounded-full ${style.dot}`} />
-                <span className={style.badgeText}>{style.tag}</span>
-              </div>
-
-              {/* HOD Tag */}
-              {isHOD && (
-                <div className="absolute top-3 right-3 z-20 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold tracking-widest uppercase bg-red-600/20 border border-red-500/60 text-red-400 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  ★ LEAD
-                </div>
-              )}
-
-              <div className={`absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent z-10 transition-opacity duration-300 ${isSelected ? 'opacity-20' : 'opacity-85'}`} />
-
-              {/* Content overlay inside side cards */}
-              {!isSelected && (
-                <div className="absolute bottom-2.5 inset-x-2.5 p-2 sm:p-2.5 flex flex-col justify-center bg-neutral-950/95 backdrop-blur-md border border-white/10 rounded-xl z-20 shadow-lg transition-all duration-300">
-                  <div className="flex items-center justify-between gap-1">
-                    <h3 className="font-sans font-extrabold text-xs text-white truncate leading-tight">
-                      {displayName}
-                    </h3>
-                    <span
-                      onClick={(e) => { e.stopPropagation(); handleFacultyClick(member); }}
-                      className="p-0.5 text-red-500 hover:text-red-400 transition-colors shrink-0 cursor-pointer"
-                      title="View Faculty Profile & Supervised Projects"
-                      aria-label={`View ${displayName} Profile`}
-                    >
-                      <ExternalLink size={13} />
-                    </span>
-                  </div>
-                  <p className="font-mono text-[9px] font-bold text-red-400 uppercase tracking-wider mt-0.5 truncate">
-                    {member.designation}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
+        id: cleanSlug,
+        name: displayName,
+        affiliation: `${member.designation} • Department of AI & DS`,
+        imageSrc: member.img ? `${member.img}-640.webp` : '',
+        thumbnailSrc: member.img ? `${member.img}-320.webp` : '',
+        email: `${cleanSlug.replace(/-/g, '')}@jecc.ac.in`,
+        linkedin: `https://linkedin.com/in/${cleanSlug}`,
+        actionLabel: "View Profile & Projects",
+        onActionClick: () => handleFacultyClick(member),
       };
     });
   }, [filteredFaculty, onNavigate]);
@@ -228,7 +112,7 @@ export default function Team({ onNavigate }) {
     <section
       id="team"
       aria-labelledby="faculty-heading"
-      className="py-14 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 overflow-hidden"
+      className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 overflow-hidden"
     >
       <div>
         {/* Centered Section Header */}
@@ -246,7 +130,7 @@ export default function Team({ onNavigate }) {
         </div>
 
         {/* Right-Aligned Designation Dropdown (z-30) */}
-        <div className="flex justify-end mb-8 relative z-30">
+        <div className="flex justify-end mb-6 relative z-30">
           <FacultyCustomDropdown
             filters={FILTERS}
             activeId={activeFilter}
@@ -254,24 +138,17 @@ export default function Team({ onNavigate }) {
           />
         </div>
 
-        {/* Coverflow Carousel for Faculty */}
+        {/* Testimonial Slider for Faculty */}
         <div className="w-full">
-          <CoverflowCarousel
+          <TestimonialSlider
             key={activeFilter}
-            slides={slides}
-            cardWidth="clamp(220px, 26vw, 290px)"
-            rotate={42}
-            depth={0.65}
-            perspective={3.2}
-            gap={0.06}
-            showCaption={true}
-            showPagination={true}
-            showNavigation={true}
-            label="Faculty Members Carousel"
+            reviews={facultyReviews}
+            initialIndex={0}
+            reverseLayout={true}
+            className="bg-transparent"
           />
         </div>
       </div>
     </section>
   );
 }
-
