@@ -264,7 +264,7 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Center Column: Main Image === */}
-        <div className="md:col-span-4 relative h-72 sm:h-80 min-h-[320px] sm:min-h-[400px] md:min-h-[460px] order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/50 shadow-2xl">
+        <div className="md:col-span-4 relative aspect-[2/3] md:aspect-auto w-full h-auto md:h-80 min-h-0 md:min-h-[460px] order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/50 shadow-2xl">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
