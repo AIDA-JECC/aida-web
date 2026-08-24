@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, Mail, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Mail, ExternalLink, Phone, GraduationCap, Globe, Award, UserCheck, Hash } from "lucide-react";
 import LinkedinIcon from "./LinkedinIcon";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -13,11 +13,18 @@ export type Review = {
   id: string | number;
   name: string;
   affiliation: string;
-  quote?: string;
+  quote?: string | null;
   imageSrc: string;
   thumbnailSrc: string;
-  email?: string;
-  linkedin?: string;
+  email?: string | null;
+  phone?: string | null;
+  about?: string | null;
+  linkedin?: string | null;
+  googleScholar?: string | null;
+  scopus?: string | null;
+  orcid?: string | null;
+  vidwan?: string | null;
+  employeeId?: string | null;
   actionLabel?: string;
   onActionClick?: () => void;
 };
@@ -283,12 +290,12 @@ export const TestimonialSlider = ({
         {/* === Details & Content Column (Right on Core Team, Left on Faculty) === */}
         <div
           className={cn(
-            "md:col-span-4 flex flex-col justify-between min-h-[300px] md:min-h-[440px]",
+            "md:col-span-4 flex flex-col justify-between min-h-[220px] md:min-h-[360px]",
             reverseLayout ? "order-3 md:order-1 md:pr-4" : "order-3 md:order-3 md:pl-4"
           )}
         >
           {/* Text Content with Typing Animation */}
-          <div className="relative overflow-hidden pt-2 min-h-[220px] md:min-h-[260px]">
+          <div className="relative overflow-hidden pt-2 min-h-[140px] md:min-h-[180px]">
             <AnimatePresence mode="wait">
               <div key={currentIndex} className="flex flex-col gap-2">
                 {/* Affiliation with Typing Animation */}
@@ -321,30 +328,97 @@ export const TestimonialSlider = ({
                   </div>
                 )}
 
-                {/* LinkedIn and Mail ID section */}
-                <div className="flex flex-wrap items-center gap-3 mt-4 md:mt-5 pt-3 md:pt-4 border-t border-white/10">
+                {/* All Non-Null Faculty Metadata Links & Badges */}
+                <div className="flex flex-wrap items-center gap-2 mt-4 md:mt-5 pt-3 md:pt-4 border-t border-white/10">
                   {activeReview.email && (
                     <a
                       href={`mailto:${activeReview.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-1.5 md:px-3.5 md:py-2 rounded-xl bg-neutral-900/80 hover:bg-red-600/20 border border-neutral-700/60 hover:border-red-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
-                      title={`Send email to ${activeReview.name}`}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-red-600/20 border border-neutral-700/60 hover:border-red-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title={`Email: ${activeReview.email}`}
                     >
-                      <Mail className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform" />
-                      <span className="truncate max-w-[140px] sm:max-w-[200px]">{activeReview.email}</span>
+                      <Mail className="w-3.5 h-3.5 text-red-500 group-hover:scale-110 transition-transform" />
+                      <span className="truncate max-w-[140px] sm:max-w-[190px]">{activeReview.email}</span>
                     </a>
+                  )}
+                  {activeReview.phone && (
+                    <a
+                      href={`tel:${activeReview.phone}`}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-green-600/20 border border-neutral-700/60 hover:border-green-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title={`Phone: ${activeReview.phone}`}
+                    >
+                      <Phone className="w-3.5 h-3.5 text-green-500 group-hover:scale-110 transition-transform" />
+                      <span>{activeReview.phone}</span>
+                    </a>
+                  )}
+                  {activeReview.employeeId && (
+                    <span
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 border border-neutral-700/60 text-neutral-300 text-xs font-mono"
+                      title={`Employee ID: ${activeReview.employeeId}`}
+                    >
+                      <Hash className="w-3.5 h-3.5 text-amber-500" />
+                      <span>ID: {activeReview.employeeId}</span>
+                    </span>
                   )}
                   {activeReview.linkedin && (
                     <a
                       href={activeReview.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-1.5 md:px-3.5 md:py-2 rounded-xl bg-neutral-900/80 hover:bg-blue-600/20 border border-neutral-700/60 hover:border-blue-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
-                      title={`${activeReview.name}'s LinkedIn Profile`}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-blue-600/20 border border-neutral-700/60 hover:border-blue-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title="LinkedIn Profile"
                     >
-                      <LinkedinIcon size={16} className="text-blue-400 group-hover:scale-110 transition-transform" />
+                      <LinkedinIcon size={14} className="text-blue-400 group-hover:scale-110 transition-transform" />
                       <span>LinkedIn</span>
+                    </a>
+                  )}
+                  {activeReview.googleScholar && (
+                    <a
+                      href={activeReview.googleScholar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-emerald-600/20 border border-neutral-700/60 hover:border-emerald-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title="Google Scholar Profile"
+                    >
+                      <GraduationCap className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+                      <span>Scholar</span>
+                    </a>
+                  )}
+                  {activeReview.scopus && (
+                    <a
+                      href={activeReview.scopus}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-orange-600/20 border border-neutral-700/60 hover:border-orange-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title="Scopus Profile"
+                    >
+                      <Globe className="w-3.5 h-3.5 text-orange-400 group-hover:scale-110 transition-transform" />
+                      <span>Scopus</span>
+                    </a>
+                  )}
+                  {activeReview.orcid && (
+                    <a
+                      href={activeReview.orcid}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-green-600/20 border border-neutral-700/60 hover:border-green-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title="ORCID Profile"
+                    >
+                      <Award className="w-3.5 h-3.5 text-green-400 group-hover:scale-110 transition-transform" />
+                      <span>ORCID</span>
+                    </a>
+                  )}
+                  {activeReview.vidwan && (
+                    <a
+                      href={activeReview.vidwan}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-purple-600/20 border border-neutral-700/60 hover:border-purple-500/60 text-neutral-300 hover:text-white transition-all text-xs font-mono group"
+                      title="Vidwan Profile"
+                    >
+                      <UserCheck className="w-3.5 h-3.5 text-purple-400 group-hover:scale-110 transition-transform" />
+                      <span>Vidwan</span>
                     </a>
                   )}
                 </div>

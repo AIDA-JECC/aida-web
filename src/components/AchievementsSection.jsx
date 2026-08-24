@@ -16,11 +16,40 @@ function shuffleArray(array) {
 export default function AchievementsSection({ onNavigate }) {
   const [selectedAchievement, setSelectedAchievement] = useState(null);
 
-  // Pick 4 random achievements from the top 15 rows of the excel dataset on initial load
-  const randomTopFour = useMemo(() => {
-    const topFifteen = achievementsData.slice(0, 15);
-    const shuffled = shuffleArray(topFifteen);
-    return shuffled.slice(0, 4);
+  // Pick top 5 unique, non-repeating latest achievements sorted descending by year
+  const showcaseAchievements = useMemo(() => {
+    const deduplicated = [];
+    const seenKeys = new Set();
+    const seenImages = new Set();
+
+    const sorted = [...achievementsData].sort((a, b) => {
+      const yrA = parseInt(a.year, 10) || 0;
+      const yrB = parseInt(b.year, 10) || 0;
+      if (yrB !== yrA) return yrB - yrA;
+      const idA = parseInt(String(a.id).replace('achievement-', ''), 10) || 0;
+      const idB = parseInt(String(b.id).replace('achievement-', ''), 10) || 0;
+      return idA - idB;
+    });
+
+    for (const item of sorted) {
+      const student = (item.studentName || '').toLowerCase().trim();
+      const title = (item.title || '').toLowerCase().trim();
+      const img = (item.image || '').toLowerCase().trim();
+      const comboKey = `${student}::${title}`;
+
+      const isDuplicateKey = seenKeys.has(comboKey);
+      const isDuplicateImage = img && !img.includes('default-certificate') && seenImages.has(img);
+
+      if (!isDuplicateKey && !isDuplicateImage) {
+        seenKeys.add(comboKey);
+        if (img && !img.includes('default-certificate')) {
+          seenImages.add(img);
+        }
+        deduplicated.push(item);
+      }
+    }
+
+    return deduplicated.slice(0, 5);
   }, []);
 
   const handleSeeMore = () => {
@@ -49,7 +78,7 @@ export default function AchievementsSection({ onNavigate }) {
       {/* Glassmorphism Slideshow Container */}
       <div className="bg-[#0b0b10]/80 border border-neutral-800/80 rounded-3xl p-2 sm:p-6 backdrop-blur-xl shadow-2xl">
         <AnimatedTestimonials
-          testimonials={randomTopFour}
+          testimonials={showcaseAchievements}
           autoplay={true}
           onSeeMore={handleSeeMore}
           onSelectAchievement={(achievement) => setSelectedAchievement(achievement)}

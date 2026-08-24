@@ -8,7 +8,7 @@ import ProjectEmptyState from '../components/projects/ProjectEmptyState';
 import PaginationBar from '../components/ui/PaginationBar';
 import LinkedinIcon from '../components/ui/LinkedinIcon';
 import { getProjectsByFaculty, matchesProjectSearch, sortProjectsByPriority, findFacultyByGuideName, normalizeName } from '../utils/projectHelpers';
-import { ArrowLeft, Mail, FolderGit2, Sparkles, UserCheck } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, FolderGit2, Sparkles, UserCheck, GraduationCap, Globe, Award, Hash, ExternalLink } from 'lucide-react';
 
 // Sequential Typewriter Component: Types Name first, then types Role/Designation after Name completes
 function SequentialTypewriterHeader({ name, designation }) {
@@ -211,14 +211,20 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
             </div>
 
             {/* Faculty Information */}
-            <div className="flex-1 text-center md:text-left space-y-3">
+            <div className="flex-1 text-center md:text-left space-y-4">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                 <span className="px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider">
                   {faculty.group || 'Faculty Member'}
                 </span>
+                {faculty.employeeId && (
+                  <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <Hash size={13} className="text-amber-500" />
+                    <span>ID: {faculty.employeeId}</span>
+                  </span>
+                )}
                 <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <FolderGit2 size={13} className="text-red-500" />
-                  <span>Supervised Academic Projects</span>
+                  <span>{allGuidedProjects.length} Supervised Projects</span>
                 </span>
               </div>
 
@@ -228,24 +234,108 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
                 designation={faculty.designation || 'Department of Artificial Intelligence & Data Science'}
               />
 
-              {/* Social Icons */}
-              <div className="flex items-center justify-center md:justify-start gap-3 pt-2">
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-red-500 hover:border-red-600 transition-all shadow-md cursor-pointer"
-                  title="LinkedIn Profile"
-                >
-                  <LinkedinIcon size={18} />
-                </a>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-red-500 hover:border-red-600 transition-all shadow-md cursor-pointer"
-                  title="Email Address"
-                >
-                  <Mail size={18} />
-                </a>
+              {/* About / Bio Text (if non-null) */}
+              {faculty.about && (
+                <div className="bg-neutral-900/60 border border-neutral-800 p-4 rounded-2xl text-neutral-300 text-xs sm:text-sm leading-relaxed max-w-3xl font-sans italic">
+                  "{faculty.about}"
+                </div>
+              )}
+
+              {/* All Non-Null Contact & Academic Profiles */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-2 border-t border-neutral-800/80">
+                {faculty.email && (
+                  <a
+                    href={`mailto:${faculty.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-red-600/20 border border-neutral-800 hover:border-red-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title={`Email: ${faculty.email}`}
+                  >
+                    <Mail size={15} className="text-red-500 group-hover:scale-110 transition-transform" />
+                    <span>{faculty.email}</span>
+                  </a>
+                )}
+
+                {faculty.phone && (
+                  <a
+                    href={`tel:${faculty.phone}`}
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-green-600/20 border border-neutral-800 hover:border-green-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title={`Phone: ${faculty.phone}`}
+                  >
+                    <Phone size={15} className="text-green-500 group-hover:scale-110 transition-transform" />
+                    <span>{faculty.phone}</span>
+                  </a>
+                )}
+
+                {faculty.linkedin && (
+                  <a
+                    href={faculty.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-blue-600/20 border border-neutral-800 hover:border-blue-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title="LinkedIn Profile"
+                  >
+                    <LinkedinIcon size={15} className="text-blue-400 group-hover:scale-110 transition-transform" />
+                    <span>LinkedIn</span>
+                    <ExternalLink size={12} className="text-neutral-500 group-hover:text-white" />
+                  </a>
+                )}
+
+                {faculty.googleScholar && (
+                  <a
+                    href={faculty.googleScholar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-emerald-600/20 border border-neutral-800 hover:border-emerald-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title="Google Scholar Profile"
+                  >
+                    <GraduationCap size={15} className="text-emerald-400 group-hover:scale-110 transition-transform" />
+                    <span>Google Scholar</span>
+                    <ExternalLink size={12} className="text-neutral-500 group-hover:text-white" />
+                  </a>
+                )}
+
+                {faculty.scopus && (
+                  <a
+                    href={faculty.scopus}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-orange-600/20 border border-neutral-800 hover:border-orange-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title="Scopus Profile"
+                  >
+                    <Globe size={15} className="text-orange-400 group-hover:scale-110 transition-transform" />
+                    <span>Scopus</span>
+                    <ExternalLink size={12} className="text-neutral-500 group-hover:text-white" />
+                  </a>
+                )}
+
+                {faculty.orcid && (
+                  <a
+                    href={faculty.orcid}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-green-600/20 border border-neutral-800 hover:border-green-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title="ORCID Profile"
+                  >
+                    <Award size={15} className="text-green-400 group-hover:scale-110 transition-transform" />
+                    <span>ORCID</span>
+                    <ExternalLink size={12} className="text-neutral-500 group-hover:text-white" />
+                  </a>
+                )}
+
+                {faculty.vidwan && (
+                  <a
+                    href={faculty.vidwan}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-purple-600/20 border border-neutral-800 hover:border-purple-500/60 text-neutral-200 hover:text-white font-mono text-xs font-medium transition-all shadow-md group"
+                    title="Vidwan Profile"
+                  >
+                    <UserCheck size={15} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                    <span>Vidwan Profile</span>
+                    <ExternalLink size={12} className="text-neutral-500 group-hover:text-white" />
+                  </a>
+                )}
               </div>
             </div>
           </div>

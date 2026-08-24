@@ -40,6 +40,67 @@ function formatCategory(typeStr) {
     .join(' ');
 }
 
+function parseStringDate(strVal, fallbackYear) {
+  if (!strVal) return `${fallbackYear}-01-01`;
+  
+  const parsedDirect = Date.parse(strVal);
+  if (!isNaN(parsedDirect)) {
+    const d = new Date(parsedDirect);
+    return d.toISOString().split('T')[0];
+  }
+
+  const monthsMap = {
+    jan: '01', january: '01',
+    feb: '02', february: '02',
+    mar: '03', march: '03',
+    apr: '04', april: '04',
+    may: '05',
+    jun: '06', june: '06',
+    jul: '07', july: '07',
+    aug: '08', august: '08',
+    sep: '09', sept: '09', september: '09',
+    oct: '10', october: '10',
+    nov: '11', november: '11',
+    dec: '12', december: '12'
+  };
+
+  const lower = strVal.toLowerCase().replace(/–/g, '-');
+
+  // Pattern: "15-19 june 2026" or "10-11 february 2026" or "9-10 jan 2026"
+  const rangeMatch = lower.match(/^(\d{1,2})\s*-\s*\d{1,2}\s+([a-z]+)\s+(\d{4})/);
+  if (rangeMatch) {
+    const day = rangeMatch[1].padStart(2, '0');
+    const monthStr = rangeMatch[2];
+    const yr = rangeMatch[3];
+    const mm = monthsMap[monthStr] || monthsMap[monthStr.substring(0, 3)];
+    if (mm) return `${yr}-${mm}-${day}`;
+  }
+
+  // Pattern: "june 15-19 2026"
+  const monthFirstRangeMatch = lower.match(/^([a-z]+)\s+(\d{1,2})\s*-\s*\d{1,2}\s*,?\s*(\d{4})/);
+  if (monthFirstRangeMatch) {
+    const monthStr = monthFirstRangeMatch[1];
+    const day = monthFirstRangeMatch[2].padStart(2, '0');
+    const yr = monthFirstRangeMatch[3];
+    const mm = monthsMap[monthStr] || monthsMap[monthStr.substring(0, 3)];
+    if (mm) return `${yr}-${mm}-${day}`;
+  }
+
+  // Pattern: "15 june 2026"
+  const singleDayMatch = lower.match(/^(\d{1,2})\s+([a-z]+)\s+(\d{4})/);
+  if (singleDayMatch) {
+    const day = singleDayMatch[1].padStart(2, '0');
+    const monthStr = singleDayMatch[2];
+    const yr = singleDayMatch[3];
+    const mm = monthsMap[monthStr] || monthsMap[monthStr.substring(0, 3)];
+    if (mm) return `${yr}-${mm}-${day}`;
+  }
+
+  const yearMatch = strVal.match(/\b(20\d\d)\b/);
+  const yr = yearMatch ? yearMatch[1] : fallbackYear;
+  return `${yr}-01-01`;
+}
+
 function formatExcelDate(val, academicYear) {
   if (typeof val === 'number') {
     const date = new Date(Math.round((val - 25569) * 86400 * 1000));
@@ -51,13 +112,13 @@ function formatExcelDate(val, academicYear) {
   }
 
   const strVal = String(val || '').trim();
-  // Try extract 4-digit year from date string or academic year (e.g. 2022-23 -> 2022)
   const yearMatch = strVal.match(/\b(20\d\d)\b/) || String(academicYear || '').match(/\b(20\d\d)\b/);
   const year = yearMatch ? parseInt(yearMatch[1], 10) : 2025;
+  const isoDate = parseStringDate(strVal, year);
 
   return {
     dateLabel: strVal || (academicYear ? `Academic Year ${academicYear}` : 'Event Date'),
-    eventDate: year ? `${year}-01-01` : '2025-01-01',
+    eventDate: isoDate,
     year,
   };
 }

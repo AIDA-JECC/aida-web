@@ -122,6 +122,16 @@ const normalizedAchievements = rawRows.map((row, index) => {
   };
 });
 
+// Sort achievements latest first by year descending
+normalizedAchievements.sort((a, b) => {
+  const yrA = parseInt(a.year, 10) || 0;
+  const yrB = parseInt(b.year, 10) || 0;
+  if (yrB !== yrA) return yrB - yrA;
+  const idA = parseInt(a.id.replace('achievement-', ''), 10) || 0;
+  const idB = parseInt(b.id.replace('achievement-', ''), 10) || 0;
+  return idA - idB;
+});
+
 const code = `// Auto-generated from achievements_webp.xlsx
 export const achievementsData = ${JSON.stringify(normalizedAchievements, null, 2)};
 `;

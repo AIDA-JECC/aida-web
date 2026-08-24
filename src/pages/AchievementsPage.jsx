@@ -49,6 +49,15 @@ export default function AchievementsPage({ onNavigate }) {
 
       return true;
     });
+
+    return list.sort((a, b) => {
+      const yrA = parseInt(a.year, 10) || 0;
+      const yrB = parseInt(b.year, 10) || 0;
+      if (yrB !== yrA) return yrB - yrA;
+      const idA = parseInt(String(a.id).replace('achievement-', ''), 10) || 0;
+      const idB = parseInt(String(b.id).replace('achievement-', ''), 10) || 0;
+      return idA - idB;
+    });
   }, [activeTab, searchQuery]);
 
   // Reset page to 1 whenever active tab or search changes

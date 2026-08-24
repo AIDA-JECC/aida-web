@@ -3,6 +3,20 @@ import { eventsData } from '../data/siteData';
 import EventModal from './EventModal';
 import { Calendar, Search, Tag, ArrowRight, Sparkles, Filter } from 'lucide-react';
 
+function eventSortValue(event) {
+  if (!event) return 0;
+  if (event.eventDate) {
+    const parsed = Date.parse(`${event.eventDate}T00:00:00Z`);
+    if (!isNaN(parsed)) return parsed;
+  }
+  if (event.rawDate || event.dateLabel) {
+    const parsedRaw = Date.parse(event.rawDate || event.dateLabel);
+    if (!isNaN(parsedRaw)) return parsedRaw;
+  }
+  if (Number.isFinite(Number(event.year))) return Date.UTC(Number(event.year), 0, 1);
+  return 0;
+}
+
 export default function Events() {
   const [selectedYear, setSelectedYear] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -10,14 +24,16 @@ export default function Events() {
 
   const years = ['All', '2025', '2024', '2023'];
 
-  const filteredEvents = eventsData.filter((evt) => {
-    const matchesYear = selectedYear === 'All' || evt.year.toString() === selectedYear;
-    const matchesSearch =
-      evt.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      evt.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      evt.detail.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesYear && matchesSearch;
-  });
+  const filteredEvents = eventsData
+    .filter((evt) => {
+      const matchesYear = selectedYear === 'All' || evt.year.toString() === selectedYear;
+      const matchesSearch =
+        evt.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        evt.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        evt.detail.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesYear && matchesSearch;
+    })
+    .sort((a, b) => eventSortValue(b) - eventSortValue(a));
 
   return (
     <section id="events" className="section-padding events-section">

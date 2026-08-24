@@ -5,7 +5,7 @@ import { academicProjectsData } from '../../data/academicProjectsData';
 import ProjectControls from './ProjectControls';
 import ProjectCard from './ProjectCard';
 import ProjectEmptyState from './ProjectEmptyState';
-import { X, FolderGit2, Mail } from 'lucide-react';
+import { X, FolderGit2, Mail, Phone, GraduationCap, Globe, Award, UserCheck, Hash, ExternalLink } from 'lucide-react';
 import LinkedinIcon from '../ui/LinkedinIcon';
 
 // Typewriter Heading Component for Faculty Name
@@ -153,30 +153,114 @@ export default function FacultyProjectsModal({ faculty, onClose, onSelectProject
                 </p>
               )}
 
-              <p className="text-neutral-500 font-sans text-xs pt-1">
+              <p className="text-neutral-500 font-sans text-xs pt-0.5">
                 Department of Artificial Intelligence & Data Science (AIDA)
               </p>
 
-              {/* Social & Contact Icons */}
-              <div className="flex items-center justify-center sm:justify-start gap-2.5 pt-2.5">
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="p-2 rounded-xl bg-neutral-100 border border-neutral-300 text-neutral-700 hover:text-red-600 hover:border-red-500 hover:bg-red-50 transition-all shadow-sm cursor-pointer"
-                  title="LinkedIn Profile"
-                  aria-label={`${faculty.name} LinkedIn Profile`}
-                >
-                  <LinkedinIcon size={16} aria-hidden="true" />
-                </a>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="p-2 rounded-xl bg-neutral-100 border border-neutral-300 text-neutral-700 hover:text-red-600 hover:border-red-500 hover:bg-red-50 transition-all shadow-sm cursor-pointer"
-                  title="Email Address"
-                  aria-label={`${faculty.name} Email`}
-                >
-                  <Mail size={16} aria-hidden="true" />
-                </a>
+              {/* About / Bio Text (if non-null) */}
+              {faculty.about && (
+                <p className="text-neutral-600 font-sans text-xs sm:text-sm pt-2 italic leading-relaxed max-w-2xl">
+                  "{faculty.about}"
+                </p>
+              )}
+
+              {/* All Non-Null Social & Academic Links */}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-3 border-t border-neutral-200 mt-2">
+                {faculty.email && (
+                  <a
+                    href={`mailto:${faculty.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-red-600 hover:border-red-500 hover:bg-red-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title={`Email: ${faculty.email}`}
+                  >
+                    <Mail size={14} className="text-red-600 group-hover:scale-110 transition-transform" />
+                    <span>{faculty.email}</span>
+                  </a>
+                )}
+
+                {faculty.phone && (
+                  <a
+                    href={`tel:${faculty.phone}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-green-600 hover:border-green-500 hover:bg-green-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title={`Phone: ${faculty.phone}`}
+                  >
+                    <Phone size={14} className="text-green-600 group-hover:scale-110 transition-transform" />
+                    <span>{faculty.phone}</span>
+                  </a>
+                )}
+
+                {faculty.employeeId && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 font-mono text-xs font-semibold shadow-sm">
+                    <Hash size={14} className="text-amber-600" />
+                    <span>ID: {faculty.employeeId}</span>
+                  </span>
+                )}
+
+                {faculty.linkedin && (
+                  <a
+                    href={faculty.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-blue-600 hover:border-blue-500 hover:bg-blue-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title="LinkedIn Profile"
+                  >
+                    <LinkedinIcon size={14} className="text-blue-500 group-hover:scale-110 transition-transform" />
+                    <span>LinkedIn</span>
+                  </a>
+                )}
+
+                {faculty.googleScholar && (
+                  <a
+                    href={faculty.googleScholar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-emerald-600 hover:border-emerald-500 hover:bg-emerald-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title="Google Scholar Profile"
+                  >
+                    <GraduationCap size={14} className="text-emerald-600 group-hover:scale-110 transition-transform" />
+                    <span>Google Scholar</span>
+                  </a>
+                )}
+
+                {faculty.scopus && (
+                  <a
+                    href={faculty.scopus}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-orange-600 hover:border-orange-500 hover:bg-orange-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title="Scopus Profile"
+                  >
+                    <Globe size={14} className="text-orange-600 group-hover:scale-110 transition-transform" />
+                    <span>Scopus</span>
+                  </a>
+                )}
+
+                {faculty.orcid && (
+                  <a
+                    href={faculty.orcid}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-green-600 hover:border-green-500 hover:bg-green-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title="ORCID Profile"
+                  >
+                    <Award size={14} className="text-green-600 group-hover:scale-110 transition-transform" />
+                    <span>ORCID</span>
+                  </a>
+                )}
+
+                {faculty.vidwan && (
+                  <a
+                    href={faculty.vidwan}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:text-purple-600 hover:border-purple-500 hover:bg-purple-50 transition-all font-mono text-xs font-medium shadow-sm group"
+                    title="Vidwan Profile"
+                  >
+                    <UserCheck size={14} className="text-purple-600 group-hover:scale-110 transition-transform" />
+                    <span>Vidwan</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

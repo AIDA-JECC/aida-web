@@ -10,7 +10,15 @@ const HOMEPAGE_PREVIEW_LIMIT = 3;
  * Sort by exact event date where supplied, or year.
  */
 function eventSortValue(event) {
-  if (event.eventDate) return Date.parse(`${event.eventDate}T00:00:00Z`);
+  if (!event) return 0;
+  if (event.eventDate) {
+    const parsed = Date.parse(`${event.eventDate}T00:00:00Z`);
+    if (!isNaN(parsed)) return parsed;
+  }
+  if (event.rawDate || event.dateLabel) {
+    const parsedRaw = Date.parse(event.rawDate || event.dateLabel);
+    if (!isNaN(parsedRaw)) return parsedRaw;
+  }
   if (Number.isFinite(Number(event.year))) return Date.UTC(Number(event.year), 0, 1);
   return 0;
 }
