@@ -20,19 +20,28 @@ const cardLayouts = [
   'shadow-2xl z-30 group-hover:scale-[1.03]',
   'shadow-xl z-20 rotate-4 translate-y-1.5 group-hover:rotate-12 group-hover:translate-x-10 group-hover:translate-y-3',
   'shadow-lg z-10 -rotate-6 -translate-y-3 group-hover:-rotate-12 group-hover:-translate-x-10 group-hover:-translate-y-4',
-];
-
-export default function Hero({ onExploreEventsClick }) {
+];export default function Hero({ onExploreEventsClick }) {
   const [activeEventIndex, setActiveEventIndex] = useState(0);
   const [rotationPaused, setRotationPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
 
-  // Pointer drag gesture state for swiping/dragging top card away to any side (Mobile touch & PC mouse)
-  const [touchOffset, setTouchOffset] = useState({ x: 0, y: 0 });
-  const [isSwiping, setIsSwiping] = useState(false);
-  const pointerStartPos = useRef({ x: 0, y: 0 });
+  // Check if device is touch/mobile view vs PC view
+  const [isMobileDevice, setIsMobileDevice] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024 || matchMedia('(pointer: coarse)').matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileDevice(window.innerWidth < 1024 || matchMedia('(pointer: coarse)').matches);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Wait for intro video completion before starting kinetic entrance animations
   const [startEntrance, setStartEntrance] = useState(() => {
@@ -72,39 +81,14 @@ export default function Hero({ onExploreEventsClick }) {
 
   // Auto-rotate every 2.5 seconds
   useEffect(() => {
-    if (rotationPaused || prefersReducedMotion || showcaseEvents.length < 2 || isSwiping) return undefined;
+    if (rotationPaused || prefersReducedMotion || showcaseEvents.length < 2) return undefined;
 
     const interval = window.setInterval(() => {
       setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
     }, ROTATION_INTERVAL);
 
     return () => window.clearInterval(interval);
-  }, [prefersReducedMotion, rotationPaused, isSwiping]);
-
-  const handlePointerDown = (clientX, clientY) => {
-    pointerStartPos.current = { x: clientX, y: clientY };
-    setIsSwiping(true);
-    setRotationPaused(true);
-  };
-
-  const handlePointerMove = (clientX, clientY) => {
-    if (!isSwiping) return;
-    const dx = clientX - pointerStartPos.current.x;
-    const dy = clientY - pointerStartPos.current.y;
-    setTouchOffset({ x: dx, y: dy });
-  };
-
-  const handlePointerEnd = () => {
-    if (!isSwiping) return;
-    setIsSwiping(false);
-    setRotationPaused(false);
-    const distance = Math.hypot(touchOffset.x, touchOffset.y);
-    if (distance > 35) {
-      // Swiped card away! Cycle to next card
-      setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
-    }
-    setTouchOffset({ x: 0, y: 0 });
-  };
+  }, [prefersReducedMotion, rotationPaused]);
 
   const HERO_SUBTITLE = "Official student association of the Department of Artificial Intelligence & Data Science at Jyothi Engineering College. Empowering ethical leaders with precision & care.";
   const [displayedText, setDisplayedText] = useState('');
@@ -191,25 +175,11 @@ export default function Hero({ onExploreEventsClick }) {
           </motion.h1>
 
           <div className="relative mx-auto my-4 lg:my-0">
-            <button
-              type="button"
+            <div
               aria-label={`Explore the event showcase. Currently showing ${activeEvent.name}`}
-              className={`relative w-[min(88vw,330px)] sm:w-[340px] md:w-[380px] h-[220px] sm:h-[260px] cursor-pointer group select-none text-left touch-none ${prefersReducedMotion || isSwiping ? '' : 'animate-float-slow'}`}
-              onClick={(e) => {
-                if (Math.hypot(touchOffset.x, touchOffset.y) < 10) {
-                  onExploreEventsClick();
-                }
-              }}
+              className={`relative w-[min(88vw,330px)] sm:w-[340px] md:w-[380px] h-[220px] sm:h-[260px] cursor-pointer group select-none text-left ${prefersReducedMotion || rotationPaused ? '' : 'animate-float-slow'}`}
               onMouseEnter={() => setRotationPaused(true)}
-              onMouseLeave={() => { setRotationPaused(false); handlePointerEnd(); }}
-              onFocus={() => setRotationPaused(true)}
-              onBlur={() => setRotationPaused(false)}
-              onMouseDown={(e) => handlePointerDown(e.clientX, e.clientY)}
-              onMouseMove={(e) => handlePointerMove(e.clientX, e.clientY)}
-              onMouseUp={handlePointerEnd}
-              onTouchStart={(e) => handlePointerDown(e.touches[0].clientX, e.touches[0].clientY)}
-              onTouchMove={(e) => handlePointerMove(e.touches[0].clientX, e.touches[0].clientY)}
-              onTouchEnd={handlePointerEnd}
+              onMouseLeave={() => setRotationPaused(false)}
             >
               {showcaseEvents.map((event, eventIndex) => {
                 const position = (eventIndex - activeEventIndex + showcaseEvents.length) % showcaseEvents.length;
@@ -217,40 +187,52 @@ export default function Hero({ onExploreEventsClick }) {
                 const color = cardColors[eventIndex];
                 const isFront = position === 0;
 
-                const isCurrentlyDraggingTopCard = isFront && isSwiping && (touchOffset.x !== 0 || touchOffset.y !== 0);
-
                 // Sequential spring drop delay: Card 0 @ 0.4s, Card 1 @ 0.75s, Card 2 @ 1.1s (1.5s total)
                 const dropDelay = 0.4 + (2 - position) * 0.35;
 
                 return (
-                  <motion.span
+                  <motion.div
                     key={event.id}
+                    drag={isMobileDevice && isFront ? true : false}
+                    dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                    dragElastic={0.8}
+                    dragSnapToOrigin={true}
+                    onDragStart={() => setRotationPaused(true)}
+                    onDragEnd={(e, info) => {
+                      setRotationPaused(false);
+                      const distance = Math.hypot(info.offset.x, info.offset.y);
+                      const velocity = Math.hypot(info.velocity.x, info.velocity.y);
+                      if (distance > 25 || velocity > 250) {
+                        // Card released: send top card smoothly to back, bring down card to front
+                        setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
+                      }
+                    }}
+                    onClick={() => {
+                      if (isFront) {
+                        onExploreEventsClick();
+                      }
+                    }}
                     initial={{ y: -450, opacity: 0 }}
                     animate={startEntrance ? { y: 0, opacity: 1 } : { y: -450, opacity: 0 }}
                     transition={{
                       type: 'spring',
-                      stiffness: 170,
-                      damping: 13,
-                      mass: 1,
-                      delay: dropDelay,
+                      stiffness: 190,
+                      damping: 15,
+                      mass: 0.9,
+                      delay: startEntrance ? (isFront ? 0 : dropDelay) : 0,
                     }}
+                    whileDrag={{ scale: 1.03, cursor: 'grabbing' }}
                     aria-hidden={!isFront}
-                    style={
-                      isCurrentlyDraggingTopCard
-                        ? {
-                            transform: `translate(${touchOffset.x}px, ${touchOffset.y}px) rotate(${touchOffset.x * 0.08}deg)`,
-                            transition: 'none',
-                          }
-                        : undefined
-                    }
-                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${color.bg} ${layout}`}
+                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${color.bg} ${layout} ${
+                      isMobileDevice && isFront ? 'cursor-grab active:cursor-grabbing touch-none' : ''
+                    }`}
                   >
                     <EventArtwork
                       event={event}
                       className="w-full h-[130px] sm:h-[160px] rounded-lg pointer-events-none"
                       loading={eventIndex === 0 ? 'eager' : 'lazy'}
                     />
-                    <span className={`flex items-center justify-between text-xs font-mono ${color.meta}`}>
+                    <span className={`flex items-center justify-between text-xs font-mono ${color.meta} pointer-events-none`}>
                       <span className={isFront ? 'font-bold' : ''}>#{event.year}</span>
                       <span className={isFront ? 'text-white font-sans font-semibold truncate max-w-[180px] inline-flex items-center gap-1' : ''}>
                         {isFront ? (
@@ -263,10 +245,10 @@ export default function Hero({ onExploreEventsClick }) {
                         )}
                       </span>
                     </span>
-                  </motion.span>
+                  </motion.div>
                 );
               })}
-            </button>
+            </div>
             <span className="sr-only" aria-live="polite" aria-atomic="true">
               Now showing {activeEvent.name}
             </span>

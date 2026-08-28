@@ -194,8 +194,8 @@ export const academicProjectsData = [
       "Spatial Anchoring",
       "Contextual Vocabulary"
     ],
-    "coverImage": "/cover page/AI_Language_Learning_AR_Cover_Under_1MB-8%20-%2012317028%20GRACE%20MARIA%20REJI.webp",
-    "demoImage": "/working demo/IMG-20260316-WA0029%20-%2012317028%20GRACE%20MARIA%20REJI%20(1).webp",
+    "coverImage": "/cover page/IMG-20260316-WA0029%20-%2012317028%20GRACE%20MARIA%20REJI.webp",
+    "demoImage": "/working demo/Screenshot_20260815_113530_WhatsApp%20-%2012317028%20GRACE%20MARIA%20REJI%20(1).webp",
     "guideName": "Sajitha A S",
     "members": [
       {
@@ -554,7 +554,7 @@ export const academicProjectsData = [
       "Data Science",
       "Random Forest"
     ],
-    "coverImage": "/cover page/Demo%20-%2012417086%20SREYA%20KRISHNAN.webp",
+    "coverImage": "/cover page/Road-accident%20-%2012417086%20SREYA%20KRISHNAN.webp",
     "demoImage": "/working demo/Demo%20-%2012417086%20SREYA%20KRISHNAN%20(1).webp",
     "guideName": "Jithin K C",
     "members": [
@@ -600,7 +600,7 @@ export const academicProjectsData = [
       "Processor Simulation"
     ],
     "coverImage": "/cover page/Demo%20-%2012417086%20SREYA%20KRISHNAN.webp",
-    "demoImage": "/working demo/Demo%20-%2012417086%20SREYA%20KRISHNAN%20(1).webp",
+    "demoImage": "/working demo/IMG-20260815-WA0063%20-%2012417086%20SREYA%20KRISHNAN%20(1).webp",
     "guideName": "Sajitha A S",
     "members": [
       {
@@ -806,8 +806,8 @@ export const academicProjectsData = [
       "​Healthcare Informatics / Hospital Information Systems",
       "​Three-Tier Web Application Development"
     ],
-    "coverImage": "/cover page/IMG-20260815-WA0076%20-%2012417056%20KEERTHANA%20MADHU.webp",
-    "demoImage": "/working demo/IMG-20260815-WA0077%20-%2012417056%20KEERTHANA%20MADHU%20(1).webp",
+    "coverImage": "/cover page/IMG-20260815-WA0077%20-%2012417056%20KEERTHANA%20MADHU.webp",
+    "demoImage": "/working demo/IMG-20260815-WA0125%20-%2012417056%20KEERTHANA%20MADHU%20(1).webp",
     "guideName": "Jithin K C",
     "members": [
       {
@@ -848,8 +848,8 @@ export const academicProjectsData = [
       "Processor Simulation and Microarchitectural Modeling",
       "Compiler Design and Runtime Systems"
     ],
-    "coverImage": "/cover page/IMG-20260815-WA0076%20-%2012417056%20KEERTHANA%20MADHU.webp",
-    "demoImage": "/working demo/IMG-20260815-WA0077%20-%2012417056%20KEERTHANA%20MADHU%20(1).webp",
+    "coverImage": "/cover page/IMG-20260815-WA0103%20-%2012417056%20KEERTHANA%20MADHU.webp",
+    "demoImage": "/working demo/IMG-20260815-WA0132%20-%2012417056%20KEERTHANA%20MADHU%20(1).webp",
     "guideName": "Sajitha A S",
     "members": [
       {
@@ -891,8 +891,8 @@ export const academicProjectsData = [
       "SQL",
       "JavaScript"
     ],
-    "coverImage": "/cover page/IMG-20260815-WA0023%20-%2012317029%20HIBA%20REBIN%20K.webp",
-    "demoImage": "/working demo/IMG-20260815-WA0069%20-%2012317029%20HIBA%20REBIN%20K%20(1).webp",
+    "coverImage": "/cover page/IMG-20260815-WA0069%20-%2012317029%20HIBA%20REBIN%20K.webp",
+    "demoImage": "/working demo/IMG-20260815-WA0111%20-%2012317029%20HIBA%20REBIN%20K%20(1).webp",
     "guideName": "Linta A T",
     "members": [
       {
@@ -1025,7 +1025,7 @@ export const academicProjectsData = [
       "Memory Management",
       "Authentication System Design"
     ],
-    "coverImage": "/cover page/AISelect_20260816_070659_Drive%20-%2012417039%20FAHAD%20ABOOBACKER%20N%20S.webp",
+    "coverImage": "/cover page/password_verification_cover_under_1MB%20-%2012417039%20FAHAD%20ABOOBACKER%20N%20S.webp",
     "demoImage": "/working demo/AISelect_20260816_070659_Drive%20-%2012417039%20FAHAD%20ABOOBACKER%20N%20S%20(1).webp",
     "guideName": "Sandeep C S",
     "members": [
@@ -1112,8 +1112,8 @@ export const academicProjectsData = [
       "Instruction Pipelining",
       "Computer Architecture"
     ],
-    "coverImage": "/cover page/IMG_20260816_083943%20-%2012417018%20ANJU%20BIJU.webp",
-    "demoImage": "/working demo/IMG_20260816_083955%20-%2012417018%20ANJU%20BIJU%20(1).webp",
+    "coverImage": "/cover page/IMG_20260816_083955%20-%2012417018%20ANJU%20BIJU.webp",
+    "demoImage": "/working demo/IMG_20260816_085333%20-%2012417018%20ANJU%20BIJU%20(1).webp",
     "guideName": "Sandeep C S",
     "members": [
       {
@@ -1282,8 +1282,8 @@ export const academicProjectsData = [
       "RISC-V Assembly",
       "RARS Simulator"
     ],
-    "coverImage": "/cover page/Gemini_Generated_Image_fu181kfu181kfu18%20(1)%20-%2012417014%20AMEYA%20JOSE%20CHAZHOOR.webp",
-    "demoImage": "/working demo/WhatsApp%20Image%202026-08-16%20at%2010.14.26%20AM%20-%2012417014%20AMEYA%20JOSE%20CHAZHOOR%20(1).webp",
+    "coverImage": "/cover page/Gemini_Generated_Image_khrynakhrynakhry%20(1)%20-%2012417014%20AMEYA%20JOSE%20CHAZHOOR.webp",
+    "demoImage": "/working demo/WhatsApp%20Image%202026-08-16%20at%209.58.26%20AM%20-%2012417014%20AMEYA%20JOSE%20CHAZHOOR%20(1).webp",
     "guideName": "Sandeep C S",
     "members": [
       {
@@ -1408,8 +1408,8 @@ export const academicProjectsData = [
       "Flask",
       "Computer Vision"
     ],
-    "coverImage": "/cover page/Screenshot_16-8-2026_02353_%20-%2012317051%20SANIYA%20ASHRAF.webp",
-    "demoImage": "/working demo/Screenshot_16-8-2026_02353_%20-%2012317051%20SANIYA%20ASHRAF%20(1).webp",
+    "coverImage": "/cover page/Screenshot_16-8-2026_03311_%20-%2012317051%20SANIYA%20ASHRAF.webp",
+    "demoImage": "/working demo/Screenshot_16-8-2026_03311_%20-%2012317051%20SANIYA%20ASHRAF%20(1).webp",
     "guideName": "Anjali O",
     "members": [
       {
@@ -1454,8 +1454,8 @@ export const academicProjectsData = [
       "Pipeline Stalling",
       "Pipeline Flushing"
     ],
-    "coverImage": "/cover page/Screenshot%202026-08-15%20232300%20-%2012417070%20PAVANDAS%20S.webp",
-    "demoImage": "/working demo/Screenshot%202026-08-15%20232300%20-%2012417070%20PAVANDAS%20S%20(1).webp",
+    "coverImage": "/cover page/Screenshot%202026-08-16%20111135%20-%2012417070%20PAVANDAS%20S.webp",
+    "demoImage": "/working demo/Screenshot%202026-08-16%20111135%20-%2012417070%20PAVANDAS%20S%20(1).webp",
     "guideName": "SAJITHA SIVAN",
     "members": [
       {
@@ -1496,8 +1496,8 @@ export const academicProjectsData = [
       "CSS",
       "PHP"
     ],
-    "coverImage": "/cover page/RISC_V_Working_Computer_Screenshots_Under_1MB%20-%2012417052%20JOVIT%20JOSHY.webp",
-    "demoImage": "/working demo/RISC_V_Working_Computer_Screenshots_Under_1MB%20-%2012417052%20JOVIT%20JOSHY%20(1).webp",
+    "coverImage": "/cover page/Student_Attendance_Working_Demo%20-%2012417052%20JOVIT%20JOSHY.webp",
+    "demoImage": "/working demo/Student_Attendance_Working_Demo%20-%2012417052%20JOVIT%20JOSHY%20(1).webp",
     "guideName": "Jithin K C",
     "members": [
       {
@@ -1580,8 +1580,8 @@ export const academicProjectsData = [
       "Ripes Simulator",
       "Computer Architecture"
     ],
-    "coverImage": "/cover page/coa_code%20-%2012417079%20SHAUN%20SAJI%20E.webp",
-    "demoImage": "/working demo/coa_code%20-%2012417079%20SHAUN%20SAJI%20E%20(1).webp",
+    "coverImage": "/cover page/Screenshot%202026-08-16%20144643%20-%2012417079%20SHAUN%20SAJI%20E.webp",
+    "demoImage": "/working demo/Screenshot%202026-08-16%20144643%20-%2012417079%20SHAUN%20SAJI%20E%20(1).webp",
     "guideName": "Sajitha A S",
     "members": [
       {
@@ -1706,8 +1706,8 @@ export const academicProjectsData = [
       "Relay Module",
       "Web Dashboard"
     ],
-    "coverImage": "/cover page/deception_detection_cover_1MB%20-%2012317005%20AISHWARYA%20DINESH%20RAO.webp",
-    "demoImage": "/working demo/EEG_BCI_Working_Demo_1MB%20-%2012317005%20AISHWARYA%20DINESH%20RAO%20(1).webp",
+    "coverImage": "/cover page/EEG_BCI_Working_Demo_1MB%20-%2012317005%20AISHWARYA%20DINESH%20RAO.webp",
+    "demoImage": "/working demo/IMG_1984%20-%2012317005%20AISHWARYA%20DINESH%20RAO%20(1).webp",
     "guideName": "Anoop V",
     "members": [
       {
@@ -1829,8 +1829,8 @@ export const academicProjectsData = [
       "PYTHON",
       "SQL"
     ],
-    "coverImage": "/cover page/Screenshot%202026-08-16%20153026%20-%2012417090%20VRINDHA%20MANOJ%20KUMAR.webp",
-    "demoImage": "/working demo/Screenshot%202026-08-16%20153026%20-%2012417090%20VRINDHA%20MANOJ%20KUMAR%20(1).webp",
+    "coverImage": "https://lh3.googleusercontent.com/d/1rP0i5zLen2Vi8vrPvxVSiyNTKMPLiSk1",
+    "demoImage": "https://lh3.googleusercontent.com/d/1mNAw_hy67weDqrMEZjZC4_JL7-LBbZ_3",
     "guideName": "Jithin K C",
     "members": [
       {
@@ -2148,8 +2148,8 @@ export const academicProjectsData = [
     "techStack": [
       "Computer Architecture / Embedded Systems / Computer Organization"
     ],
-    "coverImage": "/cover page/AI%20image%20-%2012417030%20AYSHA%20SHAFEEK.webp",
-    "demoImage": "/working demo/demo%20-%2012417030%20AYSHA%20SHAFEEK%20(1).webp",
+    "coverImage": "/cover page/demo%20-%2012417030%20AYSHA%20SHAFEEK.webp",
+    "demoImage": "/working demo/project%20demo%20-%2012417030%20AYSHA%20SHAFEEK%20(1).webp",
     "guideName": "Sandeep C S",
     "members": [
       {
@@ -2651,8 +2651,8 @@ export const academicProjectsData = [
       "Data Science",
       "Climate/Disaster Prediction Tech Stack: Python Machine Learning Random Forest Pandas NumPy Scikit-learn Data Preprocessing Data Visualization"
     ],
-    "coverImage": "/cover page/cyclone_project_working_demo_1MB%20-%2012417077%20SEANNA%20K%20S.webp",
-    "demoImage": "/working demo/cyclone_project_working_demo_1MB%20-%2012417077%20SEANNA%20K%20S%20(1).webp",
+    "coverImage": "/cover page/IMAGE%20(2)%20-%2012417077%20SEANNA%20K%20S.webp",
+    "demoImage": "/working demo/IMAGE%20(2)%20-%2012417077%20SEANNA%20K%20S%20(1).webp",
     "guideName": "Jithin K C",
     "members": [
       {
@@ -3052,6 +3052,3548 @@ export const academicProjectsData = [
   },
   {
     "id": "project-74",
+    "title": "Hand Writing Analysis and Signature Forgery Detection",
+    "abstract": "Analyzes handwriting and signatures using image processing and deep learning to identify genuine and forged signatures.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Hand%20Writing%20Analysis%20and%20Signature%20Forgery%20Detection.webp",
+    "demoImage": "/cover page/Hand%20Writing%20Analysis%20and%20Signature%20Forgery%20Detection.webp",
+    "guideName": "Jayakrishnan A",
+    "members": [
+      {
+        "name": "AKARSH K DAS",
+        "registerNumber": "JEC20AD004",
+        "isLeader": true
+      },
+      {
+        "name": "VIVEK SANKAR P V",
+        "registerNumber": "JEC20AD054",
+        "isLeader": false
+      },
+      {
+        "name": "ANGEL MARY SHIBU",
+        "registerNumber": "JEC20AD013",
+        "isLeader": false
+      },
+      {
+        "name": "SREEHARI SREEJAY O P",
+        "registerNumber": "JEC20AD047",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-75",
+    "title": "Stock Market Prediction and Analysis using AI",
+    "abstract": "Uses historical stock market data and AI models to analyze market trends and predict future stock price movements.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Pandas",
+      "LSTM",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Stock%20Market%20Prediction%20and%20Analysis%20using%20AI.webp",
+    "demoImage": "/cover page/Stock%20Market%20Prediction%20and%20Analysis%20using%20AI.webp",
+    "guideName": "Divya Konikkara",
+    "members": [
+      {
+        "name": "AKASH KOLLADIKKEL",
+        "registerNumber": "JEC20AD005",
+        "isLeader": true
+      },
+      {
+        "name": "VINAYA A",
+        "registerNumber": "JEC20AD053",
+        "isLeader": false
+      },
+      {
+        "name": "AGNAL MENACHERY",
+        "registerNumber": "JEC20AD003",
+        "isLeader": false
+      },
+      {
+        "name": "SHREYAS P VIJAY",
+        "registerNumber": "JEC20AD046",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-76",
+    "title": "Expressive Speech Translator",
+    "abstract": "Converts spoken language into another language while attempting to preserve the speaker's emotional or expressive characteristics.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Speech Recognition",
+      "NLP",
+      "Transformers"
+    ],
+    "coverImage": "/cover page/Expressive%20Speech%20Translator.webp",
+    "demoImage": "/cover page/Expressive%20Speech%20Translator.webp",
+    "guideName": "Seenia Francis",
+    "members": [
+      {
+        "name": "AKASH V A",
+        "registerNumber": "JEC20AD006",
+        "isLeader": true
+      },
+      {
+        "name": "VARSHA I K",
+        "registerNumber": "JEC20AD052",
+        "isLeader": false
+      },
+      {
+        "name": "ALIYA SIRAJ MANAKKATTU",
+        "registerNumber": "JEC20AD009",
+        "isLeader": false
+      },
+      {
+        "name": "AKSHAY KRISHNA.T.D",
+        "registerNumber": "JEC20AD007",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-77",
+    "title": "Traffic Sign Recognition",
+    "abstract": "Automatically detects and classifies traffic signs from images or video to support intelligent transportation and driver assistance.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Traffic%20Sign%20Recognition.webp",
+    "demoImage": "/cover page/Traffic%20Sign%20Recognition.webp",
+    "guideName": "Parvathy Jyothi",
+    "members": [
+      {
+        "name": "ARDHRA M A",
+        "registerNumber": "JEC20AD015",
+        "isLeader": true
+      },
+      {
+        "name": "NANDA.S.",
+        "registerNumber": "JEC20AD034",
+        "isLeader": false
+      },
+      {
+        "name": "ANAND SANLO",
+        "registerNumber": "JEC20AD012",
+        "isLeader": false
+      },
+      {
+        "name": "ADITYAN M SUNIL",
+        "registerNumber": "JEC20AD002",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-78",
+    "title": "Drowsiness Detection System",
+    "abstract": "Monitors facial and eye-related features to detect driver drowsiness and provide timely alerts to improve road safety.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/Drowsiness%20Detection%20System.webp",
+    "demoImage": "/cover page/Drowsiness%20Detection%20System.webp",
+    "guideName": "Shine P Xaier",
+    "members": [
+      {
+        "name": "ARUNIMA ANIL",
+        "registerNumber": "JEC20AD016",
+        "isLeader": true
+      },
+      {
+        "name": "SREEKRISHNAN KP",
+        "registerNumber": "JEC20AD048",
+        "isLeader": false
+      },
+      {
+        "name": "MISHAL HABEEB",
+        "registerNumber": "JEC20AD031",
+        "isLeader": false
+      },
+      {
+        "name": "MEGHA S",
+        "registerNumber": "JEC20AD029",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-79",
+    "title": "Real Time Polluting Vehicle Detection",
+    "abstract": "Detects vehicles and identifies potentially polluting vehicles from real-time camera footage using computer vision and object detection.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "YOLO",
+      "PyTorch"
+    ],
+    "coverImage": "/cover page/Real%20Time%20Polluting%20Vehicle%20Detection.webp",
+    "demoImage": "/cover page/Real%20Time%20Polluting%20Vehicle%20Detection.webp",
+    "guideName": "Seenia Francis",
+    "members": [
+      {
+        "name": "BIMAL ROY",
+        "registerNumber": "JEC20AD020",
+        "isLeader": true
+      },
+      {
+        "name": "SRINESH. N. T",
+        "registerNumber": "JEC20AD050",
+        "isLeader": false
+      },
+      {
+        "name": "FEMI ROSH",
+        "registerNumber": "JEC20AD024",
+        "isLeader": false
+      },
+      {
+        "name": "ANJANA P",
+        "registerNumber": "JEC20AD014",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-80",
+    "title": "Scoliosis Diagnosis using Deep Learning",
+    "abstract": "Uses medical images and deep learning techniques to assist in identifying spinal curvature patterns associated with scoliosis.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Scoliosis%20Diagnosis%20using%20Deep%20Learning.webp",
+    "demoImage": "/cover page/Scoliosis%20Diagnosis%20using%20Deep%20Learning.webp",
+    "guideName": "Bineesh M",
+    "members": [
+      {
+        "name": "CHANDINI T S",
+        "registerNumber": "JEC20AD021",
+        "isLeader": true
+      },
+      {
+        "name": "SANDRA CM",
+        "registerNumber": "JEC20AD044",
+        "isLeader": false
+      },
+      {
+        "name": "ATHVIK S",
+        "registerNumber": "JEC20AD018",
+        "isLeader": false
+      },
+      {
+        "name": "MOHAMMED SHYJIL",
+        "registerNumber": "JEC20AD033",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-81",
+    "title": "Automated Wild Animal Detection",
+    "abstract": "Detects and identifies wild animals automatically from images or video streams using deep learning-based object detection.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "YOLO",
+      "OpenCV",
+      "PyTorch"
+    ],
+    "coverImage": "/cover page/Automated%20Wild%20Animal%20Detection.webp",
+    "demoImage": "/cover page/Automated%20Wild%20Animal%20Detection.webp",
+    "guideName": "Divya Konikkara",
+    "members": [
+      {
+        "name": "MOHAMMED AJMAL P N",
+        "registerNumber": "JEC20AD032",
+        "isLeader": true
+      },
+      {
+        "name": "JITHIN BABU",
+        "registerNumber": "JEC20AD026",
+        "isLeader": false
+      },
+      {
+        "name": "DIVYA PILLAI",
+        "registerNumber": "JEC20AD022",
+        "isLeader": false
+      },
+      {
+        "name": "ALEENA SANTHOSH",
+        "registerNumber": "JEC20AD008",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-82",
+    "title": "Automated Plastic Classification",
+    "abstract": "Classifies different types of plastic waste using image processing and deep learning to support automated waste segregation.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Automated%20Plastic%20Classification.webp",
+    "demoImage": "/cover page/Automated%20Plastic%20Classification.webp",
+    "guideName": "Jayakrishnan A",
+    "members": [
+      {
+        "name": "NIKHITHA JOY",
+        "registerNumber": "JEC20AD036",
+        "isLeader": true
+      },
+      {
+        "name": "JACOB JOHNSON",
+        "registerNumber": "JEC20AD025",
+        "isLeader": false
+      },
+      {
+        "name": "RINCE SABU E",
+        "registerNumber": "JEC20AD043",
+        "isLeader": false
+      },
+      {
+        "name": "NIVYA KV",
+        "registerNumber": "JEC20AD037",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-83",
+    "title": "Pneumonia Detection",
+    "abstract": "Analyzes chest X-ray images using deep learning to assist in detecting visual patterns associated with pneumonia.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "CNN",
+      "TensorFlow/Keras",
+      "OpenCV"
+    ],
+    "coverImage": "/cover page/Pneumonia%20Detection.webp",
+    "demoImage": "/cover page/Pneumonia%20Detection.webp",
+    "guideName": "Parvathy Jyothi",
+    "members": [
+      {
+        "name": "PRATHYUSH P",
+        "registerNumber": "JEC20AD040",
+        "isLeader": true
+      },
+      {
+        "name": "AMAL VARGHESE",
+        "registerNumber": "JEC20AD011",
+        "isLeader": false
+      },
+      {
+        "name": "SULEKHA P S",
+        "registerNumber": "JEC20AD051",
+        "isLeader": false
+      },
+      {
+        "name": "ASWATHI KRISHNA P T",
+        "registerNumber": "JEC20AD017",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-84",
+    "title": "Prediction of Symptoms of Brown Plant Hopper",
+    "abstract": "Uses agricultural data and machine learning to predict symptoms or infestation patterns associated with brown plant hopper in crops.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "Random Forest"
+    ],
+    "coverImage": "/cover page/Prediction%20of%20Symptoms%20of%20Brown%20Plant%20Hopper.webp",
+    "demoImage": "/cover page/Prediction%20of%20Symptoms%20of%20Brown%20Plant%20Hopper.webp",
+    "guideName": "Shine P Xaier",
+    "members": [
+      {
+        "name": "SREELAKSHMI SUDHEER",
+        "registerNumber": "JEC20AD049",
+        "isLeader": true
+      },
+      {
+        "name": "RANJINI .K",
+        "registerNumber": "JEC20AD042",
+        "isLeader": false
+      },
+      {
+        "name": "JOSTEN S CHEERAN",
+        "registerNumber": "JEC20AD027",
+        "isLeader": false
+      },
+      {
+        "name": "RAHUL SREENIVASAN P",
+        "registerNumber": "JEC20AD041",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-85",
+    "title": "Pothole Detector",
+    "abstract": "Detects potholes from road images or video using computer vision and object detection to support road safety and maintenance.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "YOLO",
+      "OpenCV",
+      "PyTorch"
+    ],
+    "coverImage": "/cover page/Pothole%20DetectorPothole%20Detector.webp",
+    "demoImage": "/cover page/Pothole%20DetectorPothole%20Detector.webp",
+    "guideName": "Bineesh M",
+    "members": [
+      {
+        "name": "SANDRA M",
+        "registerNumber": "JEC20AD045",
+        "isLeader": true
+      },
+      {
+        "name": "MADHAV M",
+        "registerNumber": "JEC20AD028",
+        "isLeader": false
+      },
+      {
+        "name": "ADITHYAN. M. P.",
+        "registerNumber": "",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-86",
+    "title": "Waste Classification System",
+    "abstract": "Identifies and categorizes waste materials from images to support automated waste segregation and efficient waste management.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Waste%20Classification%20SystemWaste%20Classification%20System.webp",
+    "demoImage": "/cover page/Waste%20Classification%20SystemWaste%20Classification%20System.webp",
+    "guideName": "Seenia Francis",
+    "members": [
+      {
+        "name": "PRADUL O P",
+        "registerNumber": "JEC20AD038",
+        "isLeader": true
+      },
+      {
+        "name": "ALPHIN C J",
+        "registerNumber": "JEC20AD010",
+        "isLeader": false
+      },
+      {
+        "name": "AVANTHIKA P U",
+        "registerNumber": "JEC20AD019",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-87",
+    "title": "Fitness Planner",
+    "abstract": "Provides personalized fitness recommendations and plans based on user information, goals, and activity data.",
+    "batch": "2020–2024",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "Streamlit"
+    ],
+    "coverImage": "/cover page/Fitness%20Planner.webp",
+    "demoImage": "/cover page/Fitness%20Planner.webp",
+    "guideName": "Paravathy Jyothi",
+    "members": [
+      {
+        "name": "EBIN C ZEBY",
+        "registerNumber": "JEC20AD023",
+        "isLeader": true
+      },
+      {
+        "name": "MELVIN JAMES K",
+        "registerNumber": "JEC20AD030",
+        "isLeader": false
+      },
+      {
+        "name": "NIHARIKA JAYAKRISHNAN NAMBISSAN",
+        "registerNumber": "JEC20AD035",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-88",
+    "title": "Plant Disease Diagnosis and Remedies",
+    "abstract": "Identifies plant diseases from leaf images and provides suitable remedies or treatment recommendations using AI-based image analysis.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Plant%20Disease%20Diagnosis%20and%20Remedies.webp",
+    "demoImage": "/cover page/Plant%20Disease%20Diagnosis%20and%20Remedies.webp",
+    "guideName": "PARVATHY JYOTHI",
+    "members": [
+      {
+        "name": "APARNNA JOSEPH",
+        "registerNumber": "JEC21AD013",
+        "isLeader": true
+      },
+      {
+        "name": "ARJUN C S",
+        "registerNumber": "JEC21AD014",
+        "isLeader": false
+      },
+      {
+        "name": "SHAH ZAAD HASSAN",
+        "registerNumber": "JEC21AD043",
+        "isLeader": false
+      },
+      {
+        "name": "AISWARYA AK",
+        "registerNumber": "JEC21AD003",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-89",
+    "title": "Visual Human Posture Estimation",
+    "abstract": "Detects and analyzes human body posture from images or video using computer vision and pose estimation techniques.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/Visual%20Human%20Posture%20Estimation.webp",
+    "demoImage": "/cover page/Visual%20Human%20Posture%20Estimation.webp",
+    "guideName": "SHINE P XAVIER",
+    "members": [
+      {
+        "name": "BHAGYALAKSHMY SABURAJ",
+        "registerNumber": "JEC21AD018",
+        "isLeader": true
+      },
+      {
+        "name": "ATHIRA P.S",
+        "registerNumber": "JEC21AD017",
+        "isLeader": false
+      },
+      {
+        "name": "IVINE P SABU",
+        "registerNumber": "JEC21AD027",
+        "isLeader": false
+      },
+      {
+        "name": "THOMAS RAJU",
+        "registerNumber": "JEC21AD050",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-90",
+    "title": "AI Powered Grocery Shopping App",
+    "abstract": "Provides intelligent grocery recommendations, product search, and personalized shopping assistance based on user preferences and purchase patterns.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Streamlit",
+      "Pandas",
+      "Machine Learning"
+    ],
+    "coverImage": "/cover page/AI%20Powered%20Grocery%20Shopping%20App.webp",
+    "demoImage": "/cover page/AI%20Powered%20Grocery%20Shopping%20App.webp",
+    "guideName": "DIVYA KONIKKARA",
+    "members": [
+      {
+        "name": "GOPIKA P S",
+        "registerNumber": "JEC21AD021",
+        "isLeader": true
+      },
+      {
+        "name": "DEEPAK C R",
+        "registerNumber": "JEC21AD019",
+        "isLeader": false
+      },
+      {
+        "name": "ANANTHU KRISHNAN",
+        "registerNumber": "JEC21AD010",
+        "isLeader": false
+      },
+      {
+        "name": "ANNLIYA P SHAJAN",
+        "registerNumber": "JEC21AD012",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-91",
+    "title": "Sign Language Prediction",
+    "abstract": "Recognizes hand gestures and predicts corresponding sign language characters or words using computer vision and deep learning.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/Sign%20Language%20Prediction.webp",
+    "demoImage": "/cover page/Sign%20Language%20Prediction.webp",
+    "guideName": "Dr. ANOOP V",
+    "members": [
+      {
+        "name": "GOURI K P",
+        "registerNumber": "JEC21AD022",
+        "isLeader": true
+      },
+      {
+        "name": "JOMON P JOJI",
+        "registerNumber": "JEC21AD031",
+        "isLeader": false
+      },
+      {
+        "name": "ASHLIN PARAKKAL",
+        "registerNumber": "JEC21AD016",
+        "isLeader": false
+      },
+      {
+        "name": "VISESH A V",
+        "registerNumber": "JEC21AD053",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-92",
+    "title": "Hate Speech Recognition System",
+    "abstract": "Detects and classifies hateful or abusive content in text using natural language processing and machine learning techniques.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "BERT",
+      "Transformers"
+    ],
+    "coverImage": "/cover page/Hate%20Speech%20Recognition%20System.webp",
+    "demoImage": "/cover page/Hate%20Speech%20Recognition%20System.webp",
+    "guideName": "JAYAKRISHNAN A",
+    "members": [
+      {
+        "name": "HAMEEM ABDUL NASSIR",
+        "registerNumber": "JEC21AD025",
+        "isLeader": true
+      },
+      {
+        "name": "ASHIQUE.TP",
+        "registerNumber": "JEC21AD015",
+        "isLeader": false
+      },
+      {
+        "name": "SHRITHIKA SHIVADAS",
+        "registerNumber": "JEC21AD045",
+        "isLeader": false
+      },
+      {
+        "name": "ANASWAR V S",
+        "registerNumber": "JEC21AD011",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-93",
+    "title": "Document Comprehension Assistant",
+    "abstract": "An AI-powered assistant that understands and summarizes document content, helping users extract important information and interact with documents more efficiently.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "LLM",
+      "Document AI"
+    ],
+    "coverImage": "/cover page/Document%20Comprehension%20Assistant.webp",
+    "demoImage": "/cover page/Document%20Comprehension%20Assistant.webp",
+    "guideName": "RENI JOSE",
+    "members": [
+      {
+        "name": "HRIDYA GIRISH",
+        "registerNumber": "JEC21AD026",
+        "isLeader": true
+      },
+      {
+        "name": "ALEN C ALEX",
+        "registerNumber": "JEC21AD004",
+        "isLeader": false
+      },
+      {
+        "name": "SURYA NARAYANAN",
+        "registerNumber": "JEC21AD049",
+        "isLeader": false
+      },
+      {
+        "name": "MIRIAM MONCY THOMAS",
+        "registerNumber": "JEC21AD033",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-94",
+    "title": "Blind Assist for Currency Recognition",
+    "abstract": "An assistive computer vision system that recognizes currency denominations and provides audio feedback to help visually impaired users identify money.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "OCR",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Blind%20Assist%20for%20Currency%20Recognition.webp",
+    "demoImage": "/cover page/Blind%20Assist%20for%20Currency%20Recognition.webp",
+    "guideName": "BINEESH M",
+    "members": [
+      {
+        "name": "JESLIN LEELA MATHEW",
+        "registerNumber": "JEC21AD029",
+        "isLeader": true
+      },
+      {
+        "name": "ALAN C VINOY",
+        "registerNumber": "JEC21AD004",
+        "isLeader": false
+      },
+      {
+        "name": "RASAL HARISH.A",
+        "registerNumber": "JEC21AD042",
+        "isLeader": false
+      },
+      {
+        "name": "ALAN DAVIS C",
+        "registerNumber": "JEC21AD006",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-95",
+    "title": "Fake News Detection",
+    "abstract": "A machine learning-based system that identifies potentially fake or misleading news articles by analyzing their textual characteristics.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "Machine Learning",
+      "Scikit-learn"
+    ],
+    "coverImage": "/cover page/Fake%20News%20Detection.webp",
+    "demoImage": "/cover page/Fake%20News%20Detection.webp",
+    "guideName": "RENI JOSE",
+    "members": [
+      {
+        "name": "JOHN DAVIS",
+        "registerNumber": "JEC21AD030",
+        "isLeader": true
+      },
+      {
+        "name": "SAKTHEESWARAN . D",
+        "registerNumber": "JEC21AD041",
+        "isLeader": false
+      },
+      {
+        "name": "RESHMA K R",
+        "registerNumber": "JEC21AD040",
+        "isLeader": false
+      },
+      {
+        "name": "SREYAS AS",
+        "registerNumber": "JEC21AD047",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-96",
+    "title": "Movie Recommendation System",
+    "abstract": "A recommendation system that suggests movies to users based on their preferences, viewing history, and similarity between movies.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "Recommendation System",
+      "Pandas"
+    ],
+    "coverImage": "/cover page/Movie%20Recommendation%20System.webp",
+    "demoImage": "/cover page/Movie%20Recommendation%20System.webp",
+    "guideName": "RENI JOSE",
+    "members": [
+      {
+        "name": "MISHAL MUHAMMED EP",
+        "registerNumber": "JEC21AD034",
+        "isLeader": true
+      },
+      {
+        "name": "EBIN BABU",
+        "registerNumber": "JEC21AD022",
+        "isLeader": false
+      },
+      {
+        "name": "JENY M JERRY",
+        "registerNumber": "JEC21AD028",
+        "isLeader": false
+      },
+      {
+        "name": "ANANDHANARAYANAN A N",
+        "registerNumber": "JEC21AD010",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-97",
+    "title": "Sentiment Analysis in Transliteration Malayalam Movie Reviews Using BERT Model",
+    "abstract": "A BERT-based sentiment analysis system that analyzes Malayalam movie reviews written in transliterated text and classifies them according to sentiment.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "BERT",
+      "NLP",
+      "Transformers"
+    ],
+    "coverImage": "/cover page/Sentiment%20Analysis%20in%20Transliteration%20Malayalam%20Movie%20Reviews%20Using%20BERT%20Model.webp",
+    "demoImage": "/cover page/Sentiment%20Analysis%20in%20Transliteration%20Malayalam%20Movie%20Reviews%20Using%20BERT%20Model.webp",
+    "guideName": "APARNA RAJ C T",
+    "members": [
+      {
+        "name": "MOHAMMED MUSTHAFA",
+        "registerNumber": "JEC21AD035",
+        "isLeader": true
+      },
+      {
+        "name": "ALAXO JOY",
+        "registerNumber": "JEC21AD011",
+        "isLeader": false
+      },
+      {
+        "name": "SHARLET VARKEY",
+        "registerNumber": "JEC21AD046",
+        "isLeader": false
+      },
+      {
+        "name": "GANGA K MANOHARAN",
+        "registerNumber": "JEC21AD023",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-98",
+    "title": "Ball Tracking System",
+    "abstract": "A computer vision system that detects and tracks a moving ball in real time from video frames for sports and tracking applications.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Computer Vision",
+      "Object Tracking"
+    ],
+    "coverImage": "/cover page/Ball%20Tracking%20System.webp",
+    "demoImage": "/cover page/Ball%20Tracking%20System.webp",
+    "guideName": "Dr. SEENIA FRANCIS",
+    "members": [
+      {
+        "name": "NAVEEN WILSON",
+        "registerNumber": "JEC21AD037",
+        "isLeader": true
+      },
+      {
+        "name": "S R SACHIN",
+        "registerNumber": "JEC21AD044",
+        "isLeader": false
+      },
+      {
+        "name": "JUDIN JOHNSON",
+        "registerNumber": "JEC21AD028",
+        "isLeader": false
+      },
+      {
+        "name": "VINEETH K",
+        "registerNumber": "JEC21AD051",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-99",
+    "title": "Photo Tagging",
+    "abstract": "A system that automatically identifies and tags people or objects in photographs using image recognition and machine learning techniques.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Machine Learning",
+      "Image Processing"
+    ],
+    "coverImage": "/cover page/Photo%20Tagging.webp",
+    "demoImage": "/cover page/Photo%20Tagging.webp",
+    "guideName": "PARVATHY JYOTHI",
+    "members": [
+      {
+        "name": "SACHIN RAJ M",
+        "registerNumber": "JEC21AD041",
+        "isLeader": true
+      },
+      {
+        "name": "JEESON DAVIS",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      },
+      {
+        "name": "AISWARYA K G",
+        "registerNumber": "JEC21AD003",
+        "isLeader": false
+      },
+      {
+        "name": "SANJAY N J",
+        "registerNumber": "JEC21AD042",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-100",
+    "title": "Automatic Number Plate Recognition System",
+    "abstract": "A computer vision system that detects and recognizes vehicle number plates automatically from images or video streams.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "OCR",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Automatic%20Number%20Plate%20Recognition%20System.webp",
+    "demoImage": "/cover page/Automatic%20Number%20Plate%20Recognition%20System.webp",
+    "guideName": "PARVATHY JYOTHI",
+    "members": [
+      {
+        "name": "SHANE SUNNY",
+        "registerNumber": "JEC21AD044",
+        "isLeader": true
+      },
+      {
+        "name": "GOUTHAM KRISHNA MS",
+        "registerNumber": "JEC21AD025",
+        "isLeader": false
+      },
+      {
+        "name": "NANDANA ANAND",
+        "registerNumber": "JEC21AD036",
+        "isLeader": false
+      },
+      {
+        "name": "GOWRI PRIYA",
+        "registerNumber": "JEC21AD024",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-101",
+    "title": "Personal Protective Equipment Detection",
+    "abstract": "A computer vision system that automatically detects whether required personal protective equipment is being worn in monitored environments.",
+    "batch": "2021–2025",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "YOLO",
+      "OpenCV",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Personal%20Protective%20Equipment%20Detection.webp",
+    "demoImage": "/cover page/Personal%20Protective%20Equipment%20Detection.webp",
+    "guideName": "ANJALI O",
+    "members": [
+      {
+        "name": "VAISHAK. M. A",
+        "registerNumber": "JEC21AD051",
+        "isLeader": true
+      },
+      {
+        "name": "ABEL JONES",
+        "registerNumber": "JEC21AD002",
+        "isLeader": false
+      },
+      {
+        "name": "ABHISHEK AJAYKUMAR",
+        "registerNumber": "JEC21AD001",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-102",
+    "title": "Smart Buddy",
+    "abstract": "A smart assistant system designed to provide users with intelligent support and personalized interaction using AI-based technologies.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "AI",
+      "NLP",
+      "Machine Learning"
+    ],
+    "coverImage": "/cover page/Smart%20Buddy.webp",
+    "demoImage": "/cover page/Smart%20Buddy.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "ABDULLA NIHAL M",
+        "registerNumber": "JEC22AD001",
+        "isLeader": true
+      },
+      {
+        "name": "ADARSH S",
+        "registerNumber": "JEC22AD005",
+        "isLeader": false
+      },
+      {
+        "name": "AMAL KRISHNA M",
+        "registerNumber": "JEC22AD011",
+        "isLeader": false
+      },
+      {
+        "name": "TEJAS RANJITH",
+        "registerNumber": "JEC22AD061",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-103",
+    "title": "Exam Focused Learning Website – PrepHub",
+    "abstract": "A learning website designed to help students prepare for examinations through organized study materials, focused resources, and exam-oriented learning support.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "PHP"
+    ],
+    "coverImage": "/cover page/Exam%20Focused%20Learning%20Website%20%E2%80%93%20PrepHub.webp",
+    "demoImage": "/cover page/Exam%20Focused%20Learning%20Website%20%E2%80%93%20PrepHub.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "AJITH VARGHESE T.H.",
+        "registerNumber": "JEC22AD008",
+        "isLeader": true
+      },
+      {
+        "name": "AMAL JOHN ANTONY",
+        "registerNumber": "JEC22AD010",
+        "isLeader": false
+      },
+      {
+        "name": "HANIEL HENRY",
+        "registerNumber": "JEC22AD031",
+        "isLeader": false
+      },
+      {
+        "name": "SHALVIN SHABU",
+        "registerNumber": "JEC22AD052",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-104",
+    "title": "Intelligent Shopping Checkout System With Inventory Management",
+    "abstract": "An automated checkout system combining product recognition, billing, and real-time inventory management to improve retail efficiency.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "YOLO",
+      "MySQL"
+    ],
+    "coverImage": "/cover page/Intelligent%20Shopping%20Checkout%20System%20With%20Inventory%20Management.webp",
+    "demoImage": "/cover page/Intelligent%20Shopping%20Checkout%20System%20With%20Inventory%20Management.webp",
+    "guideName": "Ms. Nikhitha N",
+    "members": [
+      {
+        "name": "AMRUTH KRISHNA K",
+        "registerNumber": "JEC22AD012",
+        "isLeader": true
+      },
+      {
+        "name": "MOHAMMED SABIL",
+        "registerNumber": "JEC22AD040",
+        "isLeader": false
+      },
+      {
+        "name": "MOHAMMED SHAMNAS K",
+        "registerNumber": "JEC22AD041",
+        "isLeader": false
+      },
+      {
+        "name": "SIDHARTH SAJITH",
+        "registerNumber": "JEC22AD055",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-105",
+    "title": "Crop Recommendation System",
+    "abstract": "Recommends suitable crops based on agricultural and environmental parameters such as soil conditions, climate, and available resources.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "Machine Learning"
+    ],
+    "coverImage": "/cover page/Crop%20Recommendation%20System.webp",
+    "demoImage": "/cover page/Crop%20Recommendation%20System.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "ANEENA E T",
+        "registerNumber": "JEC22AD013",
+        "isLeader": true
+      },
+      {
+        "name": "ANJANA K",
+        "registerNumber": "JEC22AD014",
+        "isLeader": false
+      },
+      {
+        "name": "ANSEN VINOJ",
+        "registerNumber": "JEC22AD015",
+        "isLeader": false
+      },
+      {
+        "name": "SIYONA FAIMON",
+        "registerNumber": "JEC22AD056",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-106",
+    "title": "Integrated Parking System",
+    "abstract": "Provides intelligent parking management by monitoring parking spaces, vehicle entry and exit, and real-time parking availability.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "IoT",
+      "OpenCV",
+      "Arduino"
+    ],
+    "coverImage": "/cover page/Integrated%20Parking%20System.webp",
+    "demoImage": "/cover page/Integrated%20Parking%20System.webp",
+    "guideName": "Ms. Parvathy Jyothi",
+    "members": [
+      {
+        "name": "ABINA N J",
+        "registerNumber": "JEC22AD004",
+        "isLeader": true
+      },
+      {
+        "name": "SNEHA PAUL",
+        "registerNumber": "JEC22AD058",
+        "isLeader": false
+      },
+      {
+        "name": "SREELAKSHMI SAJEEVAN",
+        "registerNumber": "JEC22AD059",
+        "isLeader": false
+      },
+      {
+        "name": "ASWIN PRAKASH",
+        "registerNumber": "LJEC22AD063",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-107",
+    "title": "Segregation Based on Quality of Product",
+    "abstract": "Uses computer vision and automation to inspect products and segregate them according to predefined quality standards.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "Raspberry Pi"
+    ],
+    "coverImage": "/cover page/Segregation%20Based%20on%20Quality%20of%20Product.webp",
+    "demoImage": "/cover page/Segregation%20Based%20on%20Quality%20of%20Product.webp",
+    "guideName": "Ms. Parvathy Jyothi",
+    "members": [
+      {
+        "name": "ARJUN .P",
+        "registerNumber": "JEC22AD016",
+        "isLeader": true
+      },
+      {
+        "name": "ASHWIN LINSON",
+        "registerNumber": "JEC22AD017",
+        "isLeader": false
+      },
+      {
+        "name": "DEVANAND V P",
+        "registerNumber": "JEC22AD022",
+        "isLeader": false
+      },
+      {
+        "name": "MEGHA T S",
+        "registerNumber": "LJEC22AD064",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-108",
+    "title": "Vision Driven Fire Response System",
+    "abstract": "Detects fire or smoke using computer vision and initiates appropriate alerts or response mechanisms for improved safety.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "YOLO",
+      "IoT"
+    ],
+    "coverImage": "/cover page/Vision%20Driven%20Fire%20Response%20System.webp",
+    "demoImage": "/cover page/Vision%20Driven%20Fire%20Response%20System.webp",
+    "guideName": "Ms. Parvathy Jyothi",
+    "members": [
+      {
+        "name": "A V DHANANJAY",
+        "registerNumber": "JEC22AD019",
+        "isLeader": true
+      },
+      {
+        "name": "GOWRI NANDHANA .M",
+        "registerNumber": "JEC22AD027",
+        "isLeader": false
+      },
+      {
+        "name": "SANAKA C SIMON",
+        "registerNumber": "JEC22AD050",
+        "isLeader": false
+      },
+      {
+        "name": "SREYAS T",
+        "registerNumber": "JEC22AD060",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-109",
+    "title": "Personal Healthcare Assistant",
+    "abstract": "An AI-based assistant that helps users manage basic healthcare information, reminders, and personalized wellness support.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "Machine Learning",
+      "Streamlit"
+    ],
+    "coverImage": "/cover page/Personal%20Healthcare%20Assistant.webp",
+    "demoImage": "/cover page/Personal%20Healthcare%20Assistant.webp",
+    "guideName": "Ms. Linta A T",
+    "members": [
+      {
+        "name": "BHADRA .K.SOORYAN",
+        "registerNumber": "JEC22AD020",
+        "isLeader": true
+      },
+      {
+        "name": "ELDHOSE BENNY",
+        "registerNumber": "JEC22AD025",
+        "isLeader": false
+      },
+      {
+        "name": "HAIFA T",
+        "registerNumber": "JEC22AD028",
+        "isLeader": false
+      },
+      {
+        "name": "HENNA MARIYA JOSHY",
+        "registerNumber": "JEC22AD033",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-110",
+    "title": "Smart AI Powered Doorbell with Emotion Recognition",
+    "abstract": "An intelligent doorbell that detects visitors and analyzes facial expressions to recognize basic emotional states.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "IoT"
+    ],
+    "coverImage": "/cover page/Smart%20AI%20Powered%20Doorbell%20with%20Emotion%20Recognition.webp",
+    "demoImage": "/cover page/Smart%20AI%20Powered%20Doorbell%20with%20Emotion%20Recognition.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "ATHIRA A S",
+        "registerNumber": "JEC22AD018",
+        "isLeader": true
+      },
+      {
+        "name": "HARIKRISHNAN .C. K",
+        "registerNumber": "JEC22AD030",
+        "isLeader": false
+      },
+      {
+        "name": "HARITHA K SURESH",
+        "registerNumber": "JEC22AD031",
+        "isLeader": false
+      },
+      {
+        "name": "SNEHA K S",
+        "registerNumber": "JEC22AD057",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-111",
+    "title": "Mental Health Care Chatbot",
+    "abstract": "An NLP-based conversational assistant designed to provide supportive interactions, information, and basic mental wellness guidance.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "BERT",
+      "Streamlit"
+    ],
+    "coverImage": "/cover page/Mental%20Health%20Care%20Chatbot.webp",
+    "demoImage": "/cover page/Mental%20Health%20Care%20Chatbot.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "ABHIRAM K R",
+        "registerNumber": "JEC22AD002",
+        "isLeader": true
+      },
+      {
+        "name": "DHIYA DEVASSY",
+        "registerNumber": "JEC22AD024",
+        "isLeader": false
+      },
+      {
+        "name": "HELNA THOMAS",
+        "registerNumber": "JEC22AD032",
+        "isLeader": false
+      },
+      {
+        "name": "ABIN BABU",
+        "registerNumber": "LJEC22AD062",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-112",
+    "title": "Low Cost Braille Display with Real Time Translation",
+    "abstract": "Converts digital or textual content into Braille output in real time using an affordable assistive technology system.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "Arduino",
+      "Embedded Systems"
+    ],
+    "coverImage": "/cover page/Low%20Cost%20Braille%20Display%20with%20Real%20Time%20Translation.webp",
+    "demoImage": "/cover page/Low%20Cost%20Braille%20Display%20with%20Real%20Time%20Translation.webp",
+    "guideName": "Ms. Divya Konikkara",
+    "members": [
+      {
+        "name": "ABHISHEK P",
+        "registerNumber": "JEC22AD003",
+        "isLeader": true
+      },
+      {
+        "name": "FATHIMA SHIFA KAVUMPURATH",
+        "registerNumber": "JEC22AD026",
+        "isLeader": false
+      },
+      {
+        "name": "KRISHNENDU U N",
+        "registerNumber": "JEC22AD037",
+        "isLeader": false
+      },
+      {
+        "name": "NAHIDAH",
+        "registerNumber": "JEC22AD044",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-113",
+    "title": "AI Real Time Translator",
+    "abstract": "Converts spoken or written language into another language in real time using speech recognition, NLP, and translation models.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Speech Recognition",
+      "NLP",
+      "Transformers"
+    ],
+    "coverImage": "/cover page/AI%20Real%20Time%20Translator.webp",
+    "demoImage": "/cover page/AI%20Real%20Time%20Translator.webp",
+    "guideName": "Mr. Jayakrishnan A",
+    "members": [
+      {
+        "name": "ADRIJA R PRAMOD",
+        "registerNumber": "JEC22AD006",
+        "isLeader": true
+      },
+      {
+        "name": "AL AMTHAN R M",
+        "registerNumber": "JEC22AD009",
+        "isLeader": false
+      },
+      {
+        "name": "LIYA M",
+        "registerNumber": "JEC22AD038",
+        "isLeader": false
+      },
+      {
+        "name": "SHREYA JOHN BOSCO .K",
+        "registerNumber": "JEC22AD054",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-114",
+    "title": "AI Virtual Painting",
+    "abstract": "Enables users to create digital paintings through AI-powered gesture recognition and interactive computer vision techniques.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/AI%20Virtual%20Painting.webp",
+    "demoImage": "/cover page/AI%20Virtual%20Painting.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "DEVAPRAKASH",
+        "registerNumber": "JEC22AD023",
+        "isLeader": true
+      },
+      {
+        "name": "IRENE S ARAKKAL",
+        "registerNumber": "JEC22AD036",
+        "isLeader": false
+      },
+      {
+        "name": "MUHAMMED REZAL P",
+        "registerNumber": "JEC22AD043",
+        "isLeader": false
+      },
+      {
+        "name": "P A AVANINDRA",
+        "registerNumber": "JEC22AD046",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-115",
+    "title": "She:Guard – A Women-Centric Human Violence Detection System",
+    "abstract": "Detects potentially violent activities from video streams and generates alerts to support safety monitoring and rapid response.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "YOLO",
+      "Deep Learning"
+    ],
+    "coverImage": "/cover page/She_Guard%20%E2%80%93%20A%20Women-Centric%20Human%20Violence%20Detection%20System.webp",
+    "demoImage": "/cover page/She_Guard%20%E2%80%93%20A%20Women-Centric%20Human%20Violence%20Detection%20System.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "HIBA .P.A",
+        "registerNumber": "JEC22AD034",
+        "isLeader": true
+      },
+      {
+        "name": "HISHAM ALI",
+        "registerNumber": "JEC22AD035",
+        "isLeader": false
+      },
+      {
+        "name": "MUHAMMED IRFAN S",
+        "registerNumber": "JEC22AD042",
+        "isLeader": false
+      },
+      {
+        "name": "RAZAAN RASHEED",
+        "registerNumber": "JEC22AD049",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-116",
+    "title": "Music Analysis and Predictive Recommendation System",
+    "abstract": "Analyzes music characteristics and user preferences to generate personalized music recommendations using machine learning.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "Recommender Systems"
+    ],
+    "coverImage": "/cover page/Music%20Analysis%20and%20Predictive%20Recommendation%20System.webp",
+    "demoImage": "/cover page/Music%20Analysis%20and%20Predictive%20Recommendation%20System.webp",
+    "guideName": "Ms. Anjali O",
+    "members": [
+      {
+        "name": "BLAZE JOSE",
+        "registerNumber": "JEC22AD021",
+        "isLeader": true
+      },
+      {
+        "name": "MILNA JOSE",
+        "registerNumber": "JEC22AD039",
+        "isLeader": false
+      },
+      {
+        "name": "NIRANJANA R NAIR",
+        "registerNumber": "JEC22AD045",
+        "isLeader": false
+      },
+      {
+        "name": "PRITHVISHANKAR MENON",
+        "registerNumber": "JEC22AD047",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-117",
+    "title": "Regional Sign Language to Speech Recognition",
+    "abstract": "Recognizes regional sign language gestures and converts them into speech to facilitate communication.",
+    "batch": "2022–2026",
+    "projectType": "Mini Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/Regional%20Sign%20Language%20to%20Speech%20Recognition.webp",
+    "demoImage": "/cover page/Regional%20Sign%20Language%20to%20Speech%20Recognition.webp",
+    "guideName": "Mr. Jithin K C",
+    "members": [
+      {
+        "name": "AJAYKRISHNA V K",
+        "registerNumber": "JEC22AD007",
+        "isLeader": true
+      },
+      {
+        "name": "RAHUL DHANARAJ",
+        "registerNumber": "JEC22AD048",
+        "isLeader": false
+      },
+      {
+        "name": "SANDEEPKUMAR P S",
+        "registerNumber": "JEC22AD051",
+        "isLeader": false
+      },
+      {
+        "name": "SHINS JOHN JAISON",
+        "registerNumber": "JEC22AD053",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-118",
+    "title": "VoiceTrace",
+    "abstract": "An AI-based voice analysis system that processes speech patterns and voice characteristics for intelligent voice-based analysis.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Speech Recognition",
+      "NLP",
+      "Deep Learning"
+    ],
+    "coverImage": "/cover page/VoiceTrace.webp",
+    "demoImage": "/cover page/VoiceTrace.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "ABINA N J",
+        "registerNumber": "JEC22AD004",
+        "isLeader": true
+      },
+      {
+        "name": "ADARSH S",
+        "registerNumber": "JEC22AD005",
+        "isLeader": false
+      },
+      {
+        "name": "SNEHA PAUL",
+        "registerNumber": "JEC22AD058",
+        "isLeader": false
+      },
+      {
+        "name": "TEJAS RANJITH",
+        "registerNumber": "JEC22AD061",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-119",
+    "title": "Smart MicroLab – CRP Level Analysis Using Image Processing and AI",
+    "abstract": "A smart laboratory system that uses image processing and AI to analyze CRP levels and assist with rapid medical assessment.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Image Processing",
+      "AI",
+      "Medical Imaging"
+    ],
+    "coverImage": "/cover page/Smart%20MicroLab%20%E2%80%93%20CRP%20Level%20Analysis%20Using%20Image%20Processing%20and%20AI.webp",
+    "demoImage": "/cover page/Smart%20MicroLab%20%E2%80%93%20CRP%20Level%20Analysis%20Using%20Image%20Processing%20and%20AI.webp",
+    "guideName": "Ms. Divya Konikkara",
+    "members": [
+      {
+        "name": "SHAH ZAAD HASSAN",
+        "registerNumber": "JEC21AD043",
+        "isLeader": true
+      },
+      {
+        "name": "HAMEEM ABDUL NASSIR",
+        "registerNumber": "JEC21AD025",
+        "isLeader": false
+      },
+      {
+        "name": "ALAN C VINOY",
+        "registerNumber": "JEC21AD004",
+        "isLeader": false
+      },
+      {
+        "name": "SAKTHEESWARAN . D",
+        "registerNumber": "JEC21AD041",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-120",
+    "title": "AI-Powered Telepresence Robot",
+    "abstract": "An AI-powered telepresence robot designed for remote interaction, navigation, communication, and presence in distant environments.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Robotics",
+      "AI",
+      "IoT"
+    ],
+    "coverImage": "/cover page/AI-Powered%20Telepresence%20Robot.webp",
+    "demoImage": "/cover page/AI-Powered%20Telepresence%20Robot.webp",
+    "guideName": "Dr. Sandeep C S",
+    "members": [
+      {
+        "name": "DHIYA DEVASSY",
+        "registerNumber": "JEC22AD024",
+        "isLeader": true
+      },
+      {
+        "name": "MILNA JOSE",
+        "registerNumber": "JEC22AD039",
+        "isLeader": false
+      },
+      {
+        "name": "RAHUL DHANARAJ",
+        "registerNumber": "JEC22AD048",
+        "isLeader": false
+      },
+      {
+        "name": "SHINS JOHN JAISON",
+        "registerNumber": "JEC22AD053",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-121",
+    "title": "Hands-Free Communication System Using Eye Blinks and Morse Code",
+    "abstract": "An assistive communication system that detects eye blinks and converts blink patterns into Morse code, enabling hands-free text communication.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Eye Tracking",
+      "Morse Code"
+    ],
+    "coverImage": "/cover page/Hands-Free%20Communication%20System%20Using%20Eye%20Blinks%20and%20Morse%20Code.webp",
+    "demoImage": "/cover page/Hands-Free%20Communication%20System%20Using%20Eye%20Blinks%20and%20Morse%20Code.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "THOMAS RAJU",
+        "registerNumber": "JEC21AD050",
+        "isLeader": true
+      },
+      {
+        "name": "HRIDYA GIRISH",
+        "registerNumber": "JEC21AD026",
+        "isLeader": false
+      },
+      {
+        "name": "IVINE P SABU",
+        "registerNumber": "JEC21AD027",
+        "isLeader": false
+      },
+      {
+        "name": "ASHIQUE T P",
+        "registerNumber": "JEC21AD015",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-122",
+    "title": "Agentic AI-Based Academic Assistant for Faculty and Students",
+    "abstract": "An agentic AI academic assistant designed to help faculty and students with academic information, tasks, resources, and intelligent assistance.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "LLM",
+      "Agentic AI",
+      "NLP"
+    ],
+    "coverImage": "/cover page/Agentic%20AI-Based%20Academic%20Assistant%20for%20Faculty%20and%20Students.webp",
+    "demoImage": "/cover page/Agentic%20AI-Based%20Academic%20Assistant%20for%20Faculty%20and%20Students.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "SREYAS AS",
+        "registerNumber": "JEC21AD047",
+        "isLeader": true
+      },
+      {
+        "name": "HISHAM ALI",
+        "registerNumber": "JEC22AD035",
+        "isLeader": false
+      },
+      {
+        "name": "MUHAMMED IRFAN S",
+        "registerNumber": "JEC22AD042",
+        "isLeader": false
+      },
+      {
+        "name": "SNEHA K S",
+        "registerNumber": "JEC22AD057",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-123",
+    "title": "Explainable Deep Learning for Brain Stroke Detection",
+    "abstract": "A deep learning-based system for detecting brain stroke from medical images with explainable AI techniques to make predictions easier to understand.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Deep Learning",
+      "XAI",
+      "Medical Imaging"
+    ],
+    "coverImage": "/cover page/Explainable%20Deep%20Learning%20for%20Brain%20Stroke%20Detection.webp",
+    "demoImage": "/cover page/Explainable%20Deep%20Learning%20for%20Brain%20Stroke%20Detection.webp",
+    "guideName": "Ms. Sindhu S",
+    "members": [
+      {
+        "name": "AJAYKRISHNA V K",
+        "registerNumber": "JEC22AD007",
+        "isLeader": true
+      },
+      {
+        "name": "MUHAMMED REZAL P",
+        "registerNumber": "JEC22AD043",
+        "isLeader": false
+      },
+      {
+        "name": "P A AVANINDRA",
+        "registerNumber": "JEC22AD046",
+        "isLeader": false
+      },
+      {
+        "name": "ASWIN PRAKASH",
+        "registerNumber": "LJEC22AD063",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-124",
+    "title": "Environmental Sound-Alert Wearable for the Hearing Impaired",
+    "abstract": "A wearable assistive device that detects important environmental sounds and converts them into alerts to improve awareness for hearing-impaired users.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Arduino",
+      "Sensors",
+      "IoT",
+      "Signal Processing"
+    ],
+    "coverImage": "/cover page/Environmental%20Sound-Alert%20Wearable%20for%20the%20Hearing%20Impaired.webp",
+    "demoImage": "/cover page/Environmental%20Sound-Alert%20Wearable%20for%20the%20Hearing%20Impaired.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "BLAZE JOSE",
+        "registerNumber": "JEC22AD021",
+        "isLeader": true
+      },
+      {
+        "name": "NIRANJANA R NAIR",
+        "registerNumber": "JEC22AD045",
+        "isLeader": false
+      },
+      {
+        "name": "PRITHVISHANKAR MENON",
+        "registerNumber": "JEC22AD047",
+        "isLeader": false
+      },
+      {
+        "name": "MEGHA T S",
+        "registerNumber": "LJEC22AD064",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-125",
+    "title": "Fully Autonomous AI Powered Combat Jet",
+    "abstract": "An autonomous AI-powered combat aircraft concept that focuses on intelligent navigation, decision-making, target detection, and autonomous operation.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "AI",
+      "Computer Vision",
+      "Autonomous Systems"
+    ],
+    "coverImage": "/cover page/Fully%20Autonomous%20AI%20Powered%20Combat%20Jet.webp",
+    "demoImage": "/cover page/Fully%20Autonomous%20AI%20Powered%20Combat%20Jet.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "JENY M JERRY",
+        "registerNumber": "JEC21AD028",
+        "isLeader": true
+      },
+      {
+        "name": "JESLIN LEELA MATHEW",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      },
+      {
+        "name": "GOPIKA P S",
+        "registerNumber": "JEC21AD021",
+        "isLeader": false
+      },
+      {
+        "name": "ASHLIN PARAKKAL",
+        "registerNumber": "JEC21AD016",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-126",
+    "title": "DrainBot AI – A Cost-Effective Robotic System for Drainage Inspection, Cleaning and Urban Flood Prevention",
+    "abstract": "A cost-effective robotic system that uses AI-assisted inspection and cleaning to monitor drainage systems and help prevent urban flooding.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Robotics",
+      "AI",
+      "IoT"
+    ],
+    "coverImage": "/cover page/DrainBot%20AI%20%E2%80%93%20A%20Cost-Effective%20Robotic%20System%20for%20Drainage%20Inspection%2C%20Cleaning%20and%20Urban%20Flood%20Prevention.webp",
+    "demoImage": "/cover page/DrainBot%20AI%20%E2%80%93%20A%20Cost-Effective%20Robotic%20System%20for%20Drainage%20Inspection%2C%20Cleaning%20and%20Urban%20Flood%20Prevention.webp",
+    "guideName": "Ms. Nikhitha N",
+    "members": [
+      {
+        "name": "JUDIN JOHNSON",
+        "registerNumber": "JEC21AD028",
+        "isLeader": true
+      },
+      {
+        "name": "GOURI K P",
+        "registerNumber": "JEC21AD022",
+        "isLeader": false
+      },
+      {
+        "name": "AISWARYA AK",
+        "registerNumber": "JEC21AD003",
+        "isLeader": false
+      },
+      {
+        "name": "ANANDHANARAYANAN A N",
+        "registerNumber": "JEC21AD010",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-127",
+    "title": "AI-Based Tree-Climbing Coconut Harvesting Robot",
+    "abstract": "An AI-assisted robotic system designed to climb coconut trees and automate coconut harvesting while reducing human effort and improving safety.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Robotics",
+      "AI",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/AI-Based%20Tree-Climbing%20Coconut%20Harvesting%20Robot.webp",
+    "demoImage": "/cover page/AI-Based%20Tree-Climbing%20Coconut%20Harvesting%20Robot.webp",
+    "guideName": "Mr. Arjun K M",
+    "members": [
+      {
+        "name": "DEVAPRAKASH",
+        "registerNumber": "JEC22AD023",
+        "isLeader": true
+      },
+      {
+        "name": "HARITHA K SURESH",
+        "registerNumber": "JEC22AD031",
+        "isLeader": false
+      },
+      {
+        "name": "RAZAAN RASHEED",
+        "registerNumber": "JEC22AD049",
+        "isLeader": false
+      },
+      {
+        "name": "SHREYA JOHN BOSCO .K",
+        "registerNumber": "JEC22AD054",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-128",
+    "title": "IoT-Based Whiteboard with Real-Time Speech-to-Note Generation Using LLM",
+    "abstract": "An IoT-enabled smart whiteboard that converts spoken classroom content into real-time notes using speech recognition and large language models.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "IoT",
+      "Python",
+      "LLM",
+      "Speech Recognition"
+    ],
+    "coverImage": "/cover page/IoT-Based%20Whiteboard%20with%20Real-Time%20Speech-to-Note%20Generation%20Using%20LLM.webp",
+    "demoImage": "/cover page/IoT-Based%20Whiteboard%20with%20Real-Time%20Speech-to-Note%20Generation%20Using%20LLM.webp",
+    "guideName": "Ms. Leeshma O V",
+    "members": [
+      {
+        "name": "AMAL KRISHNA M",
+        "registerNumber": "JEC22AD011",
+        "isLeader": true
+      },
+      {
+        "name": "HELNA THOMAS",
+        "registerNumber": "JEC22AD032",
+        "isLeader": false
+      },
+      {
+        "name": "HIBA .P.A",
+        "registerNumber": "JEC22AD034",
+        "isLeader": false
+      },
+      {
+        "name": "SANDEEPKUMAR P S",
+        "registerNumber": "JEC22AD051",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-129",
+    "title": "Vireon: An AI-Based UMW Vehicle Communication System for Curve Detection and Collision Prevention",
+    "abstract": "An AI-based vehicle communication system that detects road curves and helps prevent collisions by improving situational awareness and vehicle coordination.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "AI",
+      "IoT",
+      "Vehicle Communication"
+    ],
+    "coverImage": "/cover page/Vireon%20An%20AI-Based%20UMW%20Vehicle%20Communication%20System%20for%20Curve%20Detection%20and%20Collision%20Prevention.webp",
+    "demoImage": "/cover page/Vireon%20An%20AI-Based%20UMW%20Vehicle%20Communication%20System%20for%20Curve%20Detection%20and%20Collision%20Prevention.webp",
+    "guideName": "Ms. Neenu Jose",
+    "members": [
+      {
+        "name": "ABDULLA NIHAL M",
+        "registerNumber": "JEC22AD001",
+        "isLeader": true
+      },
+      {
+        "name": "ADRIJA R PRAMOD",
+        "registerNumber": "JEC22AD006",
+        "isLeader": false
+      },
+      {
+        "name": "AL AMTHAN R M",
+        "registerNumber": "JEC22AD009",
+        "isLeader": false
+      },
+      {
+        "name": "LIYA M",
+        "registerNumber": "JEC22AD038",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-130",
+    "title": "Low-Cost AI-Powered Drone for Disaster Damage Mapping",
+    "abstract": "A low-cost intelligent drone system that captures aerial data and uses AI-based image analysis to map and assess disaster-related damage.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Computer Vision",
+      "Drone",
+      "AI"
+    ],
+    "coverImage": "/cover page/Low-Cost%20AI-Powered%20Drone%20for%20Disaster%20Damage%20Mapping.webp",
+    "demoImage": "/cover page/Low-Cost%20AI-Powered%20Drone%20for%20Disaster%20Damage%20Mapping.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "ATHIRA A S",
+        "registerNumber": "JEC22AD018",
+        "isLeader": true
+      },
+      {
+        "name": "HISHAM ALI",
+        "registerNumber": "JEC22AD035",
+        "isLeader": false
+      },
+      {
+        "name": "MUHAMMED IRFAN S",
+        "registerNumber": "JEC22AD042",
+        "isLeader": false
+      },
+      {
+        "name": "SNEHA K S",
+        "registerNumber": "JEC22AD057",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-131",
+    "title": "Early Detection of Learning Disabilities",
+    "abstract": "An AI-based system that analyzes learner-related information to identify early indicators of learning disabilities and support timely intervention.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "NLP",
+      "Data Science"
+    ],
+    "coverImage": "/cover page/Early%20Detection%20of%20Learning%20Disabilities.webp",
+    "demoImage": "/cover page/Early%20Detection%20of%20Learning%20Disabilities.webp",
+    "guideName": "Ms. Sindhu S",
+    "members": [
+      {
+        "name": "AJAYKRISHNA V K",
+        "registerNumber": "JEC22AD007",
+        "isLeader": true
+      },
+      {
+        "name": "MUHAMMED REZAL P",
+        "registerNumber": "JEC22AD043",
+        "isLeader": false
+      },
+      {
+        "name": "P A AVANINDRA",
+        "registerNumber": "JEC22AD046",
+        "isLeader": false
+      },
+      {
+        "name": "ASWIN PRAKASH",
+        "registerNumber": "LJEC22AD063",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-132",
+    "title": "AI4Sky – A Diffusion-Based Spatio-Temporal Forecasting of Atmospheric Dynamics Using INSAT-3DR/3DS Imagery",
+    "abstract": "A diffusion-based spatio-temporal forecasting system that analyzes INSAT-3DR/3DS satellite imagery to model and predict atmospheric dynamics.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Diffusion Models",
+      "Deep Learning",
+      "Satellite Imagery"
+    ],
+    "coverImage": "/cover page/AI4Sky%20%E2%80%93%20A%20Diffusion-Based%20Spatio-Temporal%20Forecasting%20of%20Atmospheric%20Dynamics%20Using%20INSAT-3DR3DS%20Imagery.webp",
+    "demoImage": "/cover page/AI4Sky%20%E2%80%93%20A%20Diffusion-Based%20Spatio-Temporal%20Forecasting%20of%20Atmospheric%20Dynamics%20Using%20INSAT-3DR3DS%20Imagery.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "BLAZE JOSE",
+        "registerNumber": "JEC22AD021",
+        "isLeader": true
+      },
+      {
+        "name": "NIRANJANA R NAIR",
+        "registerNumber": "JEC22AD045",
+        "isLeader": false
+      },
+      {
+        "name": "PRITHVISHANKAR MENON",
+        "registerNumber": "JEC22AD047",
+        "isLeader": false
+      },
+      {
+        "name": "MEGHA T S",
+        "registerNumber": "LJEC22AD064",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-133",
+    "title": "AI-Powered Smart Waste Segregation System",
+    "abstract": "Automatically identifies and separates different categories of waste using computer vision and AI to support efficient waste management.",
+    "batch": "2022–2026",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "YOLO",
+      "OpenCV",
+      "CNN"
+    ],
+    "coverImage": "/cover page/AI-Powered%20Smart%20Waste%20Segregation%20System.webp",
+    "demoImage": "/cover page/AI-Powered%20Smart%20Waste%20Segregation%20System.webp",
+    "guideName": "Dr. Sandeep C S",
+    "members": [
+      {
+        "name": "DHIYA DEVASSY",
+        "registerNumber": "JEC22AD024",
+        "isLeader": true
+      },
+      {
+        "name": "MILNA JOSE",
+        "registerNumber": "JEC22AD039",
+        "isLeader": false
+      },
+      {
+        "name": "RAHUL DHANARAJ",
+        "registerNumber": "JEC22AD048",
+        "isLeader": false
+      },
+      {
+        "name": "SHINS JOHN JAISON",
+        "registerNumber": "JEC22AD053",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-134",
+    "title": "Medifusion AI",
+    "abstract": "An AI-powered healthcare platform that combines medical information and intelligent analysis to support healthcare workflows and improve decision-making.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "Flask",
+      "Healthcare AI"
+    ],
+    "coverImage": "/cover page/Medifusion%20AI.webp",
+    "demoImage": "/cover page/Medifusion%20AI.webp",
+    "guideName": "Ms. Divya Konikkara",
+    "members": [
+      {
+        "name": "SHAH ZAAD HASSAN",
+        "registerNumber": "JEC21AD043",
+        "isLeader": true
+      },
+      {
+        "name": "HAMEEM ABDUL NASSIR",
+        "registerNumber": "JEC21AD025",
+        "isLeader": false
+      },
+      {
+        "name": "ALAN C VINOY",
+        "registerNumber": "JEC21AD004",
+        "isLeader": false
+      },
+      {
+        "name": "SAKTHEESWARAN . D",
+        "registerNumber": "JEC21AD041",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-135",
+    "title": "Smart Glasses",
+    "abstract": "Smart glasses designed to provide intelligent assistance by combining sensors, computer vision, and contextual information for enhanced user awareness.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Arduino",
+      "Sensors",
+      "Computer Vision",
+      "IoT"
+    ],
+    "coverImage": "/cover page/Smart%20Glasses.webp",
+    "demoImage": "/cover page/Smart%20Glasses.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "THOMAS RAJU",
+        "registerNumber": "JEC21AD050",
+        "isLeader": true
+      },
+      {
+        "name": "HRIDYA GIRISH",
+        "registerNumber": "JEC21AD026",
+        "isLeader": false
+      },
+      {
+        "name": "IVINE P SABU",
+        "registerNumber": "JEC21AD027",
+        "isLeader": false
+      },
+      {
+        "name": "ASHIQUE T P",
+        "registerNumber": "JEC21AD015",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-136",
+    "title": "Rescue Bot: Thermal Imaging for Victim Detection",
+    "abstract": "A rescue robot that uses thermal imaging and intelligent detection techniques to locate victims in disaster environments where visibility is limited.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Thermal Imaging",
+      "Robotics",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Rescue%20Bot%20Thermal%20Imaging%20for%20Victim%20Detection.webp",
+    "demoImage": "/cover page/Rescue%20Bot%20Thermal%20Imaging%20for%20Victim%20Detection.webp",
+    "guideName": "Ms. Reni Jose",
+    "members": [
+      {
+        "name": "APARNNA JOSEPH",
+        "registerNumber": "JEC21AD013",
+        "isLeader": true
+      },
+      {
+        "name": "GOUTHAM KRISHNA MS",
+        "registerNumber": "JEC21AD025",
+        "isLeader": false
+      },
+      {
+        "name": "ARJUN C S",
+        "registerNumber": "JEC21AD014",
+        "isLeader": false
+      },
+      {
+        "name": "BHAGYALAKSHMY SABURAJ",
+        "registerNumber": "JEC21AD018",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-137",
+    "title": "AI Music Synthesizer",
+    "abstract": "An AI-based music generation system that learns musical patterns and generates new compositions using machine learning and generative techniques.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Deep Learning",
+      "Generative AI",
+      "Music AI"
+    ],
+    "coverImage": "/cover page/AI%20Music%20Synthesizer.webp",
+    "demoImage": "/cover page/AI%20Music%20Synthesizer.webp",
+    "guideName": "Mr. Jayakrishnan A",
+    "members": [
+      {
+        "name": "SURYA NARAYANAN",
+        "registerNumber": "JEC21AD049",
+        "isLeader": true
+      },
+      {
+        "name": "MOHAMMED MUSTHAFA",
+        "registerNumber": "JEC21AD035",
+        "isLeader": false
+      },
+      {
+        "name": "RASAL HARISH",
+        "registerNumber": "JEC21AD042",
+        "isLeader": false
+      },
+      {
+        "name": "ATHIRA P.S",
+        "registerNumber": "JEC21AD017",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-138",
+    "title": "Unmask Adversarial Attacks",
+    "abstract": "A system that studies and detects adversarial attacks against machine learning models and improves model robustness through explainable analysis and defence techniques.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Deep Learning",
+      "Adversarial AI",
+      "XAI"
+    ],
+    "coverImage": "/cover page/Unmask%20Adversarial%20Attacks.webp",
+    "demoImage": "/cover page/Unmask%20Adversarial%20Attacks.webp",
+    "guideName": "Mr. Jithin K C",
+    "members": [
+      {
+        "name": "SREYAS AS",
+        "registerNumber": "JEC21AD047",
+        "isLeader": true
+      },
+      {
+        "name": "AISWARYA K G",
+        "registerNumber": "JEC21AD003",
+        "isLeader": false
+      },
+      {
+        "name": "ALAXO JOY",
+        "registerNumber": "JEC21AD011",
+        "isLeader": false
+      },
+      {
+        "name": "RESHMA K R",
+        "registerNumber": "JEC21AD040",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-139",
+    "title": "Autonomous Defence Patrol Robot",
+    "abstract": "An autonomous robotic system designed for defence patrol applications that can navigate an area, monitor surroundings, and assist with surveillance.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Arduino",
+      "Computer Vision",
+      "Robotics"
+    ],
+    "coverImage": "/cover page/Autonomous%20Defence%20Patrol%20Robot.webp",
+    "demoImage": "/cover page/Autonomous%20Defence%20Patrol%20Robot.webp",
+    "guideName": "Ms. Reni Jose",
+    "members": [
+      {
+        "name": "MIRIAM MONCY THOMAS",
+        "registerNumber": "JEC21AD033",
+        "isLeader": true
+      },
+      {
+        "name": "JOHN DAVIS",
+        "registerNumber": "JEC21AD030",
+        "isLeader": false
+      },
+      {
+        "name": "EBIN BABU",
+        "registerNumber": "JEC21AD022",
+        "isLeader": false
+      },
+      {
+        "name": "SANJAY N J",
+        "registerNumber": "JEC21AD042",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-140",
+    "title": "Virtual Reality in Medical Field to Examine the Anatomy of Human Body in Virtual Space",
+    "abstract": "A virtual reality-based medical learning environment that allows students to explore and examine human anatomy in an immersive three-dimensional virtual space.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Unity",
+      "C#",
+      "Virtual Reality",
+      "3D Modeling"
+    ],
+    "coverImage": "/cover page/Virtual%20Reality%20in%20Medical%20Field%20to%20Examine%20the%20Anatomy%20of%20Human%20Body%20in%20Virtual%20Space.webp",
+    "demoImage": "/cover page/Virtual%20Reality%20in%20Medical%20Field%20to%20Examine%20the%20Anatomy%20of%20Human%20Body%20in%20Virtual%20Space.webp",
+    "guideName": "Ms. Anjali O",
+    "members": [
+      {
+        "name": "ALAN DAVIS",
+        "registerNumber": "JEC21AD006",
+        "isLeader": true
+      },
+      {
+        "name": "VAISHAK. M. A",
+        "registerNumber": "JEC21AD051",
+        "isLeader": false
+      },
+      {
+        "name": "JOMON P JOJI",
+        "registerNumber": "JEC21AD031",
+        "isLeader": false
+      },
+      {
+        "name": "ANNLIYA P SHAJAN",
+        "registerNumber": "JEC21AD012",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-141",
+    "title": "Augmented Reality Smart Mirror with Emotion Detecting Virtual Assistant",
+    "abstract": "An augmented reality smart mirror that detects user emotions and provides personalized interaction and assistance through a virtual assistant.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "AR",
+      "Emotion Recognition"
+    ],
+    "coverImage": "/cover page/Augmented%20Reality%20Smart%20Mirror%20with%20Emotion%20Detecting%20Virtual%20Assistant.webp",
+    "demoImage": "/cover page/Augmented%20Reality%20Smart%20Mirror%20with%20Emotion%20Detecting%20Virtual%20Assistant.webp",
+    "guideName": "Mr. Jithin K C",
+    "members": [
+      {
+        "name": "ANANTHU KRISHNAN",
+        "registerNumber": "JEC21AD010",
+        "isLeader": true
+      },
+      {
+        "name": "ABEL JONES",
+        "registerNumber": "JEC21AD002",
+        "isLeader": false
+      },
+      {
+        "name": "DEEPAK C R",
+        "registerNumber": "JEC21AD019",
+        "isLeader": false
+      },
+      {
+        "name": "ANASWAR V S",
+        "registerNumber": "JEC21AD011",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-142",
+    "title": "Cancer Detection from DNA Using AI",
+    "abstract": "An AI-based system that analyzes DNA-related data to identify patterns associated with cancer and assist in early detection and classification.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "Bioinformatics",
+      "AI"
+    ],
+    "coverImage": "/cover page/Cancer%20Detection%20from%20DNA%20Using%20AI.webp",
+    "demoImage": "/cover page/Cancer%20Detection%20from%20DNA%20Using%20AI.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "JENY M JERRY",
+        "registerNumber": "JEC21AD028",
+        "isLeader": true
+      },
+      {
+        "name": "JESLIN LEELA MATHEW",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      },
+      {
+        "name": "GOPIKA P S",
+        "registerNumber": "JEC21AD021",
+        "isLeader": false
+      },
+      {
+        "name": "ASHLIN PARAKKAL",
+        "registerNumber": "JEC21AD016",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-143",
+    "title": "House PLanAI: A Comprehensive AI-Driven House Plan Generator",
+    "abstract": "An AI-driven house planning system that generates house layouts and design suggestions based on user requirements, space constraints, and preferred architectural features.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "AI",
+      "Machine Learning",
+      "Web Development"
+    ],
+    "coverImage": "/cover page/House%20PLanAI%20A%20Comprehensive%20AI-Driven%20House%20Plan%20Generator.webp",
+    "demoImage": "/cover page/House%20PLanAI%20A%20Comprehensive%20AI-Driven%20House%20Plan%20Generator.webp",
+    "guideName": "Ms. Nikhitha N",
+    "members": [
+      {
+        "name": "JUDIN JOHNSON",
+        "registerNumber": "JEC21AD028",
+        "isLeader": true
+      },
+      {
+        "name": "GOURI K P",
+        "registerNumber": "JEC21AD022",
+        "isLeader": false
+      },
+      {
+        "name": "AISWARYA AK",
+        "registerNumber": "JEC21AD003",
+        "isLeader": false
+      },
+      {
+        "name": "ANANDHANARAYANAN A N",
+        "registerNumber": "JEC21AD010",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-144",
+    "title": "Real-Time Video to Sign Language Converter",
+    "abstract": "A real-time vision-based application that converts spoken or visual video content into sign language to improve accessibility for hearing-impaired users.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Deep Learning",
+      "NLP"
+    ],
+    "coverImage": "/cover page/Real-Time%20Video%20to%20Sign%20Language%20Converter.webp",
+    "demoImage": "/cover page/Real-Time%20Video%20to%20Sign%20Language%20Converter.webp",
+    "guideName": "Mr. Jayakrishnan A",
+    "members": [
+      {
+        "name": "NAVEEN WILSON",
+        "registerNumber": "JEC21AD037",
+        "isLeader": true
+      },
+      {
+        "name": "S R SACHIN",
+        "registerNumber": "JEC21AD044",
+        "isLeader": false
+      },
+      {
+        "name": "ALEN C ALEX",
+        "registerNumber": "JEC21AD004",
+        "isLeader": false
+      },
+      {
+        "name": "SHANE SUNNY",
+        "registerNumber": "JEC21AD044",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-145",
+    "title": "Sign Language Recognition and Translation",
+    "abstract": "A computer vision system that recognizes sign language gestures and translates them into understandable text or speech to facilitate communication.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Sign%20Language%20Recognition%20and%20Translation.webp",
+    "demoImage": "/cover page/Sign%20Language%20Recognition%20and%20Translation.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "SACHIN RAJ M",
+        "registerNumber": "JEC21AD041",
+        "isLeader": true
+      },
+      {
+        "name": "ABHISHEK AJAYKUMAR",
+        "registerNumber": "JEC21AD001",
+        "isLeader": false
+      },
+      {
+        "name": "VINEETH K",
+        "registerNumber": "JEC21AD051",
+        "isLeader": false
+      },
+      {
+        "name": "GANGA K MANOHARAN",
+        "registerNumber": "JEC21AD023",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-146",
+    "title": "Braille Detection",
+    "abstract": "A computer vision-based system that detects Braille patterns from images and converts them into readable text to support accessibility for visually impaired users.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Computer Vision",
+      "OCR"
+    ],
+    "coverImage": "/cover page/Braille%20Detection.webp",
+    "demoImage": "/cover page/Braille%20Detection.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "NANDANA ANAND",
+        "registerNumber": "JEC21AD036",
+        "isLeader": true
+      },
+      {
+        "name": "VISESH A V",
+        "registerNumber": "JEC21AD053",
+        "isLeader": false
+      },
+      {
+        "name": "SHRITHIKA SHIVADAS",
+        "registerNumber": "JEC21AD045",
+        "isLeader": false
+      },
+      {
+        "name": "JEESON DAVIS",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-147",
+    "title": "EMG Controlled Bionic Arm Using Machine Learning",
+    "abstract": "A machine learning-based bionic arm system controlled using electromyography signals to recognize muscle activity and translate it into prosthetic arm movement.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "EMG",
+      "Arduino"
+    ],
+    "coverImage": "/cover page/EMG%20Controlled%20Bionic%20Arm%20Using%20Machine%20Learning.webp",
+    "demoImage": "/cover page/EMG%20Controlled%20Bionic%20Arm%20Using%20Machine%20Learning.webp",
+    "guideName": "Parvathy Jyothi",
+    "members": [
+      {
+        "name": "SHARLET VARKEY",
+        "registerNumber": "JEC21AD038",
+        "isLeader": true
+      },
+      {
+        "name": "MISHAL MUHAMMED EP",
+        "registerNumber": "JEC21AD034",
+        "isLeader": false
+      },
+      {
+        "name": "GOWRI PRIYA",
+        "registerNumber": "",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-148",
+    "title": "ARSpace",
+    "abstract": "An augmented reality application that creates an interactive spatial environment and blends digital elements with the real world for immersive user experiences.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Unity",
+      "ARCore",
+      "C#",
+      "Augmented Reality"
+    ],
+    "coverImage": "/cover page/ARSpace.webp",
+    "demoImage": "/cover page/ARSpace.webp",
+    "guideName": "Dr. Anoop",
+    "members": [
+      {
+        "name": "NIHARIKA JAYAKRISHNAN NAMISSIAN",
+        "registerNumber": "JEC20AD035",
+        "isLeader": true
+      },
+      {
+        "name": "AKSHAY KRISHNA T D",
+        "registerNumber": "JEC20AD007",
+        "isLeader": false
+      },
+      {
+        "name": "ADITHYAN M SUNIL",
+        "registerNumber": "JEC20AD002",
+        "isLeader": false
+      },
+      {
+        "name": "AMAL VARGHESE",
+        "registerNumber": "JEC20AD011",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-149",
+    "title": "Navigation Assistance System for Visually Impaired",
+    "abstract": "An AI-powered navigation assistance system that helps visually impaired users understand their surroundings and navigate safely using computer vision and audio feedback.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Computer Vision",
+      "Text-to-Speech"
+    ],
+    "coverImage": "/cover page/Navigation%20Assistance%20System%20for%20Visually%20Impaired.webp",
+    "demoImage": "/cover page/Navigation%20Assistance%20System%20for%20Visually%20Impaired.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "SANDRA M",
+        "registerNumber": "JEC20AD045",
+        "isLeader": true
+      },
+      {
+        "name": "VINAYA A",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "EBIN C ZEBY",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "ANGEL MARY SHIBU",
+        "registerNumber": "JEC20AD013",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-150",
+    "title": "Network Intrusion Detection Using Explainable AI",
+    "abstract": "An intrusion detection system that uses machine learning and explainable AI to identify malicious network activity while making detection decisions easier to interpret.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "Machine Learning",
+      "XAI",
+      "Cybersecurity"
+    ],
+    "coverImage": "/cover page/Network%20Intrusion%20Detection%20Using%20Explainable%20AI.webp",
+    "demoImage": "/cover page/Network%20Intrusion%20Detection%20Using%20Explainable%20AI.webp",
+    "guideName": "Mr. Jayakrishnan",
+    "members": [
+      {
+        "name": "JOSTEN S CHEERAN",
+        "registerNumber": "JEC20AD027",
+        "isLeader": true
+      },
+      {
+        "name": "SREEHARI SREEJAY O P",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "ASWATHI KRISHNA P T",
+        "registerNumber": "JEC20AD017",
+        "isLeader": false
+      },
+      {
+        "name": "ATHVIK S",
+        "registerNumber": "JEC20AD018",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-151",
+    "title": "Personality Assessment Based on Twitter Account",
+    "abstract": "A machine learning system that analyzes Twitter account activity and textual content to assess personality traits using natural language processing techniques.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "NLP",
+      "Machine Learning",
+      "Twitter API"
+    ],
+    "coverImage": "/cover page/Personality%20Assessment%20Based%20on%20Twitter%20Account.webp",
+    "demoImage": "/cover page/Personality%20Assessment%20Based%20on%20Twitter%20Account.webp",
+    "guideName": "Ms. Paravathy",
+    "members": [
+      {
+        "name": "PRATHYUSH P",
+        "registerNumber": "JEC20AD040",
+        "isLeader": true
+      },
+      {
+        "name": "SHREYAS P VIJAY",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "DIVYA PILLAI",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "SREEKRISHNAN K P",
+        "registerNumber": "",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-152",
+    "title": "Photo Tagging",
+    "abstract": "A system that automatically identifies and tags people or objects in photographs using image recognition and machine learning techniques.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "Machine Learning",
+      "Image Processing"
+    ],
+    "coverImage": "/cover page/Photo%20Tagging.webp",
+    "demoImage": "/cover page/Photo%20Tagging.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "NIKHITHA JOY",
+        "registerNumber": "JEC20AD036",
+        "isLeader": true
+      },
+      {
+        "name": "SREELAKSHMI SUDHEER",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "PRADUL O P",
+        "registerNumber": "JEC20AD038",
+        "isLeader": false
+      },
+      {
+        "name": "AGNAL MENACHERY",
+        "registerNumber": "JEC20AD003",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-153",
+    "title": "Plant Disease Diagnosis and Remedies",
+    "abstract": "Identifies plant diseases from leaf images and provides suitable remedies or treatment recommendations using AI-based image analysis.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Plant%20Disease%20Diagnosis%20and%20Remedies.webp",
+    "demoImage": "/cover page/Plant%20Disease%20Diagnosis%20and%20Remedies.webp",
+    "guideName": "Dr. Seenia Francis",
+    "members": [
+      {
+        "name": "MOHAMMED AJMAL P N",
+        "registerNumber": "JEC20AD032",
+        "isLeader": true
+      },
+      {
+        "name": "ANAND SANLO",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "VIVEK SANKAR P V",
+        "registerNumber": "JEC20AD054",
+        "isLeader": false
+      },
+      {
+        "name": "SANDRA C M",
+        "registerNumber": "",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-154",
+    "title": "Pneumonia Detection",
+    "abstract": "Analyzes chest X-ray images using deep learning to assist in detecting visual patterns associated with pneumonia.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "CNN",
+      "TensorFlow/Keras",
+      "OpenCV"
+    ],
+    "coverImage": "/cover page/Pneumonia%20Detection.webp",
+    "demoImage": "/cover page/Pneumonia%20Detection.webp",
+    "guideName": "Ms. Divya",
+    "members": [
+      {
+        "name": "BIMAL ROY",
+        "registerNumber": "JEC20AD020",
+        "isLeader": true
+      },
+      {
+        "name": "JITHIN BABU",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "FEMI ROSH",
+        "registerNumber": "JEC20AD024",
+        "isLeader": false
+      },
+      {
+        "name": "VARSHA I K",
+        "registerNumber": "JEC20AD052",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-155",
+    "title": "Scoliosis Diagnosis using Deep Learning",
+    "abstract": "Uses medical images and deep learning techniques to assist in identifying spinal curvature patterns associated with scoliosis.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "TensorFlow/Keras"
+    ],
+    "coverImage": "/cover page/Scoliosis%20Diagnosis%20using%20Deep%20Learning.webp",
+    "demoImage": "/cover page/Scoliosis%20Diagnosis%20using%20Deep%20Learning.webp",
+    "guideName": "Dr. Seenia Francis",
+    "members": [
+      {
+        "name": "CHANDINI T S",
+        "registerNumber": "JEC20AD021",
+        "isLeader": true
+      },
+      {
+        "name": "MISHAL HABEEB",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "RINCE SABU E",
+        "registerNumber": "JEC20AD043",
+        "isLeader": false
+      },
+      {
+        "name": "ALIYA SIRAJ MANAKKATTU",
+        "registerNumber": "JEC20AD009",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-156",
+    "title": "Segregation Based on Quality of Product",
+    "abstract": "Uses computer vision and automation to inspect products and segregate them according to predefined quality standards.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "Raspberry Pi"
+    ],
+    "coverImage": "/cover page/Segregation%20Based%20on%20Quality%20of%20Product.webp",
+    "demoImage": "/cover page/Segregation%20Based%20on%20Quality%20of%20Product.webp",
+    "guideName": "Ms. Divya",
+    "members": [
+      {
+        "name": "ARUNIMA ANIL",
+        "registerNumber": "JEC20AD016",
+        "isLeader": true
+      },
+      {
+        "name": "JACOB JOHNSON",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "MOHAMMED SHYJIL",
+        "registerNumber": "JEC20AD033",
+        "isLeader": false
+      },
+      {
+        "name": "NIVYA K V",
+        "registerNumber": "",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-157",
+    "title": "Sentiment Analysis in Transliteration Malayalam Movie Reviews Using BERT Model",
+    "abstract": "A BERT-based sentiment analysis system that analyzes Malayalam movie reviews written in transliterated text and classifies them according to sentiment.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "BERT",
+      "NLP",
+      "Transformers"
+    ],
+    "coverImage": "/cover page/Sentiment%20Analysis%20in%20Transliteration%20Malayalam%20Movie%20Reviews%20Using%20BERT%20Model.webp",
+    "demoImage": "/cover page/Sentiment%20Analysis%20in%20Transliteration%20Malayalam%20Movie%20Reviews%20Using%20BERT%20Model.webp",
+    "guideName": "Dr. Seenia Francis",
+    "members": [
+      {
+        "name": "CHANDINI T S",
+        "registerNumber": "JEC20AD021",
+        "isLeader": true
+      },
+      {
+        "name": "MISHAL HABEEB",
+        "registerNumber": "",
+        "isLeader": false
+      },
+      {
+        "name": "RINCE SABU E",
+        "registerNumber": "JEC20AD043",
+        "isLeader": false
+      },
+      {
+        "name": "ALIYA SIRAJ MANAKKATTU",
+        "registerNumber": "JEC20AD009",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-158",
+    "title": "She:Guard – A Women-Centric Human Violence Detection System",
+    "abstract": "Detects potentially violent activities from video streams and generates alerts to support safety monitoring and rapid response.",
+    "batch": "2020–2024",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "YOLO",
+      "Deep Learning"
+    ],
+    "coverImage": "/cover page/She_Guard%20%E2%80%93%20A%20Women-Centric%20Human%20Violence%20Detection%20System.webp",
+    "demoImage": "/cover page/She_Guard%20%E2%80%93%20A%20Women-Centric%20Human%20Violence%20Detection%20System.webp",
+    "guideName": "Mr. Shine P Xavier",
+    "members": [
+      {
+        "name": "NANDANA ANAND",
+        "registerNumber": "JEC21AD036",
+        "isLeader": true
+      },
+      {
+        "name": "VISESH A V",
+        "registerNumber": "JEC21AD053",
+        "isLeader": false
+      },
+      {
+        "name": "SHRITHIKA SHIVADAS",
+        "registerNumber": "JEC21AD045",
+        "isLeader": false
+      },
+      {
+        "name": "JEESON DAVIS",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-159",
+    "title": "Sign Language Prediction",
+    "abstract": "Recognizes hand gestures and predicts corresponding sign language characters or words using computer vision and deep learning.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "CNN"
+    ],
+    "coverImage": "/cover page/Sign%20Language%20Prediction.webp",
+    "demoImage": "/cover page/Sign%20Language%20Prediction.webp",
+    "guideName": "Dr. Anoop V",
+    "members": [
+      {
+        "name": "JENY M JERRY",
+        "registerNumber": "JEC21AD028",
+        "isLeader": true
+      },
+      {
+        "name": "JESLIN LEELA MATHEW",
+        "registerNumber": "JEC21AD029",
+        "isLeader": false
+      },
+      {
+        "name": "GOPIKA P S",
+        "registerNumber": "JEC21AD021",
+        "isLeader": false
+      },
+      {
+        "name": "ASHLIN PARAKKAL",
+        "registerNumber": "JEC21AD016",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-160",
+    "title": "Sign Language Recognition and Translation",
+    "abstract": "A computer vision system that recognizes sign language gestures and translates them into understandable text or speech to facilitate communication.",
+    "batch": "2021–2025",
+    "projectType": "Main Project",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "CNN",
+      "Computer Vision"
+    ],
+    "coverImage": "/cover page/Sign%20Language%20Recognition%20and%20Translation.webp",
+    "demoImage": "/cover page/Sign%20Language%20Recognition%20and%20Translation.webp",
+    "guideName": "Mr. Bineesh M",
+    "members": [
+      {
+        "name": "SACHIN RAJ M",
+        "registerNumber": "JEC21AD041",
+        "isLeader": true
+      },
+      {
+        "name": "ABHISHEK AJAYKUMAR",
+        "registerNumber": "JEC21AD001",
+        "isLeader": false
+      },
+      {
+        "name": "VINEETH K",
+        "registerNumber": "JEC21AD051",
+        "isLeader": false
+      },
+      {
+        "name": "GANGA K MANOHARAN",
+        "registerNumber": "JEC21AD023",
+        "isLeader": false
+      }
+    ],
+    "githubUsername": "",
+    "githubUrl": "",
+    "contactEmail": ""
+  },
+  {
+    "id": "project-161",
     "title": "Pipeline Hazard Analysis in Risk-V Processor",
     "abstract": "The main objective of this project is to study and analyze pipeline hazards in RISC-V processors and understand their impact on system performance. The project aims to provide both theoretical knowledge and practical insights into how pipelining works and how hazards can be effectively managed.",
     "batch": "2024–2028",
@@ -3062,8 +6604,8 @@ export const academicProjectsData = [
       "python",
       "VScode"
     ],
-    "coverImage": "/cover page/gradio%20-%2012417009%20AKHIL%20BIJU%20THUDUMEL.webp",
-    "demoImage": "/working demo/gradio%20-%2012417009%20AKHIL%20BIJU%20THUDUMEL%20(1).webp",
+    "coverImage": "/cover page/Screenshot%202026-08-16%20193853%20-%2012417009%20AKHIL%20BIJU%20THUDUMEL.webp",
+    "demoImage": "/working demo/Screenshot%202026-08-16%20193853%20-%2012417009%20AKHIL%20BIJU%20THUDUMEL%20(1).webp",
     "guideName": "Sandeep C S",
     "members": [
       {
@@ -3091,4 +6633,5 @@ export const academicProjectsData = [
     "githubUrl": "https://github.com/akhil80610",
     "contactEmail": "akhilbijuthudumel.ad24@jecc.ac.in"
   }
+
 ];

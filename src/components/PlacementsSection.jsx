@@ -11,150 +11,11 @@ import {
   ChevronRight,
   ChevronDown,
   Check,
+  Maximize2,
+  Minimize2,
+  Layers,
 } from 'lucide-react';
 import { placementsData } from '../data/placementsData';
-import SafeImage from './ui/SafeImage';
-
-// Floating Awwwards-style Hover Preview Card showing ONLY the student image dynamically
-function StudentHoverPreviewCard({ student, mousePos }) {
-  const [pos, setPos] = useState({ left: 0, top: 0 });
-
-  useEffect(() => {
-    if (!mousePos) return;
-
-    const CARD_WIDTH = 140;
-    const CARD_HEIGHT = 175;
-    const OFFSET = 18;
-
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
-    // Position horizontally (right of cursor if room, else left)
-    let left = mousePos.x + OFFSET;
-    if (left + CARD_WIDTH > viewportWidth - 12) {
-      left = mousePos.x - CARD_WIDTH - OFFSET;
-    }
-
-    // Position vertically (below cursor if room, else above)
-    let top = mousePos.y + OFFSET;
-    if (top + CARD_HEIGHT > viewportHeight - 12) {
-      top = mousePos.y - CARD_HEIGHT - OFFSET;
-    }
-
-    // Clamp inside screen bounds
-    left = Math.max(10, Math.min(left, viewportWidth - CARD_WIDTH - 10));
-    top = Math.max(10, Math.min(top, viewportHeight - CARD_HEIGHT - 10));
-
-    setPos({ left, top });
-  }, [mousePos]);
-
-  if (!student || !mousePos) return null;
-
-  const displayInitials = student.studentName
-    ? student.studentName.trim().split(/\s+/).slice(0, 2).map((p) => p[0]).join('').toUpperCase()
-    : 'ST';
-
-  return (
-    <div
-      className="fixed z-[99999] pointer-events-none transition-all duration-75 ease-out animate-fadeIn select-none hidden md:block"
-      style={{
-        left: `${pos.left}px`,
-        top: `${pos.top}px`,
-      }}
-    >
-      <div className="w-32 h-40 sm:w-36 sm:h-44 rounded-2xl overflow-hidden border border-red-900/60 bg-neutral-900 shadow-2xl">
-        <SafeImage
-          src={student.studentImage}
-          alt={student.studentName}
-          category=""
-          initials={displayInitials}
-          className="w-full h-full object-cover object-top"
-        />
-      </div>
-    </div>
-  );
-}
-
-// Component for rendering student avatar with placeholder fallback
-function StudentAvatar({ studentName, imageSrc }) {
-  const [imgError, setImgError] = useState(false);
-
-  // Generate fallback initials from student name
-  const initials = useMemo(() => {
-    if (!studentName) return 'ST';
-    const parts = studentName.trim().split(/\s+/);
-    if (parts.length >= 2) {
-      return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
-    }
-    return studentName.substring(0, 2).toUpperCase();
-  }, [studentName]);
-
-  // Color generator for avatar placeholder ring
-  const avatarGradient = useMemo(() => {
-    const gradients = [
-      'from-red-950/40 to-neutral-900 border-red-900/40 text-red-400',
-      'from-neutral-900 to-red-950/50 border-red-800/40 text-red-300',
-      'from-red-900/30 to-zinc-900 border-red-900/50 text-red-400',
-    ];
-    let hash = 0;
-    for (let i = 0; i < studentName.length; i++) {
-      hash = studentName.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return gradients[Math.abs(hash) % gradients.length];
-  }, [studentName]);
-
-  if (imageSrc && !imgError) {
-    return (
-      <img
-        src={imageSrc}
-        alt={studentName}
-        onError={() => setImgError(true)}
-        className="w-10 h-10 rounded-full object-cover border border-red-900/40 shadow-sm shrink-0"
-      />
-    );
-  }
-
-  return (
-    <div
-      className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarGradient} border flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300`}
-    >
-      <span className="font-mono text-xs font-bold tracking-wider">{initials}</span>
-    </div>
-  );
-}
-
-// Component for rendering company logo with fallback box
-function CompanyLogo({ companyName, logoUrl }) {
-  const [imgError, setImgError] = useState(false);
-
-  const logoFallback = useMemo(() => {
-    if (!companyName) return 'CO';
-    const words = companyName.trim().split(/\s+/);
-    if (words.length >= 2) {
-      return `${words[0][0]}${words[1][0]}`.toUpperCase();
-    }
-    return companyName.substring(0, 3).toUpperCase();
-  }, [companyName]);
-
-  return (
-    <div className="w-16 h-8 sm:w-20 sm:h-9 bg-white/95 rounded-md p-1 border border-neutral-700/50 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:border-red-600/50 transition-colors">
-      {logoUrl && !imgError ? (
-        <img
-          src={logoUrl}
-          alt={companyName}
-          onError={() => setImgError(true)}
-          className="max-w-full max-h-full object-contain"
-          loading="lazy"
-        />
-      ) : (
-        <div className="flex items-center gap-1 text-neutral-900 font-bold text-[10px] font-mono tracking-tighter uppercase px-1">
-          <Building2 size={11} className="text-red-700 shrink-0" />
-          <span className="truncate">{logoFallback}</span>
-        </div>
-      )}
-    </div>
-  );
-}
 
 // Custom Theme-Matched Animated Dropdown Component
 function CustomPlacementDropdown({ icon: Icon, value, options, onChange, defaultLabel = 'All' }) {
@@ -175,7 +36,7 @@ function CustomPlacementDropdown({ icon: Icon, value, options, onChange, default
   const displayLabel = selectedOption ? selectedOption.label : defaultLabel;
 
   return (
-    <div ref={dropdownRef} className="relative min-w-[150px] shrink-0 z-50">
+    <div ref={dropdownRef} className="relative min-w-[140px] shrink-0 z-50">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -222,7 +83,7 @@ function CustomPlacementDropdown({ icon: Icon, value, options, onChange, default
   );
 }
 
-// Component for rendering compact company logo in infinite marquee with fallback
+// Component for rendering compact company logo in infinite marquee
 function CompactCompanyLogo({ companyName, logoUrl }) {
   const [imgError, setImgError] = useState(false);
 
@@ -254,20 +115,13 @@ function CompactCompanyLogo({ companyName, logoUrl }) {
   );
 }
 
-// Helper to normalize company names (merges variations like ESAF / ESAF Small Finance Bank & TCS / TCSL)
+// Helper to normalize company names
 function normalizeCompanyName(name) {
   if (!name) return '';
-  const trimmed = name.trim();
-  if (/^esaf/i.test(trimmed)) {
-    return 'ESAF Small Finance Bank';
-  }
-  if (/^tata consultancy services/i.test(trimmed)) {
-    return 'Tata Consultancy Services';
-  }
-  return trimmed;
+  return name.trim();
 }
 
-// Small, Premium Infinite-Scrolling Company Logo Marquee Component
+// Smooth & Legible Infinite-Scrolling Company Logo Marquee Component (Slowed down to 100s)
 function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
   const [isPaused, setIsPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -303,11 +157,9 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Left/Right Edge Fade Gradients */}
       <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-transparent pointer-events-none z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-[#080808] via-[#080808]/80 to-transparent pointer-events-none z-10" />
 
-      {/* Marquee Inner Track */}
       <div
         className="flex items-center gap-2.5 sm:gap-3.5 w-max animate-marqueeTrack"
         style={{
@@ -350,21 +202,34 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
           100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-marqueeTrack {
-          animation: marqueeTrack 45s linear infinite;
+          animation: marqueeTrack 100s linear infinite;
         }
       `}</style>
     </div>
   );
 }
 
-export default function PlacementsSection({ showAll = false }) {
+export default function PlacementsSection({ showAll = false, onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedType, setSelectedType] = useState('ALL');
   const [selectedYear, setSelectedYear] = useState('ALL');
   const [selectedCompany, setSelectedCompany] = useState('ALL');
   const [currentPage, setCurrentPage] = useState(1);
-  const [hoveredStudent, setHoveredStudent] = useState(null);
-  const [mousePos, setMousePos] = useState(null);
+  const [isExpandedAll, setIsExpandedAll] = useState(false);
   const itemsPerPage = 10;
+
+  const effectiveShowAll = showAll || isExpandedAll;
+
+  // Extract counts for placements vs internships
+  const { placementCount, internshipCount } = useMemo(() => {
+    let pCount = 0;
+    let iCount = 0;
+    placementsData.forEach(item => {
+      if (item.type === 'Placement') pCount++;
+      else if (item.type === 'Internship') iCount++;
+    });
+    return { placementCount: pCount, internshipCount: iCount };
+  }, []);
 
   // Extract unique years and top companies for filters
   const { availableYears, availableCompanies } = useMemo(() => {
@@ -383,7 +248,6 @@ export default function PlacementsSection({ showAll = false }) {
     });
 
     const sortedYears = Array.from(yearsSet).sort((a, b) => b - a);
-
     const sortedCompanies = Array.from(companyCountMap.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([name]) => name);
@@ -412,7 +276,13 @@ export default function PlacementsSection({ showAll = false }) {
     return Array.from(map.values()).sort((a, b) => a.companyName.localeCompare(b.companyName));
   }, []);
 
-  // Format options for CustomPlacementDropdown
+  // Theme-matched custom dropdown options for selecting Placements or Internships
+  const typeOptions = useMemo(() => [
+    { val: 'ALL', label: 'All Opportunities' },
+    { val: 'Placement', label: `Placements (${placementCount})` },
+    { val: 'Internship', label: `Internships (${internshipCount})` },
+  ], [placementCount, internshipCount]);
+
   const yearOptions = useMemo(() => {
     const opts = [{ val: 'ALL', label: 'All Years' }];
     availableYears.forEach((y) => opts.push({ val: String(y), label: String(y) }));
@@ -425,7 +295,7 @@ export default function PlacementsSection({ showAll = false }) {
     return opts;
   }, [availableCompanies]);
 
-  // Filtered dataset based on search, year, and company selection
+  // Filtered dataset based on search, type, year, and company selection
   const filteredPlacements = useMemo(() => {
     return placementsData.filter((item) => {
       const normComp = normalizeCompanyName(item.companyName);
@@ -436,23 +306,31 @@ export default function PlacementsSection({ showAll = false }) {
         item.designation.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.cleanDomain.toLowerCase().includes(searchQuery.toLowerCase());
 
+      const matchesType =
+        selectedType === 'ALL' || item.type === selectedType;
+
       const matchesYear =
         selectedYear === 'ALL' || String(item.year) === String(selectedYear);
 
       const matchesCompany =
         selectedCompany === 'ALL' || normComp === selectedCompany;
 
-      return matchesSearch && matchesYear && matchesCompany;
+      return matchesSearch && matchesType && matchesYear && matchesCompany;
     });
-  }, [searchQuery, selectedYear, selectedCompany]);
+  }, [searchQuery, selectedType, selectedYear, selectedCompany]);
 
-  // Record set calculation (list all records directly if showAll is true)
+  // Record set calculation
   const totalPages = Math.ceil(filteredPlacements.length / itemsPerPage) || 1;
   const displayItems = useMemo(() => {
-    if (showAll) return filteredPlacements;
+    if (effectiveShowAll) return filteredPlacements;
     const start = (currentPage - 1) * itemsPerPage;
     return filteredPlacements.slice(start, start + itemsPerPage);
-  }, [filteredPlacements, currentPage, itemsPerPage, showAll]);
+  }, [filteredPlacements, currentPage, itemsPerPage, effectiveShowAll]);
+
+  const handleTypeChange = (type) => {
+    setSelectedType(type);
+    setCurrentPage(1);
+  };
 
   const handleYearChange = (year) => {
     setSelectedYear(year);
@@ -469,12 +347,25 @@ export default function PlacementsSection({ showAll = false }) {
     setCurrentPage(1);
   };
 
+  // Handler for expand / view full page button click
+  const handleExpandOrNavigate = () => {
+    if (!showAll) {
+      if (onNavigate) {
+        onNavigate('placements');
+      } else {
+        window.location.hash = '#/placements';
+      }
+    } else {
+      setIsExpandedAll(!isExpandedAll);
+    }
+  };
+
   return (
     <section id="placements" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-white scroll-mt-20">
-      {/* Section Header matching exact website section title style */}
+      {/* Section Header */}
       <div className="text-center mb-10 space-y-3">
         <span className="font-mono text-xs tracking-widest text-red-500 uppercase block font-semibold">
-          • CAMPUS PLACEMENTS &amp; RECRUITMENT
+          • CAREER MILESTONES &amp; RECRUITMENT
         </span>
 
         <h2 className="font-serif font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight">
@@ -482,7 +373,7 @@ export default function PlacementsSection({ showAll = false }) {
         </h2>
 
         <p className="text-neutral-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-sans">
-          Celebrating our students securing career opportunities across leading global technology corporations and industry pioneers.
+          Celebrating student achievements across leading industry pioneers.
         </p>
       </div>
 
@@ -512,8 +403,17 @@ export default function PlacementsSection({ showAll = false }) {
             )}
           </div>
 
-          {/* Filter Dropdowns (Year & Company) */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Filter Dropdowns (Theme-matched Type, Year & Company Dropdowns) */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 flex-wrap sm:flex-nowrap">
+            {/* Custom Theme-Matched Category Dropdown (Placements vs Internships) */}
+            <CustomPlacementDropdown
+              icon={Layers}
+              value={selectedType}
+              options={typeOptions}
+              onChange={handleTypeChange}
+              defaultLabel="All Opportunities"
+            />
+
             {/* Custom Theme-Matched Year Dropdown */}
             <CustomPlacementDropdown
               icon={Calendar}
@@ -535,18 +435,18 @@ export default function PlacementsSection({ showAll = false }) {
         </div>
       </div>
 
-      {/* Premium Infinite-Scrolling Company Logo Marquee */}
+      {/* Premium Infinite-Scrolling Company Logo Marquee (Slowed down to 100s for legibility) */}
       <CompanyMarquee
         companies={uniqueCompaniesList}
         selectedCompany={selectedCompany}
         onSelectCompany={handleCompanyChange}
       />
 
-      {/* Main Placement Table Container matching reference image UI */}
+      {/* Clean 5-Column Placement & Internship Table Container */}
       <div className="relative z-10 bg-[#080808] border border-neutral-800/90 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl backdrop-blur-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[700px]">
-            {/* Table Header with Header Icons */}
+            {/* Clean 5-Column Table Header */}
             <thead>
               <tr className="border-b border-neutral-800/90 bg-[#0c0c0e]/90 text-red-500 font-mono text-xs sm:text-sm font-semibold tracking-wide select-none">
                 <th className="py-4 px-4 sm:px-6 w-[28%]">
@@ -588,27 +488,13 @@ export default function PlacementsSection({ showAll = false }) {
                 displayItems.map((item) => (
                   <tr
                     key={item.id}
-                    onMouseEnter={(e) => {
-                      setHoveredStudent(item);
-                      setMousePos({ x: e.clientX, y: e.clientY });
-                    }}
-                    onMouseMove={(e) => {
-                      setMousePos({ x: e.clientX, y: e.clientY });
-                    }}
-                    onMouseLeave={() => setHoveredStudent(null)}
                     className="group hover:bg-neutral-900/60 transition-colors duration-150 cursor-pointer"
                   >
-                    {/* Student Column */}
+                    {/* Student Column (Text Name Only) */}
                     <td className="py-3.5 px-4 sm:px-6">
-                      <div className="flex items-center gap-3">
-                        <StudentAvatar
-                          studentName={item.studentName}
-                          imageSrc={item.studentImage}
-                        />
-                        <span className="font-semibold text-white group-hover:text-red-400 transition-colors text-sm sm:text-base">
-                          {item.studentName}
-                        </span>
-                      </div>
+                      <span className="font-semibold text-white group-hover:text-red-400 transition-colors text-sm sm:text-base">
+                        {item.studentName}
+                      </span>
                     </td>
 
                     {/* Company Name Column */}
@@ -665,7 +551,7 @@ export default function PlacementsSection({ showAll = false }) {
                     <div className="flex flex-col items-center justify-center gap-2">
                       <Search size={32} className="text-neutral-600 mb-1" />
                       <p className="font-semibold text-neutral-300">
-                        No placement records found
+                        No placement or internship records found
                       </p>
                       <p className="text-xs text-neutral-500">
                         Try adjusting your search criteria or filter tags.
@@ -673,6 +559,7 @@ export default function PlacementsSection({ showAll = false }) {
                       <button
                         onClick={() => {
                           setSearchQuery('');
+                          setSelectedType('ALL');
                           setSelectedYear('ALL');
                           setSelectedCompany('ALL');
                         }}
@@ -691,8 +578,8 @@ export default function PlacementsSection({ showAll = false }) {
         {/* Table Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t border-neutral-800/90 bg-[#0c0c0e]/90 text-xs font-mono text-neutral-400">
           <div>
-            {showAll ? (
-              <>Listing all <span className="text-red-500 font-bold">{displayItems.length}</span> placement records</>
+            {effectiveShowAll ? (
+              <>Listing all <span className="text-red-500 font-bold">{displayItems.length}</span> records</>
             ) : (
               <>
                 Showing{' '}
@@ -709,38 +596,60 @@ export default function PlacementsSection({ showAll = false }) {
             )}
           </div>
 
-          {!showAll && totalPages > 1 && (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-                className="p-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-neutral-800 transition-colors cursor-pointer"
-                aria-label="Previous Page"
-              >
-                <ChevronLeft size={16} />
-              </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={effectiveShowAll || currentPage === 1}
+              className="p-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-neutral-800 transition-colors cursor-pointer"
+              aria-label="Previous Page"
+            >
+              <ChevronLeft size={16} />
+            </button>
 
-              <div className="px-3 py-1 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 font-semibold">
-                Page {currentPage} of {totalPages}
-              </div>
+            {/* Expand / View Dedicated Page Button */}
+            <button
+              type="button"
+              onClick={handleExpandOrNavigate}
+              className={`px-3.5 py-1.5 rounded-lg border font-semibold transition-all cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95 ${
+                effectiveShowAll
+                  ? 'bg-red-600 border-red-500 text-white'
+                  : 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-red-600/60'
+              }`}
+              title={!showAll ? 'Open full Placements & Internships page' : (effectiveShowAll ? 'Switch back to paginated view' : 'Show all records on one page')}
+            >
+              {!showAll ? (
+                <>
+                  <span>VIEW ALL PLACEMENTS & INTERNSHIPS</span>
+                  <ExternalLink size={13} className="shrink-0 text-red-400" />
+                </>
+              ) : effectiveShowAll ? (
+                <>
+                  <Minimize2 size={13} className="shrink-0 text-white" />
+                  <span>Showing All ({filteredPlacements.length})</span>
+                </>
+              ) : (
+                <>
+                  <span>Page {currentPage} of {totalPages}</span>
+                  <span className="text-red-400 ml-0.5 flex items-center" title="Show All">
+                    <Maximize2 size={13} className="shrink-0" />
+                  </span>
+                </>
+              )}
+            </button>
 
-              <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-                disabled={currentPage === totalPages}
-                className="p-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-neutral-800 transition-colors cursor-pointer"
-                aria-label="Next Page"
-              >
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          )}
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={effectiveShowAll || currentPage === totalPages}
+              className="p-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-neutral-800 transition-colors cursor-pointer"
+              aria-label="Next Page"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* Floating Awwwards-style Hover Preview Card */}
-      <StudentHoverPreviewCard student={hoveredStudent} mousePos={mousePos} />
     </section>
   );
 }

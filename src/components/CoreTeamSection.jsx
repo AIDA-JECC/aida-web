@@ -69,8 +69,8 @@ export default function CoreTeamSection() {
         `Dedicated core team member contributing to AIDA events, leadership, and department growth.`,
       imageSrc: `${member.photo}-800.webp`,
       thumbnailSrc: `${member.photo}-400.webp`,
-      email: memberEmails[member.id] || `${member.id}@jecc.ac.in`,
-      linkedin: `https://linkedin.com/in/${member.id}`,
+      email: member.email || memberEmails[member.id] || `${member.id}@jecc.ac.in`,
+      linkedin: member.linkedin || `https://linkedin.com/in/${member.id}`,
     }));
   }, [hasMembers]);
 

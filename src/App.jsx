@@ -219,7 +219,7 @@ export default function App() {
 
         {/* 4.8. Placements Showcase (Main Homepage Flow: Paginated 10 records per page) */}
         <div id="placements" className="bg-[#080808] border-t border-neutral-800/60">
-          <PlacementsSection showAll={false} />
+          <PlacementsSection showAll={false} onNavigate={handleNavigate} />
         </div>
 
         {/* 5. Faculty & Core Team */}

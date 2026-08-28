@@ -12,6 +12,7 @@ export default function ProjectsPage({ onNavigate }) {
   const [selectedBatch, setSelectedBatch] = useState('All Batches');
   const [selectedType, setSelectedType] = useState('All Project Types');
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const ITEMS_PER_PAGE = 12; // 4 rows of 3-column grid
 
   // Scroll to top on page mount
@@ -43,10 +44,11 @@ export default function ProjectsPage({ onNavigate }) {
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE) || 1;
-  const paginatedProjects = useMemo(() => {
+  const displayProjects = useMemo(() => {
+    if (showAll) return filteredProjects;
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredProjects, currentPage]);
+  }, [filteredProjects, currentPage, showAll]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -129,7 +131,7 @@ export default function ProjectsPage({ onNavigate }) {
         {filteredProjects.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {paginatedProjects.map((project) => (
+              {displayProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
@@ -144,6 +146,9 @@ export default function ProjectsPage({ onNavigate }) {
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
+              showAll={showAll}
+              onToggleShowAll={setShowAll}
+              totalItems={filteredProjects.length}
             />
           </>
         ) : (

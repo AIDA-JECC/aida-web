@@ -2,10 +2,46 @@ import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../data/siteData';
 import SterlingGateKineticNavigation from './ui/sterling-gate-kinetic-navigation';
 
+const TAB_PHRASES = [
+  'AIDA JECC',
+  'Department of Artificial Intelligence & Data Science',
+];
+
 export default function Navbar({ onVerifyClick }) {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Typewriter animation strictly for browser tab title (document.title near URL bar)
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = TAB_PHRASES[phraseIndex];
+    let timer;
+
+    if (!isDeleting && typedText === currentPhrase) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2500);
+    } else if (isDeleting && typedText === '') {
+      setIsDeleting(false);
+      setPhraseIndex((prev) => (prev + 1) % TAB_PHRASES.length);
+    } else {
+      const speed = isDeleting ? 25 : 55;
+      timer = setTimeout(() => {
+        const nextText = isDeleting
+          ? currentPhrase.slice(0, typedText.length - 1)
+          : currentPhrase.slice(0, typedText.length + 1);
+        setTypedText(nextText);
+      }, speed);
+    }
+
+    document.title = typedText ? `${typedText}` : 'AIDA JECC';
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, phraseIndex]);
 
   useEffect(() => {
     const checkModalOpen = () => {

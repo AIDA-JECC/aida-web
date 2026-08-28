@@ -17,6 +17,7 @@ export default function AchievementsPage({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const ITEMS_PER_PAGE = 16; // 4 rows of 4-column grid
 
   // Scroll to top on mount
@@ -49,15 +50,6 @@ export default function AchievementsPage({ onNavigate }) {
 
       return true;
     });
-
-    return list.sort((a, b) => {
-      const yrA = parseInt(a.year, 10) || 0;
-      const yrB = parseInt(b.year, 10) || 0;
-      if (yrB !== yrA) return yrB - yrA;
-      const idA = parseInt(String(a.id).replace('achievement-', ''), 10) || 0;
-      const idB = parseInt(String(b.id).replace('achievement-', ''), 10) || 0;
-      return idA - idB;
-    });
   }, [activeTab, searchQuery]);
 
   // Reset page to 1 whenever active tab or search changes
@@ -67,10 +59,11 @@ export default function AchievementsPage({ onNavigate }) {
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredAchievements.length / ITEMS_PER_PAGE) || 1;
-  const paginatedAchievements = useMemo(() => {
+  const displayAchievements = useMemo(() => {
+    if (showAll) return filteredAchievements;
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredAchievements.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredAchievements, currentPage]);
+  }, [filteredAchievements, currentPage, showAll]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -168,7 +161,7 @@ export default function AchievementsPage({ onNavigate }) {
         {filteredAchievements.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {paginatedAchievements.map((achievement) => (
+              {displayAchievements.map((achievement) => (
                 <AchievementCard
                   key={achievement.id}
                   achievement={achievement}
@@ -182,6 +175,9 @@ export default function AchievementsPage({ onNavigate }) {
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
+              showAll={showAll}
+              onToggleShowAll={setShowAll}
+              totalItems={filteredAchievements.length}
             />
           </>
         ) : (

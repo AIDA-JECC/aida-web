@@ -77,6 +77,7 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
   const [selectedBatch, setSelectedBatch] = useState('All Batches');
   const [selectedType, setSelectedType] = useState('All Project Types');
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const ITEMS_PER_PAGE = 12; // 4 rows of 3-column grid
 
   // Scroll to top on page mount
@@ -141,10 +142,11 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredGuidedProjects.length / ITEMS_PER_PAGE) || 1;
-  const paginatedGuidedProjects = useMemo(() => {
+  const displayGuidedProjects = useMemo(() => {
+    if (showAll) return filteredGuidedProjects;
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredGuidedProjects.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredGuidedProjects, currentPage]);
+  }, [filteredGuidedProjects, currentPage, showAll]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -367,7 +369,7 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
         {filteredGuidedProjects.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {paginatedGuidedProjects.map((project) => (
+              {displayGuidedProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
@@ -382,6 +384,9 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
+              showAll={showAll}
+              onToggleShowAll={setShowAll}
+              totalItems={filteredGuidedProjects.length}
             />
           </>
         ) : (

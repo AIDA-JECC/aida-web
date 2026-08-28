@@ -92,11 +92,6 @@ const TypewriterText = ({
   );
 };
 
-/**
- * Core Team & Faculty Testimonial Slider component with transparent background,
- * red highlighted names, live typing effect, LinkedIn & Email links, optional action profile button,
- * infinite 5-second automatic carousel triggered once section is reached, and flexible layout order.
- */
 export const TestimonialSlider = ({
   reviews,
   className,
@@ -152,7 +147,7 @@ export const TestimonialSlider = ({
     setCurrentIndex(index);
   };
 
-  // Autoplay carousel timer: starts once section has been reached once, then continues endlessly on all devices (wrapping from last card to 1st card)
+  // Autoplay carousel timer: starts once section has been reached once, then continues endlessly on all devices
   useEffect(() => {
     if (!hasBeenReached || isPaused || reviews.length <= 1) return;
 
@@ -198,7 +193,180 @@ export const TestimonialSlider = ({
         className
       )}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center h-full">
+      {/* ========================================================================= */}
+      {/* ========================= MOBILE VIEW (< md) ============================ */}
+      {/* ========================================================================= */}
+      <div className="block md:hidden w-full space-y-4">
+        {/* Top Header Controls: Prev Arrow (Left) | Counter (Center) | Next Arrow (Right) */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
+          <button
+            onClick={handlePrev}
+            className="w-10 h-10 rounded-full border border-neutral-700 bg-neutral-900/90 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-colors active:scale-95 cursor-pointer shadow-md"
+            aria-label="Previous member"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+
+          <span className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase bg-neutral-900/80 px-3.5 py-1.5 rounded-full border border-white/10 shadow-sm">
+            {String(currentIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
+          </span>
+
+          <button
+            onClick={handleNext}
+            className="w-10 h-10 rounded-full border border-red-600 bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition-colors active:scale-95 cursor-pointer shadow-md shadow-red-950/50"
+            aria-label="Next member"
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Top Split Row: Main Photo (~75% Width) + Vertical Image Thumbnails Rail (~25% Width) */}
+        <div className="flex gap-3 sm:gap-4 items-center">
+          {/* Main Photo Container */}
+          <div className="flex-1 min-w-0">
+            <div className="relative aspect-[4/5] w-full max-w-[250px] mx-auto rounded-2xl overflow-hidden border border-white/10 bg-neutral-900 shadow-2xl">
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.img
+                  key={currentIndex}
+                  src={activeReview.imageSrc}
+                  alt={activeReview.name}
+                  custom={direction}
+                  variants={imageVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none rounded-2xl" />
+            </div>
+          </div>
+
+          {/* Vertical Image Thumbnail Sidebar */}
+          <div className="w-14 sm:w-16 shrink-0 border-l border-white/10 pl-2.5 space-y-2.5 flex flex-col items-center">
+            {thumbnailReviews.map(({ review, originalIndex }) => (
+              <button
+                key={review.id}
+                onClick={() => handleThumbnailClick(originalIndex)}
+                className={cn(
+                  "relative w-11 h-11 sm:w-13 sm:h-13 rounded-xl overflow-hidden border transition-all duration-300 cursor-pointer shrink-0",
+                  originalIndex === currentIndex
+                    ? "border-red-500 ring-2 ring-red-500/60 bg-red-950/40 shadow-lg shadow-red-950/50 scale-105"
+                    : "border-white/10 bg-neutral-950 hover:border-red-500/40 opacity-70 hover:opacity-100"
+                )}
+                aria-label={`View ${review.name}`}
+              >
+                <img
+                  src={review.thumbnailSrc}
+                  alt={review.name}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Details Container — SPANS 100% FULL WIDTH (No Blank Spaces) */}
+        <div className="w-full space-y-3 pt-2">
+          {/* Member Name & Designation Pill */}
+          <div className="space-y-1.5">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400 tracking-tight leading-tight">
+              <TypewriterText text={activeReview.name} speed={25} showCursor={false} />
+            </h3>
+
+            <p className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase mt-1">
+              {activeReview.affiliation}
+            </p>
+          </div>
+
+          {/* Optional Quote / Bio */}
+          {activeReview.quote && (
+            <blockquote className="text-xs font-medium leading-relaxed text-neutral-300 border-l-2 border-red-500/60 pl-3 py-1.5 italic bg-neutral-900/40 rounded-r-xl">
+              "{activeReview.quote}"
+            </blockquote>
+          )}
+
+          {/* Full-Width Contact Information Cards */}
+          <div className="grid grid-cols-1 gap-2 pt-1 font-mono text-xs">
+            {activeReview.email && (
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800/80">
+                <div className="w-8 h-8 rounded-lg bg-red-950/60 border border-red-800/50 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-red-500" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[9px] text-neutral-500 uppercase tracking-wider font-sans">Email</p>
+                  <a href={`mailto:${activeReview.email}`} className="text-neutral-200 hover:text-white truncate block font-bold">
+                    {activeReview.email}
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {activeReview.phone && (
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-neutral-900/80 border border-neutral-800/80">
+                <div className="w-8 h-8 rounded-lg bg-green-950/60 border border-green-800/50 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-green-500" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[9px] text-neutral-500 uppercase tracking-wider font-sans">Phone</p>
+                  <a href={`tel:${activeReview.phone}`} className="text-neutral-200 hover:text-white block font-bold">
+                    {activeReview.phone}
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Full-Width Social & Profile Badges */}
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            {activeReview.linkedin && (
+              <a href={activeReview.linkedin} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors">
+                <LinkedinIcon size={14} className="text-blue-400" /> <span>LinkedIn</span>
+              </a>
+            )}
+            {activeReview.googleScholar && (
+              <a href={activeReview.googleScholar} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors">
+                <GraduationCap size={14} className="text-emerald-400" /> <span>Scholar</span>
+              </a>
+            )}
+            {activeReview.scopus && (
+              <a href={activeReview.scopus} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors">
+                <Globe size={14} className="text-orange-400" /> <span>Scopus</span>
+              </a>
+            )}
+            {activeReview.orcid && (
+              <a href={activeReview.orcid} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors">
+                <Award size={14} className="text-green-400" /> <span>ORCID</span>
+              </a>
+            )}
+            {activeReview.vidwan && (
+              <a href={activeReview.vidwan} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-[110px] flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-mono transition-colors">
+                <UserCheck size={14} className="text-purple-400" /> <span>Vidwan</span>
+              </a>
+            )}
+          </div>
+
+          {/* Full-Width Action Profile Navigation Button */}
+          {activeReview.onActionClick && (
+            <div className="pt-2">
+              <button
+                onClick={activeReview.onActionClick}
+                className="w-full py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-mono text-xs font-bold rounded-xl shadow-lg shadow-red-950/60 flex items-center justify-center gap-2 cursor-pointer active:scale-98 transition-all"
+              >
+                <span>{activeReview.actionLabel || "View Profile & Projects"}</span>
+                <ExternalLink className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* ========================= DESKTOP VIEW (≥ md) =========================== */}
+      {/* ============ UNTOUCHED & 100% PRESERVED FOR PC & TABLET ================ */}
+      {/* ========================================================================= */}
+      <div className="hidden md:grid md:grid-cols-12 gap-6 md:gap-8 items-center h-full">
         {/* === Upcoming Cards Column (Left on Core Team, Right on Faculty) === */}
         <div
           className={cn(
@@ -206,40 +374,21 @@ export const TestimonialSlider = ({
             reverseLayout ? "order-2 md:order-3" : "order-2 md:order-1"
           )}
         >
-          {/* Header line with Counter and Minimal Mobile Navigation Arrows */}
+          {/* Header line with Counter */}
           <div className="flex items-center justify-between border-b border-white/10 pb-2 md:pb-3">
             <span className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase bg-neutral-900/80 px-3 py-1 rounded-full border border-white/10">
               {String(currentIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
             </span>
-
-            {/* Inline Minimal Arrows for Mobile View */}
-            <div className="flex items-center space-x-2 md:hidden">
-              <button
-                onClick={handlePrev}
-                className="w-8 h-8 rounded-full border border-neutral-700 bg-neutral-900/90 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-colors active:scale-95 cursor-pointer"
-                aria-label="Previous member"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-8 h-8 rounded-full border border-red-600 bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition-colors active:scale-95 cursor-pointer shadow-md shadow-red-950/40"
-                aria-label="Next member"
-              >
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
           </div>
 
-          {/* Grid of 4 images in 1 row on mobile, 5 vertical rows on desktop */}
-          <div className="grid grid-cols-4 md:flex md:flex-col gap-2 md:gap-2.5">
-            {thumbnailReviews.map(({ review, originalIndex }, idx) => (
+          {/* 5 vertical cards with names on desktop */}
+          <div className="flex flex-col gap-2.5">
+            {thumbnailReviews.map(({ review, originalIndex }) => (
               <button
                 key={review.id}
                 onClick={() => handleThumbnailClick(originalIndex)}
                 className={cn(
-                  "group relative flex flex-col md:flex-row items-center gap-1.5 md:gap-3.5 p-1.5 md:p-2.5 rounded-xl md:rounded-2xl border transition-all duration-300 text-left overflow-hidden cursor-pointer",
-                  idx >= 4 ? "hidden md:flex" : "flex",
+                  "group relative flex flex-row items-center gap-3.5 p-2.5 rounded-2xl border transition-all duration-300 text-left overflow-hidden cursor-pointer",
                   originalIndex === currentIndex
                     ? "border-red-500/80 bg-red-950/40 shadow-lg shadow-red-950/50 ring-1 ring-red-500/50"
                     : "border-white/10 bg-neutral-900/60 hover:bg-neutral-800/80 hover:border-red-500/40"
@@ -247,7 +396,7 @@ export const TestimonialSlider = ({
                 aria-label={`View ${review.name}`}
               >
                 {/* Thumbnail Image */}
-                <div className="relative w-full aspect-[4/5] md:w-12 md:h-14 rounded-lg md:rounded-xl overflow-hidden shrink-0 border border-white/10 bg-neutral-950">
+                <div className="relative w-12 h-14 rounded-xl overflow-hidden shrink-0 border border-white/10 bg-neutral-950">
                   <img
                     src={review.thumbnailSrc}
                     alt={review.name}
@@ -255,11 +404,11 @@ export const TestimonialSlider = ({
                   />
                 </div>
                 {/* Member details */}
-                <div className="min-w-0 flex-1 w-full text-center md:text-left">
-                  <p className="text-[10px] md:text-xs font-bold text-white truncate group-hover:text-red-400 transition-colors">
+                <div className="min-w-0 flex-1 w-full text-left">
+                  <p className="text-xs font-bold text-white truncate group-hover:text-red-400 transition-colors">
                     {review.name}
                   </p>
-                  <p className="text-[9px] md:text-[10px] font-mono text-neutral-400 truncate mt-0.5 hidden md:block">
+                  <p className="text-[10px] font-mono text-neutral-400 truncate mt-0.5">
                     {review.affiliation}
                   </p>
                 </div>
@@ -269,7 +418,7 @@ export const TestimonialSlider = ({
         </div>
 
         {/* === Center Column: Main Image === */}
-        <div className="md:col-span-4 relative aspect-[2/3] md:aspect-auto w-full h-auto md:h-80 min-h-0 md:min-h-[460px] order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/50 shadow-2xl">
+        <div className="md:col-span-4 relative aspect-auto w-full h-80 min-h-[460px] order-2 rounded-2xl overflow-hidden border border-white/10 bg-neutral-900/50 shadow-2xl">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -290,12 +439,12 @@ export const TestimonialSlider = ({
         {/* === Details & Content Column (Right on Core Team, Left on Faculty) === */}
         <div
           className={cn(
-            "md:col-span-4 flex flex-col justify-between min-h-[220px] md:min-h-[360px]",
-            reverseLayout ? "order-3 md:order-1 md:pr-4" : "order-3 md:order-3 md:pl-4"
+            "md:col-span-4 flex flex-col justify-between min-h-[360px] order-3",
+            reverseLayout ? "md:order-1 md:pr-4" : "md:order-3 md:pl-4"
           )}
         >
           {/* Text Content with Typing Animation */}
-          <div className="relative overflow-hidden pt-2 min-h-[140px] md:min-h-[180px]">
+          <div className="relative overflow-hidden pt-2 min-h-[180px]">
             <AnimatePresence mode="wait">
               <div key={currentIndex} className="flex flex-col gap-2">
                 {/* Affiliation with Typing Animation */}
@@ -304,18 +453,18 @@ export const TestimonialSlider = ({
                 </p>
 
                 {/* Name written in RED with Typing Animation */}
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-red-500 tracking-tight mt-1">
+                <h3 className="text-3xl md:text-4xl font-extrabold text-red-500 tracking-tight mt-1">
                   <TypewriterText text={activeReview.name} speed={30} showCursor={false} />
                 </h3>
 
                 {/* Quote / Description with Live Typing Animation (if present) */}
                 {activeReview.quote && (
-                  <blockquote className="mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-medium leading-relaxed text-neutral-200 border-l-2 border-red-500/60 pl-3 md:pl-4 py-1 italic">
+                  <blockquote className="mt-4 text-base md:text-lg font-medium leading-relaxed text-neutral-200 border-l-2 border-red-500/60 pl-4 py-1 italic">
                     "<TypewriterText text={activeReview.quote} speed={15} showCursor={true} />"
                   </blockquote>
                 )}
 
-                {/* Action Profile Navigation Button (e.g. View Profile & Supervised Projects) */}
+                {/* Action Profile Navigation Button */}
                 {activeReview.onActionClick && (
                   <div className="mt-3">
                     <button
@@ -329,7 +478,7 @@ export const TestimonialSlider = ({
                 )}
 
                 {/* All Non-Null Faculty Metadata Links & Badges */}
-                <div className="flex flex-wrap items-center gap-2 mt-4 md:mt-5 pt-3 md:pt-4 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 mt-5 pt-4 border-t border-white/10">
                   {activeReview.email && (
                     <a
                       href={`mailto:${activeReview.email}`}
@@ -339,7 +488,7 @@ export const TestimonialSlider = ({
                       title={`Email: ${activeReview.email}`}
                     >
                       <Mail className="w-3.5 h-3.5 text-red-500 group-hover:scale-110 transition-transform" />
-                      <span className="truncate max-w-[140px] sm:max-w-[190px]">{activeReview.email}</span>
+                      <span className="truncate max-w-[190px]">{activeReview.email}</span>
                     </a>
                   )}
                   {activeReview.phone && (
@@ -427,7 +576,7 @@ export const TestimonialSlider = ({
           </div>
 
           {/* Desktop Navigation Buttons */}
-          <div className="hidden md:flex items-center space-x-3 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/10">
+          <div className="flex items-center space-x-3 mt-6 pt-4 border-t border-white/10">
             <Button
               variant="outline"
               size="icon"

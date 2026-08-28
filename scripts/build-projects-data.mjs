@@ -60,47 +60,81 @@ function parseGoogleDriveUrl(url) {
 const coverFiles = fs.existsSync('./public/cover page') ? fs.readdirSync('./public/cover page') : [];
 const demoFiles = fs.existsSync('./public/working demo') ? fs.readdirSync('./public/working demo') : [];
 
-function findLocalImage(rawImgName, leaderName, regNumber, files, folderName) {
+const usedCoverImages = new Set();
+const usedDemoImages = new Set();
+
+function findLocalImage(rawImgName, leaderName, regNumber, projectTitle, files, folderName, usedSet) {
+  // Filter out files already taken for another project
+  const availableFiles = files.filter(f => !usedSet.has(f));
+
   // 1. Direct filename check if rawImgName supplied
   if (rawImgName && typeof rawImgName === 'string') {
     const clean = rawImgName.trim().toLowerCase();
-    const match = files.find(f => f.toLowerCase() === clean || f.toLowerCase().replace(/\.[^/.]+$/, '') === clean.replace(/\.[^/.]+$/, ''));
-    if (match) return `/${folderName}/${encodeURIComponent(match)}`;
+    const match = availableFiles.find(f => 
+      f.toLowerCase() === clean || 
+      f.toLowerCase().replace(/\.[^/.]+$/, '') === clean.replace(/\.[^/.]+$/, '')
+    );
+    if (match) {
+      usedSet.add(match);
+      return `/${folderName}/${encodeURIComponent(match)}`;
+    }
   }
 
-  // 2. Student Name or Register Number match
+  const ignoreWords = new Set(['project', 'using', 'based', 'system', 'with', 'from', 'analysis', 'implementation', 'micro', 'main', 'mini']);
+  const titleWords = projectTitle ? projectTitle.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !ignoreWords.has(w)) : [];
+
   const leaderLower = leaderName ? leaderName.toLowerCase().trim() : '';
   const regLower = regNumber ? regNumber.toLowerCase().trim().replace(/jec/i, '') : '';
 
+  // 2. Student Name or Register Number + Title keyword match
+  if ((leaderLower || regLower) && titleWords.length > 0) {
+    const titleMatch = availableFiles.find(f => {
+      const fl = f.toLowerCase();
+      const matchLeader = leaderLower && leaderLower.length > 3 && fl.includes(leaderLower);
+      const matchReg = regLower && regLower.length > 3 && fl.includes(regLower);
+      if (!matchLeader && !matchReg) return false;
+      return titleWords.some(w => fl.includes(w));
+    });
+
+    if (titleMatch) {
+      usedSet.add(titleMatch);
+      return `/${folderName}/${encodeURIComponent(titleMatch)}`;
+    }
+  }
+
+  // 3. Fallback: Student Name or Register Number match (next available unused file)
   if (leaderLower || regLower) {
-    const match = files.find(f => {
+    const match = availableFiles.find(f => {
       const fl = f.toLowerCase();
       const matchLeader = leaderLower && leaderLower.length > 3 && fl.includes(leaderLower);
       const matchReg = regLower && regLower.length > 3 && fl.includes(regLower);
       return matchLeader || matchReg;
     });
 
-    if (match) return `/${folderName}/${encodeURIComponent(match)}`;
+    if (match) {
+      usedSet.add(match);
+      return `/${folderName}/${encodeURIComponent(match)}`;
+    }
   }
 
   return null;
 }
 
-function resolveCoverImage(row, leaderName, regNumber) {
+function resolveCoverImage(row, leaderName, regNumber, projectTitle) {
   const localFileName = row['Coverpage Img Names'] || row['Cover Page Img Name'] || row['Coverpage Img Name'];
   const driveUrl = row['AI generated project image reflecting your title.(for cover page of your project)'] || row['Cover Image'];
   
-  const localMatch = findLocalImage(localFileName, leaderName, regNumber, coverFiles, 'cover page');
+  const localMatch = findLocalImage(localFileName, leaderName, regNumber, projectTitle, coverFiles, 'cover page', usedCoverImages);
   if (localMatch) return localMatch;
 
   return parseGoogleDriveUrl(driveUrl);
 }
 
-function resolveDemoImage(row, leaderName, regNumber) {
+function resolveDemoImage(row, leaderName, regNumber, projectTitle) {
   const localFileName = row['Demo Img Names'] || row['Demo Img Name'] || row['Demo Img'];
   const driveUrl = row['Project Working Demo Image '] || row['Project Working Demo Image'] || row['Demo Image'];
 
-  const localMatch = findLocalImage(localFileName, leaderName, regNumber, demoFiles, 'working demo');
+  const localMatch = findLocalImage(localFileName, leaderName, regNumber, projectTitle, demoFiles, 'working demo', usedDemoImages);
   if (localMatch) return localMatch;
 
   return parseGoogleDriveUrl(driveUrl);
@@ -127,8 +161,8 @@ const normalizedProjects = rawRows.map((row, index) => {
   const leaderReg = String(row['Register Number'] || row['Register Number 1'] || '').trim();
   const githubOrEmail = String(row['Team Leader Github Username/ Email '] || row['Team Leader Github Username'] || '').trim();
 
-  const coverImage = resolveCoverImage(row, leaderName, leaderReg);
-  const demoImage = resolveDemoImage(row, leaderName, leaderReg);
+  const coverImage = resolveCoverImage(row, leaderName, leaderReg, title);
+  const demoImage = resolveDemoImage(row, leaderName, leaderReg, title);
 
   const members = [];
   if (leaderName) {
@@ -182,9 +216,26 @@ const normalizedProjects = rawRows.map((row, index) => {
   };
 });
 
-const code = `// Auto-generated from Academic Projects.xlsx
+// Check existing data file before overwriting
+if (fs.existsSync('./src/data/academicProjectsData.js')) {
+  try {
+    const existingFileContent = fs.readFileSync('./src/data/academicProjectsData.js', 'utf-8');
+    const existingMatches = existingFileContent.match(/"id":\s*"project-\d+"/g);
+    const existingCount = existingMatches ? existingMatches.length : 0;
+
+    if (existingCount > normalizedProjects.length) {
+      console.log(`Preserving src/data/academicProjectsData.js: file contains ${existingCount} projects (greater than Excel count of ${normalizedProjects.length}).`);
+      process.exit(0);
+    }
+  } catch (err) {
+    // If error reading, proceed with overwrite
+  }
+}
+
+const code = `// Academic Projects Data
 export const academicProjectsData = ${JSON.stringify(normalizedProjects, null, 2)};
 `;
 
 fs.writeFileSync('./src/data/academicProjectsData.js', code, 'utf-8');
 console.log(`Successfully generated src/data/academicProjectsData.js with ${normalizedProjects.length} projects!`);
+

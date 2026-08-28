@@ -1,0 +1,114 @@
+import XLSX from 'xlsx';
+import fs from 'fs';
+
+const excelPath = 'D:\\AIDA\\public\\Members details.xlsx';
+const workbook = XLSX.readFile(excelPath);
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
+const excelRows = XLSX.utils.sheet_to_json(sheet);
+
+function normalize(str) {
+  if (!str) return '';
+  return String(str).toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+// Map of Excel rows by normalized student name
+const excelMap = new Map();
+excelRows.forEach(row => {
+  const name = String(row['Name'] || '').trim();
+  const email = String(row['Jec Email'] || '').trim();
+  const linkedinKey = Object.keys(row).find(k => k.toLowerCase().includes('linkedin'));
+  let linkedin = String(row[linkedinKey] || '').trim();
+
+  // Clean linkedin if text like "Dhruva C | LinkedIn"
+  if (linkedin && !linkedin.startsWith('http')) {
+    if (linkedin.toLowerCase().includes('dhruva')) {
+      linkedin = 'https://www.linkedin.com/in/dhruva-c';
+    } else {
+      linkedin = `https://www.linkedin.com/in/${normalize(name)}`;
+    }
+  }
+
+  // Remove trailing dots or spaces from URL
+  linkedin = linkedin.replace(/\.+$/, '').replace(/\s+/g, '');
+
+  excelMap.set(normalize(name), { email, linkedin });
+});
+
+// Explicit override for Adhithyan V V & faculty/coordinators
+excelMap.set(normalize('Adhithyan V V'), {
+  email: 'adhithyanvv2005@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/adhithyan-vv/',
+});
+excelMap.set(normalize('Adhithyan V. V.'), {
+  email: 'adhithyanvv2005@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/adhithyan-vv/',
+});
+excelMap.set(normalize('Jithin K C'), {
+  email: 'jithinkc@jecc.ac.in',
+  linkedin: 'https://www.linkedin.com/in/jithinkc',
+});
+excelMap.set(normalize('Angisha B'), {
+  email: 'angisha.b@jecc.ac.in',
+  linkedin: 'https://www.linkedin.com/in/angisha-b',
+});
+excelMap.set(normalize('Alan E Alexander'), {
+  email: 'alenealexander.ad24@jecc.ac.in',
+  linkedin: 'https://www.linkedin.com/in/alan-e-alexander-740a33316',
+});
+
+// Base Core Team Members definition
+const baseMembers = [
+  { id: 'jithin-k-c', name: 'Mr. Jithin K C', designation: 'Coordinator', semester: null, rank: 0, photo: '/core-team/jithin-k-c' },
+  { id: 'angisha-b', name: 'Angisha B', designation: 'Chairperson', semester: null, rank: 1, photo: '/core-team/angisha-b' },
+  { id: 'parvathy-krishna-m', name: 'Parvathy Krishna M', designation: 'Vice Chairperson', semester: null, rank: 2, photo: '/core-team/parvathy-krishna-m' },
+  { id: 'adhithyan-vv', name: 'Adhithyan V V', designation: 'Secretary', semester: null, rank: 2, photo: '/core-team/adhithyan-vv' },
+  { id: 'jesna-c-j', name: 'Jesna C J', designation: 'Joint Secretary', semester: 'S5', rank: 3, photo: '/core-team/jesna-c-j' },
+  { id: 'mohamed-u-v', name: 'Mohamed U V', designation: 'Treasurer', semester: null, rank: 4, photo: '/core-team/mohamed-u-v' },
+  { id: 'vrindha-manoj-kumar', name: 'Vrindha Manoj Kumar', designation: 'Joint Treasurer', semester: 'S5', rank: 5, photo: '/core-team/vrindha-manoj-kumar' },
+  { id: 'dhruva-c', name: 'Dhruva C', designation: 'Public Relations Officer', semester: 'S3', rank: 6, photo: '/core-team/dhruva-c' },
+  { id: 'lakshmi-p-r', name: 'Lakshmi P R', designation: 'Public Relations Officer', semester: 'S3', rank: 6, photo: '/core-team/lakshmi-p-r' },
+  { id: 'vaishnava-o-j', name: 'Vaishnava O J', designation: 'Public Relations Officer', semester: 'S5', rank: 6, photo: '/core-team/vaishnava-o-j' },
+  { id: 'vishnu-a-s', name: 'Vishnu A S', designation: 'Public Relations Officer', semester: 'S3 AD-B', rank: 6, photo: '/core-team/vishnu-a-s' },
+  { id: 'joel-pauly', name: 'Joel Pauly', designation: 'Media Team', semester: 'S3', rank: 7, photo: '/core-team/joel-pauly' },
+  { id: 'shaun-saji-e', name: 'Shaun Saji E', designation: 'Media Team', semester: 'S5', rank: 7, photo: '/core-team/shaun-saji-e' },
+  { id: 'stanes-wilson', name: 'Stanes Wilson', designation: 'Media Team', semester: 'S5', rank: 7, photo: '/core-team/stanes-wilson' },
+  { id: 'alan-e-alexander', name: 'Alan E Alexander', designation: 'Executive Member', semester: 'S5', rank: 8, photo: '/core-team/alan-e-alexander' },
+  { id: 'asna-a', name: 'Asna A', designation: 'Executive Member', semester: 'S5', rank: 8, photo: '/core-team/asna-a' },
+  { id: 'ayaan-mohammed', name: 'Ayaan Mohammed', designation: 'Executive Member', semester: 'S3', rank: 8, photo: '/core-team/ayaan-mohammed' },
+  { id: 'bilal-v', name: 'Bilal V', designation: 'Executive Member', semester: 'S5', rank: 8, photo: '/core-team/bilal-v' },
+  { id: 'jessia-jojo-kanjirathingal', name: 'Jessia Jojo Kanjirathingal', designation: 'Executive Member', semester: 'S3', rank: 8, photo: '/core-team/jessia-jojo-kanjirathingal' },
+  { id: 'maria-francies', name: 'Maria Francies', designation: 'Executive Member', semester: 'S3 AD-B', rank: 8, photo: '/core-team/maria-francies' },
+  { id: 'rithul-r-nair', name: 'Rithul R Nair', designation: 'Executive Member', semester: 'S3 AD-B', rank: 8, photo: '/core-team/rithul-r-nair' },
+];
+
+const updatedData = baseMembers.map(m => {
+  const norm = normalize(m.name);
+  let matched = excelMap.get(norm);
+
+  if (!matched) {
+    for (const [key, val] of excelMap.entries()) {
+      if (norm.includes(key) || key.includes(norm)) {
+        matched = val;
+        break;
+      }
+    }
+  }
+
+  const email = matched?.email || `${m.id}@jecc.ac.in`;
+  const linkedin = matched?.linkedin || `https://www.linkedin.com/in/${m.id}`;
+
+  return {
+    ...m,
+    email,
+    linkedin,
+  };
+});
+
+console.log('--- Processed Core Team Data ---');
+updatedData.forEach(m => {
+  console.log(`[${m.id}] ${m.name} -> Email: ${m.email} | LinkedIn: ${m.linkedin}`);
+});
+
+const code = `export const coreTeamData = ${JSON.stringify(updatedData, null, 2)};\n`;
+fs.writeFileSync('./src/data/coreTeamData.js', code, 'utf-8');
+console.log('\nSuccessfully updated src/data/coreTeamData.js!');

@@ -111,6 +111,7 @@ export default function EventsPage({ onNavigate, filterParam }) {
   });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const ITEMS_PER_PAGE = 12; // 4 rows of 3-column grid
 
   // Scroll to top on mount
@@ -185,10 +186,11 @@ export default function EventsPage({ onNavigate, filterParam }) {
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredEvents.length / ITEMS_PER_PAGE) || 1;
-  const paginatedEvents = useMemo(() => {
+  const displayEvents = useMemo(() => {
+    if (showAll) return filteredEvents;
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredEvents.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredEvents, currentPage]);
+  }, [filteredEvents, currentPage, showAll]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -360,7 +362,7 @@ export default function EventsPage({ onNavigate, filterParam }) {
         {filteredEvents.length > 0 ? (
           <>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {paginatedEvents.map((event) => (
+              {displayEvents.map((event) => (
                 <li key={event.id}>
                   <button
                     type="button"
@@ -404,6 +406,9 @@ export default function EventsPage({ onNavigate, filterParam }) {
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
+              showAll={showAll}
+              onToggleShowAll={setShowAll}
+              totalItems={filteredEvents.length}
             />
           </>
         ) : (
