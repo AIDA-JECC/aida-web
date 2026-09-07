@@ -252,6 +252,48 @@ const normalizedAchievements = rawRows.map((row, index) => {
   };
 });
 
+// Round-robin student interleaving algorithm so no consecutive entries share the same student
+function mixAndInterleaveStudents(records) {
+  if (!records || records.length <= 1) return records;
+
+  const yearMap = new Map();
+  records.forEach(r => {
+    const yr = String(r.year || '2026');
+    if (!yearMap.has(yr)) yearMap.set(yr, []);
+    yearMap.get(yr).push(r);
+  });
+
+  const result = [];
+
+  for (const [yr, yrRecords] of yearMap.entries()) {
+    const studentBuckets = new Map();
+    yrRecords.forEach(r => {
+      const key = String(r.registerNumber || r.studentName || '').toLowerCase().trim();
+      if (!studentBuckets.has(key)) studentBuckets.set(key, []);
+      studentBuckets.get(key).push(r);
+    });
+
+    const keys = Array.from(studentBuckets.keys());
+    let addedCount = 0;
+    const totalInYear = yrRecords.length;
+
+    while (addedCount < totalInYear) {
+      let progressThisRound = false;
+      for (const k of keys) {
+        const bucket = studentBuckets.get(k);
+        if (bucket && bucket.length > 0) {
+          result.push(bucket.shift());
+          addedCount++;
+          progressThisRound = true;
+        }
+      }
+      if (!progressThisRound) break;
+    }
+  }
+
+  return result;
+}
+
 // 6. Separate achievements into records WITH local image vs WITHOUT local image
 const sortFn = (a, b) => {
   const yrA = parseInt(a.year, 10) || 0;
@@ -267,11 +309,14 @@ const sortFn = (a, b) => {
   return idA - idB;
 };
 
-const withImages = normalizedAchievements.filter(item => item.hasLocalImage);
-const withoutImages = normalizedAchievements.filter(item => !item.hasLocalImage);
+let withImages = normalizedAchievements.filter(item => item.hasLocalImage);
+let withoutImages = normalizedAchievements.filter(item => !item.hasLocalImage);
 
 withImages.sort(sortFn);
 withoutImages.sort(sortFn);
+
+withImages = mixAndInterleaveStudents(withImages);
+withoutImages = mixAndInterleaveStudents(withoutImages);
 
 // Remove temporary internal property before export
 withImages.forEach(item => delete item.hasLocalImage);
@@ -292,3 +337,4 @@ export const achievementsData = ${JSON.stringify(finalAchievements, null, 2)};
 
 fs.writeFileSync('./src/data/achievementsData.js', code, 'utf-8');
 console.log(`Successfully generated src/data/achievementsData.js with ${finalAchievements.length} achievements!`);
+

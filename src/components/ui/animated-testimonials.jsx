@@ -14,18 +14,35 @@ export const AnimatedTestimonials = ({
   onSelectAchievement,
   isModalOpen = false,
 }) => {
+  const containerRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [isDelayPaused, setIsDelayPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const delayTimeoutRef = useRef(null);
 
-  // Trigger 3-second pause before resuming autoplay after interactions
+  // IntersectionObserver detects when achievements carousel is visible in viewport
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // Trigger 4-second pause before resuming autoplay after interactions
   const trigger3SecPause = () => {
     setIsDelayPaused(true);
     if (delayTimeoutRef.current) clearTimeout(delayTimeoutRef.current);
     delayTimeoutRef.current = setTimeout(() => {
       setIsDelayPaused(false);
-    }, 3000);
+    }, 4000);
   };
 
   const handleNext = () => {
@@ -38,27 +55,22 @@ export const AnimatedTestimonials = ({
     trigger3SecPause();
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    trigger3SecPause();
-  };
-
   const isActive = (index) => {
     return index === active;
   };
 
-  // Autoplay control with pause on hover, button click, or modal open + 3s resume delay
+  // Autoplay control: advances every 4 seconds ONLY when in viewport and NOT paused by button interaction or open modal
   useEffect(() => {
-    if (!autoplay || isHovered || isDelayPaused || isModalOpen) return;
+    if (!autoplay || !isInView || isDelayPaused || isModalOpen || testimonials.length <= 1) return;
 
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [autoplay, isHovered, isDelayPaused, isModalOpen, testimonials.length]);
+  }, [autoplay, isInView, isDelayPaused, isModalOpen, testimonials.length]);
 
-  // When modal closes, trigger 3s pause before resuming autoplay
+  // When modal closes, trigger 4s pause before resuming autoplay
   useEffect(() => {
     if (!isModalOpen) {
       trigger3SecPause();
@@ -77,8 +89,7 @@ export const AnimatedTestimonials = ({
 
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
+      ref={containerRef}
       className={cn("max-w-sm md:max-w-5xl lg:max-w-6xl mx-auto px-4 md:px-8 py-6", className)}
     >
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">

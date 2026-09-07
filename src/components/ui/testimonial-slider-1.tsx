@@ -96,35 +96,45 @@ export const TestimonialSlider = ({
   reviews,
   className,
   initialIndex = 0,
-  autoplayInterval = 5000,
+  autoplayInterval = 4000,
   reverseLayout = false,
 }: TestimonialSliderProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isPaused, setIsPaused] = useState(false);
-  const [hasBeenReached, setHasBeenReached] = useState(false);
+  const [isInteractionPaused, setIsInteractionPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // IntersectionObserver detects when section is reached for the FIRST time
+  // Pause timer for 4 seconds after any manual user action (click/touch)
+  const triggerUserPause = useCallback(() => {
+    setIsInteractionPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsInteractionPaused(false);
+    }, 4000);
+  }, []);
+
+  // IntersectionObserver detects when carousel enters/leaves viewport
   useEffect(() => {
-    if (hasBeenReached) return;
     const node = containerRef.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setHasBeenReached(true);
-          }
+          setIsInView(entry.isIntersecting);
         });
       },
-      { threshold: 0.01, rootMargin: "50px 0px 50px 0px" }
+      { threshold: 0.1, rootMargin: "50px 0px 50px 0px" }
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
-  }, [hasBeenReached]);
+    return () => {
+      observer.disconnect();
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
+  }, []);
 
   if (!reviews || reviews.length === 0) {
     return null;
@@ -142,21 +152,32 @@ export const TestimonialSlider = ({
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   }, [reviews.length]);
 
+  const handleNextWithPause = () => {
+    triggerUserPause();
+    handleNext();
+  };
+
+  const handlePrevWithPause = () => {
+    triggerUserPause();
+    handlePrev();
+  };
+
   const handleThumbnailClick = (index: number) => {
+    triggerUserPause();
     setDirection(index > currentIndex ? "right" : "left");
     setCurrentIndex(index);
   };
 
-  // Autoplay carousel timer: starts once section has been reached once, then continues endlessly on all devices
+  // Autoplay carousel timer: advances every 4 seconds when in viewport
   useEffect(() => {
-    if (!hasBeenReached || isPaused || reviews.length <= 1) return;
+    if (!isInView || isInteractionPaused || reviews.length <= 1) return;
 
     const timer = setInterval(() => {
       handleNext();
     }, autoplayInterval);
 
     return () => clearInterval(timer);
-  }, [hasBeenReached, isPaused, reviews.length, autoplayInterval, handleNext]);
+  }, [isInView, isInteractionPaused, reviews.length, autoplayInterval, handleNext]);
 
   // Get the next 5 reviews for thumbnails in order, wrapping around the reviews array
   const thumbnailCount = Math.min(5, reviews.length);
@@ -186,8 +207,6 @@ export const TestimonialSlider = ({
   return (
     <div
       ref={containerRef}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       className={cn(
         "relative w-full overflow-hidden bg-transparent text-foreground p-0 sm:p-2 md:p-4",
         className
@@ -200,7 +219,7 @@ export const TestimonialSlider = ({
         {/* Top Header Controls: Prev Arrow (Left) | Counter (Center) | Next Arrow (Right) */}
         <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <button
-            onClick={handlePrev}
+            onClick={handlePrevWithPause}
             className="w-10 h-10 rounded-full border border-neutral-700 bg-neutral-900/90 text-white flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition-colors active:scale-95 cursor-pointer shadow-md"
             aria-label="Previous member"
           >
@@ -212,7 +231,7 @@ export const TestimonialSlider = ({
           </span>
 
           <button
-            onClick={handleNext}
+            onClick={handleNextWithPause}
             className="w-10 h-10 rounded-full border border-red-600 bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition-colors active:scale-95 cursor-pointer shadow-md shadow-red-950/50"
             aria-label="Next member"
           >
@@ -581,7 +600,7 @@ export const TestimonialSlider = ({
               variant="outline"
               size="icon"
               className="rounded-full w-10 h-10 md:w-12 md:h-12 border-neutral-700 bg-neutral-900/80 text-white hover:bg-red-600 hover:border-red-600 transition-colors cursor-pointer"
-              onClick={handlePrev}
+              onClick={handlePrevWithPause}
               aria-label="Previous member"
             >
               <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
@@ -590,7 +609,7 @@ export const TestimonialSlider = ({
               variant="default"
               size="icon"
               className="rounded-full w-10 h-10 md:w-12 md:h-12 bg-red-600 text-white hover:bg-red-700 transition-colors shadow-lg shadow-red-950/50 cursor-pointer"
-              onClick={handleNext}
+              onClick={handleNextWithPause}
               aria-label="Next member"
             >
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />

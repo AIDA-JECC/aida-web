@@ -1,33 +1,79 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Calendar, MapPin, Archive, Flame, ArrowUpRight } from 'lucide-react';
 import { eventsData } from '../data/siteData';
 import EventArtwork from './EventArtwork';
 
 export default function YodhaSection() {
+  const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isInteractionPaused, setIsInteractionPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const pauseTimerRef = useRef(null);
+
   const featuredEvents = eventsData.filter((event) => event.status === 'Upcoming');
 
+  const triggerPause = useCallback(() => {
+    setIsInteractionPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsInteractionPaused(false);
+    }, 4000);
+  }, []);
+
   const handleNext = () => {
+    triggerPause();
     setCurrentIndex((previous) => (previous + 1) % featuredEvents.length);
   };
 
   const handlePrev = () => {
+    triggerPause();
     setCurrentIndex((previous) => (previous - 1 + featuredEvents.length) % featuredEvents.length);
   };
 
+  const handleSelectIndex = (index) => {
+    triggerPause();
+    setCurrentIndex(index);
+  };
+
+  // IntersectionObserver detects when YodhaSection is visible in viewport
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
+  }, []);
+
+  // Autoplay control: advances every 4 seconds ONLY when in viewport
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !isInView || isInteractionPaused || featuredEvents.length <= 1) return undefined;
+
     const timer = window.setInterval(() => {
       setCurrentIndex((previous) => (previous + 1) % featuredEvents.length);
-    }, 7000);
+    }, 4000);
+
     return () => window.clearInterval(timer);
-  }, [featuredEvents.length]);
+  }, [featuredEvents.length, isInView, isInteractionPaused]);
 
   const current = featuredEvents[currentIndex];
   if (!current) return null;
 
   return (
-    <section id="yodha" className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-neutral-800/80">
+    <section
+      ref={containerRef}
+      id="yodha"
+      className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-neutral-800/80"
+    >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
           <span className="font-mono text-xs tracking-widest text-red-500 uppercase mb-2 block">• UPCOMING EVENTS</span>
@@ -143,7 +189,7 @@ export default function YodhaSection() {
           <button
             key={event.id}
             type="button"
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => handleSelectIndex(index)}
             className={`h-1.5 rounded-full transition-all cursor-pointer ${
               currentIndex === index ? 'w-8 bg-red-600' : 'w-2 bg-neutral-800'
             }`}

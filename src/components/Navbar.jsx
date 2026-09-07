@@ -79,6 +79,7 @@ export default function Navbar({ onVerifyClick }) {
             'about',
             'events',
             'achievements',
+            'publications',
             'projects',
             'placements',
             'team',

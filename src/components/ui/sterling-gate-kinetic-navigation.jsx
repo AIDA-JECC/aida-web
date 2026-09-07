@@ -19,6 +19,7 @@ const navItemsData = [
   { heading: 'About AIDA', href: '#about', id: 'about', shape: '2' },
   { heading: 'Events & Workshops', href: '#events', id: 'events', shape: '3' },
   { heading: 'Achievements', href: '#achievements', id: 'achievements', shape: '4' },
+  { heading: 'Publications', href: '#publications', id: 'publications', shape: '11' },
   { heading: 'Academic Projects', href: '#projects', id: 'projects', shape: '5' },
   { heading: 'Placements & Internships', href: '#placements', id: 'placements', shape: '10' },
   { heading: 'Meet Our Faculty', href: '#team', id: 'team', shape: '6' },
@@ -32,6 +33,7 @@ const SECTION_NAMES = {
   about: 'ABOUT',
   events: 'EVENTS',
   achievements: 'ACHIEVEMENTS',
+  publications: 'PUBLICATIONS',
   projects: 'PROJECTS',
   placements: 'PLACEMENTS',
   team: 'FACULTY',
@@ -350,6 +352,14 @@ export function SterlingGateKineticNavigation({
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
                   <span className="shape-element absolute font-serif text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     HONORS
+                  </span>
+                </div>
+
+                {/* Shape 11: Publications */}
+                <div className="bg-shape bg-shape-11 flex items-center justify-center pointer-events-none">
+                  <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
+                  <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
+                    RESEARCH
                   </span>
                 </div>
 

@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { facultyData } from '../data/facultyData';
 import { academicProjectsData } from '../data/academicProjectsData';
+import { staffPublications } from '../data/publicationsData';
 import SafeImage from '../components/ui/SafeImage';
 import ProjectControls from '../components/projects/ProjectControls';
 import ProjectCard from '../components/projects/ProjectCard';
@@ -8,7 +9,7 @@ import ProjectEmptyState from '../components/projects/ProjectEmptyState';
 import PaginationBar from '../components/ui/PaginationBar';
 import LinkedinIcon from '../components/ui/LinkedinIcon';
 import { getProjectsByFaculty, matchesProjectSearch, sortProjectsByPriority, findFacultyByGuideName, normalizeName } from '../utils/projectHelpers';
-import { ArrowLeft, Mail, Phone, FolderGit2, Sparkles, UserCheck, GraduationCap, Globe, Award, Hash, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Mail, Phone, FolderGit2, Sparkles, UserCheck, GraduationCap, Globe, Award, Hash, ExternalLink, BookOpen } from 'lucide-react';
 
 // Sequential Typewriter Component: Types Name first, then types Role/Designation after Name completes
 function SequentialTypewriterHeader({ name, designation }) {
@@ -118,6 +119,17 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
     return getProjectsByFaculty(faculty.name, academicProjectsData);
   }, [faculty]);
 
+  // Find all staff publications authored by this faculty member
+  const facultyPublications = useMemo(() => {
+    if (!faculty) return [];
+    const normFac = normalizeName(faculty.name);
+    return staffPublications.filter((pub) => {
+      if (pub.facultySlug && pub.facultySlug === faculty.slug) return true;
+      const normPub = normalizeName(pub.facultyName);
+      return normPub === normFac || normPub.includes(normFac) || normFac.includes(normPub);
+    });
+  }, [faculty]);
+
   // Filter guided projects dynamically
   const filteredGuidedProjects = useMemo(() => {
     const list = allGuidedProjects.filter((project) => {
@@ -224,6 +236,10 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
                     <span>ID: {faculty.employeeId}</span>
                   </span>
                 )}
+                <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <BookOpen size={13} className="text-red-500" />
+                  <span>{facultyPublications.length} Publications</span>
+                </span>
                 <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <FolderGit2 size={13} className="text-red-500" />
                   <span>{allGuidedProjects.length} Supervised Projects</span>
@@ -343,6 +359,86 @@ export default function FacultyProfilePage({ slugOrName, onNavigate }) {
           </div>
         </div>
       </div>
+
+      {/* Faculty Publications Section (Above Projects Area) */}
+      {facultyPublications.length > 0 && (
+        <div className="max-w-7xl mx-auto mb-16 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-4">
+            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-white flex items-center gap-2">
+              <BookOpen className="text-red-600" />
+              <span>Research <span className="text-red-600 italic">Publications</span></span>
+            </h2>
+            <span className="font-mono text-xs text-neutral-400">
+              Showing <span className="text-red-500 font-bold">{facultyPublications.length}</span> publications
+            </span>
+          </div>
+
+          <div className="bg-[#080808] border border-neutral-800/90 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[700px]">
+                <thead>
+                  <tr className="border-b border-neutral-800/90 bg-[#0c0c0e]/90 text-red-500 font-mono text-xs sm:text-sm font-semibold tracking-wide select-none">
+                    <th className="py-4 px-4 sm:px-6 w-[45%]">Paper Title</th>
+                    <th className="py-4 px-4 sm:px-6 w-[30%]">Journal / Conference</th>
+                    <th className="py-4 px-4 sm:px-6 w-[15%]">Indexing</th>
+                    <th className="py-4 px-4 sm:px-6 w-[10%] text-center">DOI / Link</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-neutral-800/50 text-sm font-sans">
+                  {facultyPublications.map((pub) => (
+                    <tr key={pub.id} className="group hover:bg-neutral-900/60 transition-colors duration-150">
+                      <td className="py-4 px-4 sm:px-6">
+                        <span className="font-semibold text-white group-hover:text-red-400 transition-colors text-sm sm:text-base block">
+                          {pub.paperTitle}
+                        </span>
+                        <span className="text-xs text-neutral-400 font-mono block mt-1">
+                          Type: <span className="text-neutral-300 font-medium">{pub.publicationType}</span>
+                          {pub.publisher && <span> • Publisher: {pub.publisher}</span>}
+                        </span>
+                      </td>
+
+                      <td className="py-4 px-4 sm:px-6 text-neutral-300 text-xs sm:text-sm">
+                        <span className="line-clamp-2">{pub.venue || '—'}</span>
+                        <span className="text-[11px] font-mono text-neutral-500 block mt-0.5">{pub.date}</span>
+                      </td>
+
+                      <td className="py-4 px-4 sm:px-6">
+                        <span
+                          className={`inline-block px-2.5 py-1 rounded-full font-mono text-[11px] font-bold uppercase tracking-wider ${
+                            pub.indexing.toLowerCase().includes('scopus')
+                              ? 'bg-purple-950/70 border border-purple-500/40 text-purple-300'
+                              : pub.indexing.toLowerCase().includes('sci')
+                              ? 'bg-emerald-950/70 border border-emerald-500/40 text-emerald-300'
+                              : 'bg-neutral-900 border border-neutral-700 text-neutral-300'
+                          }`}
+                        >
+                          {pub.indexing}
+                        </span>
+                      </td>
+
+                      <td className="py-4 px-4 sm:px-6 text-center">
+                        {pub.doiUrl ? (
+                          <a
+                            href={pub.doiUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center p-2 rounded-xl bg-neutral-900 hover:bg-red-600/20 border border-neutral-800 hover:border-red-500/60 text-red-400 hover:text-white transition-all group/link"
+                            title={pub.doi ? `DOI: ${pub.doi}` : 'View Publication Link'}
+                          >
+                            <ExternalLink size={15} className="group-hover/link:scale-110 transition-transform" />
+                          </a>
+                        ) : (
+                          <span className="text-neutral-600 font-mono text-xs">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Supervised Academic Projects Section */}
       <div className="max-w-7xl mx-auto space-y-6">

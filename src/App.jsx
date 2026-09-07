@@ -7,6 +7,7 @@ import YodhaSection from './components/YodhaSection';
 import EventsSection from './components/EventsSection';
 import AchievementsSection from './components/AchievementsSection';
 import AcademicProjectsSection from './components/projects/AcademicProjectsSection';
+import PublicationsSection from './components/PublicationsSection';
 import PlacementsSection from './components/PlacementsSection';
 import Team from './components/Team';
 import CoreTeamSection from './components/CoreTeamSection';
@@ -23,11 +24,15 @@ import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import AchievementsPage from './pages/AchievementsPage';
 import EventsPage from './pages/EventsPage';
 import PlacementsPage from './pages/PlacementsPage';
+import PublicationsPage from './pages/PublicationsPage';
 
 function getRouteFromHash() {
   const hash = window.location.hash || '';
   if (hash.startsWith('#/projects')) {
     return { type: 'projects' };
+  }
+  if (hash.startsWith('#/publications')) {
+    return { type: 'publications' };
   }
   if (hash.startsWith('#/placements')) {
     return { type: 'placements' };
@@ -91,6 +96,8 @@ export default function App() {
   const handleNavigate = (pageType, param) => {
     if (pageType === 'projects') {
       window.location.hash = '#/projects';
+    } else if (pageType === 'publications') {
+      window.location.hash = '#/publications';
     } else if (pageType === 'placements') {
       window.location.hash = '#/placements';
     } else if (pageType === 'events') {
@@ -125,6 +132,15 @@ export default function App() {
       <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
         <GlobalDotField />
         <ProjectsPage onNavigate={handleNavigate} />
+      </div>
+    );
+  }
+
+  if (route.type === 'publications') {
+    return (
+      <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+        <GlobalDotField />
+        <PublicationsPage onNavigate={handleNavigate} />
       </div>
     );
   }
@@ -210,6 +226,11 @@ export default function App() {
         {/* 4. Achievements */}
         <div id="achievements" className="bg-[#080808] border-t border-neutral-800/60">
           <AchievementsSection onNavigate={handleNavigate} />
+        </div>
+
+        {/* 4.4. Publications Showcase (Staff & Student Publications) */}
+        <div id="publications" className="bg-[#080808] border-t border-neutral-800/60">
+          <PublicationsSection showAll={false} onNavigate={handleNavigate} />
         </div>
 
         {/* 4.5. Academic Projects Showcase (Top 4 Priority Projects + VIEW ALL) */}

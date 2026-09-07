@@ -156,13 +156,56 @@ const normalizedPlacements = rawPlacements.map((row, index) => {
   };
 });
 
-// Sort Placements latest year first
+// Round-robin student interleaving algorithm so no consecutive entries share the same student
+function mixAndInterleaveStudents(records) {
+  if (!records || records.length <= 1) return records;
+
+  const yearMap = new Map();
+  records.forEach(r => {
+    const yr = String(r.year || '2026');
+    if (!yearMap.has(yr)) yearMap.set(yr, []);
+    yearMap.get(yr).push(r);
+  });
+
+  const result = [];
+
+  for (const [yr, yrRecords] of yearMap.entries()) {
+    const studentBuckets = new Map();
+    yrRecords.forEach(r => {
+      const key = String(r.registerNumber || r.studentName || '').toLowerCase().trim();
+      if (!studentBuckets.has(key)) studentBuckets.set(key, []);
+      studentBuckets.get(key).push(r);
+    });
+
+    const keys = Array.from(studentBuckets.keys());
+    let addedCount = 0;
+    const totalInYear = yrRecords.length;
+
+    while (addedCount < totalInYear) {
+      let progressThisRound = false;
+      for (const k of keys) {
+        const bucket = studentBuckets.get(k);
+        if (bucket && bucket.length > 0) {
+          result.push(bucket.shift());
+          addedCount++;
+          progressThisRound = true;
+        }
+      }
+      if (!progressThisRound) break;
+    }
+  }
+
+  return result;
+}
+
+// Sort & Interleave Placements latest year first
 normalizedPlacements.sort((a, b) => {
   const yrA = parseInt(a.year, 10) || 0;
   const yrB = parseInt(b.year, 10) || 0;
   if (yrB !== yrA) return yrB - yrA;
   return a.slNo - b.slNo;
 });
+const interleavedPlacements = mixAndInterleaveStudents(normalizedPlacements);
 
 // 2. Read public/Internship Company Details - Complete.xlsx
 const internshipPath = './public/Internship Company Details - Complete.xlsx';
@@ -206,18 +249,19 @@ const normalizedInternships = rawInternships.map((row, index) => {
   };
 });
 
-// Sort Internships latest year first
+// Sort & Interleave Internships latest year first
 normalizedInternships.sort((a, b) => {
   const yrA = parseInt(a.year, 10) || 0;
   const yrB = parseInt(b.year, 10) || 0;
   if (yrB !== yrA) return yrB - yrA;
   return a.slNo - b.slNo;
 });
+const interleavedInternships = mixAndInterleaveStudents(normalizedInternships);
 
-// Combined dataset: 1st Placements (latest first), 2nd Internships (latest first)
-const combinedData = [...normalizedPlacements, ...normalizedInternships];
+// Combined dataset: 1st Interleaved Placements (latest first), 2nd Interleaved Internships (latest first)
+const combinedData = [...interleavedPlacements, ...interleavedInternships];
 
-console.log(`Total combined records: ${combinedData.length} (Placements: ${normalizedPlacements.length}, Internships: ${normalizedInternships.length})`);
+console.log(`Total combined records: ${combinedData.length} (Placements: ${interleavedPlacements.length}, Internships: ${interleavedInternships.length})`);
 
 const code = `// Auto-generated from placements.xlsx and Internship Company Details - Complete.xlsx
 export const placementsData = ${JSON.stringify(combinedData, null, 2)};
@@ -226,3 +270,4 @@ export const placementsData = ${JSON.stringify(combinedData, null, 2)};
 const outputPath = './src/data/placementsData.js';
 fs.writeFileSync(outputPath, code, 'utf-8');
 console.log(`Successfully generated ${outputPath} with ${combinedData.length} total records!`);
+

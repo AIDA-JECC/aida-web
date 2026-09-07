@@ -6,7 +6,7 @@ import HeroDotField from './HeroDotField';
 import { motion } from 'framer-motion';
 
 const showcaseEvents = eventsData.slice(0, 3);
-const ROTATION_INTERVAL = 2500; // 2.5 seconds auto-rotation
+const ROTATION_INTERVAL = 4000; // 4 seconds auto-rotation
 
 // Fixed colors per card index — these never change when cards rotate
 const cardColors = [
@@ -178,8 +178,6 @@ const cardLayouts = [
             <div
               aria-label={`Explore the event showcase. Currently showing ${activeEvent.name}`}
               className={`relative w-[min(88vw,330px)] sm:w-[340px] md:w-[380px] h-[220px] sm:h-[260px] cursor-pointer group select-none text-left ${prefersReducedMotion || rotationPaused ? '' : 'animate-float-slow'}`}
-              onMouseEnter={() => setRotationPaused(true)}
-              onMouseLeave={() => setRotationPaused(false)}
             >
               {showcaseEvents.map((event, eventIndex) => {
                 const position = (eventIndex - activeEventIndex + showcaseEvents.length) % showcaseEvents.length;
@@ -199,13 +197,15 @@ const cardLayouts = [
                     dragSnapToOrigin={true}
                     onDragStart={() => setRotationPaused(true)}
                     onDragEnd={(e, info) => {
-                      setRotationPaused(false);
                       const distance = Math.hypot(info.offset.x, info.offset.y);
                       const velocity = Math.hypot(info.velocity.x, info.velocity.y);
                       if (distance > 25 || velocity > 250) {
                         // Card released: send top card smoothly to back, bring down card to front
                         setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
                       }
+                      setTimeout(() => {
+                        setRotationPaused(false);
+                      }, 4000);
                     }}
                     onClick={() => {
                       if (isFront) {

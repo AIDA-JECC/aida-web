@@ -63,13 +63,13 @@ export function CoverflowCarousel({
   const [isInView, setIsInView] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
 
-  // Pause timer handler (1.5 seconds delay on button click or touch action)
+  // Pause timer handler (4 seconds delay on button click or touch action)
   const triggerPause = React.useCallback(() => {
     setIsPaused(true);
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsPaused(false);
-    }, 1500);
+    }, 4000);
   }, []);
 
   // IntersectionObserver: auto-scroll activates ONLY when section enters viewport
@@ -272,7 +272,7 @@ export function CoverflowCarousel({
         const target = loop ? currentTarget + 1 : Math.min(count - 1, currentTarget + 1);
         settle(target);
       }
-    }, 3200);
+    }, 4000);
     return () => clearInterval(timer);
   }, [count, isInView, isPaused, pauseAutoPlay, loop, settle]);
 
