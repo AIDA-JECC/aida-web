@@ -69,7 +69,7 @@ export function CoverflowCarousel({
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsPaused(false);
-    }, 4000);
+    }, 11000);
   }, []);
 
   // IntersectionObserver: auto-scroll activates ONLY when section enters viewport
@@ -272,7 +272,7 @@ export function CoverflowCarousel({
         const target = loop ? currentTarget + 1 : Math.min(count - 1, currentTarget + 1);
         settle(target);
       }
-    }, 4000);
+    }, 11000);
     return () => clearInterval(timer);
   }, [count, isInView, isPaused, pauseAutoPlay, loop, settle]);
 

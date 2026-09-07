@@ -17,7 +17,7 @@ export default function YodhaSection() {
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsInteractionPaused(false);
-    }, 4000);
+    }, 11000);
   }, []);
 
   const handleNext = () => {
@@ -54,13 +54,13 @@ export default function YodhaSection() {
     };
   }, []);
 
-  // Autoplay control: advances every 4 seconds ONLY when in viewport
+  // Autoplay control: advances every 11 seconds ONLY when in viewport
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !isInView || isInteractionPaused || featuredEvents.length <= 1) return undefined;
 
     const timer = window.setInterval(() => {
       setCurrentIndex((previous) => (previous + 1) % featuredEvents.length);
-    }, 4000);
+    }, 11000);
 
     return () => window.clearInterval(timer);
   }, [featuredEvents.length, isInView, isInteractionPaused]);

@@ -7,11 +7,16 @@ const TypewriterAnswer = ({ text }) => {
   
   useEffect(() => {
     let i = 0;
+    const step = 5;
     const interval = setInterval(() => {
-      setDisplayedText(text.slice(0, i));
-      i++;
-      if (i > text.length) clearInterval(interval);
-    }, 15);
+      i += step;
+      if (i >= text.length) {
+        setDisplayedText(text);
+        clearInterval(interval);
+      } else {
+        setDisplayedText(text.slice(0, i));
+      }
+    }, 4);
     return () => clearInterval(interval);
   }, [text]);
 

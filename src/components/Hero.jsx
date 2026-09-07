@@ -6,7 +6,7 @@ import HeroDotField from './HeroDotField';
 import { motion } from 'framer-motion';
 
 const showcaseEvents = eventsData.slice(0, 3);
-const ROTATION_INTERVAL = 4000; // 4 seconds auto-rotation
+const ROTATION_INTERVAL = 11000; // 11 seconds auto-rotation
 
 // Fixed colors per card index — these never change when cards rotate
 const cardColors = [
@@ -205,7 +205,7 @@ const cardLayouts = [
                       }
                       setTimeout(() => {
                         setRotationPaused(false);
-                      }, 4000);
+                      }, 11000);
                     }}
                     onClick={() => {
                       if (isFront) {

@@ -36,13 +36,13 @@ export const AnimatedTestimonials = ({
     return () => observer.disconnect();
   }, []);
 
-  // Trigger 4-second pause before resuming autoplay after interactions
+  // Trigger 11-second pause before resuming autoplay after interactions
   const trigger3SecPause = () => {
     setIsDelayPaused(true);
     if (delayTimeoutRef.current) clearTimeout(delayTimeoutRef.current);
     delayTimeoutRef.current = setTimeout(() => {
       setIsDelayPaused(false);
-    }, 4000);
+    }, 11000);
   };
 
   const handleNext = () => {
@@ -59,13 +59,13 @@ export const AnimatedTestimonials = ({
     return index === active;
   };
 
-  // Autoplay control: advances every 4 seconds ONLY when in viewport and NOT paused by button interaction or open modal
+  // Autoplay control: advances every 11 seconds ONLY when in viewport and NOT paused by open modal
   useEffect(() => {
     if (!autoplay || !isInView || isDelayPaused || isModalOpen || testimonials.length <= 1) return;
 
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
+    }, 11000);
 
     return () => clearInterval(interval);
   }, [autoplay, isInView, isDelayPaused, isModalOpen, testimonials.length]);

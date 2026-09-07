@@ -96,7 +96,7 @@ export const TestimonialSlider = ({
   reviews,
   className,
   initialIndex = 0,
-  autoplayInterval = 4000,
+  autoplayInterval = 11000,
   reverseLayout = false,
 }: TestimonialSliderProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -112,7 +112,7 @@ export const TestimonialSlider = ({
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsInteractionPaused(false);
-    }, 4000);
+    }, 11000);
   }, []);
 
   // IntersectionObserver detects when carousel enters/leaves viewport
@@ -168,16 +168,25 @@ export const TestimonialSlider = ({
     setCurrentIndex(index);
   };
 
-  // Autoplay carousel timer: advances every 4 seconds when in viewport
+  // Autoplay carousel timer: Types text, then waits 11 seconds after typing finishes before advancing
   useEffect(() => {
-    if (!isInView || isInteractionPaused || reviews.length <= 1) return;
+    if (!isInView || reviews.length <= 1) return;
 
-    const timer = setInterval(() => {
+    const longestTextLength = Math.max(
+      activeReview.name?.length || 0,
+      activeReview.affiliation?.length || 0,
+      activeReview.quote?.length || 0
+    );
+    const typingTimeMs = (longestTextLength * 15) + 300;
+    const holdAfterTypingMs = 11000; // 11 seconds wait after typing completes
+    const totalDelay = typingTimeMs + holdAfterTypingMs;
+
+    const timer = setTimeout(() => {
       handleNext();
-    }, autoplayInterval);
+    }, totalDelay);
 
-    return () => clearInterval(timer);
-  }, [isInView, isInteractionPaused, reviews.length, autoplayInterval, handleNext]);
+    return () => clearTimeout(timer);
+  }, [currentIndex, isInView, reviews.length, activeReview, handleNext]);
 
   // Get the next 5 reviews for thumbnails in order, wrapping around the reviews array
   const thumbnailCount = Math.min(5, reviews.length);

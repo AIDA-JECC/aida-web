@@ -154,8 +154,6 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
   return (
     <div
       className="relative z-30 mb-8 overflow-hidden bg-neutral-950/40 border-x border-red-900/40 border-y-0 py-2.5 sm:py-3 px-2 backdrop-blur-md"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-transparent pointer-events-none z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-[#080808] via-[#080808]/80 to-transparent pointer-events-none z-10" />
@@ -163,7 +161,7 @@ function CompanyMarquee({ companies, selectedCompany, onSelectCompany }) {
       <div
         className="flex items-center gap-2.5 sm:gap-3.5 w-max animate-marqueeTrack"
         style={{
-          animationPlayState: isHovered || isPaused ? 'paused' : 'running',
+          animationPlayState: isPaused ? 'paused' : 'running',
         }}
         onTouchStart={triggerPause}
         onClick={triggerPause}
