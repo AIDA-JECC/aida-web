@@ -62,14 +62,15 @@ export function CoverflowCarousel({
   const [selected, setSelected] = React.useState(0);
   const [isInView, setIsInView] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
 
-  // Pause timer handler (4 seconds delay on button click or touch action)
+  // Pause timer handler (3 seconds delay on button click or touch action)
   const triggerPause = React.useCallback(() => {
     setIsPaused(true);
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsPaused(false);
-    }, 11000);
+    }, 3000);
   }, []);
 
   // IntersectionObserver: auto-scroll activates ONLY when section enters viewport
@@ -263,18 +264,18 @@ export function CoverflowCarousel({
     return () => observer.disconnect();
   }, [paint]);
 
-  // Auto-play: starts ONLY when section is in view and NOT paused or modal open
+  // Auto-play: starts ONLY when section is in view and NOT paused or hovered or modal open
   React.useEffect(() => {
-    if (!isInView || isPaused || pauseAutoPlay || count <= 1) return undefined;
+    if (!isInView || isPaused || isHovered || pauseAutoPlay || count <= 1) return undefined;
     const timer = setInterval(() => {
       if (!dragRef.current && rafRef.current === null) {
         const currentTarget = Math.round(targetRef.current);
         const target = loop ? currentTarget + 1 : Math.min(count - 1, currentTarget + 1);
         settle(target);
       }
-    }, 11000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [count, isInView, isPaused, pauseAutoPlay, loop, settle]);
+  }, [count, isInView, isPaused, isHovered, pauseAutoPlay, loop, settle]);
 
   React.useEffect(
     () => () => {
@@ -288,6 +289,8 @@ export function CoverflowCarousel({
 
   return (
     <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={cn("w-full", className)}
       style={{ ["--cf-card"]: cardWidth }}
       role="region"

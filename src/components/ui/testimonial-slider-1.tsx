@@ -96,26 +96,26 @@ export const TestimonialSlider = ({
   reviews,
   className,
   initialIndex = 0,
-  autoplayInterval = 11000,
+  autoplayInterval = 5000,
   reverseLayout = false,
 }: TestimonialSliderProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [hasEnteredView, setHasEnteredView] = useState(false);
   const [isInteractionPaused, setIsInteractionPaused] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Pause timer for 4 seconds after any manual user action (click/touch)
+  // Pause timer for 2 seconds after manual user click before resuming autoplay
   const triggerUserPause = useCallback(() => {
     setIsInteractionPaused(true);
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsInteractionPaused(false);
-    }, 11000);
+    }, 2000);
   }, []);
 
-  // IntersectionObserver detects when carousel enters/leaves viewport
+  // IntersectionObserver detects when carousel enters viewport to activate autoplay once
   useEffect(() => {
     const node = containerRef.current;
     if (!node) return;
@@ -123,10 +123,12 @@ export const TestimonialSlider = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsInView(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setHasEnteredView(true);
+          }
         });
       },
-      { threshold: 0.1, rootMargin: "50px 0px 50px 0px" }
+      { threshold: 0.05, rootMargin: "100px 0px 100px 0px" }
     );
 
     observer.observe(node);
@@ -168,25 +170,16 @@ export const TestimonialSlider = ({
     setCurrentIndex(index);
   };
 
-  // Autoplay carousel timer: Types text, then waits 11 seconds after typing finishes before advancing
+  // Autoplay carousel timer: advances every 5 seconds (5000ms) continuously once section is reached
   useEffect(() => {
-    if (!isInView || reviews.length <= 1) return;
-
-    const longestTextLength = Math.max(
-      activeReview.name?.length || 0,
-      activeReview.affiliation?.length || 0,
-      activeReview.quote?.length || 0
-    );
-    const typingTimeMs = (longestTextLength * 15) + 300;
-    const holdAfterTypingMs = 11000; // 11 seconds wait after typing completes
-    const totalDelay = typingTimeMs + holdAfterTypingMs;
+    if (!hasEnteredView || isInteractionPaused || reviews.length <= 1) return;
 
     const timer = setTimeout(() => {
       handleNext();
-    }, totalDelay);
+    }, autoplayInterval);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, isInView, reviews.length, activeReview, handleNext]);
+  }, [currentIndex, hasEnteredView, isInteractionPaused, reviews.length, autoplayInterval, handleNext]);
 
   // Get the next 5 reviews for thumbnails in order, wrapping around the reviews array
   const thumbnailCount = Math.min(5, reviews.length);
@@ -216,6 +209,8 @@ export const TestimonialSlider = ({
   return (
     <div
       ref={containerRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={cn(
         "relative w-full overflow-hidden bg-transparent text-foreground p-0 sm:p-2 md:p-4",
         className

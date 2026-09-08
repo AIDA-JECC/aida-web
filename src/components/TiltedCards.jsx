@@ -65,15 +65,15 @@ const pillars = [
     title: "Placements & Internships",
     desc: "Connecting talent with top opportunities through strong industry partnerships and career support.",
     icon: Users,
-    accentColor: "text-neutral-700",
-    numColor: "text-neutral-950",
-    badgeBg: "bg-white border border-neutral-300 text-neutral-900 shadow-sm",
+    accentColor: "text-neutral-400",
+    numColor: "text-white",
+    badgeBg: "bg-neutral-900/90 border border-neutral-700 text-neutral-200",
     lineBg: "bg-red-600",
-    bgStyle: "bg-[#f8f8f6] text-neutral-900 border border-neutral-300",
+    bgStyle: "bg-gradient-to-b from-[#18181b] via-[#111113] to-[#09090b] border border-neutral-800 text-white",
     dotColor: "#ef4444",
     btnText: "Start Your Journey",
     btnIcon: ArrowRight,
-    btnStyle: "bg-[#18181b] hover:bg-black text-white shadow-sm",
+    btnStyle: "bg-white hover:bg-neutral-100 text-neutral-950 shadow-sm",
     actionType: "placements",
   }
 ];
@@ -203,7 +203,7 @@ export default function TiltedCards({ onNavigate }) {
                   key={pillar.id}
                   ref={(el) => (cardRefs.current[idx] = el)}
                   onClick={() => handleStepClick(idx + 1)}
-                  className={`relative overflow-hidden snap-center shrink-0 w-[88vw] max-w-[330px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer transition-all duration-300 ${
+                  className={`pillar-card relative overflow-hidden snap-center shrink-0 w-[88vw] max-w-[330px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer transition-all duration-300 ${
                     isActive ? 'ring-2 ring-red-600/80 shadow-lg scale-[1.01]' : 'opacity-90'
                   } ${pillar.bgStyle}`}
                 >
@@ -281,7 +281,7 @@ export default function TiltedCards({ onNavigate }) {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   onClick={() => setActiveStep(idx + 1)}
                   className={`
-                    relative overflow-hidden w-full h-full min-h-[420px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer
+                    pillar-card relative overflow-hidden w-full h-full min-h-[420px] rounded-[1.75rem] p-6 sm:p-7 flex flex-col justify-between select-none cursor-pointer
                     transition-all duration-300 group hover:-translate-y-1.5
                     ${isActive ? 'ring-2 ring-red-600/70 shadow-lg' : ''}
                     ${pillar.bgStyle}

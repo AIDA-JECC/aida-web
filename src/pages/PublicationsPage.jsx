@@ -29,7 +29,7 @@ export default function PublicationsPage({ onNavigate }) {
             <ArrowLeft size={16} className="text-red-500" />
             <span>BACK TO HOME</span>
           </button>
-          <span className="px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider">
+          <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider">
             RESEARCH &amp; PUBLICATIONS
           </span>
         </div>

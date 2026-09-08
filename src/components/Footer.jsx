@@ -2,8 +2,11 @@ import React from 'react';
 import { siteConfig } from '../data/siteData';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 import HeroDotField from './HeroDotField';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Footer() {
+  const { isLight } = useTheme();
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -11,8 +14,8 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative -mt-[2vh] z-10 bg-[#040404] text-white border-t border-red-900/50 rounded-t-[2.5rem] sm:rounded-t-[4rem] pt-14 sm:pt-20 pb-10 sm:pb-12 overflow-hidden shadow-[0_-24px_80px_rgba(229,9,20,0.15)]">
-      {/* Interactive white dot field animation */}
-      <HeroDotField color="light" className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+      {/* Interactive dot field animation matching active theme mode */}
+      <HeroDotField color={isLight ? 'dark' : 'light'} className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
 
       {/* Ambient background glow */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px] pointer-events-none -z-10" />

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../data/siteData';
 import SterlingGateKineticNavigation from './ui/sterling-gate-kinetic-navigation';
+import { useTheme } from '../context/ThemeContext';
+import { AnimatedThemeToggle } from './ui/animated-theme-toggle';
 
 const TAB_PHRASES = [
   'AIDA JECC',
@@ -8,6 +10,7 @@ const TAB_PHRASES = [
 ];
 
 export default function Navbar({ onVerifyClick }) {
+  const { theme, toggleTheme, isLight } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -127,28 +130,26 @@ export default function Navbar({ onVerifyClick }) {
 
   return (
     <>
-      {/* Brand Capsule (Top Left): Vanishes when menu is open, appears when menu is closed */}
-      <div
-        className={`fixed top-5 left-4 sm:left-8 z-[9999] transition-all duration-300 ${
-          isMenuOpen
-            ? 'opacity-0 pointer-events-none -translate-x-4'
-            : 'opacity-100 pointer-events-auto translate-x-0'
-        }`}
-      >
+      {/* Top Left Bar: Brand Capsule (visible when menu is closed) */}
+      <div className="fixed top-5 left-4 sm:left-8 z-[9999] flex items-center pointer-events-auto">
         <a
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             scrollTo('home');
           }}
-          className="flex items-center gap-2.5 bg-neutral-950/90 border border-red-900/40 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-xl text-white shadow-2xl hover:border-red-600 hover:shadow-[0_0_22px_rgba(229,9,20,0.45)] hover:scale-[1.03] active:scale-95 transition-all duration-300"
+          className={`flex items-center gap-2.5 bg-neutral-950/90 border border-red-900/40 px-3.5 sm:px-4 h-[2.75rem] rounded-full backdrop-blur-xl text-white shadow-2xl hover:border-red-600 hover:shadow-[0_0_22px_rgba(229,9,20,0.45)] hover:scale-[1.03] active:scale-95 transition-all duration-300 ${
+            isMenuOpen
+              ? 'opacity-0 pointer-events-none -translate-x-4 hidden'
+              : 'opacity-100 pointer-events-auto translate-x-0'
+          }`}
         >
           <img
             src={siteConfig.logo}
             alt="AIDA Logo"
             className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 hover:rotate-6"
           />
-          <span className="font-sans font-black text-sm sm:text-base tracking-tight uppercase">
+          <span className="font-sans font-black text-sm sm:text-base tracking-tight uppercase whitespace-nowrap">
             AIDA <span className="font-serif italic text-red-500 font-normal lowercase text-base sm:text-lg">jecc</span>
           </span>
         </a>

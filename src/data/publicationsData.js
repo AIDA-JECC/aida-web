@@ -1,5 +1,124 @@
-// Auto-generated from staff publications.xlsx and Student Publications.xlsx
+// Auto-generated from staff publications.xlsx and Student Publications folder
 export const staffPublications = [
+  {
+    "id": "staff-pub-69",
+    "facultyName": "Ms. Linta A T",
+    "rawFacultyName": "Linta A T",
+    "facultySlug": "linta-a-t",
+    "facultyImage": "/faculty/linta-a-t",
+    "initials": "LA",
+    "paperTitle": "Intelligent security systems data privacy cryptography and cyber protection",
+    "publicationType": "Book Chapter",
+    "venue": "Book chapter",
+    "indexing": "GS",
+    "publisher": "IIP Iterative International Publishers",
+    "date": "06-07-2026",
+    "year": "2026",
+    "doi": "",
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-71",
+    "facultyName": "Mr. Bineesh M",
+    "rawFacultyName": "Bineesh M",
+    "facultySlug": "bineesh-m",
+    "facultyImage": "/faculty/bineesh-m",
+    "initials": "BM",
+    "paperTitle": "An AI-Based Hands-Free Communication System Using Eye Blinks and Morse Code with YOLOv8 and LSTM Prediction",
+    "publicationType": "Conference",
+    "venue": "2026 International Conference on AI-Driven Solutions for Sustainable Smart Cities: Challenges and Opportunities (ADSSSC)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "06-07-2026",
+    "year": "2026",
+    "doi": "10.1109/ADSSSC67751.2026.11582006",
+    "doiUrl": "https://doi.org/10.1109/ADSSSC67751.2026.11582006"
+  },
+  {
+    "id": "staff-pub-74",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr.Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "ZeroPath APP: AI-Powered Waste Classification for Smart Cities Using EfficientNet Publisher",
+    "publicationType": "Conference",
+    "venue": "IEEE",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "06-07-2026",
+    "year": "2026",
+    "doi": "10.1109/ADSSSC67751.2026.11581990",
+    "doiUrl": "https://doi.org/10.1109/ADSSSC67751.2026.11581990"
+  },
+  {
+    "id": "staff-pub-70",
+    "facultyName": "Ms. Divya Konikkara",
+    "rawFacultyName": "Ms. Divya Konikkara",
+    "facultySlug": "divya-konikkara",
+    "facultyImage": "/faculty/divya-konikkara",
+    "initials": "DK",
+    "paperTitle": "Low Cost Braille Display with Real-time Translation",
+    "publicationType": "Conference",
+    "venue": "2025 IEEE 7th International Conference on Cybernetics, Cognition and Machine Learning Applications (ICCCMLA)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "02-07-2026",
+    "year": "2026",
+    "doi": "10.1109/ICCCMLA66092.2025.11581154",
+    "doiUrl": "https://doi.org/10.1109/ICCCMLA66092.2025.11581154"
+  },
+  {
+    "id": "staff-pub-73",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr.Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "Hybrid Intelligent Model for Accurate Plant Disease Detection and Agricultural Productivity Enhancement",
+    "publicationType": "Conference",
+    "venue": "IEEE",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "02-07-2026",
+    "year": "2026",
+    "doi": "10.1109/CCGE67142.2026.11581798",
+    "doiUrl": "https://doi.org/10.1109/CCGE67142.2026.11581798"
+  },
+  {
+    "id": "staff-pub-72",
+    "facultyName": "Ms. Linta A T",
+    "rawFacultyName": "LINTA A T",
+    "facultySlug": "linta-a-t",
+    "facultyImage": "/faculty/linta-a-t",
+    "initials": "LA",
+    "paperTitle": "Chaos-Based Image Encryption using Multi-Map XOR and Conditional Shift Mechanism for Secure Image Communication",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "IIP",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "01-07-2026",
+    "year": "2026",
+    "doi": "",
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-68",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr.Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "Optimized Hybrid Deep Learning Framework for Early Detection of Breast Cancer Using Image Processing Techniques",
+    "publicationType": "Conference",
+    "venue": "International Conference on Intelligent Computing, Networks, and Security",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "02-06-2026",
+    "year": "2026",
+    "doi": "10.1109/IC-ICNS68863.2026.11537446",
+    "doiUrl": "https://doi.org/10.1109/IC-ICNS68863.2026.11537446"
+  },
   {
     "id": "staff-pub-39",
     "facultyName": "Dr. Sandeep C S",
@@ -16,6 +135,23 @@ export const staffPublications = [
     "year": "2026",
     "doi": "10.1016/j.cola.2026.101396",
     "doiUrl": "https://doi.org/10.1016/j.cola.2026.101396"
+  },
+  {
+    "id": "staff-pub-66",
+    "facultyName": "Mr. Shine P Xavier",
+    "rawFacultyName": "Shine P Xavier",
+    "facultySlug": "shine-p-xavier",
+    "facultyImage": "/faculty/shine-p-xavier",
+    "initials": "SX",
+    "paperTitle": "Personal Companion Robot - Smart Buddy",
+    "publicationType": "Conference",
+    "venue": "2025 2nd Global AI Summit - International Conference on Artificial Intelligence and Emerging Technology (AI Summit)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "03-04-2026",
+    "year": "2026",
+    "doi": "10.1109/AISummit66170.2025.11410802",
+    "doiUrl": "https://doi.org/10.1109/AISummit66170.2025.11410802"
   },
   {
     "id": "staff-pub-40",
@@ -86,227 +222,6 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1109/ICRTEECT67512.2025.11448878"
   },
   {
-    "id": "staff-pub-66",
-    "facultyName": "Mr. Shine P Xavier",
-    "rawFacultyName": "Shine P Xavier",
-    "facultySlug": "shine-p-xavier",
-    "facultyImage": "/faculty/shine-p-xavier",
-    "initials": "SX",
-    "paperTitle": "Personal Companion Robot - Smart Buddy",
-    "publicationType": "Conference",
-    "venue": "2025 2nd Global AI Summit - International Conference on Artificial Intelligence and Emerging Technology (AI Summit)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "03-04-2026",
-    "year": "2026",
-    "doi": "10.1109/AISummit66170.2025.11410802",
-    "doiUrl": "https://doi.org/10.1109/AISummit66170.2025.11410802"
-  },
-  {
-    "id": "staff-pub-68",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr.Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "Optimized Hybrid Deep Learning Framework for Early Detection of Breast Cancer Using Image Processing Techniques",
-    "publicationType": "Conference",
-    "venue": "International Conference on Intelligent Computing, Networks, and Security",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "02-06-2026",
-    "year": "2026",
-    "doi": "10.1109/IC-ICNS68863.2026.11537446",
-    "doiUrl": "https://doi.org/10.1109/IC-ICNS68863.2026.11537446"
-  },
-  {
-    "id": "staff-pub-69",
-    "facultyName": "Ms. Linta A T",
-    "rawFacultyName": "Linta A T",
-    "facultySlug": "linta-a-t",
-    "facultyImage": "/faculty/linta-a-t",
-    "initials": "LA",
-    "paperTitle": "Intelligent security systems data privacy cryptography and cyber protection",
-    "publicationType": "Book Chapter",
-    "venue": "Book chapter",
-    "indexing": "Google scholar",
-    "publisher": "IIP Iterative International Publishers",
-    "date": "06-07-2026",
-    "year": "2026",
-    "doi": "",
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-70",
-    "facultyName": "Ms. Divya Konikkara",
-    "rawFacultyName": "Ms. Divya Konikkara",
-    "facultySlug": "divya-konikkara",
-    "facultyImage": "/faculty/divya-konikkara",
-    "initials": "DK",
-    "paperTitle": "Low Cost Braille Display with Real-time Translation",
-    "publicationType": "Conference",
-    "venue": "2025 IEEE 7th International Conference on Cybernetics, Cognition and Machine Learning Applications (ICCCMLA)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "02-07-2026",
-    "year": "2026",
-    "doi": "10.1109/ICCCMLA66092.2025.11581154",
-    "doiUrl": "https://doi.org/10.1109/ICCCMLA66092.2025.11581154"
-  },
-  {
-    "id": "staff-pub-71",
-    "facultyName": "Mr. Bineesh M",
-    "rawFacultyName": "Bineesh M",
-    "facultySlug": "bineesh-m",
-    "facultyImage": "/faculty/bineesh-m",
-    "initials": "BM",
-    "paperTitle": "An AI-Based Hands-Free Communication System Using Eye Blinks and Morse Code with YOLOv8 and LSTM Prediction",
-    "publicationType": "Conference",
-    "venue": "2026 International Conference on AI-Driven Solutions for Sustainable Smart Cities: Challenges and Opportunities (ADSSSC)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "06-07-2026",
-    "year": "2026",
-    "doi": "10.1109/ADSSSC67751.2026.11582006",
-    "doiUrl": "https://doi.org/10.1109/ADSSSC67751.2026.11582006"
-  },
-  {
-    "id": "staff-pub-72",
-    "facultyName": "Ms. Linta A T",
-    "rawFacultyName": "LINTA A T",
-    "facultySlug": "linta-a-t",
-    "facultyImage": "/faculty/linta-a-t",
-    "initials": "LA",
-    "paperTitle": "Chaos-Based Image Encryption using Multi-Map XOR and Conditional Shift Mechanism for Secure Image Communication",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Iterative International Publishers (IIP)",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "01-07-2026",
-    "year": "2026",
-    "doi": "",
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-73",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr.Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "Hybrid Intelligent Model for Accurate Plant Disease Detection and Agricultural Productivity Enhancement",
-    "publicationType": "Conference",
-    "venue": "IEEE",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "02-07-2026",
-    "year": "2026",
-    "doi": "10.1109/CCGE67142.2026.11581798",
-    "doiUrl": "https://doi.org/10.1109/CCGE67142.2026.11581798"
-  },
-  {
-    "id": "staff-pub-74",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr.Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "ZeroPath APP: AI-Powered Waste Classification for Smart Cities Using EfficientNet Publisher",
-    "publicationType": "Conference",
-    "venue": "IEEE",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "06-07-2026",
-    "year": "2026",
-    "doi": "10.1109/ADSSSC67751.2026.11581990",
-    "doiUrl": "https://doi.org/10.1109/ADSSSC67751.2026.11581990"
-  },
-  {
-    "id": "staff-pub-1",
-    "facultyName": "Ms. Anjali O",
-    "rawFacultyName": "Anjali O",
-    "facultySlug": "anjali-o",
-    "facultyImage": "/faculty/anjali-o",
-    "initials": "AO",
-    "paperTitle": "Personal Protective Equipment Detection Using Salp Swarm Assisted the YOLOv8 Algorithm",
-    "publicationType": "Conference",
-    "venue": "IEEE",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "25-02-2025",
-    "year": "2025",
-    "doi": "10.1109/AREIS62559.2024.10893646",
-    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893646"
-  },
-  {
-    "id": "staff-pub-2",
-    "facultyName": "Ms. Anjali O",
-    "rawFacultyName": "Anjali O",
-    "facultySlug": "anjali-o",
-    "facultyImage": "/faculty/anjali-o",
-    "initials": "AO",
-    "paperTitle": "Music Analysis and Predictive Recommendation System Model",
-    "publicationType": "Conference",
-    "venue": "2025 Advanced Computing and Communication Technologies for High Performance Applications (ACCTHPA)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "24-09-2025",
-    "year": "2025",
-    "doi": "10.1109/ACCTHPA65749.2025.11168664",
-    "doiUrl": "https://doi.org/10.1109/ACCTHPA65749.2025.11168664"
-  },
-  {
-    "id": "staff-pub-3",
-    "facultyName": "Ms. Anjali O",
-    "rawFacultyName": "Anjali O",
-    "facultySlug": "anjali-o",
-    "facultyImage": "/faculty/anjali-o",
-    "initials": "AO",
-    "paperTitle": "Braille Speak AI",
-    "publicationType": "Conference",
-    "venue": "2025 4th International Conference on Advances in Computing, Communication, Embedded and Secure Systems (ACCESS)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "29-08-2025",
-    "year": "2025",
-    "doi": "10.1109/ACCESS65134.2025.11135912",
-    "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135912"
-  },
-  {
-    "id": "staff-pub-4",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Functional Imaging in Radiology: Assessing Metabolic and Molecular Changes in Disease Diagnosis",
-    "publicationType": "Journal",
-    "venue": "Journal of Neonatal Surgery",
-    "indexing": "Scopus",
-    "publisher": "EL-MED-Pub Publisher",
-    "date": "13-05-2025",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-5",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Advancing Sign Language Prediction with Neural Network Models",
-    "publicationType": "Conference",
-    "venue": "2024 International Conference on Advancement in Renewable Energy and Intelligent Systems (AREIS)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "26-02-2025",
-    "year": "2025",
-    "doi": "10.1109/AREIS62559.2024.10893631",
-    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893631"
-  },
-  {
     "id": "staff-pub-6",
     "facultyName": "Dr. Anoop V",
     "rawFacultyName": "Dr Anoop V",
@@ -322,6 +237,159 @@ export const staffPublications = [
     "year": "2025",
     "doi": "10.1016/j.bspc.2025.108950",
     "doiUrl": "https://doi.org/10.1016/j.bspc.2025.108950"
+  },
+  {
+    "id": "staff-pub-42",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr.Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "Anomaly Detection With Machine Learning",
+    "publicationType": "Book Chapter",
+    "venue": "Implementing Enterprise Cybersecurity With AI",
+    "indexing": "Scopus",
+    "publisher": "IGI Global",
+    "date": "10-12-2025",
+    "year": "2025",
+    "doi": "10.4018/979-8-3373-2252-0.ch004",
+    "doiUrl": "https://doi.org/10.4018/979-8-3373-2252-0.ch004"
+  },
+  {
+    "id": "staff-pub-37",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr. Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "Unsupervised, Semi-Supervised, and Self-Supervised Learning for Climate Applications",
+    "publicationType": "Book Chapter",
+    "venue": "IGI Global",
+    "indexing": "Scopus",
+    "publisher": "IGI Global",
+    "date": "10-11-2025",
+    "year": "2025",
+    "doi": "10.4018/979-8-3373-3501-8.ch008",
+    "doiUrl": "https://doi.org/10.4018/979-8-3373-3501-8.ch008"
+  },
+  {
+    "id": "staff-pub-19",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr.Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Multi-Class Lung CT Image Classification for Enhanced Cancer Detection Using Fine-Tuned EfficientNet-B7 Framework",
+    "publicationType": "Conference",
+    "venue": "2025 International Conference on Power, Instrumentation, Control, and Computing (PICC) – IEEE",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "23-10-2025",
+    "year": "2025",
+    "doi": "10.1109/PICC67314.2025.11291458",
+    "doiUrl": "https://doi.org/10.1109/PICC67314.2025.11291458"
+  },
+  {
+    "id": "staff-pub-27",
+    "facultyName": "Mr. Bineesh M",
+    "rawFacultyName": "Bineesh M",
+    "facultySlug": "bineesh-m",
+    "facultyImage": "/faculty/bineesh-m",
+    "initials": "BM",
+    "paperTitle": "IoT Based Real Time Crop Recommendation System Using Random Forest Classifier",
+    "publicationType": "Conference",
+    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188137",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188137"
+  },
+  {
+    "id": "staff-pub-28",
+    "facultyName": "Mr. Bineesh M",
+    "rawFacultyName": "Bineesh M",
+    "facultySlug": "bineesh-m",
+    "facultyImage": "/faculty/bineesh-m",
+    "initials": "BM",
+    "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
+    "publicationType": "Conference",
+    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11187837",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
+  },
+  {
+    "id": "staff-pub-45",
+    "facultyName": "Ms. Nikhitha N",
+    "rawFacultyName": "NIKHITHA N",
+    "facultySlug": "nikhitha-n",
+    "facultyImage": "/faculty/nikhitha-n",
+    "initials": "NN",
+    "paperTitle": "Bidirectional Indian Sign Languages Converter",
+    "publicationType": "Conference",
+    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188187",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
+  },
+  {
+    "id": "staff-pub-60",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "JITHIN K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "Bidirectional Indian Sign Languages Converter",
+    "publicationType": "Conference",
+    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188187",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
+  },
+  {
+    "id": "staff-pub-62",
+    "facultyName": "Ms. Linta A T",
+    "rawFacultyName": "LINTA A T",
+    "facultySlug": "linta-a-t",
+    "facultyImage": "/faculty/linta-a-t",
+    "initials": "LA",
+    "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
+    "publicationType": "Conference",
+    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11187837",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
+  },
+  {
+    "id": "staff-pub-67",
+    "facultyName": "Mr. Shine P Xavier",
+    "rawFacultyName": "Shine P Xavier",
+    "facultySlug": "shine-p-xavier",
+    "facultyImage": "/faculty/shine-p-xavier",
+    "initials": "SX",
+    "paperTitle": "Smart Doorbell with Emotion Detection",
+    "publicationType": "Conference",
+    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "10-10-2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188944",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188944"
   },
   {
     "id": "staff-pub-9",
@@ -341,72 +409,55 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1002/dneu.23001"
   },
   {
-    "id": "staff-pub-10",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr.Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Efficient Intrusion Detection with DL-Protect+: Balancing Accuracy, Interpretability, and Resource Efficiency",
-    "publicationType": "Journal",
-    "venue": "International Journal of Intelligent Engineering and Systems",
-    "indexing": "Scopus",
-    "publisher": "INASS",
-    "date": "2025",
-    "year": "2025",
-    "doi": "10.22266/ijies2026.0630.03",
-    "doiUrl": "https://doi.org/10.22266/ijies2026.0630.03"
-  },
-  {
-    "id": "staff-pub-11",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr.Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Lung Cancer Segmentation Using an Enhanced TransUNet++ Architecture",
-    "publicationType": "Journal",
-    "venue": "Journal of Biomedical Photonics & Engineering",
-    "indexing": "Scopus",
-    "publisher": "Samara National Research University",
-    "date": "2025",
-    "year": "2025",
-    "doi": "10.18287/JBPE26.12.010305",
-    "doiUrl": "https://doi.org/10.18287/JBPE26.12.010305"
-  },
-  {
-    "id": "staff-pub-12",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr.Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Chromatic Diagnostics: Enhancing Paddy Disease Detection with Filter-Based Feature Transformation",
-    "publicationType": "Journal",
-    "venue": "Journal of Information Systems Engineering and Management",
-    "indexing": "UGC CARE",
-    "publisher": "IADITI",
-    "date": "13-02-2025",
-    "year": "2025",
-    "doi": "10.52783/jisem.v10i19s.2974",
-    "doiUrl": "https://doi.org/10.52783/jisem.v10i19s.2974"
-  },
-  {
-    "id": "staff-pub-13",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr.Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Advanced Health Care Monitoring in IoMT Systems Through Integrated CNN and LSTM",
+    "id": "staff-pub-2",
+    "facultyName": "Ms. Anjali O",
+    "rawFacultyName": "Anjali O",
+    "facultySlug": "anjali-o",
+    "facultyImage": "/faculty/anjali-o",
+    "initials": "AO",
+    "paperTitle": "Music Analysis and Predictive Recommendation System Model",
     "publicationType": "Conference",
-    "venue": "2025 3rd International Conference on Communication, Security, and Artificial Intelligence (ICCSAI) – IEEE",
+    "venue": "2025 Advanced Computing and Communication Technologies for High Performance Applications (ACCTHPA)",
     "indexing": "Scopus",
     "publisher": "IEEE",
-    "date": "14-07-2025",
+    "date": "24-09-2025",
     "year": "2025",
-    "doi": "10.1109/ICCSAI64074.2025.11064480",
-    "doiUrl": "https://doi.org/10.1109/ICCSAI64074.2025.11064480"
+    "doi": "10.1109/ACCTHPA65749.2025.11168664",
+    "doiUrl": "https://doi.org/10.1109/ACCTHPA65749.2025.11168664"
+  },
+  {
+    "id": "staff-pub-41",
+    "facultyName": "Dr. Sandeep C S",
+    "rawFacultyName": "Dr.Sandeep C S",
+    "facultySlug": "sandeep-c-s",
+    "facultyImage": "/faculty/sandeep-c-s",
+    "initials": "SC",
+    "paperTitle": "Hybrid K-Means Neural Network Framework for Accurate Early Prediction and Classification of Liver Disease",
+    "publicationType": "Conference",
+    "venue": "2025 International Conference on Computing and Communications (COMPUTINGCON) 1st – 3rd September 2025",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "03-09-2025",
+    "year": "2025",
+    "doi": "10.1109/COMPUTINGCON64838.2025.11376748",
+    "doiUrl": "https://doi.org/10.1109/COMPUTINGCON64838.2025.11376748"
+  },
+  {
+    "id": "staff-pub-3",
+    "facultyName": "Ms. Anjali O",
+    "rawFacultyName": "Anjali O",
+    "facultySlug": "anjali-o",
+    "facultyImage": "/faculty/anjali-o",
+    "initials": "AO",
+    "paperTitle": "Braille Speak AI",
+    "publicationType": "Conference",
+    "venue": "2025 4th International Conference on Advances in Computing, Communication, Embedded and Secure Systems (ACCESS)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "29-08-2025",
+    "year": "2025",
+    "doi": "10.1109/ACCESS65134.2025.11135912",
+    "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135912"
   },
   {
     "id": "staff-pub-14",
@@ -494,21 +545,140 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135659"
   },
   {
-    "id": "staff-pub-19",
+    "id": "staff-pub-13",
     "facultyName": "Dr. Anoop V",
     "rawFacultyName": "Dr.Anoop V",
     "facultySlug": "anoop-v",
     "facultyImage": "/faculty/anoop-v",
     "initials": "AV",
-    "paperTitle": "Multi-Class Lung CT Image Classification for Enhanced Cancer Detection Using Fine-Tuned EfficientNet-B7 Framework",
+    "paperTitle": "Advanced Health Care Monitoring in IoMT Systems Through Integrated CNN and LSTM",
     "publicationType": "Conference",
-    "venue": "2025 International Conference on Power, Instrumentation, Control, and Computing (PICC) – IEEE",
+    "venue": "2025 3rd International Conference on Communication, Security, and Artificial Intelligence (ICCSAI) – IEEE",
     "indexing": "Scopus",
     "publisher": "IEEE",
-    "date": "23-10-2025",
+    "date": "14-07-2025",
     "year": "2025",
-    "doi": "10.1109/PICC67314.2025.11291458",
-    "doiUrl": "https://doi.org/10.1109/PICC67314.2025.11291458"
+    "doi": "10.1109/ICCSAI64074.2025.11064480",
+    "doiUrl": "https://doi.org/10.1109/ICCSAI64074.2025.11064480"
+  },
+  {
+    "id": "staff-pub-4",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Functional Imaging in Radiology: Assessing Metabolic and Molecular Changes in Disease Diagnosis",
+    "publicationType": "Journal",
+    "venue": "Journal of Neonatal Surgery",
+    "indexing": "Scopus",
+    "publisher": "EL-MED-Pub Publisher",
+    "date": "13-05-2025",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-5",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Advancing Sign Language Prediction with Neural Network Models",
+    "publicationType": "Conference",
+    "venue": "2024 International Conference on Advancement in Renewable Energy and Intelligent Systems (AREIS)",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "26-02-2025",
+    "year": "2025",
+    "doi": "10.1109/AREIS62559.2024.10893631",
+    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893631"
+  },
+  {
+    "id": "staff-pub-1",
+    "facultyName": "Ms. Anjali O",
+    "rawFacultyName": "Anjali O",
+    "facultySlug": "anjali-o",
+    "facultyImage": "/faculty/anjali-o",
+    "initials": "AO",
+    "paperTitle": "Personal Protective Equipment Detection Using Salp Swarm Assisted the YOLOv8 Algorithm",
+    "publicationType": "Conference",
+    "venue": "IEEE",
+    "indexing": "Scopus",
+    "publisher": "IEEE",
+    "date": "25-02-2025",
+    "year": "2025",
+    "doi": "10.1109/AREIS62559.2024.10893646",
+    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893646"
+  },
+  {
+    "id": "staff-pub-12",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr.Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Chromatic Diagnostics: Enhancing Paddy Disease Detection with Filter-Based Feature Transformation",
+    "publicationType": "Journal",
+    "venue": "Journal of Information Systems Engineering and Management",
+    "indexing": "UGC CARE",
+    "publisher": "IADITI",
+    "date": "13-02-2025",
+    "year": "2025",
+    "doi": "10.52783/jisem.v10i19s.2974",
+    "doiUrl": "https://doi.org/10.52783/jisem.v10i19s.2974"
+  },
+  {
+    "id": "staff-pub-22",
+    "facultyName": "Mr. Bineesh M",
+    "rawFacultyName": "Bineesh M",
+    "facultySlug": "bineesh-m",
+    "facultyImage": "/faculty/bineesh-m",
+    "initials": "BM",
+    "paperTitle": "Lung cancer prediction with advanced graph neural networks",
+    "publicationType": "Journal",
+    "venue": "Indonesian Journal of Electrical Engineering and Computer Science (IJEECS)",
+    "indexing": "Scopus",
+    "publisher": "Institute of Advanced Engineering and Science (IAES)",
+    "date": "01-02-2025",
+    "year": "2025",
+    "doi": "10.11591/ijeecs.v37.i2.pp1077-1084",
+    "doiUrl": "https://doi.org/10.11591/ijeecs.v37.i2.pp1077-1084"
+  },
+  {
+    "id": "staff-pub-10",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr.Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Efficient Intrusion Detection with DL-Protect+: Balancing Accuracy, Interpretability, and Resource Efficiency",
+    "publicationType": "Journal",
+    "venue": "International Journal of Intelligent Engineering and Systems",
+    "indexing": "Scopus",
+    "publisher": "INASS",
+    "date": "2025",
+    "year": "2025",
+    "doi": "10.22266/ijies2026.0630.03",
+    "doiUrl": "https://doi.org/10.22266/ijies2026.0630.03"
+  },
+  {
+    "id": "staff-pub-11",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr.Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Lung Cancer Segmentation Using an Enhanced TransUNet++ Architecture",
+    "publicationType": "Journal",
+    "venue": "Journal of Biomedical Photonics & Engineering",
+    "indexing": "Scopus",
+    "publisher": "Samara National Research University",
+    "date": "2025",
+    "year": "2025",
+    "doi": "10.18287/JBPE26.12.010305",
+    "doiUrl": "https://doi.org/10.18287/JBPE26.12.010305"
   },
   {
     "id": "staff-pub-20",
@@ -543,23 +713,6 @@ export const staffPublications = [
     "year": "2025",
     "doi": "10.1109/CSNT64827.2025.10967932",
     "doiUrl": "https://doi.org/10.1109/CSNT64827.2025.10967932"
-  },
-  {
-    "id": "staff-pub-22",
-    "facultyName": "Mr. Bineesh M",
-    "rawFacultyName": "Bineesh M",
-    "facultySlug": "bineesh-m",
-    "facultyImage": "/faculty/bineesh-m",
-    "initials": "BM",
-    "paperTitle": "Lung cancer prediction with advanced graph neural networks",
-    "publicationType": "Journal",
-    "venue": "Indonesian Journal of Electrical Engineering and Computer Science (IJEECS)",
-    "indexing": "Scopus",
-    "publisher": "Institute of Advanced Engineering and Science (IAES)",
-    "date": "01-02-2025",
-    "year": "2025",
-    "doi": "10.11591/ijeecs.v37.i2.pp1077-1084",
-    "doiUrl": "https://doi.org/10.11591/ijeecs.v37.i2.pp1077-1084"
   },
   {
     "id": "staff-pub-23",
@@ -628,40 +781,6 @@ export const staffPublications = [
     "year": "2025",
     "doi": "10.1109/ACCTHPA65749.2025.11168572",
     "doiUrl": "https://doi.org/10.1109/ACCTHPA65749.2025.11168572"
-  },
-  {
-    "id": "staff-pub-27",
-    "facultyName": "Mr. Bineesh M",
-    "rawFacultyName": "Bineesh M",
-    "facultySlug": "bineesh-m",
-    "facultyImage": "/faculty/bineesh-m",
-    "initials": "BM",
-    "paperTitle": "IoT Based Real Time Crop Recommendation System Using Random Forest Classifier",
-    "publicationType": "Conference",
-    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11188137",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188137"
-  },
-  {
-    "id": "staff-pub-28",
-    "facultyName": "Mr. Bineesh M",
-    "rawFacultyName": "Bineesh M",
-    "facultySlug": "bineesh-m",
-    "facultyImage": "/faculty/bineesh-m",
-    "initials": "BM",
-    "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
-    "publicationType": "Conference",
-    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11187837",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
   },
   {
     "id": "staff-pub-29",
@@ -800,23 +919,6 @@ export const staffPublications = [
     "doiUrl": null
   },
   {
-    "id": "staff-pub-37",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr. Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "Unsupervised, Semi-Supervised, and Self-Supervised Learning for Climate Applications",
-    "publicationType": "Book Chapter",
-    "venue": "IGI Global",
-    "indexing": "Scopus",
-    "publisher": "IGI Global",
-    "date": "10-11-2025",
-    "year": "2025",
-    "doi": "10.4018/979-8-3373-3501-8.ch008",
-    "doiUrl": "https://doi.org/10.4018/979-8-3373-3501-8.ch008"
-  },
-  {
     "id": "staff-pub-38",
     "facultyName": "Dr. Sandeep C S",
     "rawFacultyName": "Dr. Sandeep C S",
@@ -834,40 +936,6 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.4018/979-8-3373-4898-8.ch009"
   },
   {
-    "id": "staff-pub-41",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr.Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "Hybrid K-Means Neural Network Framework for Accurate Early Prediction and Classification of Liver Disease",
-    "publicationType": "Conference",
-    "venue": "2025 International Conference on Computing and Communications (COMPUTINGCON) 1st – 3rd September 2025",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "03-09-2025",
-    "year": "2025",
-    "doi": "10.1109/COMPUTINGCON64838.2025.11376748",
-    "doiUrl": "https://doi.org/10.1109/COMPUTINGCON64838.2025.11376748"
-  },
-  {
-    "id": "staff-pub-42",
-    "facultyName": "Dr. Sandeep C S",
-    "rawFacultyName": "Dr.Sandeep C S",
-    "facultySlug": "sandeep-c-s",
-    "facultyImage": "/faculty/sandeep-c-s",
-    "initials": "SC",
-    "paperTitle": "Anomaly Detection With Machine Learning",
-    "publicationType": "Book Chapter",
-    "venue": "Implementing Enterprise Cybersecurity With AI",
-    "indexing": "Scopus",
-    "publisher": "IGI Global",
-    "date": "10-12-2025",
-    "year": "2025",
-    "doi": "10.4018/979-8-3373-2252-0.ch004",
-    "doiUrl": "https://doi.org/10.4018/979-8-3373-2252-0.ch004"
-  },
-  {
     "id": "staff-pub-44",
     "facultyName": "Mr. Jayakrishnan A",
     "rawFacultyName": "Jayakrishnan A",
@@ -883,23 +951,6 @@ export const staffPublications = [
     "year": "2025",
     "doi": "10.1109/ACCESS65134.2025.11135778",
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135778"
-  },
-  {
-    "id": "staff-pub-45",
-    "facultyName": "Ms. Nikhitha N",
-    "rawFacultyName": "NIKHITHA N",
-    "facultySlug": "nikhitha-n",
-    "facultyImage": "/faculty/nikhitha-n",
-    "initials": "NN",
-    "paperTitle": "Bidirectional Indian Sign Languages Converter",
-    "publicationType": "Conference",
-    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11188187",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
   },
   {
     "id": "staff-pub-46",
@@ -1072,23 +1123,6 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.4018/979-8-3693-7250-0.ch010"
   },
   {
-    "id": "staff-pub-60",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "JITHIN K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "Bidirectional Indian Sign Languages Converter",
-    "publicationType": "Conference",
-    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11188187",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
-  },
-  {
     "id": "staff-pub-61",
     "facultyName": "Mr. Jithin K C",
     "rawFacultyName": "JITHIN K C",
@@ -1104,312 +1138,6 @@ export const staffPublications = [
     "year": "2025",
     "doi": "10.1109/ACCESS65134.2025.11135910",
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135910"
-  },
-  {
-    "id": "staff-pub-62",
-    "facultyName": "Ms. Linta A T",
-    "rawFacultyName": "LINTA A T",
-    "facultySlug": "linta-a-t",
-    "facultyImage": "/faculty/linta-a-t",
-    "initials": "LA",
-    "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
-    "publicationType": "Conference",
-    "venue": "International Conference on Networks & Advances in Computational Technologies (NetACT) 2025",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11187837",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
-  },
-  {
-    "id": "staff-pub-67",
-    "facultyName": "Mr. Shine P Xavier",
-    "rawFacultyName": "Shine P Xavier",
-    "facultySlug": "shine-p-xavier",
-    "facultyImage": "/faculty/shine-p-xavier",
-    "initials": "SX",
-    "paperTitle": "Smart Doorbell with Emotion Detection",
-    "publicationType": "Conference",
-    "venue": "2025 International Conference on Networks & Advances in Computational Technologies (NetACT)",
-    "indexing": "Scopus",
-    "publisher": "IEEE",
-    "date": "10-10-2025",
-    "year": "2025",
-    "doi": "10.1109/NetACT65906.2025.11188944",
-    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188944"
-  },
-  {
-    "id": "staff-pub-75",
-    "facultyName": "Reni Jose",
-    "rawFacultyName": "Reni Jose",
-    "facultySlug": "reni-jose",
-    "facultyImage": null,
-    "initials": "RE",
-    "paperTitle": "AI-Driven Secure Smart Irrigation System for Precision Agriculture: A Data-Centric Approach Toward Intelligent Security System",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-76",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "AI-Driven Secure Smart Irrigation System for Precision Agriculture: A Data-Centric Approach Toward Intelligent Security System",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-77",
-    "facultyName": "Ms. Leeshma O V",
-    "rawFacultyName": "Leeshma O V",
-    "facultySlug": "leeshma-o-v",
-    "facultyImage": "/faculty/leeshma-o-v",
-    "initials": "LO",
-    "paperTitle": "Intelligent and Secure Household Electricity Consumption Prediction Using Machine Learning",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-78",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "Intelligent and Secure Household Electricity Consumption Prediction Using Machine Learning",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-79",
-    "facultyName": "Mr. Shine P Xavier",
-    "rawFacultyName": "Shine P Xavier",
-    "facultySlug": "shine-p-xavier",
-    "facultyImage": "/faculty/shine-p-xavier",
-    "initials": "SX",
-    "paperTitle": "Intelligent Secure Classification of Genetic Diseases Using Privacy-Aware Machine Learning Techniques",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-80",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "Intelligent Secure Classification of Genetic Diseases Using Privacy-Aware Machine Learning Techniques",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-81",
-    "facultyName": "Mr. Arjun K M",
-    "rawFacultyName": "Arjun K M",
-    "facultySlug": "arjun-k-m",
-    "facultyImage": "/faculty/arjun-k-m",
-    "initials": "AK",
-    "paperTitle": "Machine Learning-Based Air Quality Classification for Secure Urban Environmental Monitoring",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-82",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "Machine Learning-Based Air Quality Classification for Secure Urban Environmental Monitoring",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-83",
-    "facultyName": "Ms. Nikhitha N",
-    "rawFacultyName": "Nikhitha N",
-    "facultySlug": "nikhitha-n",
-    "facultyImage": "/faculty/nikhitha-n",
-    "initials": "NN",
-    "paperTitle": "K-TRACE: Kerala Tariff Regulation and Automated Compliance Engine, Intelligent Security Systems",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-84",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "K-TRACE: Kerala Tariff Regulation and Automated Compliance Engine, Intelligent Security Systems",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-85",
-    "facultyName": "Mr. Jayakrishnan A",
-    "rawFacultyName": "Jayakrishnan A",
-    "facultySlug": "jayakrishnan-a",
-    "facultyImage": "/faculty/jayakrishnan-a",
-    "initials": "JA",
-    "paperTitle": "Early Warning System for Cyclone Detection Using Machine Learning",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-86",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "Early Warning System for Cyclone Detection Using Machine Learning",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-87",
-    "facultyName": "Ms. Neenu Jose",
-    "rawFacultyName": "Neenu Jose",
-    "facultySlug": "neenu-jose",
-    "facultyImage": "/faculty/neenu-jose",
-    "initials": "NJ",
-    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-88",
-    "facultyName": "Leo Mathew",
-    "rawFacultyName": "Leo Mathew",
-    "facultySlug": "leo-mathew",
-    "facultyImage": null,
-    "initials": "LE",
-    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-89",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
-  },
-  {
-    "id": "staff-pub-90",
-    "facultyName": "Mr. Jithin K C",
-    "rawFacultyName": "Jithin K C",
-    "facultySlug": "jithin-k-c",
-    "facultyImage": "/faculty/jithin-k-c",
-    "initials": "JC",
-    "paperTitle": "MACHINE LEARNING–DRIVEN PREDICTION OF SOIL QUALITY FOR SUSTAINABLE AGRICULTURAL MANAGEMENT",
-    "publicationType": "Book Chapter",
-    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
-    "indexing": "Google scholar",
-    "publisher": "Iterative International Publishers (IIP)",
-    "date": "18-07-1905",
-    "year": "2025",
-    "doi": null,
-    "doiUrl": null
   },
   {
     "id": "staff-pub-43",
@@ -1446,21 +1174,21 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893673"
   },
   {
-    "id": "staff-pub-7",
-    "facultyName": "Dr. Anoop V",
-    "rawFacultyName": "Dr.Anoop V",
-    "facultySlug": "anoop-v",
-    "facultyImage": "/faculty/anoop-v",
-    "initials": "AV",
-    "paperTitle": "Brain cancer classification based on multistage ensemble generative adversarial network and convolutional neural network",
+    "id": "staff-pub-48",
+    "facultyName": "Parvathy Jyothi",
+    "rawFacultyName": "Parvathy Jyothi",
+    "facultySlug": "parvathy-jyothi",
+    "facultyImage": null,
+    "initials": "PA",
+    "paperTitle": "An attention 3DUNET and visual geometry group-19 based deep neural network for brain tumor segmentation and classification from MRI",
     "publicationType": "Journal",
-    "venue": "Cell Biochemistry and Function",
-    "indexing": "SCI",
-    "publisher": "Wiley",
-    "date": "10-03-2023",
+    "venue": "JOURNAL OF BIOMOLECULAR STRUCTURE AND DYNAMICS",
+    "indexing": "SCIE",
+    "publisher": "Francis &Taylor",
+    "date": "06-11-2023",
     "year": "2023",
-    "doi": "10.1002/cbf.3870",
-    "doiUrl": "https://doi.org/10.1002/cbf.3870"
+    "doi": "10.1080/07391102.2023.2283164",
+    "doiUrl": "https://doi.org/10.1080/07391102.2023.2283164"
   },
   {
     "id": "staff-pub-8",
@@ -1480,6 +1208,40 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1007/s11042-023-16659-1"
   },
   {
+    "id": "staff-pub-52",
+    "facultyName": "Dr. Seenia Francis",
+    "rawFacultyName": "Seenia Francis",
+    "facultySlug": "seenia-francis",
+    "facultyImage": "/faculty/seenia-francis",
+    "initials": "SF",
+    "paperTitle": "Self-supervised approach for organs at risk segmentation of abdominal CT images",
+    "publicationType": "Conference",
+    "venue": "ADVANCES IN COMPUTING, COMMUNICATION AND SECURITY (I3CS-2023)",
+    "indexing": "SCIE",
+    "publisher": "ITM Web of Conferences",
+    "date": "04-07-2023",
+    "year": "2023",
+    "doi": "10.1051/itmconf/20235401003",
+    "doiUrl": "https://doi.org/10.1051/itmconf/20235401003"
+  },
+  {
+    "id": "staff-pub-7",
+    "facultyName": "Dr. Anoop V",
+    "rawFacultyName": "Dr.Anoop V",
+    "facultySlug": "anoop-v",
+    "facultyImage": "/faculty/anoop-v",
+    "initials": "AV",
+    "paperTitle": "Brain cancer classification based on multistage ensemble generative adversarial network and convolutional neural network",
+    "publicationType": "Journal",
+    "venue": "Cell Biochemistry and Function",
+    "indexing": "SCI",
+    "publisher": "Wiley",
+    "date": "10-03-2023",
+    "year": "2023",
+    "doi": "10.1002/cbf.3870",
+    "doiUrl": "https://doi.org/10.1002/cbf.3870"
+  },
+  {
     "id": "staff-pub-47",
     "facultyName": "Parvathy Jyothi",
     "rawFacultyName": "Parvathy Jyothi",
@@ -1497,38 +1259,276 @@ export const staffPublications = [
     "doiUrl": "https://doi.org/10.1109/ICMNWC56175.2022.10031727"
   },
   {
-    "id": "staff-pub-48",
-    "facultyName": "Parvathy Jyothi",
-    "rawFacultyName": "Parvathy Jyothi",
-    "facultySlug": "parvathy-jyothi",
+    "id": "staff-pub-75",
+    "facultyName": "Reni Jose",
+    "rawFacultyName": "Reni Jose",
+    "facultySlug": "reni-jose",
     "facultyImage": null,
-    "initials": "PA",
-    "paperTitle": "An attention 3DUNET and visual geometry group-19 based deep neural network for brain tumor segmentation and classification from MRI",
-    "publicationType": "Journal",
-    "venue": "JOURNAL OF BIOMOLECULAR STRUCTURE AND DYNAMICS",
-    "indexing": "SCIE",
-    "publisher": "Francis &Taylor",
-    "date": "06-11-2023",
-    "year": "2023",
-    "doi": "10.1080/07391102.2023.2283164",
-    "doiUrl": "https://doi.org/10.1080/07391102.2023.2283164"
+    "initials": "RE",
+    "paperTitle": "AI-Driven Secure Smart Irrigation System for Precision Agriculture: A Data-Centric Approach Toward Intelligent Security System",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
   },
   {
-    "id": "staff-pub-52",
-    "facultyName": "Dr. Seenia Francis",
-    "rawFacultyName": "Seenia Francis",
-    "facultySlug": "seenia-francis",
-    "facultyImage": "/faculty/seenia-francis",
-    "initials": "SF",
-    "paperTitle": "Self-supervised approach for organs at risk segmentation of abdominal CT images",
-    "publicationType": "Conference",
-    "venue": "ADVANCES IN COMPUTING, COMMUNICATION AND SECURITY (I3CS-2023)",
-    "indexing": "EDP Sciences",
-    "publisher": "ITM Web of Conferences",
-    "date": "04-07-2023",
-    "year": "2023",
-    "doi": "10.1051/itmconf/20235401003",
-    "doiUrl": "https://doi.org/10.1051/itmconf/20235401003"
+    "id": "staff-pub-76",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "AI-Driven Secure Smart Irrigation System for Precision Agriculture: A Data-Centric Approach Toward Intelligent Security System",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-77",
+    "facultyName": "Ms. Leeshma O V",
+    "rawFacultyName": "Leeshma O V",
+    "facultySlug": "leeshma-o-v",
+    "facultyImage": "/faculty/leeshma-o-v",
+    "initials": "LO",
+    "paperTitle": "Intelligent and Secure Household Electricity Consumption Prediction Using Machine Learning",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-78",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "Intelligent and Secure Household Electricity Consumption Prediction Using Machine Learning",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-79",
+    "facultyName": "Mr. Shine P Xavier",
+    "rawFacultyName": "Shine P Xavier",
+    "facultySlug": "shine-p-xavier",
+    "facultyImage": "/faculty/shine-p-xavier",
+    "initials": "SX",
+    "paperTitle": "Intelligent Secure Classification of Genetic Diseases Using Privacy-Aware Machine Learning Techniques",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-80",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "Intelligent Secure Classification of Genetic Diseases Using Privacy-Aware Machine Learning Techniques",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-81",
+    "facultyName": "Mr. Arjun K M",
+    "rawFacultyName": "Arjun K M",
+    "facultySlug": "arjun-k-m",
+    "facultyImage": "/faculty/arjun-k-m",
+    "initials": "AK",
+    "paperTitle": "Machine Learning-Based Air Quality Classification for Secure Urban Environmental Monitoring",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-82",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "Machine Learning-Based Air Quality Classification for Secure Urban Environmental Monitoring",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-83",
+    "facultyName": "Ms. Nikhitha N",
+    "rawFacultyName": "Nikhitha N",
+    "facultySlug": "nikhitha-n",
+    "facultyImage": "/faculty/nikhitha-n",
+    "initials": "NN",
+    "paperTitle": "K-TRACE: Kerala Tariff Regulation and Automated Compliance Engine, Intelligent Security Systems",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-84",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "K-TRACE: Kerala Tariff Regulation and Automated Compliance Engine, Intelligent Security Systems",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-85",
+    "facultyName": "Mr. Jayakrishnan A",
+    "rawFacultyName": "Jayakrishnan A",
+    "facultySlug": "jayakrishnan-a",
+    "facultyImage": "/faculty/jayakrishnan-a",
+    "initials": "JA",
+    "paperTitle": "Early Warning System for Cyclone Detection Using Machine Learning",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-86",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "Early Warning System for Cyclone Detection Using Machine Learning",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-87",
+    "facultyName": "Ms. Neenu Jose",
+    "rawFacultyName": "Neenu Jose",
+    "facultySlug": "neenu-jose",
+    "facultyImage": "/faculty/neenu-jose",
+    "initials": "NJ",
+    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-88",
+    "facultyName": "Leo Mathew",
+    "rawFacultyName": "Leo Mathew",
+    "facultySlug": "leo-mathew",
+    "facultyImage": null,
+    "initials": "LE",
+    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-89",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "ML-Driven Risk Assessment and Behavioral Analysis for Secure Road Transportation Systems",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "staff-pub-90",
+    "facultyName": "Mr. Jithin K C",
+    "rawFacultyName": "Jithin K C",
+    "facultySlug": "jithin-k-c",
+    "facultyImage": "/faculty/jithin-k-c",
+    "initials": "JC",
+    "paperTitle": "MACHINE LEARNING–DRIVEN PREDICTION OF SOIL QUALITY FOR SUSTAINABLE AGRICULTURAL MANAGEMENT",
+    "publicationType": "Book Chapter",
+    "venue": "Intelligent Security Systems: Data Privacy, Cryptography, and Cyber Protection – Volume 6 (2026)",
+    "indexing": "GS",
+    "publisher": "Iterative International Publishers (IIP)",
+    "date": "18-07-1905",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
   }
 ];
 
@@ -1958,6 +1958,49 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICSCC66177.2025.11233613"
   },
   {
+    "id": "student-pub-11",
+    "slNo": 12,
+    "batch": "2021–25",
+    "projectType": "Mini Project",
+    "paperTitle": "An Efficient Deep Learning Framework for Disease Detection in Plants",
+    "authors": [
+      "Aparnna Joseph",
+      "Arjun C S",
+      "Shah Zaad Hassan",
+      "Aiswarya A K"
+    ],
+    "registerNumbers": [
+      "JEC21AD013",
+      "JEC21AD014",
+      "JEC21AD043",
+      "JEC21AD003"
+    ],
+    "teamMembers": [
+      {
+        "name": "Aparnna Joseph",
+        "regNo": "JEC21AD013"
+      },
+      {
+        "name": "Arjun C S",
+        "regNo": "JEC21AD014"
+      },
+      {
+        "name": "Shah Zaad Hassan",
+        "regNo": "JEC21AD043"
+      },
+      {
+        "name": "Aiswarya A K",
+        "regNo": "JEC21AD003"
+      }
+    ],
+    "guide": "Ms. Parvathy Jyothi",
+    "conference": "ARIES 2024",
+    "publicationDate": "01-02-2025",
+    "year": "2025",
+    "doi": "10.1109/AREIS62559.2024.10893673",
+    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893673"
+  },
+  {
     "id": "student-pub-12",
     "slNo": 13,
     "batch": "2021–25",
@@ -2210,46 +2253,571 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICTEST64710.2025.11042683"
   },
   {
-    "id": "student-pub-11",
-    "slNo": 12,
-    "batch": "2021–25",
+    "id": "student-pub-2226-GROUP 1",
+    "slNo": 18,
+    "batch": "2022–26",
     "projectType": "Mini Project",
-    "paperTitle": "An Efficient Deep Learning Framework for Disease Detection in Plants",
+    "paperTitle": "Personal Companion Robot- Smart Buddy",
     "authors": [
-      "Aparnna Joseph",
-      "Arjun C S",
-      "Shah Zaad Hassan",
-      "Aiswarya A K"
+      "ABDULLA NIHAL M",
+      "ADARSH S",
+      "AMAL KRISHNA M",
+      "TEJAS RANJITH",
+      "AJITH VARGHESE  T.H.",
+      "HANIEL HENRY",
+      "SHALVIN SHABU",
+      "AMRUTH KRISHNA K",
+      "MOHAMMED SABIL",
+      "MOHAMMED SHAMNAS K",
+      "SIDHARTH SAJITH"
     ],
     "registerNumbers": [
-      "JEC21AD013",
-      "JEC21AD014",
-      "JEC21AD043",
-      "JEC21AD003"
+      "JEC22AD001",
+      "JEC22AD005",
+      "JEC22AD011",
+      "JEC22AD061"
     ],
     "teamMembers": [
       {
-        "name": "Aparnna Joseph",
-        "regNo": "JEC21AD013"
+        "name": "ABDULLA NIHAL M",
+        "regNo": "JEC22AD001"
       },
       {
-        "name": "Arjun C S",
-        "regNo": "JEC21AD014"
+        "name": "ADARSH S",
+        "regNo": "JEC22AD005"
       },
       {
-        "name": "Shah Zaad Hassan",
-        "regNo": "JEC21AD043"
+        "name": "AMAL KRISHNA M",
+        "regNo": "JEC22AD011"
       },
       {
-        "name": "Aiswarya A K",
-        "regNo": "JEC21AD003"
+        "name": "TEJAS RANJITH",
+        "regNo": "JEC22AD061"
+      },
+      {
+        "name": "AJITH VARGHESE  T.H.",
+        "regNo": "JEC22AD008"
+      },
+      {
+        "name": "HANIEL HENRY",
+        "regNo": "JEC22AD029"
+      },
+      {
+        "name": "SHALVIN SHABU",
+        "regNo": "JEC22AD052"
+      },
+      {
+        "name": "AMRUTH KRISHNA K",
+        "regNo": "JEC22AD012"
+      },
+      {
+        "name": "MOHAMMED SABIL",
+        "regNo": "JEC22AD040"
+      },
+      {
+        "name": "MOHAMMED SHAMNAS K",
+        "regNo": "JEC22AD041"
+      },
+      {
+        "name": "SIDHARTH SAJITH",
+        "regNo": "JEC22AD055"
+      }
+    ],
+    "guide": "Mr. Shine P Xavier",
+    "conference": "AISUMMIT2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "10.1109/AISummit66170.2025.11410802",
+    "doiUrl": "https://doi.org/10.1109/AISummit66170.2025.11410802"
+  },
+  {
+    "id": "student-pub-2226-GROUP 4",
+    "slNo": 19,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Real-Time Crop Recommendation Using IoT\nSensors and Random Forest Classifier",
+    "authors": [
+      "ANEENA E T",
+      "ANJANA K",
+      "ANSEN VINOJ",
+      "SIYONA FAIMON"
+    ],
+    "registerNumbers": [
+      "JEC22AD013",
+      "JEC22AD014",
+      "JEC22AD015",
+      "JEC22AD056"
+    ],
+    "teamMembers": [
+      {
+        "name": "ANEENA E T",
+        "regNo": "JEC22AD013"
+      },
+      {
+        "name": "ANJANA K",
+        "regNo": "JEC22AD014"
+      },
+      {
+        "name": "ANSEN VINOJ",
+        "regNo": "JEC22AD015"
+      },
+      {
+        "name": "SIYONA FAIMON",
+        "regNo": "JEC22AD056"
+      }
+    ],
+    "guide": "Mr. Bineesh M",
+    "conference": "NetACT2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "https://doi.org/10.1109/NetACT65906.2025.11188137",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188137"
+  },
+  {
+    "id": "student-pub-2226-GROUP 5",
+    "slNo": 20,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "INTEGRATED CAR PARKING SYSTEM",
+    "authors": [
+      "ABINA N J",
+      "SNEHA PAUL",
+      "SREELAKSHMI SAJEEVAN",
+      "ASWIN PRAKASH",
+      "ARJUN .P",
+      "ASHWIN LINSON",
+      "DEVANAND V P",
+      "MEGHA T S"
+    ],
+    "registerNumbers": [
+      "JEC22AD004",
+      "JEC22AD058",
+      "JEC22AD059",
+      "LJEC22AD063"
+    ],
+    "teamMembers": [
+      {
+        "name": "ABINA N J",
+        "regNo": "JEC22AD004"
+      },
+      {
+        "name": "SNEHA PAUL",
+        "regNo": "JEC22AD058"
+      },
+      {
+        "name": "SREELAKSHMI SAJEEVAN",
+        "regNo": "JEC22AD059"
+      },
+      {
+        "name": "ASWIN PRAKASH",
+        "regNo": "LJEC22AD063"
+      },
+      {
+        "name": "ARJUN .P",
+        "regNo": "JEC22AD016"
+      },
+      {
+        "name": "ASHWIN LINSON",
+        "regNo": "JEC22AD017"
+      },
+      {
+        "name": "DEVANAND V P",
+        "regNo": "JEC22AD022"
+      },
+      {
+        "name": "MEGHA T S",
+        "regNo": "LJEC22AD064"
       }
     ],
     "guide": "Ms. Parvathy Jyothi",
-    "conference": "ARIES 2024",
-    "publicationDate": "01-02-2025",
+    "conference": "NetACT2025",
+    "publicationDate": "2025",
     "year": "2025",
-    "doi": "10.1109/AREIS62559.2024.10893673",
-    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893673"
+    "doi": "https://doi.org/10.1109/NetACT65906.2025.11188411",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188411"
+  },
+  {
+    "id": "student-pub-2226-GROUP 7",
+    "slNo": 21,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Vision-Driven Fire Response System",
+    "authors": [
+      "A V DHANANJAY",
+      "GOWRI NANDHANA .M",
+      "SANAKA C SIMON",
+      "SREYAS T",
+      "BHADRA .K.SOORYAN",
+      "ELDHOSE BENNY",
+      "HAIFA T",
+      "HENNA MARIYA JOSHY"
+    ],
+    "registerNumbers": [
+      "JEC22AD019",
+      "JEC22AD027",
+      "JEC22AD050",
+      "JEC22AD060"
+    ],
+    "teamMembers": [
+      {
+        "name": "A V DHANANJAY",
+        "regNo": "JEC22AD019"
+      },
+      {
+        "name": "GOWRI NANDHANA .M",
+        "regNo": "JEC22AD027"
+      },
+      {
+        "name": "SANAKA C SIMON",
+        "regNo": "JEC22AD050"
+      },
+      {
+        "name": "SREYAS T",
+        "regNo": "JEC22AD060"
+      },
+      {
+        "name": "BHADRA .K.SOORYAN",
+        "regNo": "JEC22AD020"
+      },
+      {
+        "name": "ELDHOSE BENNY",
+        "regNo": "JEC22AD025"
+      },
+      {
+        "name": "HAIFA T",
+        "regNo": "JEC22AD028"
+      },
+      {
+        "name": "HENNA MARIYA JOSHY",
+        "regNo": "JEC22AD033"
+      }
+    ],
+    "guide": "Ms. Parvathy Jyothi",
+    "conference": "ICCCNT 2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "student-pub-2226-GROUP 9",
+    "slNo": 22,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Smart Doorbell with Emotion Detection",
+    "authors": [
+      "ATHIRA A S",
+      "HARIKRISHNAN .C. K",
+      "HARITHA K SURESH",
+      "SNEHA K S"
+    ],
+    "registerNumbers": [
+      "JEC22AD018",
+      "JEC22AD030",
+      "JEC22AD031",
+      "JEC22AD057"
+    ],
+    "teamMembers": [
+      {
+        "name": "ATHIRA A S",
+        "regNo": "JEC22AD018"
+      },
+      {
+        "name": "HARIKRISHNAN .C. K",
+        "regNo": "JEC22AD030"
+      },
+      {
+        "name": "HARITHA K SURESH",
+        "regNo": "JEC22AD031"
+      },
+      {
+        "name": "SNEHA K S",
+        "regNo": "JEC22AD057"
+      }
+    ],
+    "guide": "Mr. Shine P Xavier",
+    "conference": "NetACT2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188944",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188944"
+  },
+  {
+    "id": "student-pub-2226-GROUP 10",
+    "slNo": 23,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "HEALIO- An Al  Driven chatbot for multimodal mental health Assistance",
+    "authors": [
+      "ABHIRAM K R",
+      "DHIYA DEVASSY",
+      "HELNA THOMAS",
+      "ABIN BABU"
+    ],
+    "registerNumbers": [
+      "JEC22AD002",
+      "JEC22AD024",
+      "JEC22AD032",
+      "LJEC22AD062"
+    ],
+    "teamMembers": [
+      {
+        "name": "ABHIRAM K R",
+        "regNo": "JEC22AD002"
+      },
+      {
+        "name": "DHIYA DEVASSY",
+        "regNo": "JEC22AD024"
+      },
+      {
+        "name": "HELNA THOMAS",
+        "regNo": "JEC22AD032"
+      },
+      {
+        "name": "ABIN BABU",
+        "regNo": "LJEC22AD062"
+      }
+    ],
+    "guide": "Mr. Shine P Xavier",
+    "conference": "ICREECT25",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "https://ieeexplore.ieee.org/document/11448878",
+    "doiUrl": "https://ieeexplore.ieee.org/document/11448878"
+  },
+  {
+    "id": "student-pub-2226-GROUP 11",
+    "slNo": 24,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Low-cost Single cell Braille Display with Real time Translation",
+    "authors": [
+      "ABHISHEK P",
+      "FATHIMA SHIFA KAVUMPURATH",
+      "KRISHNENDU U N",
+      "NAHIDAH",
+      "ADRIJA R PRAMOD",
+      "AL AMTHAN R M",
+      "LIYA M",
+      "SHREYA JOHN BOSCO .K"
+    ],
+    "registerNumbers": [
+      "JEC22AD003",
+      "JEC22AD026",
+      "JEC22AD037",
+      "JEC22AD044"
+    ],
+    "teamMembers": [
+      {
+        "name": "ABHISHEK P",
+        "regNo": "JEC22AD003"
+      },
+      {
+        "name": "FATHIMA SHIFA KAVUMPURATH",
+        "regNo": "JEC22AD026"
+      },
+      {
+        "name": "KRISHNENDU U N",
+        "regNo": "JEC22AD037"
+      },
+      {
+        "name": "NAHIDAH",
+        "regNo": "JEC22AD044"
+      },
+      {
+        "name": "ADRIJA R PRAMOD",
+        "regNo": "JEC22AD006"
+      },
+      {
+        "name": "AL AMTHAN R M",
+        "regNo": "JEC22AD009"
+      },
+      {
+        "name": "LIYA M",
+        "regNo": "JEC22AD038"
+      },
+      {
+        "name": "SHREYA JOHN BOSCO .K",
+        "regNo": "JEC22AD054"
+      }
+    ],
+    "guide": "Ms. Divya Konikkara",
+    "conference": "ICCCMLA2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "https://ieeexplore.ieee.org/abstract/document/11581154",
+    "doiUrl": "https://ieeexplore.ieee.org/abstract/document/11581154"
+  },
+  {
+    "id": "student-pub-2226-GROUP 13",
+    "slNo": 25,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
+    "authors": [
+      "DEVAPRAKASH",
+      "IRENE S ARAKKAL",
+      "MUHAMMED REZAL P",
+      "P A AVANINDRA"
+    ],
+    "registerNumbers": [
+      "JEC22AD023",
+      "JEC22AD036",
+      "JEC22AD043",
+      "JEC22AD046"
+    ],
+    "teamMembers": [
+      {
+        "name": "DEVAPRAKASH",
+        "regNo": "JEC22AD023"
+      },
+      {
+        "name": "IRENE S ARAKKAL",
+        "regNo": "JEC22AD036"
+      },
+      {
+        "name": "MUHAMMED REZAL P",
+        "regNo": "JEC22AD043"
+      },
+      {
+        "name": "P A AVANINDRA",
+        "regNo": "JEC22AD046"
+      }
+    ],
+    "guide": "Mr. Bineesh M",
+    "conference": "NetACT2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "https://doi.org/10.1109/NetACT65906.2025.11187837",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
+  },
+  {
+    "id": "student-pub-2226-GROUP 14",
+    "slNo": 26,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "H GUARD: A Violence Detection System using YOLOv8 and OpenCV",
+    "authors": [
+      "HIBA .P.A",
+      "HISHAM ALI",
+      "MUHAMMED IRFAN S",
+      "RAZAAN RASHEED"
+    ],
+    "registerNumbers": [
+      "JEC22AD034",
+      "JEC22AD035",
+      "JEC22AD042",
+      "JEC22AD049"
+    ],
+    "teamMembers": [
+      {
+        "name": "HIBA .P.A",
+        "regNo": "JEC22AD034"
+      },
+      {
+        "name": "HISHAM ALI",
+        "regNo": "JEC22AD035"
+      },
+      {
+        "name": "MUHAMMED IRFAN S",
+        "regNo": "JEC22AD042"
+      },
+      {
+        "name": "RAZAAN RASHEED",
+        "regNo": "JEC22AD049"
+      }
+    ],
+    "guide": "Mr. Shine P Xavier",
+    "conference": "ICCAMS 2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": null,
+    "doiUrl": null
+  },
+  {
+    "id": "student-pub-2226-GROUP 15",
+    "slNo": 27,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Music Analysis and Predictive Recommendation System Model",
+    "authors": [
+      "BLAZE JOSE",
+      "MILNA JOSE",
+      "NIRANJANA R NAIR",
+      "PRITHVISHANKAR MENON"
+    ],
+    "registerNumbers": [
+      "JEC22AD021",
+      "JEC22AD039",
+      "JEC22AD045",
+      "JEC22AD047"
+    ],
+    "teamMembers": [
+      {
+        "name": "BLAZE JOSE",
+        "regNo": "JEC22AD021"
+      },
+      {
+        "name": "MILNA JOSE",
+        "regNo": "JEC22AD039"
+      },
+      {
+        "name": "NIRANJANA R NAIR",
+        "regNo": "JEC22AD045"
+      },
+      {
+        "name": "PRITHVISHANKAR MENON",
+        "regNo": "JEC22AD047"
+      }
+    ],
+    "guide": "Ms. Anjali O",
+    "conference": "ACCTHPA2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "https://doi.org/10.1109/ACCTHPA65749.2025.11168664",
+    "doiUrl": "https://doi.org/10.1109/ACCTHPA65749.2025.11168664"
+  },
+  {
+    "id": "student-pub-2226-GROUP 16",
+    "slNo": 28,
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Indian Sign Language Converter",
+    "authors": [
+      "AJAYKRISHNA V K",
+      "RAHUL DHANARAJ",
+      "SANDEEPKUMAR P S",
+      "SHINS JOHN JAISON"
+    ],
+    "registerNumbers": [
+      "JEC22AD007",
+      "JEC22AD048",
+      "JEC22AD051",
+      "JEC22AD053"
+    ],
+    "teamMembers": [
+      {
+        "name": "AJAYKRISHNA V K",
+        "regNo": "JEC22AD007"
+      },
+      {
+        "name": "RAHUL DHANARAJ",
+        "regNo": "JEC22AD048"
+      },
+      {
+        "name": "SANDEEPKUMAR P S",
+        "regNo": "JEC22AD051"
+      },
+      {
+        "name": "SHINS JOHN JAISON",
+        "regNo": "JEC22AD053"
+      }
+    ],
+    "guide": "Mr. Jithin K C",
+    "conference": "NetACT2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "10.1109/NetACT65906.2025.11188187",
+    "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
   }
 ];

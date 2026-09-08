@@ -9,7 +9,7 @@ export default function AboutSection() {
       </span>
       
       <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl max-w-5xl text-white leading-tight mb-12">
-        Creating <span className="text-red-600 italic font-serif">ethical leaders</span> in Artificial Intelligence &amp; Data Science through effectual learning.
+        Nurturing <span className="text-red-600 italic font-serif">ethical professionals</span> who practice responsible AI &amp; create socially impactful solutions.
       </h2>
 
       {/* Editorial Vision & Mission Grid */}

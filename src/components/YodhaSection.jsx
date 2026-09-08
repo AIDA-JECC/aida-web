@@ -7,8 +7,11 @@ export default function YodhaSection() {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isInteractionPaused, setIsInteractionPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const pauseTimerRef = useRef(null);
+  const touchStartRef = useRef(0);
+  const touchEndRef = useRef(0);
 
   const featuredEvents = eventsData.filter((event) => event.status === 'Upcoming');
 
@@ -17,22 +20,43 @@ export default function YodhaSection() {
     if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
     pauseTimerRef.current = setTimeout(() => {
       setIsInteractionPaused(false);
-    }, 11000);
+    }, 3000);
   }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     triggerPause();
     setCurrentIndex((previous) => (previous + 1) % featuredEvents.length);
-  };
+  }, [featuredEvents.length, triggerPause]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     triggerPause();
     setCurrentIndex((previous) => (previous - 1 + featuredEvents.length) % featuredEvents.length);
-  };
+  }, [featuredEvents.length, triggerPause]);
 
   const handleSelectIndex = (index) => {
     triggerPause();
     setCurrentIndex(index);
+  };
+
+  // Touch swipe handlers for mobile devices
+  const handleTouchStart = (e) => {
+    touchStartRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartRef.current || !touchEndRef.current) return;
+    const distance = touchStartRef.current - touchEndRef.current;
+    if (distance > 40) {
+      handleNext();
+    } else if (distance < -40) {
+      handlePrev();
+    }
+    touchStartRef.current = 0;
+    touchEndRef.current = 0;
   };
 
   // IntersectionObserver detects when YodhaSection is visible in viewport
@@ -44,7 +68,7 @@ export default function YodhaSection() {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
 
     observer.observe(node);
@@ -54,16 +78,24 @@ export default function YodhaSection() {
     };
   }, []);
 
-  // Autoplay control: advances every 11 seconds ONLY when in viewport
+  // Autoplay control: advances every 4 seconds ONLY when in viewport & not hovered or manually paused
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !isInView || isInteractionPaused || featuredEvents.length <= 1) return undefined;
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !isInView ||
+      isInteractionPaused ||
+      isHovered ||
+      featuredEvents.length <= 1
+    ) {
+      return undefined;
+    }
 
     const timer = window.setInterval(() => {
       setCurrentIndex((previous) => (previous + 1) % featuredEvents.length);
-    }, 11000);
+    }, 4000);
 
     return () => window.clearInterval(timer);
-  }, [featuredEvents.length, isInView, isInteractionPaused]);
+  }, [featuredEvents.length, isInView, isInteractionPaused, isHovered]);
 
   const current = featuredEvents[currentIndex];
   if (!current) return null;
@@ -107,7 +139,14 @@ export default function YodhaSection() {
         </div>
       </div>
 
-      <article className="grid grid-cols-1 md:grid-cols-[minmax(260px,0.8fr)_1.2fr] bg-white/5 backdrop-blur-md border border-white/10 hover:border-red-900/50 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-inset ring-white/5 transition-all duration-500">
+      <article
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className="grid grid-cols-1 md:grid-cols-[minmax(260px,0.8fr)_1.2fr] bg-white/5 backdrop-blur-md border border-white/10 hover:border-red-900/50 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-inset ring-white/5 transition-all duration-500 select-none cursor-pointer"
+      >
         <EventArtwork
           key={current.id}
           event={current}

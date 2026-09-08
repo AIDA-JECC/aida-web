@@ -90,7 +90,7 @@ export default function ProjectsPage({ onNavigate }) {
             <span>BACK TO HOME</span>
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2">
             <span className="px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-400 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
               <FolderGit2 size={14} />
               <span>ACADEMIC PROJECTS</span>

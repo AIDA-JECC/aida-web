@@ -4,6 +4,8 @@ import { CustomEase } from "gsap/CustomEase";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "../../data/siteData";
+import { useTheme } from "../../context/ThemeContext";
+import { AnimatedThemeToggle } from "./animated-theme-toggle";
 
 // Register GSAP Plugins safely
 if (typeof window !== "undefined") {
@@ -48,6 +50,7 @@ export function SterlingGateKineticNavigation({
   isMenuOpen: externalIsMenuOpen,
   setIsMenuOpen: externalSetIsMenuOpen,
 }) {
+  const { toggleTheme, isLight } = useTheme();
   const containerRef = useRef(null);
   const tlRef = useRef(null);
   const [internalIsActive, setInternalIsActive] = useState(false);
@@ -415,18 +418,25 @@ export function SterlingGateKineticNavigation({
 
             <div className="menu-content-wrapper">
               <div>
-                {/* Header Brand Logo Pill inside Drawer */}
-                <div className="flex items-center justify-center pb-4 border-b border-neutral-300/60 mb-4">
-                  <div className="flex items-center gap-2.5 bg-neutral-950 border border-red-900/40 px-4 py-2 rounded-full backdrop-blur-xl text-white shadow-xl">
+                {/* Header inside Drawer: Animated Theme Toggle on Left, Brand Logo Centered in Middle */}
+                <div className="flex items-center justify-between pb-4 border-b border-neutral-300/60 mb-4 w-full">
+                  <div className="flex items-center shrink-0">
+                    <AnimatedThemeToggle />
+                  </div>
+
+                  <div className="flex items-center gap-2.5 bg-neutral-950 border border-red-900/40 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-xl text-white shadow-xl">
                     <img
                       src={siteConfig.logo}
                       alt="AIDA Logo"
-                      className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+                      className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
                     />
-                    <span className="font-sans font-black text-sm sm:text-base tracking-tight uppercase">
-                      AIDA <span className="font-serif italic text-red-500 font-normal lowercase text-base sm:text-lg">jecc</span>
+                    <span className="font-sans font-black text-xs sm:text-sm tracking-tight uppercase">
+                      AIDA <span className="font-serif italic text-red-500 font-normal lowercase text-sm sm:text-base">jecc</span>
                     </span>
                   </div>
+
+                  {/* Spacer to keep Brand Logo perfectly centered horizontally */}
+                  <div className="w-[2.75rem] shrink-0 pointer-events-none" />
                 </div>
 
                 <ul className="menu-list">

@@ -43,7 +43,7 @@ export const marqueeDomains = [
 ];
 
 export const visionMissionData = {
-  vision: "To create ethical leaders in the domain of Artificial Intelligence and Data Science through an effectual teaching and learning process, developing emerging technology solutions for the benefit of industry and society with a focus on holistic learning and excellence.",
+  vision: "To be a global leader in Artificial Intelligence and Data Science by nurturing ethical professionals who practice responsible AI and create innovative, sustainable, and socially impactful solutions.",
   mission: [
     "Provide state-of-the-art academic & practical infrastructure to foster mastery in core CS and cutting-edge AI technologies.",
     "Cultivate an innovation-driven research mindset, encouraging students to solve complex real-world data engineering challenges.",

@@ -6,7 +6,7 @@ import HeroDotField from './HeroDotField';
 import { motion } from 'framer-motion';
 
 const showcaseEvents = eventsData.slice(0, 3);
-const ROTATION_INTERVAL = 11000; // 11 seconds auto-rotation
+const ROTATION_INTERVAL = 5000; // 5 seconds auto-rotation
 
 // Fixed colors per card index — these never change when cards rotate
 const cardColors = [
@@ -205,25 +205,26 @@ const cardLayouts = [
                       }
                       setTimeout(() => {
                         setRotationPaused(false);
-                      }, 11000);
+                      }, 3000);
                     }}
                     onClick={() => {
                       if (isFront) {
                         onExploreEventsClick();
                       }
                     }}
+                    layout
                     initial={{ y: -450, opacity: 0 }}
                     animate={startEntrance ? { y: 0, opacity: 1 } : { y: -450, opacity: 0 }}
                     transition={{
                       type: 'spring',
-                      stiffness: 190,
-                      damping: 15,
+                      stiffness: 220,
+                      damping: 20,
                       mass: 0.9,
                       delay: startEntrance ? (isFront ? 0 : dropDelay) : 0,
                     }}
                     whileDrag={{ scale: 1.03, cursor: 'grabbing' }}
                     aria-hidden={!isFront}
-                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${color.bg} ${layout} ${
+                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between ${color.bg} ${layout} ${
                       isMobileDevice && isFront ? 'cursor-grab active:cursor-grabbing touch-none' : ''
                     }`}
                   >
