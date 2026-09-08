@@ -575,7 +575,7 @@ export const staffPublications = [
     "publisher": "EL-MED-Pub Publisher",
     "date": "13-05-2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -847,7 +847,7 @@ export const staffPublications = [
     "publisher": "IEEE",
     "date": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -881,7 +881,7 @@ export const staffPublications = [
     "publisher": "Francis &Taylor",
     "date": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -898,7 +898,7 @@ export const staffPublications = [
     "publisher": "IEEE",
     "date": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -915,7 +915,7 @@ export const staffPublications = [
     "publisher": "IEEE",
     "date": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1272,7 +1272,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1289,7 +1289,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1306,7 +1306,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1323,7 +1323,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1340,7 +1340,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1357,7 +1357,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1374,7 +1374,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1391,7 +1391,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1408,7 +1408,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1425,7 +1425,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1442,7 +1442,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1459,7 +1459,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1476,7 +1476,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1493,7 +1493,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1510,7 +1510,7 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
@@ -1527,15 +1527,14 @@ export const staffPublications = [
     "publisher": "Iterative International Publishers (IIP)",
     "date": "18-07-1905",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   }
 ];
 
 export const studentPublications = [
   {
-    "id": "student-pub-1",
-    "slNo": 1,
+    "id": "master-1",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "Real Time Video to Sign Language Generator",
@@ -1577,8 +1576,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135778"
   },
   {
-    "id": "student-pub-2",
-    "slNo": 2,
+    "id": "master-2",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "RESCUEBOT: Thermal Imaging for Human Detection",
@@ -1620,8 +1618,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135872"
   },
   {
-    "id": "student-pub-3",
-    "slNo": 3,
+    "id": "master-3",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "Braille Speak AI",
@@ -1663,8 +1660,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135912"
   },
   {
-    "id": "student-pub-4",
-    "slNo": 4,
+    "id": "master-4",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "Machine Learning Architecture for Detection of Cancer from DNA",
@@ -1706,8 +1702,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135659"
   },
   {
-    "id": "student-pub-5",
-    "slNo": 5,
+    "id": "master-5",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "AI-Driven House Plan Generator",
@@ -1749,8 +1744,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135610"
   },
   {
-    "id": "student-pub-6",
-    "slNo": 6,
+    "id": "master-6",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "MediFusion AI: An Integrated System for Multimodal Disease Diagnosis and Patient-Doctor Interaction",
@@ -1792,8 +1786,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135715"
   },
   {
-    "id": "student-pub-7",
-    "slNo": 7,
+    "id": "master-7",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "Enhancing Real-Time Communication with a Smart Glove: LSTM Based Sign Language Recognition",
@@ -1835,8 +1828,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135890"
   },
   {
-    "id": "student-pub-8",
-    "slNo": 8,
+    "id": "master-8",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "Attack Unveil: Adversarial Threat Prediction and Defense Mechanism",
@@ -1878,8 +1870,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135910"
   },
   {
-    "id": "student-pub-9",
-    "slNo": 9,
+    "id": "master-9",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "AI-Powered Smart Glasses for Real-Time Speech-to-Text Transcription",
@@ -1921,8 +1912,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCESS65134.2025.11135871"
   },
   {
-    "id": "student-pub-10",
-    "slNo": 10,
+    "id": "master-10",
     "batch": "2021–25",
     "projectType": "Main Project",
     "paperTitle": "EMG-Controlled Prosthetic Limb",
@@ -1958,8 +1948,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICSCC66177.2025.11233613"
   },
   {
-    "id": "student-pub-11",
-    "slNo": 12,
+    "id": "master-12",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "An Efficient Deep Learning Framework for Disease Detection in Plants",
@@ -2001,8 +1990,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893673"
   },
   {
-    "id": "student-pub-12",
-    "slNo": 13,
+    "id": "master-13",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "Personal Protective Equipment Detection Using Salp Swarm Assisted the YOLOv8 Algorithm",
@@ -2038,8 +2026,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893646"
   },
   {
-    "id": "student-pub-13",
-    "slNo": 14,
+    "id": "master-14",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "Advancing Sign Language Prediction with Neural Network Models",
@@ -2081,8 +2068,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893631"
   },
   {
-    "id": "student-pub-14",
-    "slNo": 15,
+    "id": "master-15",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "HAte Speech Recognition Using BERT and CNN",
@@ -2124,8 +2110,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893671"
   },
   {
-    "id": "student-pub-15",
-    "slNo": 16,
+    "id": "master-16",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "Blind Assist System for Currency Recognition Using Sequential Convolutional Neural Networks",
@@ -2167,8 +2152,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICTEST64710.2025.11042604"
   },
   {
-    "id": "student-pub-16",
-    "slNo": 17,
+    "id": "master-17",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "Fake News Detection using BERT Model",
@@ -2210,8 +2194,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICTEST64710.2025.11042689"
   },
   {
-    "id": "student-pub-17",
-    "slNo": 18,
+    "id": "master-18",
     "batch": "2021–25",
     "projectType": "Mini Project",
     "paperTitle": "Automatic Number Plate Recognition Powered by Deep Learning",
@@ -2253,8 +2236,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ICTEST64710.2025.11042683"
   },
   {
-    "id": "student-pub-2226-GROUP 1",
-    "slNo": 18,
+    "id": "2226-conf-GROUP 1",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Personal Companion Robot- Smart Buddy",
@@ -2275,7 +2257,14 @@ export const studentPublications = [
       "JEC22AD001",
       "JEC22AD005",
       "JEC22AD011",
-      "JEC22AD061"
+      "JEC22AD061",
+      "JEC22AD008",
+      "JEC22AD029",
+      "JEC22AD052",
+      "JEC22AD012",
+      "JEC22AD040",
+      "JEC22AD041",
+      "JEC22AD055"
     ],
     "teamMembers": [
       {
@@ -2331,8 +2320,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/AISummit66170.2025.11410802"
   },
   {
-    "id": "student-pub-2226-GROUP 4",
-    "slNo": 19,
+    "id": "2226-conf-GROUP 4",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Real-Time Crop Recommendation Using IoT\nSensors and Random Forest Classifier",
@@ -2374,8 +2362,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188137"
   },
   {
-    "id": "student-pub-2226-GROUP 5",
-    "slNo": 20,
+    "id": "2226-conf-GROUP 5",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "INTEGRATED CAR PARKING SYSTEM",
@@ -2393,7 +2380,11 @@ export const studentPublications = [
       "JEC22AD004",
       "JEC22AD058",
       "JEC22AD059",
-      "LJEC22AD063"
+      "LJEC22AD063",
+      "JEC22AD016",
+      "JEC22AD017",
+      "JEC22AD022",
+      "LJEC22AD064"
     ],
     "teamMembers": [
       {
@@ -2437,8 +2428,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188411"
   },
   {
-    "id": "student-pub-2226-GROUP 7",
-    "slNo": 21,
+    "id": "2226-conf-GROUP 7",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Vision-Driven Fire Response System",
@@ -2456,7 +2446,11 @@ export const studentPublications = [
       "JEC22AD019",
       "JEC22AD027",
       "JEC22AD050",
-      "JEC22AD060"
+      "JEC22AD060",
+      "JEC22AD020",
+      "JEC22AD025",
+      "JEC22AD028",
+      "JEC22AD033"
     ],
     "teamMembers": [
       {
@@ -2496,12 +2490,11 @@ export const studentPublications = [
     "conference": "ICCCNT 2025",
     "publicationDate": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
-    "id": "student-pub-2226-GROUP 9",
-    "slNo": 22,
+    "id": "2226-conf-GROUP 9",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Smart Doorbell with Emotion Detection",
@@ -2543,8 +2536,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188944"
   },
   {
-    "id": "student-pub-2226-GROUP 10",
-    "slNo": 23,
+    "id": "2226-conf-GROUP 10",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "HEALIO- An Al  Driven chatbot for multimodal mental health Assistance",
@@ -2586,8 +2578,7 @@ export const studentPublications = [
     "doiUrl": "https://ieeexplore.ieee.org/document/11448878"
   },
   {
-    "id": "student-pub-2226-GROUP 11",
-    "slNo": 24,
+    "id": "2226-conf-GROUP 11",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Low-cost Single cell Braille Display with Real time Translation",
@@ -2605,7 +2596,11 @@ export const studentPublications = [
       "JEC22AD003",
       "JEC22AD026",
       "JEC22AD037",
-      "JEC22AD044"
+      "JEC22AD044",
+      "JEC22AD006",
+      "JEC22AD009",
+      "JEC22AD038",
+      "JEC22AD054"
     ],
     "teamMembers": [
       {
@@ -2649,8 +2644,7 @@ export const studentPublications = [
     "doiUrl": "https://ieeexplore.ieee.org/abstract/document/11581154"
   },
   {
-    "id": "student-pub-2226-GROUP 13",
-    "slNo": 25,
+    "id": "2226-conf-GROUP 13",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "A Deep Learning Framework for Virtual Drawing and Geometric Shape Prediction Using Convolutional Neural Networks",
@@ -2692,8 +2686,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11187837"
   },
   {
-    "id": "student-pub-2226-GROUP 14",
-    "slNo": 26,
+    "id": "2226-conf-GROUP 14",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "H GUARD: A Violence Detection System using YOLOv8 and OpenCV",
@@ -2731,12 +2724,11 @@ export const studentPublications = [
     "conference": "ICCAMS 2025",
     "publicationDate": "2025",
     "year": "2025",
-    "doi": null,
+    "doi": "",
     "doiUrl": null
   },
   {
-    "id": "student-pub-2226-GROUP 15",
-    "slNo": 27,
+    "id": "2226-conf-GROUP 15",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Music Analysis and Predictive Recommendation System Model",
@@ -2778,8 +2770,7 @@ export const studentPublications = [
     "doiUrl": "https://doi.org/10.1109/ACCTHPA65749.2025.11168664"
   },
   {
-    "id": "student-pub-2226-GROUP 16",
-    "slNo": 28,
+    "id": "2226-conf-GROUP 16",
     "batch": "2022–26",
     "projectType": "Mini Project",
     "paperTitle": "Indian Sign Language Converter",
@@ -2819,5 +2810,120 @@ export const studentPublications = [
     "year": "2025",
     "doi": "10.1109/NetACT65906.2025.11188187",
     "doiUrl": "https://doi.org/10.1109/NetACT65906.2025.11188187"
+  },
+  {
+    "id": "2226-marks-64",
+    "batch": "2022–26",
+    "projectType": "Mini Project",
+    "paperTitle": "Regional Sign Language To Speech Recognition",
+    "authors": [
+      "AJAYKRISHNA V K",
+      "RAHUL DHANARAJ",
+      "SANDEEPKUMAR P S",
+      "SHINS JOHN JAISON"
+    ],
+    "registerNumbers": [],
+    "teamMembers": [
+      {
+        "name": "AJAYKRISHNA V K",
+        "regNo": ""
+      },
+      {
+        "name": "RAHUL DHANARAJ",
+        "regNo": ""
+      },
+      {
+        "name": "SANDEEPKUMAR P S",
+        "regNo": ""
+      },
+      {
+        "name": "SHINS JOHN JAISON",
+        "regNo": ""
+      }
+    ],
+    "guide": "Mr. Jithin K C",
+    "conference": "AISUMMIT 2025",
+    "publicationDate": "2025",
+    "year": "2025",
+    "doi": "",
+    "doiUrl": null
+  },
+  {
+    "id": "2125-mini-0",
+    "batch": "2021–25",
+    "projectType": "Mini Project",
+    "paperTitle": "(Miniproject)Paper Publication - ARIES24",
+    "authors": [
+      "APARNNA JOSEPH",
+      "VAISHAK M A",
+      "GOURI K P",
+      "HAMMEM ABDUL"
+    ],
+    "registerNumbers": [
+      "JEC21AD013",
+      "JEC21AD051",
+      "JEC21AD022",
+      "JEC21AD025"
+    ],
+    "teamMembers": [
+      {
+        "name": "APARNNA JOSEPH",
+        "regNo": "JEC21AD013"
+      },
+      {
+        "name": "VAISHAK M A",
+        "regNo": "JEC21AD051"
+      },
+      {
+        "name": "GOURI K P",
+        "regNo": "JEC21AD022"
+      },
+      {
+        "name": "HAMMEM ABDUL",
+        "regNo": "JEC21AD025"
+      }
+    ],
+    "guide": "Ms.Parvathy Jyothi",
+    "conference": "AREIS 2024",
+    "publicationDate": "2024",
+    "year": "2024",
+    "doi": "https://doi.org/10.1109/AREIS62559.2024.10893673",
+    "doiUrl": "https://doi.org/10.1109/AREIS62559.2024.10893673"
+  },
+  {
+    "id": "2125-mini-15",
+    "batch": "2021–25",
+    "projectType": "Mini Project",
+    "paperTitle": "(Miniproject)Paper Publication - ICTEST2025",
+    "authors": [
+      "JESLIN LEELA MATHEW",
+      "JOHN DAVIS",
+      "SHANE SUNNY"
+    ],
+    "registerNumbers": [
+      "JEC21AD029",
+      "JEC21AD030",
+      "JEC21AD044"
+    ],
+    "teamMembers": [
+      {
+        "name": "JESLIN LEELA MATHEW",
+        "regNo": "JEC21AD029"
+      },
+      {
+        "name": "JOHN DAVIS",
+        "regNo": "JEC21AD030"
+      },
+      {
+        "name": "SHANE SUNNY",
+        "regNo": "JEC21AD044"
+      }
+    ],
+    "guide": "Mr.Bineesh M",
+    "conference": "AREIS 2024",
+    "publicationDate": "2024",
+    "year": "2024",
+    "doi": "https://doi.org/10.1109/ICTEST64710.2025.11042604",
+    "doiUrl": "https://doi.org/10.1109/ICTEST64710.2025.11042604"
   }
 ];

@@ -1,7 +1,9 @@
 import XLSX from 'xlsx';
 import fs from 'fs';
 
-const excelPath = 'D:\\AIDA\\public\\Members details.xlsx';
+import path from 'path';
+
+const excelPath = path.join(process.cwd(), 'public', 'Members details.xlsx');
 const workbook = XLSX.readFile(excelPath);
 const sheet = workbook.Sheets[workbook.SheetNames[0]];
 const excelRows = XLSX.utils.sheet_to_json(sheet);

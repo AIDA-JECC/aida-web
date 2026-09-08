@@ -42,7 +42,7 @@ function formatDoiUrl(doi, rawLink) {
   if (rawLink && (rawLink.startsWith('http://') || rawLink.startsWith('https://'))) {
     return rawLink;
   }
-  if (!doi || doi === 'Publication Link' || doi === 'DOI') {
+  if (!doi || doi === 'Publication Link' || doi === 'DOI' || doi === 'Proof') {
     if (rawLink && (rawLink.startsWith('http://') || rawLink.startsWith('https://'))) {
       return rawLink;
     }
@@ -105,14 +105,19 @@ try {
 }
 
 // 1. Process Staff Publications
-const staffFilePath = 'C:\\Users\\dell\\Downloads\\staff publications.xlsx';
+const staffFilePath = [
+  path.join(process.cwd(), 'public', 'publications details complete', 'staff publications.xlsx'),
+  path.join(process.cwd(), 'public', 'staff publications.xlsx'),
+  'C:\\Users\\dell\\Downloads\\staff publications.xlsx',
+].find((p) => fs.existsSync(p));
+
 let rawStaffRows = [];
-if (fs.existsSync(staffFilePath)) {
+if (staffFilePath && fs.existsSync(staffFilePath)) {
   const wb = XLSX.readFile(staffFilePath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   rawStaffRows = XLSX.utils.sheet_to_json(sheet);
 } else {
-  console.error(`Staff publications file not found at ${staffFilePath}`);
+  console.error(`Staff publications file not found in public folder or local path!`);
 }
 
 console.log(`Loaded ${rawStaffRows.length} staff publication records.`);
@@ -166,111 +171,148 @@ const staffPublications = rawStaffRows
       publisher,
       date: dateStr || year,
       year,
-      doi: doi !== 'Publication Link' && doi !== 'DOI' ? doi : null,
+      doi: doi !== 'Publication Link' && doi !== 'DOI' ? doi : '',
       doiUrl,
     };
   });
 
 staffPublications.sort((a, b) => getSortTimestamp(b) - getSortTimestamp(a));
 
-// 2. Process All Student Publications from Folder
-const studentPubRecordsMap = new Map();
+// 2. Process All Student Publications from All 10 Excel Files in Student Publications Folder
+const pubRecordsMap = new Map();
 
 function normKey(str) {
   if (!str) return '';
   return String(str).toLowerCase().trim().replace(/[^a-z0-9]/g, '');
 }
 
-function addStudentPub(rec) {
-  const titleKey = normKey(rec.paperTitle);
+function addStudentPub(record) {
+  const titleKey = normKey(record.paperTitle);
   if (!titleKey || titleKey.length < 4) return;
 
-  if (studentPubRecordsMap.has(titleKey)) {
-    const existing = studentPubRecordsMap.get(titleKey);
-    if (!existing.doi && rec.doi) {
-      existing.doi = rec.doi;
-      existing.doiUrl = rec.doiUrl;
+  const authors = (record.authors || []).map((a) => (a ? String(a).trim() : '')).filter(Boolean);
+  let registerNumbers = (record.registerNumbers || []).map((r) => (r ? String(r).trim() : '')).filter(Boolean);
+
+  const teamMembers = (record.teamMembers || [])
+    .map((tm) => ({
+      name: tm.name ? String(tm.name).trim() : '',
+      regNo: tm.regNo ? String(tm.regNo).trim() : '',
+    }))
+    .filter((tm) => tm.name);
+
+  if (teamMembers.length > 0) {
+    const tmRegs = teamMembers.map((tm) => tm.regNo).filter(Boolean);
+    if (tmRegs.length > registerNumbers.length) {
+      registerNumbers = tmRegs;
     }
-    if ((!existing.conference || existing.conference === 'ACCESS 2025') && rec.conference) {
-      existing.conference = rec.conference;
+  }
+
+  const cleanRecord = {
+    id: record.id,
+    batch: record.batch || '2021–25',
+    projectType: record.projectType || 'Main Project',
+    paperTitle: String(record.paperTitle).trim(),
+    authors: authors,
+    registerNumbers: registerNumbers,
+    teamMembers: teamMembers.length > 0 ? teamMembers : authors.map((a, i) => ({ name: a, regNo: registerNumbers[i] || '' })),
+    guide: record.guide ? String(record.guide).trim() : '',
+    conference: record.conference ? String(record.conference).trim() : '',
+    publicationDate: record.publicationDate ? String(record.publicationDate).trim() : '',
+    year: record.year ? String(record.year).trim() : '2025',
+    doi: record.doi && record.doi !== 'DOI' && record.doi !== 'Proof' ? String(record.doi).trim() : '',
+    doiUrl: record.doiUrl || null,
+  };
+
+  if (pubRecordsMap.has(titleKey)) {
+    const existing = pubRecordsMap.get(titleKey);
+
+    if (!existing.doi && cleanRecord.doi) {
+      existing.doi = cleanRecord.doi;
+      existing.doiUrl = cleanRecord.doiUrl;
     }
-    if (!existing.guide && rec.guide) {
-      existing.guide = rec.guide;
+    if ((!existing.conference || existing.conference === 'ACCESS 2025') && cleanRecord.conference) {
+      existing.conference = cleanRecord.conference;
     }
-    if (rec.authors && rec.authors.length > 0) {
-      rec.authors.forEach((a) => {
+    if (!existing.guide && cleanRecord.guide) {
+      existing.guide = cleanRecord.guide;
+    }
+    if (!existing.batch && cleanRecord.batch) {
+      existing.batch = cleanRecord.batch;
+    }
+    if (cleanRecord.authors.length > 0) {
+      cleanRecord.authors.forEach((a) => {
         if (a && !existing.authors.some((ea) => normKey(ea) === normKey(a))) {
           existing.authors.push(a);
         }
       });
     }
-    if (rec.teamMembers && rec.teamMembers.length > 0) {
-      rec.teamMembers.forEach((tm) => {
-        if (tm.name && !existing.teamMembers.some((etm) => normKey(etm.name) === normKey(tm.name))) {
-          existing.teamMembers.push(tm);
+    if (cleanRecord.teamMembers.length > 0) {
+      cleanRecord.teamMembers.forEach((tm) => {
+        const etm = existing.teamMembers.find((item) => normKey(item.name) === normKey(tm.name));
+        if (etm) {
+          if (!etm.regNo && tm.regNo) etm.regNo = tm.regNo;
+        } else {
+          existing.teamMembers.push({ name: tm.name, regNo: tm.regNo || '' });
         }
       });
     }
+    const combinedRegs = existing.teamMembers.map((tm) => tm.regNo).filter(Boolean);
+    if (combinedRegs.length > 0) {
+      existing.registerNumbers = combinedRegs;
+    }
   } else {
-    studentPubRecordsMap.set(titleKey, rec);
+    pubRecordsMap.set(titleKey, cleanRecord);
   }
 }
 
-// Master Student Publications.xlsx
-const masterStudentFile = 'D:\\AIDA\\public\\publications details complete\\Student publications\\Student Publications.xlsx';
-if (fs.existsSync(masterStudentFile)) {
-  const wb = XLSX.readFile(masterStudentFile);
+// Master File: Student Publications.xlsx
+const masterFile = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', 'Student Publications.xlsx');
+if (fs.existsSync(masterFile)) {
+  const wb = XLSX.readFile(masterFile);
   const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-  rows.filter((r) => r['Paper Title'] && String(r['Paper Title']).trim() !== 'undefined').forEach((row, index) => {
-    const slNo = row['Sl. No.'] || index + 1;
+  rows.forEach((row, index) => {
+    const title = row['Paper Title'];
+    if (!title || String(title).trim() === 'undefined') return;
+
     const batch = String(row['Batch Year'] || '2021–25').trim();
     const projectType = String(row['Project Type'] || 'Main Project').trim();
-    const paperTitle = String(row['Paper Title'] || '').trim();
     const guide = String(row['Guide'] || '').trim();
     const conference = String(row['Conference Name'] || row['Conference Short Name'] || '').trim();
-    const publicationDate = formatDate(row['Publication Date']);
+    const pubDate = formatDate(row['Publication Date']);
     const doi = String(row['DOI'] || '').trim();
     const rawLink = String(row['Publication Link'] || '').trim();
-    const doiUrl = formatDoiUrl(doi, rawLink);
 
     const authorsRaw = String(row['Authors'] || '').trim();
     const regNosRaw = String(row['Register No.'] || '').trim();
 
     const authors = authorsRaw ? authorsRaw.split(';').map((a) => a.trim()).filter(Boolean) : [];
-    const registerNumbers = regNosRaw ? regNosRaw.split(';').map((r) => r.trim()).filter(Boolean) : [];
-
-    const teamMembers = authors.map((name, i) => ({
-      name,
-      regNo: registerNumbers[i] || '',
-    }));
+    const regNos = regNosRaw ? regNosRaw.split(';').map((r) => r.trim()).filter(Boolean) : [];
 
     let year = '2025';
-    const yearMatch = publicationDate.match(/\b(20\d\d)\b/);
-    if (yearMatch) year = yearMatch[1];
+    const match = pubDate.match(/\b(20\d\d)\b/);
+    if (match) year = match[1];
 
     addStudentPub({
-      id: `student-pub-${index + 1}`,
-      slNo,
+      id: `master-${index + 1}`,
       batch,
       projectType,
-      paperTitle,
+      paperTitle: String(title).trim(),
       authors,
-      registerNumbers,
-      teamMembers,
+      registerNumbers: regNos,
       guide,
       conference,
-      publicationDate: publicationDate || year,
+      publicationDate: pubDate || year,
       year,
-      doi: doi !== 'DOI' ? doi : null,
-      doiUrl,
+      doi,
+      doiUrl: formatDoiUrl(doi, rawLink),
     });
   });
 }
 
-// 22-26 Batch Mini Projects
-const file22_26 = 'D:\\AIDA\\public\\publications details complete\\Student publications\\22-26\\Conference_Miniproject.xlsx';
-if (fs.existsSync(file22_26)) {
-  const wb = XLSX.readFile(file22_26);
+// 22-26\Conference_Miniproject.xlsx
+const file22_26_conf = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '22-26', 'Conference_Miniproject.xlsx');
+if (fs.existsSync(file22_26_conf)) {
+  const wb = XLSX.readFile(file22_26_conf);
   const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
   let currentGroup = null;
   rows.forEach((r, idx) => {
@@ -285,7 +327,7 @@ if (fs.existsSync(file22_26)) {
     if (grpNum || title || conf || guide) {
       if (title && title !== 'undefined') {
         currentGroup = {
-          grpNum: grpNum || `GROUP-${idx}`,
+          grpNum: grpNum || `GRP-${idx}`,
           paperTitle: title,
           conference: conf || 'AISUMMIT 2025',
           guide: guide,
@@ -310,8 +352,7 @@ if (fs.existsSync(file22_26)) {
     if (currentGroup && isNextNew) {
       if (currentGroup.paperTitle) {
         addStudentPub({
-          id: `student-pub-2226-${currentGroup.grpNum}`,
-          slNo: studentPubRecordsMap.size + 1,
+          id: `2226-conf-${currentGroup.grpNum}`,
           batch: currentGroup.batch,
           projectType: currentGroup.projectType,
           paperTitle: currentGroup.paperTitle,
@@ -322,7 +363,7 @@ if (fs.existsSync(file22_26)) {
           conference: currentGroup.conference,
           publicationDate: '2025',
           year: '2025',
-          doi: currentGroup.doi ? currentGroup.doi : null,
+          doi: currentGroup.doi,
           doiUrl: formatDoiUrl(currentGroup.doi, null),
         });
       }
@@ -330,8 +371,8 @@ if (fs.existsSync(file22_26)) {
   });
 }
 
-// 21-25 Batch Conference Papers
-const file21_25_conf = 'D:\\AIDA\\public\\publications details complete\\Student publications\\21-25\\Conference Paper Status.xlsx';
+// 21-25\Conference Paper Status.xlsx
+const file21_25_conf = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '21-25', 'Conference Paper Status.xlsx');
 if (fs.existsSync(file21_25_conf)) {
   const wb = XLSX.readFile(file21_25_conf);
   wb.SheetNames.forEach((sName) => {
@@ -369,8 +410,7 @@ if (fs.existsSync(file21_25_conf)) {
       const isNextNew = !nextRow || nextRow['Paper Title'] || nextRow['Article Title'] || nextRow['Title'];
       if (currentGrp && isNextNew) {
         addStudentPub({
-          id: `student-pub-2125-${idx}`,
-          slNo: studentPubRecordsMap.size + 1,
+          id: `2125-conf-${idx}`,
           batch: currentGrp.batch,
           projectType: currentGrp.projectType,
           paperTitle: currentGrp.paperTitle,
@@ -381,7 +421,7 @@ if (fs.existsSync(file21_25_conf)) {
           conference: currentGrp.conference,
           publicationDate: '2025',
           year: '2025',
-          doi: currentGrp.doi ? currentGrp.doi : null,
+          doi: currentGrp.doi,
           doiUrl: formatDoiUrl(currentGrp.doi, null),
         });
       }
@@ -389,7 +429,356 @@ if (fs.existsSync(file21_25_conf)) {
   });
 }
 
-const studentPublications = Array.from(studentPubRecordsMap.values());
+// 21-25\Miniproject_ConferencePaper.xlsx
+const file21_25_mini = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '21-25', 'Miniproject_ConferencePaper.xlsx');
+if (fs.existsSync(file21_25_mini)) {
+  const wb = XLSX.readFile(file21_25_mini);
+  const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+  rows.forEach((r, idx) => {
+    const regNo = String(r['Register Number'] || '').trim();
+    const member = String(r['Name'] || '').trim();
+    const guide = String(r['Guide'] || '').trim();
+    const typeStr = String(r['Achievement Type'] || '').trim();
+    const acadYear = String(r['Academic Year'] || '').trim();
+    const proof = String(r['Proof'] || '').trim();
+
+    if (typeStr) {
+      const year = acadYear.includes('2024') ? '2024' : '2025';
+      addStudentPub({
+        id: `2125-mini-${idx}`,
+        batch: '2021–25',
+        projectType: 'Mini Project',
+        paperTitle: typeStr,
+        authors: member ? [member] : [],
+        registerNumbers: regNo ? [regNo] : [],
+        guide,
+        conference: 'AREIS 2024',
+        publicationDate: year,
+        year,
+        doi: proof,
+        doiUrl: formatDoiUrl(proof, proof),
+      });
+    }
+  });
+}
+
+// 20-24\MiniProject_IEEE paper.xlsx
+const file20_24_ieee = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '20-24', 'MiniProject_IEEE paper.xlsx');
+if (fs.existsSync(file20_24_ieee)) {
+  const wb = XLSX.readFile(file20_24_ieee);
+  wb.SheetNames.forEach((sName) => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sName]);
+    rows.forEach((r, idx) => {
+      const title = String(r['Paper Title'] || r['Title'] || r['Article Title'] || '').trim();
+      const authorsRaw = String(r['Authors'] || r['Student Names'] || r['Members'] || '').trim();
+      const guide = String(r['Guide'] || r['GUIDE'] || '').trim();
+      const conf = String(r['Conference'] || r['Conference Name'] || '').trim();
+      const doi = String(r['DOI'] || r['Proof'] || '').trim();
+
+      if (title && title !== 'undefined') {
+        const authors = authorsRaw ? authorsRaw.split(/;|,/).map((a) => a.trim()).filter(Boolean) : [];
+        addStudentPub({
+          id: `2024-ieee-${sName}-${idx}`,
+          batch: '2020–24',
+          projectType: 'Mini Project',
+          paperTitle: title,
+          authors,
+          registerNumbers: [],
+          guide,
+          conference: conf || 'IEEE 2024',
+          publicationDate: '2024',
+          year: '2024',
+          doi,
+          doiUrl: formatDoiUrl(doi, null),
+        });
+      }
+    });
+  });
+}
+
+// 20-24\ProjectGroups.xlsx
+const file20_24_groups = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '20-24', 'ProjectGroups.xlsx');
+if (fs.existsSync(file20_24_groups)) {
+  const wb = XLSX.readFile(file20_24_groups);
+  wb.SheetNames.forEach((sName) => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sName]);
+    let currentGrp = null;
+    rows.forEach((r, idx) => {
+      const title = String(r['Project Title'] || r['Paper Title'] || r['Title'] || '').trim();
+      const guide = String(r['Guide'] || r['GUIDE'] || '').trim();
+      const member = String(r['Student Name'] || r['Member'] || r['Name'] || '').trim();
+      const regNo = String(r['Reg No'] || r['Register Number'] || '').trim();
+      const conf = String(r['Conference'] || r['Publication'] || '').trim();
+
+      if (title && title !== 'undefined') {
+        currentGrp = {
+          paperTitle: title,
+          guide: guide,
+          conference: conf || 'KTU Conference 2024',
+          batch: '2020–24',
+          projectType: 'Main Project',
+          teamMembers: [],
+          authors: [],
+        };
+      }
+
+      if (currentGrp && member) {
+        if (!currentGrp.authors.includes(member)) {
+          currentGrp.authors.push(member);
+          currentGrp.teamMembers.push({ name: member, regNo });
+        }
+      }
+
+      const nextRow = rows[idx + 1];
+      const isNextNew = !nextRow || nextRow['Project Title'] || nextRow['Paper Title'] || nextRow['Title'];
+      if (currentGrp && isNextNew) {
+        addStudentPub({
+          id: `2024-grp-${sName}-${idx}`,
+          batch: currentGrp.batch,
+          projectType: currentGrp.projectType,
+          paperTitle: currentGrp.paperTitle,
+          authors: currentGrp.authors,
+          registerNumbers: currentGrp.teamMembers.map((m) => m.regNo),
+          teamMembers: currentGrp.teamMembers,
+          guide: currentGrp.guide,
+          conference: currentGrp.conference,
+          publicationDate: '2024',
+          year: '2024',
+          doi: '',
+          doiUrl: null,
+        });
+      }
+    });
+  });
+}
+
+// 21-25\ADD416 - Project Phase 2 evaluation Sheet .xlsx
+const file21_25_phase2 = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '21-25', 'ADD416 - Project Phase 2 evaluation Sheet .xlsx');
+if (fs.existsSync(file21_25_phase2)) {
+  const wb = XLSX.readFile(file21_25_phase2);
+  wb.SheetNames.forEach((sName) => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sName]);
+    let currentGrp = null;
+    rows.forEach((r, idx) => {
+      const title = String(r['Project Title'] || r['Title'] || '').trim();
+      const guide = String(r['Guide'] || r['GUIDE'] || '').trim();
+      const member = String(r['Student Name'] || r['Name'] || '').trim();
+      const regNo = String(r['Register Number'] || r['Reg No'] || '').trim();
+
+      if (title && title !== 'undefined') {
+        currentGrp = {
+          paperTitle: title,
+          guide: guide,
+          conference: 'ACCESS 2025',
+          batch: '2021–25',
+          projectType: 'Main Project',
+          teamMembers: [],
+          authors: [],
+        };
+      }
+
+      if (currentGrp && member) {
+        if (!currentGrp.authors.includes(member)) {
+          currentGrp.authors.push(member);
+          currentGrp.teamMembers.push({ name: member, regNo });
+        }
+      }
+
+      const nextRow = rows[idx + 1];
+      const isNextNew = !nextRow || nextRow['Project Title'] || nextRow['Title'];
+      if (currentGrp && isNextNew) {
+        addStudentPub({
+          id: `2125-p2-${sName}-${idx}`,
+          batch: currentGrp.batch,
+          projectType: currentGrp.projectType,
+          paperTitle: currentGrp.paperTitle,
+          authors: currentGrp.authors,
+          registerNumbers: currentGrp.teamMembers.map((m) => m.regNo),
+          teamMembers: currentGrp.teamMembers,
+          guide: currentGrp.guide,
+          conference: currentGrp.conference,
+          publicationDate: '2025',
+          year: '2025',
+          doi: '',
+          doiUrl: null,
+        });
+      }
+    });
+  });
+}
+
+// 21-25\MiNi Project groups.xlsx
+const file21_25_minigrp = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '21-25', 'MiNi Project groups.xlsx');
+if (fs.existsSync(file21_25_minigrp)) {
+  const wb = XLSX.readFile(file21_25_minigrp);
+  wb.SheetNames.forEach((sName) => {
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[sName]);
+    let currentGrp = null;
+    rows.forEach((r, idx) => {
+      const title = String(r['Project Title'] || r['Title'] || '').trim();
+      const guide = String(r['Guide'] || r['GUIDE'] || '').trim();
+      const member = String(r['Student Name'] || r['Name'] || '').trim();
+      const regNo = String(r['Register Number'] || r['Reg No'] || '').trim();
+
+      if (title && title !== 'undefined') {
+        currentGrp = {
+          paperTitle: title,
+          guide: guide,
+          conference: 'AREIS 2024',
+          batch: '2021–25',
+          projectType: 'Mini Project',
+          teamMembers: [],
+          authors: [],
+        };
+      }
+
+      if (currentGrp && member) {
+        if (!currentGrp.authors.includes(member)) {
+          currentGrp.authors.push(member);
+          currentGrp.teamMembers.push({ name: member, regNo });
+        }
+      }
+
+      const nextRow = rows[idx + 1];
+      const isNextNew = !nextRow || nextRow['Project Title'] || nextRow['Title'];
+      if (currentGrp && isNextNew) {
+        addStudentPub({
+          id: `2125-minigrp-${sName}-${idx}`,
+          batch: currentGrp.batch,
+          projectType: currentGrp.projectType,
+          paperTitle: currentGrp.paperTitle,
+          authors: currentGrp.authors,
+          registerNumbers: currentGrp.teamMembers.map((m) => m.regNo),
+          teamMembers: currentGrp.teamMembers,
+          guide: currentGrp.guide,
+          conference: currentGrp.conference,
+          publicationDate: '2024',
+          year: '2024',
+          doi: '',
+          doiUrl: null,
+        });
+      }
+    });
+  });
+}
+
+// 22-26\Guide & Title.xlsx
+const file22_26_guidetitle = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '22-26', 'Guide & Title.xlsx');
+if (fs.existsSync(file22_26_guidetitle)) {
+  const wb = XLSX.readFile(file22_26_guidetitle);
+  const sheet = wb.Sheets['AD'];
+  if (sheet) {
+    const rows = XLSX.utils.sheet_to_json(sheet);
+    let currentGrp = null;
+    rows.forEach((r, idx) => {
+      const title = String(r['TOPIC'] || r['Project Title'] || r['Title'] || '').trim();
+      const guide = String(r['GUIDE'] || r['Guide'] || '').trim();
+      const member = String(r['STUDENT NAME'] || r['Name'] || '').trim();
+      const regNo = String(r['REGISTER NUMBER'] || '').trim();
+
+      if (title && title !== 'undefined') {
+        currentGrp = {
+          paperTitle: title,
+          guide: guide,
+          conference: 'AISUMMIT 2025',
+          batch: '2022–26',
+          projectType: 'Mini Project',
+          teamMembers: [],
+          authors: [],
+        };
+      }
+
+      if (currentGrp && member) {
+        if (!currentGrp.authors.includes(member)) {
+          currentGrp.authors.push(member);
+          currentGrp.teamMembers.push({ name: member, regNo });
+        }
+      }
+
+      const nextRow = rows[idx + 1];
+      const isNextNew = !nextRow || nextRow['TOPIC'] || nextRow['Project Title'] || nextRow['Title'];
+      if (currentGrp && isNextNew) {
+        addStudentPub({
+          id: `2226-gt-${idx}`,
+          batch: currentGrp.batch,
+          projectType: currentGrp.projectType,
+          paperTitle: currentGrp.paperTitle,
+          authors: currentGrp.authors,
+          registerNumbers: currentGrp.teamMembers.map((m) => m.regNo),
+          teamMembers: currentGrp.teamMembers,
+          guide: currentGrp.guide,
+          conference: currentGrp.conference,
+          publicationDate: '2025',
+          year: '2025',
+          doi: '',
+          doiUrl: null,
+        });
+      }
+    });
+  }
+}
+
+// 22-26\Mini Project Marks_2022 Admn.xlsx
+const file22_26_marks = path.join(process.cwd(), 'public', 'publications details complete', 'Student publications', '22-26', 'Mini Project Marks_2022 Admn.xlsx');
+if (fs.existsSync(file22_26_marks)) {
+  const wb = XLSX.readFile(file22_26_marks);
+  const sheet = wb.Sheets['Topic Guide Area'];
+  if (sheet) {
+    const rows = XLSX.utils.sheet_to_json(sheet);
+    let currentGrp = null;
+    rows.forEach((r, idx) => {
+      const keys = Object.keys(r);
+      const titleKey = keys.find((k) => k.includes('TOPIC') || k === '__EMPTY_3');
+      const guideKey = keys.find((k) => k.includes('GUIDE') || k === '__EMPTY_2');
+      const memberKey = keys.find((k) => k.includes('STUDENT NAME') || k === '__EMPTY');
+
+      const title = titleKey ? String(r[titleKey] || '').trim() : '';
+      const guide = guideKey ? String(r[guideKey] || '').trim() : '';
+      const member = memberKey ? String(r[memberKey] || '').trim() : '';
+
+      if (title && title !== 'TOPIC' && title !== 'undefined') {
+        currentGrp = {
+          paperTitle: title,
+          guide: guide,
+          conference: 'AISUMMIT 2025',
+          batch: '2022–26',
+          projectType: 'Mini Project',
+          teamMembers: [],
+          authors: [],
+        };
+      }
+
+      if (currentGrp && member && member !== 'STUDENT NAME') {
+        if (!currentGrp.authors.includes(member)) {
+          currentGrp.authors.push(member);
+          currentGrp.teamMembers.push({ name: member, regNo: '' });
+        }
+      }
+
+      const nextRow = rows[idx + 1];
+      const isNextNew = !nextRow;
+      if (currentGrp && isNextNew) {
+        addStudentPub({
+          id: `2226-marks-${idx}`,
+          batch: currentGrp.batch,
+          projectType: currentGrp.projectType,
+          paperTitle: currentGrp.paperTitle,
+          authors: currentGrp.authors,
+          registerNumbers: [],
+          teamMembers: currentGrp.teamMembers,
+          guide: currentGrp.guide,
+          conference: currentGrp.conference,
+          publicationDate: '2025',
+          year: '2025',
+          doi: '',
+          doiUrl: null,
+        });
+      }
+    });
+  }
+}
+
+const studentPublications = Array.from(pubRecordsMap.values());
 
 // Sort student publications latest first
 studentPublications.sort((a, b) => getSortTimestamp(b) - getSortTimestamp(a));
