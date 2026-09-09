@@ -17,6 +17,7 @@ export const AnimatedTestimonials = ({
   const containerRef = useRef(null);
   const [active, setActive] = useState(0);
   const [hasEnteredView, setHasEnteredView] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isDelayPaused, setIsDelayPaused] = useState(false);
   const delayTimeoutRef = useRef(null);
 
@@ -47,6 +48,15 @@ export const AnimatedTestimonials = ({
     }, 2000);
   };
 
+  // Trigger 3-second pause before resuming autoplay after modal/see-more clicks
+  const trigger3SecPause = () => {
+    setIsDelayPaused(true);
+    if (delayTimeoutRef.current) clearTimeout(delayTimeoutRef.current);
+    delayTimeoutRef.current = setTimeout(() => {
+      setIsDelayPaused(false);
+    }, 3000);
+  };
+
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
     trigger2SecPause();
@@ -63,14 +73,14 @@ export const AnimatedTestimonials = ({
 
   // Autoplay control: advances every 5 seconds (5000ms) once section is reached
   useEffect(() => {
-    if (!autoplay || !hasEnteredView || isDelayPaused || isModalOpen || testimonials.length <= 1) return;
+    if (!autoplay || !hasEnteredView || isDelayPaused || isHovered || isModalOpen || testimonials.length <= 1) return;
 
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoplay, hasEnteredView, isDelayPaused, isModalOpen, testimonials.length]);
+  }, [autoplay, hasEnteredView, isDelayPaused, isHovered, isModalOpen, testimonials.length]);
 
   // When modal closes, resume autoplay
   useEffect(() => {
