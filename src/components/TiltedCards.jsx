@@ -82,9 +82,11 @@ export default function TiltedCards({ onNavigate }) {
   const [activeStep, setActiveStep] = useState(1);
   const cardRefs = useRef([]);
   const mobileScrollRef = useRef(null);
+  const isScrollingByClick = useRef(false);
 
   // Sync active step button when user swipes horizontally on mobile
   const handleMobileScroll = () => {
+    if (isScrollingByClick.current) return;
     const container = mobileScrollRef.current;
     if (!container) return;
     const scrollLeft = container.scrollLeft;
@@ -111,6 +113,7 @@ export default function TiltedCards({ onNavigate }) {
 
   const handleStepClick = (step) => {
     setActiveStep(step);
+    isScrollingByClick.current = true;
     const targetCard = cardRefs.current[step - 1];
     const container = mobileScrollRef.current;
     
@@ -125,6 +128,10 @@ export default function TiltedCards({ onNavigate }) {
         behavior: 'smooth',
       });
     }
+
+    setTimeout(() => {
+      isScrollingByClick.current = false;
+    }, 450);
   };
 
   const handleActionClick = (e, pillar) => {
@@ -159,9 +166,9 @@ export default function TiltedCards({ onNavigate }) {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center space-y-8">
         {/* Header Section */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-mono text-xs tracking-widest uppercase mb-1">
-            <Layers size={14} className="text-red-500 animate-pulse" />
-            <span>• OUR CORE PILLARS</span>
+          <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-red-500 uppercase flex items-center justify-center gap-1.5 mb-1">
+            <span className="w-1.5 h-1.5 rounded-sm bg-red-600 inline-block" />
+            <span>OUR CORE PILLARS</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-center text-white tracking-tight leading-tight">
             Pioneering Data &amp; <span className="text-red-600 italic">Intelligence</span>

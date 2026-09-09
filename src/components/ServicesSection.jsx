@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Cpu, Sparkles, ArrowRight, ExternalLink, CheckCircle2, X, ShieldCheck, Layers, Terminal } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 
-export default function ServicesSection({ onNavigate }) {
+export default function ServicesSection({ onNavigate, showAll = false }) {
   const [selectedService, setSelectedService] = useState(null);
+
+  const displayedServices = showAll ? servicesData : servicesData.slice(0, 2);
 
   const openModal = (service) => {
     setSelectedService(service);
@@ -26,11 +28,11 @@ export default function ServicesSection({ onNavigate }) {
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Header Section */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-mono text-xs tracking-widest uppercase mb-1 shadow-inner">
-            <Sparkles size={14} className="text-red-500 animate-pulse" />
-            <span>• SERVICES WE PROVIDE</span>
+        {/* Header Section (Image 2 Design: Clean red dot + red mono uppercase text) */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="font-mono text-xs sm:text-sm font-bold tracking-widest text-red-500 uppercase flex items-center justify-center gap-1.5 mb-1">
+            <span className="w-1.5 h-1.5 rounded-sm bg-red-600 inline-block" />
+            <span>SERVICES WE PROVIDE</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-center text-white tracking-tight leading-tight">
             Digital Platforms &amp; <span className="text-red-600 italic">Smart Solutions</span>
@@ -40,9 +42,9 @@ export default function ServicesSection({ onNavigate }) {
           </p>
         </div>
 
-        {/* 4 Service Cards Grid */}
+        {/* Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
-          {servicesData.map((service, idx) => (
+          {displayedServices.map((service, idx) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
@@ -62,18 +64,10 @@ export default function ServicesSection({ onNavigate }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-[#111113]/30 to-transparent" />
                 
-                {/* Top Floating Badge */}
+                {/* Top Floating Category Badge */}
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
                   <span className={`px-3 py-1 rounded-full font-mono text-[11px] font-bold tracking-wider uppercase border backdrop-blur-md ${service.badgeBg}`}>
                     {service.category}
-                  </span>
-                </div>
-
-                {/* Status Indicator */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-950/80 border border-neutral-700/60 text-neutral-300 font-mono text-[10px] uppercase font-semibold backdrop-blur-md">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                    {service.status}
                   </span>
                 </div>
               </div>
@@ -99,7 +93,7 @@ export default function ServicesSection({ onNavigate }) {
                   </p>
                 </div>
 
-                {/* Tags & Action Button Footer */}
+                {/* Tags & Action Buttons (No Hashtags) */}
                 <div className="pt-4 border-t border-neutral-800/80 space-y-4">
                   <div className="flex flex-wrap gap-1.5">
                     {service.tags.slice(0, 3).map((tag, tIdx) => (
@@ -107,7 +101,7 @@ export default function ServicesSection({ onNavigate }) {
                         key={tIdx}
                         className="px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-400 font-mono text-[10px]"
                       >
-                        #{tag}
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -118,9 +112,9 @@ export default function ServicesSection({ onNavigate }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold border border-red-500/80 transition-all duration-300 cursor-pointer shadow-md hover:shadow-[0_0_20px_rgba(220,38,38,0.5)] active:scale-95 group/btn"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold border border-red-500/80 transition-all duration-300 cursor-pointer shadow-md hover:shadow-[0_0_20px_rgba(220,38,38,0.5)] active:scale-95 group/btn"
                     >
-                      <span>Visit Site</span>
+                      <span>Visit</span>
                       <ExternalLink size={13} className="group-hover/btn:rotate-12 transition-transform" />
                     </a>
 
@@ -130,7 +124,7 @@ export default function ServicesSection({ onNavigate }) {
                         e.stopPropagation();
                         openModal(service);
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white font-mono text-xs border border-neutral-700/60 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white font-mono text-xs border border-neutral-700/60 transition-all cursor-pointer"
                     >
                       <span>Details</span>
                       <ArrowRight size={13} />
@@ -149,6 +143,23 @@ export default function ServicesSection({ onNavigate }) {
             </motion.div>
           ))}
         </div>
+
+        {/* VIEW ALL SERVICES Button (Homepage Only) */}
+        {!showAll && (
+          <div className="text-center pt-4">
+            <button
+              type="button"
+              onClick={() => {
+                if (onNavigate) onNavigate('services');
+                else window.location.hash = '#/services';
+              }}
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-xl hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] cursor-pointer active:scale-95"
+            >
+              <span>VIEW ALL SERVICES</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Expanded Detail Modal Dialog */}
@@ -196,9 +207,6 @@ export default function ServicesSection({ onNavigate }) {
                   <div className="flex items-center gap-2">
                     <span className={`px-3 py-1 rounded-full font-mono text-[11px] font-bold tracking-wider uppercase border backdrop-blur-md ${selectedService.badgeBg}`}>
                       {selectedService.category}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-neutral-950/80 border border-neutral-700 text-neutral-300 font-mono text-[10px] uppercase font-semibold backdrop-blur-md">
-                      {selectedService.status}
                     </span>
                   </div>
                   <h3 className="font-sans text-2xl sm:text-4xl font-black text-white">
@@ -259,7 +267,7 @@ export default function ServicesSection({ onNavigate }) {
                   </div>
                 </div>
 
-                {/* Tags */}
+                {/* Tags (No Hashtags) */}
                 <div className="pt-2">
                   <div className="flex flex-wrap gap-2">
                     {selectedService.tags.map((tag, tIdx) => (
@@ -267,14 +275,14 @@ export default function ServicesSection({ onNavigate }) {
                         key={tIdx}
                         className="px-3 py-1 rounded-full bg-neutral-950 border border-neutral-800 text-neutral-400 font-mono text-xs"
                       >
-                        #{tag}
+                        {tag}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Modal Footer */}
+              {/* Modal Footer (Visit button only, no Close View button) */}
               <div className="p-4 sm:p-6 bg-neutral-950 border-t border-neutral-800 flex items-center justify-between gap-4">
                 <a
                   href={selectedService.link}
@@ -282,17 +290,9 @@ export default function ServicesSection({ onNavigate }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold transition-all cursor-pointer shadow-lg hover:shadow-[0_0_25px_rgba(220,38,38,0.5)] active:scale-95"
                 >
-                  <span>Launch Live Platform</span>
+                  <span>Visit</span>
                   <ExternalLink size={14} />
                 </a>
-
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  className="px-5 py-2.5 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-300 font-mono text-xs font-bold transition-colors cursor-pointer"
-                >
-                  Close View
-                </button>
               </div>
             </motion.div>
           </div>

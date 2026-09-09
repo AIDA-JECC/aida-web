@@ -33,7 +33,7 @@ export default function ServicesPage({ onNavigate }) {
       </div>
 
       {/* Dedicated Services Showcase */}
-      <ServicesSection onNavigate={onNavigate} />
+      <ServicesSection showAll={true} onNavigate={onNavigate} />
     </div>
   );
 }

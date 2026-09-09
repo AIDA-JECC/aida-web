@@ -347,7 +347,6 @@ body.light-theme {
 
 /* Main Section Wrappers & Page Containers Inversions */
 .light-theme .app-main-wrapper,
-.light-theme #home,
 .light-theme #about,
 .light-theme #events,
 .light-theme #achievements,
@@ -362,6 +361,56 @@ body.light-theme {
 .light-theme footer {
   background-color: #f8fafc !important;
   color: #0f172a !important;
+}
+
+/* Hero Section (#home) Isolation: Preserves original editorial canvas and exact card colors */
+.light-theme #home {
+  background-color: #f5f5f0 !important;
+  color: #09090b !important;
+}
+
+.light-theme #home h1,
+.light-theme #home h1 span.text-neutral-950,
+.light-theme #home h1 span.text-neutral-800 {
+  color: #09090b !important;
+}
+
+.light-theme #home h1 span.text-red-600 {
+  color: #dc2626 !important;
+}
+
+.light-theme #home p.text-neutral-600 {
+  color: #525252 !important;
+}
+
+/* Card 1 in Hero Showcase: Always Red Card */
+.light-theme #home .bg-red-600 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+.light-theme #home .bg-red-600 span,
+.light-theme #home .bg-red-600 .text-white {
+  color: #ffffff !important;
+}
+
+/* Card 2 in Hero Showcase: Always Dark Card */
+.light-theme #home .bg-neutral-950 {
+  background-color: #09090b !important;
+  color: #ffffff !important;
+}
+.light-theme #home .bg-neutral-950 span,
+.light-theme #home .bg-neutral-950 .text-neutral-400 {
+  color: #a3a3a3 !important;
+}
+
+/* Card 3 in Hero Showcase: Always White Card */
+.light-theme #home .bg-white {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+}
+.light-theme #home .bg-white span,
+.light-theme #home .bg-white .text-neutral-500 {
+  color: #737373 !important;
 }
 
 /* Core Pillars Section (#pillars) in Light Mode: Section & Header turn white with black h2 heading, ONLY .pillar-card elements preserve dark styling */
