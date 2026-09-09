@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, X, Volume2 } from 'lucide-react';
-import introImg from '../assets/into img.png';
+import introImg from '../assets/into img.webp';
 import introVideoUrl from '../assets/AIDA intro 2.mp4';
 
 const VIDEO_BYTES = 8423929; // ~8.42 MB

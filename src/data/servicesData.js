@@ -85,5 +85,26 @@ export const servicesData = [
     ],
     status: "Active Initiative",
     highlights: "Fostering environmental responsibility by combining engineering solutions with zero-waste plastic recycling initiatives."
+  },
+  {
+    id: "thunnalcustom",
+    title: "THUNNAL CUSTOM",
+    category: "Custom Apparel Store",
+    whatItDoes: "Personalized embroidered clothing & accessories",
+    shortDescription: "THUNNAL CUSTOM turns meaningful photos, pets, memories, and ideas into personalized embroidered apparel made especially for each customer.",
+    image: "/services/thunnalcustom.webp",
+    link: "https://thunnalcustom.com/",
+    badgeBg: "bg-purple-950/80 border-purple-600/60 text-purple-400",
+    accentColor: "text-purple-400",
+    gradient: "from-purple-950/40 via-neutral-900 to-neutral-950",
+    tags: ["Custom Embroidery", "Personalized Apparel", "Photo to Embroidery", "Worldwide Shipping"],
+    features: [
+      "Photo-to-Embroidery Customization",
+      "Personalized Hoodies, Sweatshirts & T-Shirts",
+      "Digital Proof Approval Before Stitching",
+      "Made-to-Order Production & Worldwide Shipping"
+    ],
+    status: "Active Store",
+    highlights: "An online custom apparel platform transforming photos, pet portraits, and custom illustrations into unique embroidered merchandise with a 100% satisfaction guarantee."
   }
 ];
