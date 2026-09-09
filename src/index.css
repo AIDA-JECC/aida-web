@@ -795,6 +795,119 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
 }
 
 /* =======================================================
+   YODHA SECTION (#yodha) LIGHT THEME RULES
+   - Outer section & header react to light theme toggle
+   - The featured Yodha Card (.yodha-card) preserves dark crimson styling
+   ======================================================= */
+
+/* Section background & header outside card */
+.light-theme #yodha {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light-theme #yodha h2,
+.light-theme #yodha h2.text-white {
+  color: #0f172a !important;
+}
+
+.light-theme #yodha button.bg-neutral-900 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light-theme #yodha button.bg-neutral-900:hover {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.light-theme #yodha span.text-neutral-400 {
+  color: #64748b !important;
+}
+
+/* Strict Dark Isolation for Yodha Card (.yodha-card) */
+.light-theme .yodha-card {
+  background-image: linear-gradient(to bottom, #1d070a, #120406, #0a0203) !important;
+  background-color: #0a0203 !important;
+  border-color: rgba(239, 68, 68, 0.8) !important;
+  color: #ffffff !important;
+}
+
+.light-theme .yodha-card h3,
+.light-theme .yodha-card h3.text-white {
+  color: #ffffff !important;
+}
+
+.light-theme .yodha-card p,
+.light-theme .yodha-card p.text-neutral-300 {
+  color: #d4d4d4 !important;
+}
+
+.light-theme .yodha-card .text-amber-400,
+.light-theme .yodha-card .text-amber-300 {
+  color: #fbbf24 !important;
+}
+
+.light-theme .yodha-card .text-red-500,
+.light-theme .yodha-card .text-red-400 {
+  color: #f87171 !important;
+}
+
+.light-theme .yodha-card .text-neutral-300,
+.light-theme .yodha-card .text-neutral-400 {
+  color: #d4d4d4 !important;
+}
+
+/* Contacts Info Box inside Yodha Card */
+.light-theme .yodha-card .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(153, 27, 27, 0.5) !important;
+}
+
+.light-theme .yodha-card .bg-black\/60 span,
+.light-theme .yodha-card .bg-black\/60 a {
+  color: #d4d4d4 !important;
+}
+
+/* Date/Location/Mode Divider Bar */
+.light-theme .yodha-card .border-red-900\/40 {
+  border-color: rgba(153, 27, 27, 0.4) !important;
+}
+
+/* Tags inside Yodha Card */
+.light-theme .yodha-card .bg-neutral-950 {
+  background-color: #0a0a0a !important;
+  border-color: #262626 !important;
+  color: #a3a3a3 !important;
+}
+
+/* Register Now Button inside Yodha Card */
+.light-theme .yodha-card a.bg-gradient-to-r {
+  background-image: linear-gradient(to right, #dc2626, #d97706) !important;
+  color: #ffffff !important;
+}
+
+.light-theme .yodha-card a.bg-gradient-to-r span {
+  color: #ffffff !important;
+}
+
+/* Countdown Timer inside Yodha Card */
+.light-theme .yodha-card .bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  border-color: rgba(245, 158, 11, 0.6) !important;
+}
+
+.light-theme .yodha-card .bg-black\/90 span {
+  color: #ffffff !important;
+}
+
+.light-theme .yodha-card .bg-black\/90 span.text-amber-400 {
+  color: #fbbf24 !important;
+}
+
+/* =======================================================
    SERVICES SECTION (#services) LIGHT THEME RULES
    - Section header & background adjust to light theme
    - Cards (.service-card) & Modal (.service-modal) preserve 100% dark mode contrast

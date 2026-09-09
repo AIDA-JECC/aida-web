@@ -154,7 +154,7 @@ export default function YodhaSection() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="grid grid-cols-1 md:grid-cols-12 bg-gradient-to-b from-[#1d070a] via-[#120406] to-[#0a0203] border-2 border-red-500/80 hover:border-amber-400 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.35)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] ring-1 ring-inset ring-red-500/40 transition-all duration-300 select-none min-w-0 w-full"
+            className="yodha-card grid grid-cols-1 md:grid-cols-12 bg-gradient-to-b from-[#1d070a] via-[#120406] to-[#0a0203] border-2 border-red-500/80 hover:border-amber-400 rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.35)] hover:shadow-[0_0_60px_rgba(245,158,11,0.5)] ring-1 ring-inset ring-red-500/40 transition-all duration-300 select-none min-w-0 w-full"
           >
             {/* Left Column: Event Poster Artwork */}
             <div className="md:col-span-5 lg:col-span-4 relative min-w-0 overflow-hidden bg-black/60 border-b md:border-b-0 md:border-r border-red-900/40">
