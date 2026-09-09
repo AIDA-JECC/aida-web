@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { X, Calendar, MapPin, Tag, ExternalLink, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { X, Calendar, MapPin, Tag, ExternalLink, ChevronLeft, ChevronRight, Camera, Phone, Trophy, Sparkles } from 'lucide-react';
 import SafeImage from './ui/SafeImage';
+import EventCountdownTimer from './ui/EventCountdownTimer';
 
 export default function EventModal({ event, onClose }) {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -22,6 +23,8 @@ export default function EventModal({ event, onClose }) {
   }, [event, onClose]);
 
   if (!event) return null;
+
+  const isUpcoming = event.status === 'Upcoming' || event.isUpcoming;
 
   // Determine gallery images from eventImages (eventImage folder) or fallback to coverPage / img
   const galleryImages =
@@ -68,6 +71,13 @@ export default function EventModal({ event, onClose }) {
               className="w-full h-full max-h-[550px] object-contain rounded-2xl"
             />
 
+            {/* Live Countdown Timer Badge for Upcoming Events */}
+            {isUpcoming && (
+              <div className="absolute top-4 left-4 z-30">
+                <EventCountdownTimer targetDate={event.targetDate || '2026-10-01T09:00:00+05:30'} />
+              </div>
+            )}
+
             {/* Gallery Navigation Controls if multiple images exist */}
             {hasMultipleImages && (
               <>
@@ -99,7 +109,9 @@ export default function EventModal({ event, onClose }) {
             )}
 
             {!hasMultipleImages && (
-              <span className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full font-mono text-xs font-bold uppercase bg-red-600 text-white shadow-lg">
+              <span className={`absolute bottom-4 left-4 px-3 py-1.5 rounded-full font-mono text-xs font-bold uppercase shadow-lg ${
+                isUpcoming ? 'bg-amber-500 text-black' : 'bg-red-600 text-white'
+              }`}>
                 {event.status || 'Completed'}
               </span>
             )}
@@ -112,7 +124,7 @@ export default function EventModal({ event, onClose }) {
                 <span className="border border-neutral-800 px-3 py-1 rounded-full font-mono text-xs text-neutral-400">
                   {event.category}
                 </span>
-                <span className="border border-neutral-800 px-3 py-1 rounded-full font-mono text-xs text-neutral-400">
+                <span className="border border-neutral-800 px-3 py-1 rounded-full font-mono text-xs text-amber-400 font-bold">
                   {event.dateLabel}
                 </span>
               </div>
@@ -132,9 +144,44 @@ export default function EventModal({ event, onClose }) {
                 </div>
               </div>
 
-              <p className="text-sm text-neutral-300 leading-relaxed">
-                {event.detail}
+              <p className="text-sm text-neutral-300 leading-relaxed whitespace-pre-line">
+                {event.fullBrief || event.detail}
               </p>
+
+              {/* Prize Pool Info */}
+              {event.prizes && (
+                <div className="p-3.5 rounded-2xl bg-amber-950/40 border border-amber-500/50 space-y-1">
+                  <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase">
+                    <Trophy size={15} />
+                    <span>PRIZE POOL</span>
+                  </div>
+                  <p className="text-xs sm:text-sm font-mono text-white font-semibold">
+                    {event.prizes}
+                  </p>
+                </div>
+              )}
+
+              {/* Event Contact Personnel */}
+              {event.contacts && (
+                <div className="p-3.5 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-2">
+                  <div className="flex items-center gap-2 text-red-500 font-mono text-xs font-bold uppercase">
+                    <Phone size={14} />
+                    <span>CONTACT COORDINATORS</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-neutral-300">
+                    {event.contacts.map((contact, cIdx) => (
+                      <a
+                        key={cIdx}
+                        href={`tel:${contact.phone.replace(/\s+/g, '')}`}
+                        className="flex items-center justify-between p-2 rounded-xl bg-neutral-950 hover:bg-red-950/40 border border-neutral-800 hover:border-red-600/60 transition-all text-neutral-200 hover:text-white"
+                      >
+                        <span className="font-bold">{contact.name}</span>
+                        <span className="text-red-400 font-semibold">{contact.phone}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {event.tags && (
                 <div>
@@ -151,16 +198,16 @@ export default function EventModal({ event, onClose }) {
               )}
             </div>
 
-            {event.registrationUrl && (
+            {(event.registrationUrl || event.registrationLink) && (
               <div className="pt-4 border-t border-neutral-900">
                 <a
-                  href={event.registrationUrl}
+                  href={event.registrationUrl || event.registrationLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-full shadow-md transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-mono font-bold text-sm rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transition-all cursor-pointer"
                 >
                   <ExternalLink size={16} aria-hidden="true" />
-                  <span>Register for Event</span>
+                  <span>Register at yodha.aidajecc.in</span>
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </div>

@@ -1720,6 +1720,49 @@
 
 export const officialEventsData = [
   {
+    "id": "event-yodha-2-0",
+    "index": 100,
+    "name": "YODHA 2.0 — Warriors of AI",
+    "category": "Hackathon",
+    "eventType": "48-Hour National AI Hackathon",
+    "academicYear": "2026-2027",
+    "year": 2026,
+    "dateLabel": "October 1, 2 & 3, 2026",
+    "rawDate": "Oct 1, 2026",
+    "time": "48-Hour Non-Stop",
+    "eventDate": "2026-10-01",
+    "targetDate": "2026-10-01T09:00:00+05:30",
+    "status": "Upcoming",
+    "isUpcoming": true,
+    "img": "/events/coverpage/Yodha 2.0.webp",
+    "coverPage": "/events/coverpage/Yodha 2.0.webp",
+    "eventImages": [
+      "/events/coverpage/Yodha 2.0.webp"
+    ],
+    "gallery": [
+      "/events/coverpage/Yodha 2.0.webp"
+    ],
+    "detail": "YODHA 2.0 is a 48-hour Healthcare AI battlefield where teams turn bold ideas into working solutions that create real-world impact.",
+    "fullBrief": "YODHA 2.0 is a 48-hour offline AI hackathon organized by the Department of Artificial Intelligence & Data Science at Jyothi Engineering College (JECC). The hackathon brings together teams from across India to build innovative, real-world AI-driven solutions for healthcare, focusing on UN SDG 3: Good Health & Well-Being.\n\nParticipants work in teams of four, tackling 16 real-world problem statements across areas such as AI-based disease diagnosis, medical computer vision, predictive healthcare, and generative AI.",
+    "prizes": "₹1 Lakh Total Prize Pool (1st: ₹30,000 | 2nd: ₹20,000 | 3rd: ₹15,000)",
+    "contacts": [
+      { "name": "Alinto", "phone": "99478 17803", "tel": "+919947817803" },
+      { "name": "Amal P S", "phone": "92079 82258", "tel": "+919207982258" }
+    ],
+    "registrationLink": "https://yodha.aidajecc.in",
+    "registrationUrl": "https://yodha.aidajecc.in",
+    "tags": [
+      "48-Hour Healthcare AI",
+      "₹1 Lakh Prize Pool",
+      "UN SDG 3: Good Health",
+      "Offline Hackathon",
+      "16 Problem Statements"
+    ],
+    "location": "Jyothi Engineering College (JECC), Thrissur",
+    "venue": "JECC Campus",
+    "mode": "Offline On-Campus"
+  },
+  {
     "id": "event-51-game-dev-from-idea-to-playable",
     "index": 51,
     "name": "Game Dev – From Idea to Playable",
