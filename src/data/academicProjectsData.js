@@ -105,7 +105,7 @@ export const academicProjectsData = [
     "batch": "2023–2027",
     "projectType": "Main Project",
     "techStack": [
-      "Augmented Reality","Unity",
+      "Augmented Reality","Unity","Contextual Vocabulary","AI","Speech-to-Text"
     ],
     "coverImage": "/cover page/AI_Language_Learning_AR_Cover_Under_1MB-8%20-%2012317028%20GRACE%20MARIA%20REJI.webp",
     "demoImage": "/working demo/IMG-20260316-WA0029%20-%2012317028%20GRACE%20MARIA%20REJI%20(1).webp",
