@@ -924,6 +924,30 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
   color: #94a3b8 !important;
 }
 
+/* Global Standalone Countdown Timer Badge Light Mode Theme */
+.light-theme .event-countdown-timer {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(245, 158, 11, 0.6) !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12) !important;
+}
+
+.light-theme .event-countdown-timer span {
+  color: #0f172a !important;
+}
+
+.light-theme .event-countdown-timer span.text-amber-400 {
+  color: #d97706 !important;
+}
+
+.light-theme .event-countdown-timer span.bg-amber-400 {
+  background-color: #d97706 !important;
+}
+
+.light-theme .event-countdown-timer span.text-neutral-500 {
+  color: #94a3b8 !important;
+}
+
 /* =======================================================
    UPCOMING EVENT CARD (.upcoming-event-card) LIGHT THEME RULES
    - Converts Card 1 in EventsSection to clean white light theme

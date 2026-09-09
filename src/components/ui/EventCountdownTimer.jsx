@@ -34,7 +34,7 @@ export default function EventCountdownTimer({ targetDate = '2026-10-01T09:00:00+
   }
 
   return (
-    <div className={`inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs font-bold text-white bg-black/90 backdrop-blur-md border border-amber-500/60 px-3 py-1.5 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.35)] ${className}`}>
+    <div className={`event-countdown-timer inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs font-bold text-white bg-black/90 backdrop-blur-md border border-amber-500/60 px-3 py-1.5 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.35)] ${className}`}>
       <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping inline-block shrink-0" />
       <span className="text-amber-400 uppercase tracking-widest text-[10px] hidden xs:inline">STARTS IN:</span>
       <span className="text-white font-bold">{timeLeft.days}<span className="text-amber-400 text-[10px] font-normal">d</span></span>

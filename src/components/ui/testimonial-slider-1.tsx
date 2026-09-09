@@ -170,6 +170,31 @@ export const TestimonialSlider = ({
     setCurrentIndex(index);
   };
 
+  // Preload upcoming & previous member images in background so transitions are instantaneous and never get stuck
+  useEffect(() => {
+    if (!reviews || reviews.length <= 1) return;
+    const indicesToPreload = [
+      (currentIndex + 1) % reviews.length,
+      (currentIndex - 1 + reviews.length) % reviews.length,
+      (currentIndex + 2) % reviews.length,
+      (currentIndex + 3) % reviews.length,
+    ];
+
+    indicesToPreload.forEach((idx) => {
+      const item = reviews[idx];
+      if (item) {
+        if (item.imageSrc) {
+          const img = new Image();
+          img.src = item.imageSrc;
+        }
+        if (item.thumbnailSrc) {
+          const thumb = new Image();
+          thumb.src = item.thumbnailSrc;
+        }
+      }
+    });
+  }, [currentIndex, reviews]);
+
   // Autoplay carousel timer: advances every 5 seconds (5000ms) continuously once section is reached
   useEffect(() => {
     if (!hasEnteredView || isInteractionPaused || reviews.length <= 1) return;

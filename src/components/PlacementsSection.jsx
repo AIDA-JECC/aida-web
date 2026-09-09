@@ -319,11 +319,18 @@ export default function PlacementsSection({ showAll = false, onNavigate }) {
 
   // Record set calculation
   const totalPages = Math.ceil(filteredPlacements.length / itemsPerPage) || 1;
+  const [progressiveLimit, setProgressiveLimit] = useState(null);
+
   const displayItems = useMemo(() => {
-    if (effectiveShowAll) return filteredPlacements;
+    if (effectiveShowAll) {
+      if (progressiveLimit !== null) {
+        return filteredPlacements.slice(0, progressiveLimit);
+      }
+      return filteredPlacements;
+    }
     const start = (currentPage - 1) * itemsPerPage;
     return filteredPlacements.slice(start, start + itemsPerPage);
-  }, [filteredPlacements, currentPage, itemsPerPage, effectiveShowAll]);
+  }, [filteredPlacements, currentPage, itemsPerPage, effectiveShowAll, progressiveLimit]);
 
   const handleTypeChange = (type) => {
     setSelectedType(type);
@@ -354,7 +361,21 @@ export default function PlacementsSection({ showAll = false, onNavigate }) {
         window.location.hash = '#/placements';
       }
     } else {
-      setIsExpandedAll(!isExpandedAll);
+      if (!isExpandedAll) {
+        // Immediate 1st frame: load 5 more rows instantly
+        const initialChunk = Math.min((currentPage * itemsPerPage) + 5, filteredPlacements.length);
+        setProgressiveLimit(initialChunk);
+        setIsExpandedAll(true);
+        // 2nd frame: load all remaining items seamlessly in background
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            setProgressiveLimit(null);
+          }, 40);
+        });
+      } else {
+        setIsExpandedAll(false);
+        setProgressiveLimit(null);
+      }
     }
   };
 

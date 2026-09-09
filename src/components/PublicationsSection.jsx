@@ -234,11 +234,18 @@ export default function PublicationsSection({ showAll = false, defaultTab = 'sta
   const activeDataset = activeTab === 'staff' ? filteredStaffPubs : filteredStudentPubs;
   const totalPages = Math.ceil(activeDataset.length / itemsPerPage) || 1;
 
+  const [progressiveLimit, setProgressiveLimit] = useState(null);
+
   const displayItems = useMemo(() => {
-    if (effectiveShowAll) return activeDataset;
+    if (effectiveShowAll) {
+      if (progressiveLimit !== null) {
+        return activeDataset.slice(0, progressiveLimit);
+      }
+      return activeDataset;
+    }
     const start = (currentPage - 1) * itemsPerPage;
     return activeDataset.slice(start, start + itemsPerPage);
-  }, [activeDataset, currentPage, itemsPerPage, effectiveShowAll]);
+  }, [activeDataset, currentPage, itemsPerPage, effectiveShowAll, progressiveLimit]);
 
   // Dropdown options
   const staffTypeOptions = useMemo(() => {
@@ -267,7 +274,21 @@ export default function PublicationsSection({ showAll = false, defaultTab = 'sta
         window.location.hash = '#/publications';
       }
     } else {
-      setIsExpandedAll(!isExpandedAll);
+      if (!isExpandedAll) {
+        // Immediate 1st frame: load 5 more rows instantly
+        const initialChunk = Math.min((currentPage * itemsPerPage) + 5, activeDataset.length);
+        setProgressiveLimit(initialChunk);
+        setIsExpandedAll(true);
+        // 2nd frame: load all remaining items seamlessly in background
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            setProgressiveLimit(null);
+          }, 40);
+        });
+      } else {
+        setIsExpandedAll(false);
+        setProgressiveLimit(null);
+      }
     }
   };
 
