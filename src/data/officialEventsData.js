@@ -1744,7 +1744,7 @@ export const officialEventsData = [
     ],
     "detail": "YODHA 2.0 is a 48-hour Healthcare AI battlefield where teams turn bold ideas into working solutions that create real-world impact.",
     "fullBrief": "YODHA 2.0 is a 48-hour offline AI hackathon organized by the Department of Artificial Intelligence & Data Science at Jyothi Engineering College (JECC). The hackathon brings together teams from across India to build innovative, real-world AI-driven solutions for healthcare, focusing on UN SDG 3: Good Health & Well-Being.\n\nParticipants work in teams of four, tackling 16 real-world problem statements across areas such as AI-based disease diagnosis, medical computer vision, predictive healthcare, and generative AI.",
-    "prizes": "₹1 Lakh Total Prize Pool (1st: ₹30,000 | 2nd: ₹20,000 | 3rd: ₹15,000)",
+    "prizes": "₹1 Lakh Worth Prices (1st: ₹30,000 | 2nd: ₹20,000 | 3rd: ₹15,000)",
     "contacts": [
       { "name": "Alinto", "phone": "99478 17803", "tel": "+919947817803" },
       { "name": "Amal P S", "phone": "92079 82258", "tel": "+919207982258" }
@@ -1753,7 +1753,7 @@ export const officialEventsData = [
     "registrationUrl": "https://yodha.aidajecc.in",
     "tags": [
       "48-Hour Healthcare AI",
-      "₹1 Lakh Prize Pool",
+      "₹1 Lakh Worth Prices",
       "UN SDG 3: Good Health",
       "Offline Hackathon",
       "16 Problem Statements"

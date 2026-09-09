@@ -378,12 +378,6 @@ export default function EventsPage({ onNavigate, filterParam }) {
 
                         <div className="w-full">
                           <EventArtwork event={event} className="w-full h-64 sm:h-72">
-                            <div className="absolute top-3 left-3 z-30 flex flex-wrap items-center gap-2">
-                              <span className="bg-gradient-to-r from-amber-500 to-red-600 text-white font-mono text-[11px] font-extrabold px-3 py-1 rounded-full shadow-lg border border-amber-400/50 flex items-center gap-1.5 animate-pulse">
-                                <span>⚡ UPCOMING</span>
-                              </span>
-                            </div>
-
                             <div className="absolute bottom-3 right-3 z-30">
                               <EventCountdownTimer targetDate={event.targetDate || '2026-10-01T09:00:00+05:30'} />
                             </div>

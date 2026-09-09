@@ -172,9 +172,6 @@ export default function YodhaSection() {
                   {current.status === 'Upcoming' ? 'Upcoming National Hackathon' : 'Published at aidajecc.in/events'}
                 </span>
               </div>
-              <span className="bg-amber-500/20 border border-amber-500/50 text-amber-400 font-mono text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
-                ⚡ UPCOMING
-              </span>
             </div>
 
             <h3 className="font-sans font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white leading-snug mb-4">
