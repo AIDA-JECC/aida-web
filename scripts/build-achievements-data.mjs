@@ -57,27 +57,18 @@ const excelPath = fs.existsSync('./public/all acheivements.xlsx')
   ? './public/all acheivements.xlsx'
   : './public/achievements_webp.xlsx';
 
-const orientedImagesDir = './public/all acheivements/oriented_images';
 const targetAchievementsDir = './public/achievements';
 
 if (!fs.existsSync(targetAchievementsDir)) {
   fs.mkdirSync(targetAchievementsDir, { recursive: true });
 }
 
-// 2. Collect image files from oriented_images and copy/sync to targetAchievementsDir
+// 2. Collect image files directly from targetAchievementsDir (public/achievements)
 let imageFiles = [];
-if (fs.existsSync(orientedImagesDir)) {
-  const allInDir = fs.readdirSync(orientedImagesDir);
+if (fs.existsSync(targetAchievementsDir)) {
+  const allInDir = fs.readdirSync(targetAchievementsDir);
   imageFiles = allInDir.filter(f => /\.(webp|png|jpg|jpeg)$/i.test(f));
-  
-  console.log(`Copying/syncing ${imageFiles.length} images from ${orientedImagesDir} to ${targetAchievementsDir}...`);
-  imageFiles.forEach(f => {
-    const srcFile = path.join(orientedImagesDir, f);
-    const destFile = path.join(targetAchievementsDir, f);
-    if (!fs.existsSync(destFile)) {
-      fs.copyFileSync(srcFile, destFile);
-    }
-  });
+  console.log(`Using ${imageFiles.length} achievement images directly from ${targetAchievementsDir}...`);
 }
 
 // 3. Read Excel workbook

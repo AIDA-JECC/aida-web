@@ -531,7 +531,7 @@ export const achievementsData = [
     "level": "Participation",
     "year": "2026",
     "tag": "Hackathons",
-    "image": "/achievements/Joel_Pauly_Ideathon.webp"
+    "image": "/achievements/Christ%20Ideathon%20-%2012517051%20JOEL%20PAULY%20(1).webp"
   },
   {
     "id": "achievement-161",
@@ -1272,7 +1272,7 @@ export const achievementsData = [
     "level": "Participation",
     "year": "2025",
     "tag": "Hackathons",
-    "image": "/achievements/PAVANDAS_S_NASA_Space_Apps_Challenge.webp"
+    "image": "/achievements/certificate_pavandas.s_2025__n_a_s_a__space__apps__challenge%20-%2012417070%20PAVANDAS%20S%20(1).webp"
   },
   {
     "id": "achievement-157",
@@ -1571,7 +1571,7 @@ export const achievementsData = [
     "level": "Participation",
     "year": "2025",
     "tag": "Hackathons",
-    "image": "/achievements/Niranjana_PP_NASA_Space_App_Challenge.webp"
+    "image": "/achievements/nasa%20space%20app%20challenge%202025%20-%2012417066%20NIRANJANA%20P%20P%20(1).webp"
   },
   {
     "id": "achievement-165",
@@ -3326,7 +3326,7 @@ export const achievementsData = [
     "level": "Participation",
     "year": "2024",
     "tag": "Hackathons",
-    "image": "/achievements/PAVANDAS_S_NASA_Space_Apps_Challenge(1).webp"
+    "image": "/achievements/certificate_pavandas.s_2024__n_a_s_a__space__apps__challenge%20-%2012417070%20PAVANDAS%20S%20(1).webp"
   },
   {
     "id": "achievement-151",
@@ -3339,7 +3339,7 @@ export const achievementsData = [
     "level": "Participation",
     "year": "2024",
     "tag": "Hackathons",
-    "image": "/achievements/Niranjana_PP_NASA_Space_App_Challenge(1).webp"
+    "image": "/achievements/Nasa%20space%20app%20challenge%20%20-%2012417066%20NIRANJANA%20P%20P%20(1).webp"
   },
   {
     "id": "achievement-169",
