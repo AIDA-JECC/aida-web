@@ -640,8 +640,8 @@ export default function PublicationsSection({ showAll = false, defaultTab = 'sta
         )}
 
         {/* Footer & Pagination */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border border-neutral-800/90 bg-[#0c0c0e]/90 text-xs font-mono text-neutral-400 mt-4 rounded-2xl">
-          <div>
+        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-3 sm:gap-4 p-0 sm:p-4 border-0 sm:border border-neutral-800/90 bg-transparent sm:bg-[#0c0c0e]/90 text-[11px] sm:text-xs font-mono text-neutral-400 mt-5 sm:mt-4 rounded-2xl">
+          <div className="hidden sm:block">
             {effectiveShowAll ? (
               <>Listing all <span className="text-red-500 font-bold">{displayItems.length}</span> records</>
             ) : (
@@ -673,7 +673,7 @@ export default function PublicationsSection({ showAll = false, defaultTab = 'sta
             <button
               type="button"
               onClick={handleExpandOrNavigate}
-              className={`px-3.5 py-1.5 rounded-lg border font-semibold transition-all cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95 ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-lg border font-semibold transition-all cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95 ${
                 effectiveShowAll
                   ? 'bg-red-600 border-red-500 text-white'
                   : 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-red-600/60'
@@ -682,17 +682,20 @@ export default function PublicationsSection({ showAll = false, defaultTab = 'sta
             >
               {!showAll ? (
                 <>
-                  <span>VIEW ALL PUBLICATIONS</span>
+                  <span className="hidden sm:inline">VIEW ALL PUBLICATIONS</span>
+                  <span className="sm:hidden">VIEW ALL</span>
                   <ExternalLink size={13} className="shrink-0 text-red-400" />
                 </>
               ) : effectiveShowAll ? (
                 <>
                   <Minimize2 size={13} className="shrink-0 text-white" />
-                  <span>Showing All ({activeDataset.length})</span>
+                  <span className="hidden sm:inline">Showing All ({activeDataset.length})</span>
+                  <span className="sm:hidden">All ({activeDataset.length})</span>
                 </>
               ) : (
                 <>
-                  <span>Page {currentPage} of {totalPages}</span>
+                  <span className="hidden sm:inline">Page {currentPage} of {totalPages}</span>
+                  <span className="sm:hidden">{currentPage}/{totalPages}</span>
                   <span className="text-red-400 ml-0.5 flex items-center" title="Show All">
                     <Maximize2 size={13} className="shrink-0" />
                   </span>

@@ -155,7 +155,8 @@ export default function ServicesSection({ onNavigate, showAll = false }) {
               }}
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-xl hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] cursor-pointer active:scale-95"
             >
-              <span>VIEW ALL SERVICES</span>
+              <span className="hidden sm:inline">VIEW ALL SERVICES</span>
+              <span className="sm:hidden">VIEW ALL</span>
               <ArrowRight size={16} />
             </button>
           </div>

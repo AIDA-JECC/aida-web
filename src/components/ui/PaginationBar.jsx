@@ -26,7 +26,7 @@ export default function PaginationBar({
       <button
         type="button"
         onClick={() => onToggleShowAll && onToggleShowAll(!showAll)}
-        className={`px-5 py-2.5 rounded-xl border font-mono text-xs font-semibold shadow-md transition-all cursor-pointer flex items-center gap-2 hover:scale-105 active:scale-95 ${
+        className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl border font-mono text-xs font-semibold shadow-md transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 hover:scale-105 active:scale-95 ${
           showAll
             ? 'bg-red-600/90 border-red-500 text-white hover:bg-red-600 shadow-red-950/50'
             : 'bg-neutral-900/90 border-neutral-800 text-neutral-200 hover:text-white hover:border-red-600/60'
@@ -36,11 +36,13 @@ export default function PaginationBar({
         {showAll ? (
           <>
             <Minimize2 size={14} className="text-white shrink-0" />
-            <span>Showing All {totalItems ? `(${totalItems})` : ''}</span>
+            <span className="hidden sm:inline">Showing All {totalItems ? `(${totalItems})` : ''}</span>
+            <span className="sm:hidden">All {totalItems ? `(${totalItems})` : ''}</span>
           </>
         ) : (
           <>
-            <span>Page {currentPage} of {totalPages}</span>
+            <span className="hidden sm:inline">Page {currentPage} of {totalPages}</span>
+            <span className="sm:hidden">{currentPage}/{totalPages}</span>
             {onToggleShowAll && (
               <span className="text-red-400 hover:text-red-300 ml-1 transition-colors flex items-center" title="Show All">
                 <Maximize2 size={13} className="shrink-0" />
