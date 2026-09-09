@@ -68,7 +68,7 @@ export default function EventsSection({ onNavigate }) {
               <li key={event.id} className="md:col-span-2 lg:col-span-1">
                 <div
                   onClick={() => setSelectedEvent(event)}
-                  className="w-full h-full text-left group relative bg-gradient-to-b from-[#1c080b] via-[#130507] to-[#0a0203] border-2 border-red-500/80 hover:border-amber-400 rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-between shadow-[0_0_35px_rgba(220,38,38,0.3)] hover:shadow-[0_0_55px_rgba(245,158,11,0.45)] ring-1 ring-red-500/40"
+                  className="upcoming-event-card w-full h-full text-left group relative bg-gradient-to-b from-[#1c080b] via-[#130507] to-[#0a0203] border-2 border-red-500/80 hover:border-amber-400 rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 cursor-pointer flex flex-col justify-between shadow-[0_0_35px_rgba(220,38,38,0.3)] hover:shadow-[0_0_55px_rgba(245,158,11,0.45)] ring-1 ring-red-500/40"
                 >
                   {/* Glowing Top Ribbon */}
                   <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-red-600 via-amber-400 to-rose-600 animate-pulse z-30" />

@@ -925,6 +925,62 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
 }
 
 /* =======================================================
+   UPCOMING EVENT CARD (.upcoming-event-card) LIGHT THEME RULES
+   - Converts Card 1 in EventsSection to clean white light theme
+   ======================================================= */
+.light-theme .upcoming-event-card {
+  background-image: linear-gradient(to bottom, #ffffff, #fff5f5, #fef2f2) !important;
+  background-color: #ffffff !important;
+  border: 2px solid rgba(220, 38, 38, 0.4) !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .upcoming-event-card h3,
+.light-theme .upcoming-event-card h3.text-white {
+  color: #0f172a !important;
+}
+
+.light-theme .upcoming-event-card p,
+.light-theme .upcoming-event-card p.text-neutral-300 {
+  color: #334155 !important;
+}
+
+.light-theme .upcoming-event-card .text-amber-400 {
+  color: #d97706 !important;
+}
+
+.light-theme .upcoming-event-card .bg-emerald-950\/80 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #059669 !important;
+}
+
+/* Contact Info Footer inside Upcoming Card */
+.light-theme .upcoming-event-card .border-red-900\/40 {
+  border-color: #fee2e2 !important;
+}
+
+.light-theme .upcoming-event-card .text-neutral-300 {
+  color: #475569 !important;
+}
+
+.light-theme .upcoming-event-card .text-red-400 {
+  color: #dc2626 !important;
+}
+
+/* Details button in Upcoming Card */
+.light-theme .upcoming-event-card .border-neutral-700 {
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+.light-theme .upcoming-event-card .border-neutral-700:hover {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+}
+
+/* =======================================================
    SERVICES SECTION (#services) LIGHT THEME RULES
    - Section header & background adjust to light theme
    - Cards (.service-card) & Modal (.service-modal) preserve 100% dark mode contrast
