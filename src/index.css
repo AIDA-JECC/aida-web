@@ -744,6 +744,226 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
   color: #ffffff !important;
 }
 
+/* =======================================================
+   SERVICES SECTION (#services) LIGHT THEME RULES
+   - Section header & background adjust to light theme
+   - Cards (.service-card) & Modal (.service-modal) preserve 100% dark mode contrast
+   ======================================================= */
+.light-theme #services {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light-theme #services h2 {
+  color: #0f172a !important;
+}
+
+.light-theme #services p.text-neutral-400 {
+  color: #475569 !important;
+}
+
+/* -------------------------------------------------------
+   WHITE THEME FOR SERVICE CARDS & MODALS IN LIGHT MODE
+   ------------------------------------------------------- */
+.light-theme .service-card {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-theme .service-card:hover {
+  border-color: #dc2626 !important;
+  box-shadow: 0 15px 35px rgba(220, 38, 38, 0.12) !important;
+}
+
+/* Image Banner Overlays in Light Mode */
+.light-theme .service-card .bg-neutral-900 {
+  background-color: #f1f5f9 !important;
+}
+
+.light-theme .service-card .from-\[\#111113\] {
+  --tw-gradient-from: #ffffff !important;
+}
+
+.light-theme .service-card .via-\[\#111113\]\/30 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Card Typography in Light Mode */
+.light-theme .service-card h3,
+.light-theme .service-card .text-white {
+  color: #0f172a !important;
+}
+
+.light-theme .service-card h3:hover {
+  color: #dc2626 !important;
+}
+
+.light-theme .service-card p,
+.light-theme .service-card .text-neutral-400 {
+  color: #475569 !important;
+}
+
+.light-theme .service-card .text-neutral-500 {
+  color: #64748b !important;
+}
+
+/* "What it does" Highlight Pill in Light Mode */
+.light-theme .service-card .inline-flex.bg-neutral-900\/90 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.light-theme .service-card .inline-flex.bg-neutral-900\/90 span {
+  color: #1e293b !important;
+}
+
+/* Status Indicator Pill in Light Mode */
+.light-theme .service-card .bg-neutral-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Category Badges in Light Mode */
+.light-theme .service-card .bg-red-950\/80 {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #dc2626 !important;
+}
+
+.light-theme .service-card .bg-blue-950\/80 {
+  background-color: #dbeafe !important;
+  border-color: #93c5fd !important;
+  color: #2563eb !important;
+}
+
+.light-theme .service-card .bg-amber-950\/80 {
+  background-color: #fef3c7 !important;
+  border-color: #fcd34d !important;
+  color: #d97706 !important;
+}
+
+.light-theme .service-card .bg-emerald-950\/80 {
+  background-color: #d1fae5 !important;
+  border-color: #6ee7b7 !important;
+  color: #059669 !important;
+}
+
+/* Card Footer & Tags in Light Mode */
+.light-theme .service-card .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme .service-card .rounded-md.bg-neutral-900 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+/* Buttons in Light Mode */
+.light-theme .service-card a.bg-red-600 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+}
+
+.light-theme .service-card button.bg-neutral-900 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light-theme .service-card button.bg-neutral-900:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* -------------------------------------------------------
+   WHITE THEME FOR SERVICE MODAL DIALOG IN LIGHT MODE
+   ------------------------------------------------------- */
+.light-theme .service-modal {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.light-theme .service-modal .bg-neutral-950 {
+  background-color: #f8fafc !important;
+}
+
+.light-theme .service-modal .from-neutral-900 {
+  --tw-gradient-from: #ffffff !important;
+}
+
+.light-theme .service-modal .via-neutral-900\/60 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light-theme .service-modal h3 {
+  color: #0f172a !important;
+}
+
+.light-theme .service-modal p {
+  color: #334155 !important;
+}
+
+.light-theme .service-modal .bg-neutral-950.border.border-neutral-800 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme .service-modal .text-neutral-100 {
+  color: #0f172a !important;
+}
+
+.light-theme .service-modal .bg-red-950\/20 {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+}
+
+.light-theme .service-modal .bg-red-950\/20 .text-neutral-300 {
+  color: #7f1d1d !important;
+}
+
+.light-theme .service-modal .bg-neutral-950\/70 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.light-theme .service-modal .bg-neutral-950\/70 span {
+  color: #1e293b !important;
+}
+
+.light-theme .service-modal .rounded-full.bg-neutral-950 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+.light-theme .service-modal button.bg-neutral-800 {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.light-theme .service-modal button.bg-neutral-800:hover {
+  background-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light-theme .service-modal a.bg-red-600 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+
+
 
 
 

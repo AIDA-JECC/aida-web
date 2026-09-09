@@ -19,7 +19,7 @@ const pillars = [
     btnText: "What We Do",
     btnIcon: ArrowRight,
     btnStyle: "bg-red-600 hover:bg-red-700 text-white shadow-sm",
-    actionType: "about",
+    actionType: "services",
   },
   {
     id: 2,
@@ -129,7 +129,14 @@ export default function TiltedCards({ onNavigate }) {
 
   const handleActionClick = (e, pillar) => {
     e.stopPropagation();
-    if (pillar.actionType === 'placements') {
+    if (pillar.actionType === 'services') {
+      if (onNavigate) onNavigate('services');
+      else {
+        const elem = document.getElementById('services');
+        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+        else window.location.hash = '#/services';
+      }
+    } else if (pillar.actionType === 'placements') {
       if (onNavigate) onNavigate('placements');
       else window.location.hash = '#/placements';
     } else if (pillar.actionType === 'bootcamps') {

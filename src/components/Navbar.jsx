@@ -80,6 +80,7 @@ export default function Navbar({ onVerifyClick }) {
           const navSections = [
             'home',
             'about',
+            'services',
             'events',
             'achievements',
             'publications',

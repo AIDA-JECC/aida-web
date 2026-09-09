@@ -19,6 +19,7 @@ if (typeof window !== "undefined") {
 const navItemsData = [
   { heading: 'Home', href: '#home', id: 'home', shape: '1' },
   { heading: 'About AIDA', href: '#about', id: 'about', shape: '2' },
+  { heading: 'Services Provided', href: '#services', id: 'services', shape: '12' },
   { heading: 'Events & Workshops', href: '#events', id: 'events', shape: '3' },
   { heading: 'Achievements', href: '#achievements', id: 'achievements', shape: '4' },
   { heading: 'Publications', href: '#publications', id: 'publications', shape: '11' },
@@ -33,6 +34,7 @@ const navItemsData = [
 const SECTION_NAMES = {
   home: 'HOME',
   about: 'ABOUT',
+  services: 'SERVICES',
   events: 'EVENTS',
   achievements: 'ACHIEVEMENTS',
   publications: 'PUBLICATIONS',
@@ -339,6 +341,14 @@ export function SterlingGateKineticNavigation({
                   <div className="shape-element w-80 h-80 rounded-full bg-red-600/10 blur-3xl" />
                   <span className="shape-element absolute font-sans font-black text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
                     ABOUT
+                  </span>
+                </div>
+
+                {/* Shape 12: Services Provided */}
+                <div className="bg-shape bg-shape-12 flex items-center justify-center pointer-events-none">
+                  <div className="shape-element w-80 h-80 rounded-full bg-red-600/12 blur-3xl" />
+                  <span className="shape-element absolute font-mono font-bold text-8xl text-neutral-900/10 select-none tracking-widest uppercase -rotate-12 transform">
+                    SERVICES
                   </span>
                 </div>
 

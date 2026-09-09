@@ -18,6 +18,8 @@ import Footer from './components/Footer';
 import GlobalDotField from './components/GlobalDotField';
 import IntroVideo from './components/IntroVideo';
 
+import ServicesSection from './components/ServicesSection';
+
 // Dedicated Full Pages
 import ProjectsPage from './pages/ProjectsPage';
 import FacultyProfilePage from './pages/FacultyProfilePage';
@@ -26,9 +28,13 @@ import AchievementsPage from './pages/AchievementsPage';
 import EventsPage from './pages/EventsPage';
 import PlacementsPage from './pages/PlacementsPage';
 import PublicationsPage from './pages/PublicationsPage';
+import ServicesPage from './pages/ServicesPage';
 
 function getRouteFromHash() {
   const hash = window.location.hash || '';
+  if (hash.startsWith('#/services')) {
+    return { type: 'services' };
+  }
   if (hash.startsWith('#/projects')) {
     return { type: 'projects' };
   }
@@ -95,7 +101,9 @@ export default function App() {
   }, [route]);
 
   const handleNavigate = (pageType, param) => {
-    if (pageType === 'projects') {
+    if (pageType === 'services') {
+      window.location.hash = '#/services';
+    } else if (pageType === 'projects') {
       window.location.hash = '#/projects';
     } else if (pageType === 'publications') {
       window.location.hash = '#/publications';
@@ -129,7 +137,12 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      {route.type === 'projects' ? (
+      {route.type === 'services' ? (
+        <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
+          <GlobalDotField />
+          <ServicesPage onNavigate={handleNavigate} />
+        </div>
+      ) : route.type === 'projects' ? (
         <div className="app-main-wrapper bg-[#080808] relative min-h-screen">
           <GlobalDotField />
           <ProjectsPage onNavigate={handleNavigate} />
@@ -187,6 +200,7 @@ export default function App() {
               <div className="border-t border-neutral-900/80">
                 <TiltedCards onNavigate={handleNavigate} />
               </div>
+              <ServicesSection onNavigate={handleNavigate} />
             </div>
 
             {/* 3. Events: Yodha + Events collection */}
