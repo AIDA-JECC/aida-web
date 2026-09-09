@@ -827,84 +827,101 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
   color: #64748b !important;
 }
 
-/* Strict Dark Isolation for Yodha Card (.yodha-card) */
+/* Full Light Theme Transformation for Yodha Card (.yodha-card) */
 .light-theme .yodha-card {
-  background-image: linear-gradient(to bottom, #1d070a, #120406, #0a0203) !important;
-  background-color: #0a0203 !important;
-  border-color: rgba(239, 68, 68, 0.8) !important;
-  color: #ffffff !important;
+  background-image: linear-gradient(to bottom, #ffffff, #fff5f5, #fef2f2) !important;
+  background-color: #ffffff !important;
+  border: 2px solid rgba(220, 38, 38, 0.4) !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Left Column Artwork Container in Light Mode */
+.light-theme .yodha-card > div:first-child {
+  background-color: #f8fafc !important;
+  border-color: #fee2e2 !important;
 }
 
 .light-theme .yodha-card h3,
 .light-theme .yodha-card h3.text-white {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 .light-theme .yodha-card p,
 .light-theme .yodha-card p.text-neutral-300 {
-  color: #d4d4d4 !important;
+  color: #334155 !important;
 }
 
 .light-theme .yodha-card .text-amber-400,
 .light-theme .yodha-card .text-amber-300 {
-  color: #fbbf24 !important;
+  color: #d97706 !important;
 }
 
 .light-theme .yodha-card .text-red-500,
 .light-theme .yodha-card .text-red-400 {
-  color: #f87171 !important;
+  color: #dc2626 !important;
 }
 
 .light-theme .yodha-card .text-neutral-300,
 .light-theme .yodha-card .text-neutral-400 {
-  color: #d4d4d4 !important;
+  color: #475569 !important;
 }
 
 /* Contacts Info Box inside Yodha Card */
 .light-theme .yodha-card .bg-black\/60 {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  border-color: rgba(153, 27, 27, 0.5) !important;
+  background-color: #f8fafc !important;
+  border: 1px solid #fca5a5 !important;
 }
 
 .light-theme .yodha-card .bg-black\/60 span,
 .light-theme .yodha-card .bg-black\/60 a {
-  color: #d4d4d4 !important;
+  color: #1e293b !important;
+}
+
+.light-theme .yodha-card .bg-black\/60 a:hover {
+  color: #dc2626 !important;
 }
 
 /* Date/Location/Mode Divider Bar */
 .light-theme .yodha-card .border-red-900\/40 {
-  border-color: rgba(153, 27, 27, 0.4) !important;
+  border-color: #fee2e2 !important;
 }
 
 /* Tags inside Yodha Card */
 .light-theme .yodha-card .bg-neutral-950 {
-  background-color: #0a0a0a !important;
-  border-color: #262626 !important;
-  color: #a3a3a3 !important;
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
 }
 
 /* Register Now Button inside Yodha Card */
 .light-theme .yodha-card a.bg-gradient-to-r {
-  background-image: linear-gradient(to right, #dc2626, #d97706) !important;
+  background-image: linear-gradient(to right, #dc2626, #e11d48) !important;
   color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3) !important;
 }
 
 .light-theme .yodha-card a.bg-gradient-to-r span {
   color: #ffffff !important;
 }
 
-/* Countdown Timer inside Yodha Card */
+/* Countdown Timer inside Yodha Card in Light Mode */
 .light-theme .yodha-card .bg-black\/90 {
-  background-color: rgba(0, 0, 0, 0.9) !important;
-  border-color: rgba(245, 158, 11, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
 .light-theme .yodha-card .bg-black\/90 span {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 .light-theme .yodha-card .bg-black\/90 span.text-amber-400 {
-  color: #fbbf24 !important;
+  color: #dc2626 !important;
+}
+
+.light-theme .yodha-card .bg-black\/90 span.text-neutral-500 {
+  color: #94a3b8 !important;
 }
 
 /* =======================================================
