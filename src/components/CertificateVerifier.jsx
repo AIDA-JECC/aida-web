@@ -194,7 +194,7 @@ export default function CertificateVerifier() {
             <div className="verified-certificate-display mt-8">
               <div className="cert-card-header">
                 <div className="cert-brand">
-                  <img src={siteConfig.logo} alt="AIDA Logo" className="cert-logo-img" />
+                  <img src={siteConfig.logo} alt="AIDA Logo" className="cert-logo-img w-9 h-9 object-contain bg-red-600 rounded-full p-1 shadow-md shrink-0" />
                   <div>
                     <h4 className="cert-org-name">{siteConfig.fullName}</h4>
                     <span className="cert-inst">{siteConfig.institution}</span>

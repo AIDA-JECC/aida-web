@@ -235,7 +235,7 @@ const PLACEHOLDERS = [
                 <div key={result.id} className="mt-7 bg-neutral-50 border border-neutral-200 rounded-2xl p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-5 border-b border-neutral-200">
                     <div className="flex items-center gap-3">
-                      <img src={siteConfig.logo} alt="Logo" className="w-9 h-9 object-contain" />
+                      <img src={siteConfig.logo} alt="Logo" className="cert-logo-img w-9 h-9 object-contain bg-red-600 rounded-full p-1 shadow-md shrink-0" />
                       <div>
                         <h4 className="font-sans font-extrabold text-base text-neutral-950 min-h-[1.5em]">
                           <FastTypingText text={result.eventName} delay={0} speed={12} />

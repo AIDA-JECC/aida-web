@@ -666,10 +666,11 @@ html.light-theme #pillars .pillar-card .border-neutral-300 {
   border: 2px solid #f1f5f9;
 }
 
-/* Light Mode AIDA Brand Logo Proper Red Circle Background */
+/* AIDA Brand Logo Red Circle Background */
 .light-theme img[alt="AIDA Logo"],
 .light-theme img[alt="Logo"],
-.light-theme .cert-logo-img {
+.light-theme .cert-logo-img,
+.cert-logo-img {
   background-color: #dc2626 !important;
   border-radius: 9999px !important;
   padding: 4px !important;
