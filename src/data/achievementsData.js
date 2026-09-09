@@ -1,6 +1,19 @@
 // Auto-generated from all acheivements.xlsx
 export const achievementsData = [
   {
+    "id": "achievement-0",
+    "studentName": "AIDA Student Team",
+    "registerNumber": "JEC26AD-ASTHRA",
+    "email": "",
+    "semester": "Semester 6",
+    "title": "1st Prize (₹15,000 Cash Prize) – ASTHRA National Hackathon",
+    "description": "Secured 1st Prize along with a ₹15,000 cash prize for developing an outstanding innovative project solution at the ASTHRA National Level Hackathon.",
+    "level": "1st Prize (₹15,000)",
+    "year": "2026",
+    "tag": "Hackathons",
+    "image": "/achievements/Astra 1st price.webp"
+  },
+  {
     "id": "achievement-61",
     "studentName": "Yasin Muhammed PM",
     "registerNumber": "LJEC23AD059",

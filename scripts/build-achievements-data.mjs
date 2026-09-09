@@ -313,8 +313,23 @@ withoutImages = mixAndInterleaveStudents(withoutImages);
 withImages.forEach(item => delete item.hasLocalImage);
 withoutImages.forEach(item => delete item.hasLocalImage);
 
+const astraAchievement = {
+  id: "achievement-0",
+  studentName: "AIDA Student Team",
+  registerNumber: "JEC26AD-ASTHRA",
+  email: "",
+  semester: "Semester 6",
+  title: "1st Prize (₹15,000 Cash Prize) – ASTHRA National Hackathon",
+  description: "Secured 1st Prize along with a ₹15,000 cash prize for developing an outstanding innovative project solution at the ASTHRA National Level Hackathon.",
+  level: "1st Prize (₹15,000)",
+  year: "2026",
+  tag: "Hackathons",
+  image: "/achievements/Astra 1st price.webp"
+};
+
 const mid = Math.floor(withImages.length / 2);
 const finalAchievements = [
+  astraAchievement,
   ...withImages.slice(0, mid),
   ...withoutImages,
   ...withImages.slice(mid),
