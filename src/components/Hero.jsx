@@ -10,34 +10,30 @@ const ROTATION_INTERVAL = 5000; // 5 seconds auto-rotation
 
 // Fixed colors per card index — these never change when cards rotate
 const cardColors = [
-  { bg: 'bg-red-600 border-red-500/60', meta: 'text-white/80' },
-  { bg: 'bg-neutral-950 border-neutral-700/60', meta: 'text-neutral-400' },
+  { bg: 'bg-red-600 border-red-500/70', meta: 'text-white/90' },
+  { bg: 'bg-neutral-950 border-neutral-700/70', meta: 'text-neutral-400' },
   { bg: 'bg-white border-neutral-300', meta: 'text-neutral-500' },
 ];
 
-// Layout transforms per position (front, middle, back)
-const cardLayouts = [
-  'shadow-2xl z-30 group-hover:scale-[1.03]',
-  'shadow-xl z-20 rotate-4 translate-y-1.5 group-hover:rotate-12 group-hover:translate-x-10 group-hover:translate-y-3',
-  'shadow-lg z-10 -rotate-6 -translate-y-3 group-hover:-rotate-12 group-hover:-translate-x-10 group-hover:-translate-y-4',
-];export default function Hero({ onExploreEventsClick }) {
+export default function Hero({ onExploreEventsClick }) {
   const [activeEventIndex, setActiveEventIndex] = useState(0);
   const [rotationPaused, setRotationPaused] = useState(false);
+  const [isStackHovered, setIsStackHovered] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
 
-  // Check if device is touch/mobile view vs PC view
+  // Responsive device check
   const [isMobileDevice, setIsMobileDevice] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024 || matchMedia('(pointer: coarse)').matches;
+      return window.innerWidth < 768 || matchMedia('(pointer: coarse)').matches;
     }
     return false;
   });
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileDevice(window.innerWidth < 1024 || matchMedia('(pointer: coarse)').matches);
+      setIsMobileDevice(window.innerWidth < 768 || matchMedia('(pointer: coarse)').matches);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -53,6 +49,8 @@ const cardLayouts = [
     return true;
   });
 
+  const [hasCompletedEntrance, setHasCompletedEntrance] = useState(false);
+
   useEffect(() => {
     const handleIntroFinish = () => {
       setStartEntrance(true);
@@ -61,6 +59,15 @@ const cardLayouts = [
     window.addEventListener('intro-video-finished', handleIntroFinish);
     return () => window.removeEventListener('intro-video-finished', handleIntroFinish);
   }, []);
+
+  // Set initial entrance completed state after drop animation (~1.3s)
+  useEffect(() => {
+    if (!startEntrance) return;
+    const timer = setTimeout(() => {
+      setHasCompletedEntrance(true);
+    }, 1300);
+    return () => clearTimeout(timer);
+  }, [startEntrance]);
 
   // Trigger dot field impact bounce shockwave at collision moment (~600ms after entrance starts)
   useEffect(() => {
@@ -79,16 +86,16 @@ const cardLayouts = [
     return () => motionPreference.removeEventListener('change', updateMotionPreference);
   }, []);
 
-  // Auto-rotate every 2.5 seconds
+  // Auto-rotate every 5 seconds
   useEffect(() => {
-    if (rotationPaused || prefersReducedMotion || showcaseEvents.length < 2) return undefined;
+    if (rotationPaused || isStackHovered || prefersReducedMotion || showcaseEvents.length < 2) return undefined;
 
     const interval = window.setInterval(() => {
       setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
     }, ROTATION_INTERVAL);
 
     return () => window.clearInterval(interval);
-  }, [prefersReducedMotion, rotationPaused]);
+  }, [prefersReducedMotion, rotationPaused, isStackHovered]);
 
   const HERO_SUBTITLE = "Official student association of the Department of Artificial Intelligence & Data Science at Jyothi Engineering College. Empowering ethical leaders with precision & care.";
   const [displayedText, setDisplayedText] = useState('');
@@ -116,12 +123,10 @@ const cardLayouts = [
     const isMobile = window.innerWidth < 768;
 
     if (!isMobile) {
-      // PC: start typing immediately after intro completes
       startTyping();
       return;
     }
 
-    // Mobile: wait until the subtitle paragraph scrolls into view
     const el = subtitleRef.current;
     if (!el) return;
 
@@ -141,12 +146,46 @@ const cardLayouts = [
 
   const activeEvent = showcaseEvents[activeEventIndex];
 
+  // Helper to compute card stack variant physics based on position & screen size
+  const getCardVariant = (position, isHovered, isMobile) => {
+    if (position === 0) {
+      // Top Front Card
+      return {
+        x: 0,
+        y: 0,
+        rotate: 0,
+        scale: isHovered ? 1.02 : 1,
+        zIndex: 30,
+        opacity: 1,
+      };
+    }
+    if (position === 1) {
+      // Middle Card
+      return {
+        x: isHovered ? (isMobile ? 16 : 28) : (isMobile ? 8 : 14),
+        y: isHovered ? (isMobile ? 10 : 16) : (isMobile ? 5 : 8),
+        rotate: isHovered ? (isMobile ? 6 : 10) : (isMobile ? 3 : 5),
+        scale: 0.95,
+        zIndex: 20,
+        opacity: 0.92,
+      };
+    }
+    // Back Card (position 2)
+    return {
+      x: isHovered ? (isMobile ? -16 : -28) : (isMobile ? -8 : -14),
+      y: isHovered ? (isMobile ? -10 : -14) : (isMobile ? -5 : -8),
+      rotate: isHovered ? (isMobile ? -6 : -10) : (isMobile ? -3 : -5),
+      scale: 0.9,
+      zIndex: 10,
+      opacity: 0.82,
+    };
+  };
+
   return (
     <section
       id="home"
       className="min-h-screen relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-32 sm:pb-40 overflow-hidden max-w-7xl mx-auto text-neutral-950"
     >
-      {/* Restrained editorial texture & interactive dot field for the warm light canvas. */}
       <HeroDotField />
       <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] bg-red-200/35 rounded-full blur-[180px] pointer-events-none -z-10" />
       <div
@@ -161,9 +200,9 @@ const cardLayouts = [
       />
 
       <div className="w-full flex flex-col items-center justify-center my-auto mt-[10vh]">
-        {/* Editorial title with the event collection as its interactive centrepiece. */}
+        {/* Editorial title with interactive card stack showcase */}
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-8 lg:gap-6 text-center lg:text-left mb-12">
-          {/* Bouncy Left Heading Animation: Artificial Intelligence */}
+          {/* Bouncy Left Heading: Artificial Intelligence */}
           <motion.h1
             initial={{ x: -350, opacity: 0 }}
             animate={startEntrance ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
@@ -174,68 +213,92 @@ const cardLayouts = [
             <span className="text-neutral-800 font-extrabold sm:font-bold">Intelligence</span>
           </motion.h1>
 
+          {/* Interactive Stack Showcase Container */}
           <div className="relative mx-auto my-4 lg:my-0">
             <div
+              onMouseEnter={() => setIsStackHovered(true)}
+              onMouseLeave={() => setIsStackHovered(false)}
               aria-label={`Explore the event showcase. Currently showing ${activeEvent.name}`}
-              className={`relative w-[min(88vw,330px)] sm:w-[340px] md:w-[380px] h-[220px] sm:h-[260px] cursor-pointer group select-none text-left ${prefersReducedMotion || rotationPaused ? '' : 'animate-float-slow'}`}
+              className={`relative w-[min(86vw,310px)] sm:w-[340px] md:w-[370px] h-[210px] sm:h-[250px] cursor-pointer select-none text-left ${
+                prefersReducedMotion || rotationPaused || isStackHovered ? '' : 'animate-float-slow'
+              }`}
             >
               {showcaseEvents.map((event, eventIndex) => {
                 const position = (eventIndex - activeEventIndex + showcaseEvents.length) % showcaseEvents.length;
-                const layout = cardLayouts[position];
                 const color = cardColors[eventIndex];
                 const isFront = position === 0;
 
-                // Sequential spring drop delay: Card 0 @ 0.4s, Card 1 @ 0.75s, Card 2 @ 1.1s (1.5s total)
+                // Initial drop delay: Card 0 @ 0.4s, Card 1 @ 0.75s, Card 2 @ 1.1s
                 const dropDelay = 0.4 + (2 - position) * 0.35;
+                const variant = getCardVariant(position, isStackHovered, isMobileDevice);
 
                 return (
                   <motion.div
                     key={event.id}
-                    drag={isMobileDevice && isFront ? true : false}
+                    drag={isFront ? true : false}
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                    dragElastic={0.8}
+                    dragElastic={0.6}
                     dragSnapToOrigin={true}
                     onDragStart={() => setRotationPaused(true)}
                     onDragEnd={(e, info) => {
                       const distance = Math.hypot(info.offset.x, info.offset.y);
                       const velocity = Math.hypot(info.velocity.x, info.velocity.y);
                       if (distance > 25 || velocity > 250) {
-                        // Card released: send top card smoothly to back, bring down card to front
                         setActiveEventIndex((current) => (current + 1) % showcaseEvents.length);
                       }
-                      setTimeout(() => {
-                        setRotationPaused(false);
-                      }, 3000);
+                      setTimeout(() => setRotationPaused(false), 3500);
                     }}
-                    onClick={() => {
-                      if (isFront) {
+                    onClick={(e) => {
+                      if (!isFront) {
+                        e.stopPropagation();
+                        setActiveEventIndex(eventIndex);
+                      } else if (onExploreEventsClick) {
                         onExploreEventsClick();
                       }
                     }}
-                    layout
                     initial={{ y: -450, opacity: 0 }}
-                    animate={startEntrance ? { y: 0, opacity: 1 } : { y: -450, opacity: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 220,
-                      damping: 20,
-                      mass: 0.9,
-                      delay: startEntrance ? (isFront ? 0 : dropDelay) : 0,
-                    }}
-                    whileDrag={{ scale: 1.03, cursor: 'grabbing' }}
+                    animate={
+                      startEntrance
+                        ? {
+                            y: variant.y,
+                            x: variant.x,
+                            rotate: variant.rotate,
+                            scale: variant.scale,
+                            zIndex: variant.zIndex,
+                            opacity: variant.opacity,
+                          }
+                        : { y: -450, opacity: 0 }
+                    }
+                    transition={
+                      hasCompletedEntrance
+                        ? {
+                            type: 'spring',
+                            stiffness: 280,
+                            damping: 24,
+                            mass: 0.8,
+                          }
+                        : {
+                            type: 'spring',
+                            stiffness: 220,
+                            damping: 18,
+                            mass: 0.9,
+                            delay: isFront ? 0 : dropDelay,
+                          }
+                    }
+                    whileDrag={{ scale: 1.04, cursor: 'grabbing' }}
                     aria-hidden={!isFront}
-                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between ${color.bg} ${layout} ${
-                      isMobileDevice && isFront ? 'cursor-grab active:cursor-grabbing touch-none' : ''
+                    className={`absolute inset-0 border rounded-2xl p-4 flex flex-col justify-between shadow-xl transition-shadow duration-300 ${color.bg} ${
+                      isFront ? 'cursor-grab active:cursor-grabbing touch-none' : 'cursor-pointer hover:brightness-110'
                     }`}
                   >
                     <EventArtwork
                       event={event}
-                      className="w-full h-[130px] sm:h-[160px] rounded-lg pointer-events-none"
+                      className="w-full h-[125px] sm:h-[155px] rounded-lg pointer-events-none object-cover"
                       loading={eventIndex === 0 ? 'eager' : 'lazy'}
                     />
                     <span className={`flex items-center justify-between text-xs font-mono ${color.meta} pointer-events-none`}>
                       <span className={isFront ? 'font-bold' : ''}>#{event.year}</span>
-                      <span className={isFront ? 'text-white font-sans font-semibold truncate max-w-[180px] inline-flex items-center gap-1' : ''}>
+                      <span className={isFront ? 'text-white font-sans font-semibold truncate max-w-[170px] sm:max-w-[200px] inline-flex items-center gap-1' : ''}>
                         {isFront ? (
                           <>
                             <span className="truncate">{event.name}</span>
@@ -255,7 +318,7 @@ const cardLayouts = [
             </span>
           </div>
 
-          {/* Bouncy Right Heading Animation: & Data Science */}
+          {/* Bouncy Right Heading: & Data Science */}
           <motion.h1
             initial={{ x: 350, opacity: 0 }}
             animate={startEntrance ? { x: 0, opacity: 1 } : { x: 350, opacity: 0 }}
@@ -288,3 +351,4 @@ const cardLayouts = [
     </section>
   );
 }
+
