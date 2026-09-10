@@ -13,11 +13,14 @@ export const facultyData = [
     about:
       "Dr. Sandeep C S is the Head of the Department of Artificial Intelligence and Data Science at Jyothi Engineering College.",
 
-    linkedin: null,
-    googleScholar: null,
-    scopus: null,
-    orcid: null,
-    vidwan: null
+    linkedin:
+      "https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit",
+    googleScholar:
+      "https://scholar.google.com/citations?user=22jrTAMAAAAJ",
+    scopus:
+      "https://www.scopus.com/authid/detail.uri?authorId=57309631200",
+    orcid: "https://orcid.org/0000-0003-3269-7984",
+    vidwan: "https://vidwan.inflibnet.ac.in/myprofile"
   },
 
   {
