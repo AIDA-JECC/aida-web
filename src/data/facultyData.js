@@ -90,50 +90,6 @@ export const facultyData = [
   },
 
   {
-    slug: "anoop-v",
-    name: "Dr. Anoop V",
-    designation: "Professor & Dean",
-    group: "Professor",
-    rank: 1,
-    initials: "AV",
-    img: "/faculty/anoop-v",
-
-    email: null,
-    phone: null,
-    about: null,
-    linkedin: null,
-    googleScholar: null,
-    scopus: null,
-    orcid: null,
-    vidwan: null
-  },
-
-  {
-    slug: "c-karthik",
-    name: "Dr. C Karthik",
-    designation: "Professor",
-    group: "Professor",
-    rank: 2,
-    initials: "CK",
-    img: "/faculty/c-karthik",
-
-    email: "karthikc@jecc.ac.in",
-    phone: "9566954491",
-    about:
-      "Dr. Karthik Chandran is a Professor in Artificial Intelligence and Data Science at Jyothi Engineering College. His research interests include Robotics, UAVs, Nonlinear System Identification, Cascade Control Systems, and Unmanned Surface Vehicles.",
-
-    linkedin:
-      "https://www.linkedin.com/in/karthik-c-98aa1050/",
-    googleScholar:
-      "https://scholar.google.com/citations?hl=en&user=lGmG0hQAAAAJ",
-    scopus:
-      "https://www.scopus.com/authid/detail.uri?authorId=57226546597",
-    orcid: "https://orcid.org/0000-0002-4676-2540",
-    vidwan:
-      "https://vidwan.inflibnet.ac.in/profile/447030"
-  },
-
-  {
     slug: "anju-asokan",
     name: "Dr. Anju Asokan",
     designation: "Associate Professor",
