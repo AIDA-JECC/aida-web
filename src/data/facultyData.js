@@ -70,16 +70,16 @@ export const facultyData = [
   {
     slug: "shine-p-xavier",
     name: "Mr. Shine P Xavier",
-    designation: "Professor",
-    group: "Professor",
-    rank: 2,
+    designation: "Assistant Professor",
+    group: "Assistant Professor",
+    rank: 4,
     initials: "SX",
     img: "/faculty/shine-p-xavier",
 
     email: "shinepxavier@jecc.ac.in",
     phone: "8089593484",
     about:
-      "Mr. Shine P. Xavier is a Professor in the Department of Artificial Intelligence and Data Science at Jyothi Engineering College. His teaching and research interests include Artificial Intelligence, Deep Learning, Computer Vision, Data Science, and Multimodal Emotion Recognition.",
+      "Mr. Shine P. Xavier is an Assistant Professor in the Department of Artificial Intelligence and Data Science at Jyothi Engineering College. His teaching and research interests include Artificial Intelligence, Deep Learning, Computer Vision, Data Science, and Multimodal Emotion Recognition.",
 
     linkedin:
       "https://www.linkedin.com/in/shine-p-xavier-36551342",
